@@ -2217,6 +2217,8 @@ window.BB = {
   var WEB_MODE = (location.protocol !== 'file:');
 
   var BG_FILE = WEB_MODE ? '해변.webp' : '해변.png';   // 배경 이미지 파일 이름
+  var TITLE_FILE = WEB_MODE ? '타이틀.webp' : '타이틀.png';   // 타이틀 화면 그림 (제목 글자까지 들어 있는 그림). 내 컴퓨터에서 열 때는 '완성본 모음' 폴더에 타이틀.png 를 넣어줘
+  var SHOW_TEST_MENU = true;              // 타이틀 왼쪽 위 'TEST' 버튼 (기록 초기화 / 모든 엔딩 열기). 배포할 때는 false 로
 
   /* 인물 이미지 파일은 '인물이름.png' 로 찾아. (예: 수나 -> 수나.png)
      - 화면에 쓰는 이름표와 파일 이름이 다른 경우만 아래에 적어줘. */
@@ -2489,6 +2491,48 @@ window.BB = {
     im.src = url;
   }
 
+  /* 타이틀 그림: 받았는지 여부를 기억해 둠 (없으면 타이틀 화면이 글자만 있는 모양으로 대신 나옴) */
+  var titleArt = { ok: null, edges: false };
+
+  /* 그림 맨 위/맨 아래 줄의 색을 읽어서 화면이 그림보다 길 때 남는 위아래를 그 색으로 이어 붙임.
+     (파일로 열어서 브라우저가 읽기를 막으면 대신 그림을 흐리게 늘려서 채움) */
+  function sampleTitleEdges(im) {
+    try {
+      var W = 8, H = 100, c = document.createElement('canvas');
+      c.width = W;
+      c.height = H;
+      var g = c.getContext('2d');
+      g.imageSmoothingQuality = 'high';
+      g.drawImage(im, 0, 0, W, H);
+      var d = g.getImageData(0, 0, W, H).data;
+      var band = function (row) {
+        var out = [];
+        for (var x = 0; x < W; x++) {
+          var i = (row * W + x) * 4;
+          out.push('rgb(' + d[i] + ',' + d[i + 1] + ',' + d[i + 2] + ')');
+        }
+        return 'linear-gradient(90deg,' + out.join(',') + ')';
+      };
+      document.documentElement.style.setProperty('--tt-top', band(0));
+      document.documentElement.style.setProperty('--tt-bot', band(H - 1));
+      titleArt.edges = true;
+    } catch (e) { titleArt.edges = false; }
+  }
+
+  function loadTitleArt(cb) {
+    var im = new Image(), done = false;
+    function fin(ok) {
+      titleArt.ok = ok;
+      if (ok) sampleTitleEdges(im);
+      applyTitleArt();
+      if (!done) { done = true; if (cb) cb(); }
+    }
+    im.onload = function () { decodeThen(im, function () { fin(true); }); };
+    im.onerror = function () { fin(false); };
+    plainKeep.push(im);
+    im.src = imgUrl(TITLE_FILE);
+  }
+
   /* ---------- 불러오는 중 화면 ----------
      나중에 예쁜 화면으로 바꾸고 싶으면 buildLoading / setLoading / hideLoading 세 함수와 스타일시트의 #ld-root 부분만 바꾸면 돼. */
   var ld = { root: null, fill: null, msg: null, skip: null, onSkip: null };
@@ -2533,7 +2577,7 @@ window.BB = {
   function startPreload() {
     var core = PRELOAD_CORE.filter(function (n) { return CHAR[n]; });
     var gate = core.slice(0, PRELOAD_GATE);
-    var total = gate.length + 1, done = 0, finished = false;
+    var total = gate.length + 2, done = 0, finished = false;
     var showTimer = setTimeout(function () {
       if (finished) return;
       buildLoading();
@@ -2556,6 +2600,7 @@ window.BB = {
       if (done >= total) finish();
     }
     preloadPlain(imgUrl(BG_FILE), tick);
+    loadTitleArt(tick);
     gate.forEach(function (n) { loadSprite(n, tick); });
   }
 
@@ -2614,8 +2659,9 @@ window.BB = {
   function prefetchAhead(link) {
     try {
       var idx = passageIndex();
-      var first = link && link.getAttribute('passage-name');
-      if (!first) return;
+      // Harlowe 링크에는 대상 이름 속성이 없고 글자만 있음. 대화 장면의 링크는 글자가 곧 대상 패시지 이름이라 그걸 씀
+      var first = link && link.textContent.replace(/^\s+|\s+$/g, '');
+      if (!first || !idx[first]) return;
       var queue = [first], seen = {}, depth = 0;
       while (queue.length && depth < LOOKAHEAD) {
         var next = [];
@@ -3023,6 +3069,125 @@ window.BB = {
     gl.root.hidden = true;
   }
 
+  /* ================= 타이틀 화면 =================
+     'title' 태그가 붙은 패시지에서 동작해. 그림 위에 버튼 4개(2x2)를 올리고,
+     버튼을 누르면 패시지 안에 숨어 있는 링크를 대신 눌러줘. (패시지의 링크 글자는 화면에 안 보임)
+     - 버튼 위치는 '그림 크기 기준 %' 라서, 화면이 세로로 길어도 그림과 버튼의 위치 관계는 항상 같아.
+     - 그림이 화면보다 짧으면 위아래는 같은 그림을 흐리게 늘려서 채워.
+     - '용의자 선택'은 엔딩을 한 번이라도 본 적이 있을 때만 켜져. */
+  var TT_BUTTONS = [
+    { label: '게임 시작',   target: '시작1',             text: '시작1',           cls: 'tt-p', icon: 'play' },
+    { label: '게임 방법',   target: '게임 방법',         text: '게임 방법',       cls: 'tt-s', icon: 'help' },
+    { label: '엔딩 갤러리', target: '엔딩 갤러리',       text: '엔딩 갤러리',     cls: 'tt-s', icon: 'image' },
+    { label: '용의자 선택', target: '제목 없는 구절 15', text: '용의자 선택으로', cls: 'tt-s', icon: 'search', needsRecord: true }
+  ];
+  var TT_TESTS = [
+    { label: '기록 초기화',    target: '기록 초기화',    text: '테스트용 기록 초기화' },
+    { label: '모든 엔딩 열기', target: '모든 엔딩 열기', text: '테스트용 모든 엔딩 열기' }
+  ];
+  var TT_ICONS = {
+    play:   '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.2v13.6L19.2 12z" fill="currentColor"/></svg>',
+    help:   '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.6" fill="none" stroke="currentColor" stroke-width="2.4"/><path d="M9.3 9.6a2.8 2.8 0 1 1 4.3 2.3c-.9.6-1.6 1.1-1.6 2.2" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/><circle cx="12" cy="16.9" r="1.35" fill="currentColor"/></svg>',
+    image:  '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.4" y="4.6" width="17.2" height="14.8" rx="2.6" fill="none" stroke="currentColor" stroke-width="2.4"/><circle cx="9" cy="10" r="1.8" fill="currentColor"/><path d="m4.6 17 4.6-4.4 3.2 3 3.2-3.6 4.2 4.6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/></svg>',
+    search: '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.4" cy="10.4" r="6" fill="none" stroke="currentColor" stroke-width="2.6"/><path d="m15 15 5 5" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg>',
+    lock:   '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5.4" y="10.6" width="13.2" height="9.6" rx="2.2" fill="currentColor"/><path d="M8.4 10.6V8.2a3.6 3.6 0 0 1 7.2 0v2.4" fill="none" stroke="currentColor" stroke-width="2.4"/></svg>'
+  };
+  var tt = { root: null, art: null, btns: [], tests: [], panel: null, p: null };
+
+  /* 패시지 안에서 링크 글자가 text 인 링크를 찾음 (Harlowe 링크에는 대상 이름 속성이 없고 화면에 보이는 글자만 있음) */
+  function ttLink(p, target, text) {
+    if (!p) return null;
+    var list = p.querySelectorAll('tw-link');
+    for (var i = 0; i < list.length; i++) {
+      if (list[i].closest('tw-include')) continue;
+      if (list[i].textContent.replace(/^\s+|\s+$/g, '') === text) return list[i];
+    }
+    return null;
+  }
+
+  function ttPress(def) {
+    if (Date.now() < lockUntil) return;
+    var l = ttLink(tt.p, def.target, def.text);
+    if (l && document.contains(l)) l.click();
+  }
+
+  function applyTitleArt() {
+    if (!tt.root) return;
+    tt.root.classList.toggle('tt-noart', titleArt.ok === false);
+    tt.root.classList.toggle('tt-edges', !!titleArt.edges);
+  }
+
+  function buildTitle() {
+    if (tt.root) return;
+    var r = el('div');
+    r.id = 'tt-root';
+    r.hidden = true;
+    var blur = el('div', 'tt-blur');
+    var stripT = el('div', 'tt-strip tt-strip-t');
+    var stripB = el('div', 'tt-strip tt-strip-b');
+    tt.art = el('div', 'tt-art');
+    tt.art.appendChild(el('div', 'tt-img'));
+    var fb = el('div', 'tt-fbtitle');
+    fb.innerHTML = '귤복복<br>살인사건';
+    tt.art.appendChild(fb);
+    TT_BUTTONS.forEach(function (def, i) {
+      var b = el('button', 'tt-btn ' + def.cls + ' tt-b' + i);
+      b.type = 'button';
+      b.innerHTML = '<span class="tt-ico">' + TT_ICONS[def.icon] + '</span><span class="tt-label">' + def.label + '</span>';
+      b.addEventListener('click', function () { if (!b.classList.contains('tt-off')) ttPress(def); });
+      tt.art.appendChild(b);
+      tt.btns.push(b);
+    });
+    r.appendChild(blur);
+    r.appendChild(stripT);
+    r.appendChild(stripB);
+    r.appendChild(tt.art);
+    if (SHOW_TEST_MENU) {
+      var box = el('div', 'tt-test');
+      var chip = el('button', 'tt-chip');
+      chip.type = 'button';
+      chip.textContent = 'TEST';
+      tt.panel = el('div', 'tt-panel');
+      tt.panel.hidden = true;
+      chip.addEventListener('click', function () { tt.panel.hidden = !tt.panel.hidden; });
+      TT_TESTS.forEach(function (def) {
+        var tb = el('button', 'tt-chip tt-chip-item');
+        tb.type = 'button';
+        tb.textContent = def.label;
+        tb.addEventListener('click', function () { ttPress(def); });
+        tt.panel.appendChild(tb);
+      });
+      box.appendChild(chip);
+      box.appendChild(tt.panel);
+      r.appendChild(box);
+    }
+    document.body.appendChild(r);
+    tt.root = r;
+    applyTitleArt();
+  }
+
+  function showTitle(p) {
+    buildTitle();
+    tt.p = p;
+    TT_BUTTONS.forEach(function (def, i) {
+      var b = tt.btns[i];
+      var off = !!def.needsRecord && !ttLink(p, def.target, def.text);
+      b.classList.toggle('tt-off', off);
+      b.setAttribute('aria-disabled', off ? 'true' : 'false');
+      b.firstChild.innerHTML = TT_ICONS[off ? 'lock' : def.icon];
+      b.title = off ? '엔딩을 한 번이라도 보면 열려요' : '';
+    });
+    if (tt.panel) tt.panel.hidden = true;
+    document.body.classList.add('tt-on');
+    tt.root.hidden = false;
+  }
+
+  function hideTitle() {
+    if (!tt.root) return;
+    document.body.classList.remove('tt-on');
+    tt.root.hidden = true;
+  }
+
   /* ================= 타이틀로 돌아가기 (홈 버튼) =================
      '타이틀 화면' 과 엔딩 갤러리를 뺀 어느 장면에서든 오른쪽 위에 집 모양 버튼이 떠.
      누르면 한 번 물어보고(HOME_CONFIRM), '홈 버튼 링크' 헤더 패시지에 숨겨둔 링크를 대신 눌러서 타이틀로 가. */
@@ -3104,8 +3269,10 @@ window.BB = {
     var tags = (p.getAttribute('tags') || '').split(/\s+/);
     updateHome(tags);
     lockUntil = Date.now() + LOCK_MS;
+    if (tags.indexOf('title') < 0) hideTitle();          // 타이틀이 아닌 화면으로 넘어가면 (갤러리 포함) 타이틀 층을 치움
     if (tags.indexOf('gallery') >= 0) { leaveVN(false); showGallery(p); return; }
     hideGallery();
+    if (tags.indexOf('title') >= 0) { leaveVN(false); showTitle(p); return; }
     var info = tags.indexOf('vn') >= 0 ? extract(p) : null;
     if (!info) { leaveVN(tags.indexOf('vn-choice') >= 0); return; }
 
@@ -3176,6 +3343,7 @@ window.BB = {
   function start() {
     if (!document.body) { setTimeout(start, 20); return; }
     document.documentElement.style.setProperty('--bg-url', 'url("' + imgUrl(BG_FILE) + '")');
+    document.documentElement.style.setProperty('--tt-url', 'url("' + imgUrl(TITLE_FILE) + '")');
     loadStage();
     build();
     startPreload();
@@ -3616,6 +3784,177 @@ body.hm-on tw-passage tw-sidebar { right: calc(var(--u) * 10); }
 .hm-row { margin-top: calc(var(--u) * 5); display: flex; gap: calc(var(--u) * 3); }
 .hm-choice { flex: 1 1 0; height: calc(var(--u) * 11); font-size: calc(var(--u) * 4.4); font-weight: 700; }
 .hm-choice.hm-no { background: rgba(255, 255, 255, 0.14); }
+
+/* ===== 타이틀 화면 ===== */
+body.tt-on tw-passage { display: none; }
+
+#tt-root {
+  --aw: min(var(--stage-w), calc(var(--stage-h) * 0.5596));   /* 그림 가로 폭 (그림 비율 399:713 유지) */
+  --au: calc(var(--aw) / 100);                                 /* 그림 폭의 1% */
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: var(--stage-w);
+  transform: translateX(-50%);
+  z-index: 7;
+  overflow: hidden;
+  background: #7ec8f0;
+  font-family: var(--font);
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+#tt-root[hidden] { display: none; }
+#tt-root.tt-noart { background: transparent; }
+
+/* 화면이 그림보다 세로로 길 때 남는 위아래를 같은 그림을 흐리게 늘려서 채움 */
+.tt-blur {
+  position: absolute;
+  top: -6%;
+  right: -6%;
+  bottom: -6%;
+  left: -6%;
+  background: var(--tt-url, none) center / cover no-repeat;
+  filter: blur(calc(var(--u) * 3)) saturate(1.1);
+  transform: translateZ(0);
+}
+.tt-noart .tt-blur, .tt-edges .tt-blur { display: none; }
+
+/* 그림 가장자리 색을 위아래로 이어 붙인 띠 (스크립트가 --tt-top / --tt-bot 을 채움) */
+.tt-strip { display: none; position: absolute; left: 0; right: 0; height: 52%; }
+.tt-edges .tt-strip { display: block; }
+.tt-noart .tt-strip { display: none; }
+.tt-strip-t { top: 0; background: var(--tt-top, none); }
+.tt-strip-b { bottom: 0; background: var(--tt-bot, none); }
+
+/* 그림 본체. 버튼은 이 상자 안에서 % 로 자리를 잡음 (그림이 곧 도화지) */
+.tt-art {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: var(--aw);
+  height: calc(var(--aw) * 713 / 399);
+  transform: translate(-50%, -50%);
+}
+/* 그림 층: 화면이 그림보다 길 때만 위아래 가장자리를 부드럽게 섞음 (안 길면 섞는 폭이 0) */
+.tt-img {
+  --fz: max(0px, min(calc(var(--stage-h) - var(--aw) * 713 / 399), calc(var(--aw) * 0.09)));
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: var(--tt-url, none) center / 100% 100% no-repeat;
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 var(--fz), #000 calc(100% - var(--fz)), transparent 100%);
+  mask-image: linear-gradient(to bottom, transparent 0, #000 var(--fz), #000 calc(100% - var(--fz)), transparent 100%);
+}
+.tt-noart .tt-img { display: none; }
+
+/* 그림 파일이 없을 때만 보이는 임시 제목 */
+.tt-fbtitle { display: none; }
+.tt-noart .tt-fbtitle {
+  display: block;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 10%;
+  text-align: center;
+  font-size: calc(var(--au) * 15);
+  font-weight: 900;
+  line-height: 1.15;
+  color: #e898d8;
+  -webkit-text-stroke: calc(var(--au) * 1.2) #fff;
+  paint-order: stroke fill;
+  text-shadow: 0 calc(var(--au) * 1) calc(var(--au) * 1.5) rgba(0, 0, 0, 0.35);
+}
+
+/* 버튼 4개: 2열 x 2행. 좌우 여백 5.5%, 열 사이 7%, 그림 아래쪽 근처 */
+.tt-btn {
+  --edge: #0c5a70;
+  position: absolute;
+  box-sizing: border-box;
+  width: 41%;
+  height: 10.4%;
+  margin: 0;
+  padding: 0 calc(var(--au) * 1.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: calc(var(--au) * 1.8);
+  font-family: inherit;
+  font-size: calc(var(--au) * 4.4);
+  font-weight: 800;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+  color: #fff;
+  cursor: pointer;
+  border: calc(var(--au) * 0.9) solid #fff8e4;
+  border-radius: calc(var(--au) * 4.6);
+  text-shadow: 0 calc(var(--au) * 0.5) 0 var(--edge), 0 0 calc(var(--au) * 1.4) rgba(0, 0, 0, 0.25);
+  box-shadow:
+    0 calc(var(--au) * 1.3) 0 var(--edge),
+    0 calc(var(--au) * 2.8) calc(var(--au) * 3.2) rgba(6, 36, 56, 0.4),
+    inset 0 calc(var(--au) * 0.5) 0 rgba(255, 255, 255, 0.5);
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+.tt-btn::before {                       /* 윗면 반짝임 */
+  content: '';
+  position: absolute;
+  left: 5%;
+  right: 5%;
+  top: 6%;
+  height: 40%;
+  border-radius: calc(var(--au) * 3.4);
+  background: linear-gradient(rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.05));
+  pointer-events: none;
+}
+.tt-btn.tt-p {                          /* 게임 시작: 햇살 (그림의 꽃과 모자 안쪽 주황) */
+  --edge: #a2500c;
+  background:
+    radial-gradient(rgba(255, 255, 255, 0.18) 1px, transparent 1.4px) 0 0 / 4px 4px,
+    linear-gradient(180deg, #ffd964 0%, #ffb236 52%, #f28a1f 100%);
+}
+.tt-btn.tt-s {                          /* 나머지: 바다 (그림의 목걸이와 팔찌 청록) */
+  --edge: #0c5a70;
+  background:
+    radial-gradient(rgba(255, 255, 255, 0.16) 1px, transparent 1.4px) 0 0 / 4px 4px,
+    linear-gradient(180deg, #4fd0c8 0%, #25a0aa 55%, #1b7f97 100%);
+}
+.tt-b0 { left: 5.5%;  top: 74.6%; }
+.tt-b1 { left: 53.5%; top: 74.6%; }
+.tt-b2 { left: 5.5%;  top: 86.8%; }
+.tt-b3 { left: 53.5%; top: 86.8%; }
+.tt-btn:active { transform: translateY(calc(var(--au) * 1)); box-shadow: 0 calc(var(--au) * 0.3) 0 var(--edge), 0 calc(var(--au) * 1.2) calc(var(--au) * 2) rgba(6, 36, 56, 0.4), inset 0 calc(var(--au) * 0.5) 0 rgba(255, 255, 255, 0.5); }
+.tt-btn:focus-visible { outline: calc(var(--au) * 0.9) solid #fff; outline-offset: calc(var(--au) * 0.6); }
+.tt-btn.tt-off {                        /* 잠긴 버튼 */
+  filter: grayscale(0.9) brightness(0.92);
+  opacity: 0.78;
+  cursor: default;
+}
+.tt-btn.tt-off:active { transform: none; }
+.tt-ico { display: flex; width: calc(var(--au) * 5.6); height: calc(var(--au) * 5.6); }
+.tt-ico svg { width: 100%; height: 100%; display: block; filter: drop-shadow(0 calc(var(--au) * 0.5) 0 var(--edge)); }
+.tt-label { position: relative; }
+
+/* 테스트용 버튼 (왼쪽 위). SHOW_TEST_MENU 를 false 로 하면 안 생김 */
+.tt-test { position: absolute; left: calc(var(--u) * 1.5); top: calc(var(--u) * 1.5); z-index: 2; display: flex; flex-direction: column; align-items: flex-start; gap: calc(var(--u) * 1); }
+.tt-panel { display: flex; flex-direction: column; align-items: flex-start; gap: calc(var(--u) * 1); }
+.tt-panel[hidden] { display: none; }
+.tt-chip {
+  margin: 0;
+  padding: calc(var(--u) * 0.8) calc(var(--u) * 2);
+  font-family: inherit;
+  font-size: calc(var(--u) * 3);
+  color: #fff;
+  background: rgba(0, 0, 0, 0.42);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: calc(var(--u) * 2);
+  cursor: pointer;
+}
+.tt-chip-item { font-size: calc(var(--u) * 3.2); background: rgba(0, 0, 0, 0.62); }
 
 /* ===== 불러오는 중 화면 (나중에 예쁘게 바꿀 때는 이 부분과 스크립트의 buildLoading / setLoading / hideLoading 만 고치면 돼) ===== */
 #ld-root {
