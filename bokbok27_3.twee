@@ -2286,6 +2286,21 @@ window.BB = {
   var FONT_MAX = 4.4, FONT_MIN = 3.0;     // 대사 글자 크기 범위 (긴 대사는 자동으로 줄어듦)
   var STAGE_KEY = 'bokbok-vn-stage';      // 새로고침해도 인물 배치를 기억하는 저장 이름
 
+  /* ---------- 이미지 미리 불러오기 (모바일 / 느린 회선용) ----------
+     - 게임을 열면 배경 + 오프닝 첫 인물들을 먼저 받고, 다 받을 때까지 '불러오는 중' 화면을 보여줘.
+       (받아둔 적이 있어서 금방 끝나면 이 화면은 아예 뜨지 않아)
+     - 그 뒤 나머지 인물은 게임하는 동안 뒤에서 조금씩 받아.
+     - 대사가 나올 때 그 인물 그림이 아직 안 왔으면, 그림이 올 때까지 잠깐 기다렸다가 대사를 시작해.
+     - 앞으로 나올 몇 장면의 인물도 미리 받아둬. */
+  var PRELOAD_CORE = ['벨', '수나', '남궁우', '야나기', '귤복복', '시시아', '11호', '빛나', '미야비', '아스트라'];  // 오프닝에 나오는 인물
+  var PRELOAD_HUB = ['레미엘', '루시아', '시드', '자오', '앨리스', '클라렛'];   // 용의자 선택 화면에서 각 루트에 처음 나오는 인물 (오프닝 인물 다음으로 받음)
+  var PRELOAD_GATE = 4;                   // 위 목록 중 앞에서부터 몇 명을 다 받아야 게임을 열지 (나머지는 게임하면서 바로 뒤에서 받음)
+  var PRELOAD_PARALLEL = 2;               // 뒤에서 받을 때 동시에 받는 개수 (느린 회선의 폰을 위해 적게)
+  var LOADING_DELAY_MS = 250;             // 이 시간 안에 끝나면 '불러오는 중' 화면을 띄우지 않음
+  var LOADING_STUCK_MS = 8000;            // 이 시간이 지나도 안 끝나면 '그냥 시작하기' 버튼이 나옴
+  var WAIT_MAX_MS = 4000;                 // 대사를 시작하기 전에 인물 그림을 기다려주는 최대 시간
+  var LOOKAHEAD = 4;                      // 앞으로 몇 장면 뒤까지 나올 인물을 미리 받을지
+
   var root, slotL, slotR, nameEl, textEl;
   var stage = { L: null, R: null };
   var lastPassage = null;
@@ -2414,6 +2429,212 @@ window.BB = {
     return out.filter(function (c) { return !badUrls[c.url]; });
   }
 
+  /* ================= 인물 그림 미리 받기 ================= */
+  var sprites = {};                       // 인물 이름 -> { state: 'loading' | 'ok' | 'missing', cbs: [...], img }
+  var plainKeep = [];                     // 배경처럼 인물이 아닌 그림을 메모리에 붙잡아 둠
+  var bgPump = null;                      // 뒤에서 받기를 이어가는 함수 (backgroundPreload 가 채움)
+  var urgent = 0;                         // 지금 화면에 꼭 필요해서 기다리는 그림 수 (이동안에는 뒤에서 받기를 멈춤)
+
+  /* 그림을 다 받은 뒤 화면에 그릴 준비(디코딩)까지 끝내고 알려줌. 지원하지 않는 브라우저는 다 받은 시점에 알려줌 */
+  function decodeThen(im, cb) {
+    var called = false;
+    function fin() { if (!called) { called = true; cb(); } }
+    try {
+      if (im.decode) { im.decode().then(fin, fin); setTimeout(fin, 3000); return; }
+    } catch (e) {}
+    fin();
+  }
+
+  /* 인물 한 명의 그림을 받아둠. 이미 받았거나 받는 중이면 그 결과를 기다렸다가 cb 를 부름 */
+  function loadSprite(name, cb) {
+    var e = sprites[name];
+    if (e && e.state !== 'loading') { if (cb) cb(e); return; }
+    if (e) { if (cb) e.cbs.push(cb); return; }
+    e = sprites[name] = { state: 'loading', cbs: cb ? [cb] : [], img: null };
+    var cands = candidatesFor(name), i = 0;
+    function finish(state) {
+      e.state = state;
+      var list = e.cbs;
+      e.cbs = [];
+      for (var k = 0; k < list.length; k++) list[k](e);
+    }
+    function next() {
+      if (i >= cands.length) { finish('missing'); return; }
+      var c = cands[i++];
+      var im = new Image();
+      var t0 = Date.now(), retried = false;
+      im.onload = function () { decodeThen(im, function () { e.img = im; finish('ok'); }); };
+      im.onerror = function () {
+        // 회선이 끊겼거나 오래 걸리다 실패한 경우는 한 번 더 시도 (파일이 없는 경우는 금방 실패하니까 바로 다음 후보로)
+        if (!retried && (Date.now() - t0 > 1500 || (navigator.onLine === false))) {
+          retried = true;
+          setTimeout(function () { im.src = c.url + (c.url.indexOf('?') < 0 ? '?' : '&') + 'r=1'; }, 600);
+          return;
+        }
+        badUrls[c.url] = true;
+        next();
+      };
+      im.src = c.url;
+    }
+    next();
+  }
+
+  /* 배경 등 인물이 아닌 그림 */
+  function preloadPlain(url, cb) {
+    var im = new Image(), done = false;
+    function fin() { if (!done) { done = true; cb(); } }
+    im.onload = function () { decodeThen(im, fin); };
+    im.onerror = fin;
+    plainKeep.push(im);
+    im.src = url;
+  }
+
+  /* ---------- 불러오는 중 화면 ----------
+     나중에 예쁜 화면으로 바꾸고 싶으면 buildLoading / setLoading / hideLoading 세 함수와 스타일시트의 #ld-root 부분만 바꾸면 돼. */
+  var ld = { root: null, fill: null, msg: null, skip: null, onSkip: null };
+
+  function buildLoading() {
+    if (ld.root) return;
+    var r = el('div');
+    r.id = 'ld-root';
+    r.hidden = true;
+    var title = el('div', 'ld-title');
+    title.textContent = '귤복복 살인사건';
+    var bar = el('div', 'ld-bar');
+    ld.fill = el('div', 'ld-fill');
+    bar.appendChild(ld.fill);
+    ld.msg = el('div', 'ld-msg');
+    ld.msg.textContent = '불러오는 중… 0%';
+    ld.skip = el('button', 'gl-btn ld-skip');
+    ld.skip.type = 'button';
+    ld.skip.textContent = '그냥 시작하기';
+    ld.skip.hidden = true;
+    ld.skip.addEventListener('click', function () { if (ld.onSkip) ld.onSkip(); });
+    r.appendChild(title);
+    r.appendChild(bar);
+    r.appendChild(ld.msg);
+    r.appendChild(ld.skip);
+    document.body.appendChild(r);
+    ld.root = r;
+  }
+
+  function setLoading(done, total) {
+    if (!ld.root) return;
+    var pct = total ? Math.min(100, Math.round(100 * done / total)) : 100;
+    ld.fill.style.width = pct + '%';
+    ld.msg.textContent = '불러오는 중… ' + pct + '%';
+  }
+
+  function hideLoading() {
+    if (ld.root) ld.root.hidden = true;
+  }
+
+  /* 게임을 열 때 한 번: 배경 + 오프닝 첫 인물들을 받는다. 다 받으면 화면을 열고, 나머지는 뒤에서 받는다 */
+  function startPreload() {
+    var core = PRELOAD_CORE.filter(function (n) { return CHAR[n]; });
+    var gate = core.slice(0, PRELOAD_GATE);
+    var total = gate.length + 1, done = 0, finished = false;
+    var showTimer = setTimeout(function () {
+      if (finished) return;
+      buildLoading();
+      ld.onSkip = finish;
+      ld.root.hidden = false;
+      setLoading(done, total);
+    }, LOADING_DELAY_MS);
+    var stuckTimer = setTimeout(function () { if (!finished && ld.skip) ld.skip.hidden = false; }, LOADING_STUCK_MS);
+    function finish() {
+      if (finished) return;
+      finished = true;
+      clearTimeout(showTimer);
+      clearTimeout(stuckTimer);
+      hideLoading();
+      backgroundPreload();
+    }
+    function tick() {
+      done++;
+      setLoading(done, total);
+      if (done >= total) finish();
+    }
+    preloadPlain(imgUrl(BG_FILE), tick);
+    gate.forEach(function (n) { loadSprite(n, tick); });
+  }
+
+  /* 나머지 인물을 게임하는 동안 뒤에서 조금씩 받는다 */
+  function backgroundPreload() {
+    // 순서: 오프닝 인물 중 아직 안 받은 사람 -> 용의자 루트 첫 인물 -> 나머지 인물
+    var first = PRELOAD_CORE.concat(PRELOAD_HUB).filter(function (n) { return CHAR[n]; });
+    var rest = first.concat(Object.keys(CHAR).filter(function (n) { return first.indexOf(n) < 0; }));
+    var active = 0;
+    function pump() {
+      if (urgent > 0) return;             // 지금 화면에 필요한 그림을 기다리는 중이면 양보
+      while (active < PRELOAD_PARALLEL && rest.length) {
+        var n = rest.shift();
+        if (sprites[n]) continue;         // 앞 장면 미리보기로 이미 받았거나 받는 중이면 건너뜀
+        active++;
+        loadSprite(n, function () { active--; pump(); });
+      }
+    }
+    bgPump = pump;
+    pump();
+  }
+
+  /* ---------- 앞으로 나올 장면의 인물 미리 받기 ----------
+     Harlowe 가 숨겨둔 패시지 원문을 읽어서, 지금 장면에서 링크로 이어지는 몇 장면 앞까지의 화자를 찾는다. */
+  var pIndex = null;                      // 패시지 이름 -> { tags, text }
+  function passageIndex() {
+    if (pIndex) return pIndex;
+    pIndex = {};
+    var list = document.querySelectorAll('tw-passagedata');
+    for (var i = 0; i < list.length; i++) {
+      pIndex[list[i].getAttribute('name')] = { tags: list[i].getAttribute('tags') || '', text: list[i].textContent || '' };
+    }
+    return pIndex;
+  }
+
+  function speakerOf(text) {
+    var lines = text.replace(/\[\[[\s\S]*?\]\]/g, '').split('\n');
+    for (var i = 0; i < lines.length; i++) {
+      var m = lines[i].match(/^([^\s:()（）]{1,10}):\s*(.*)$/);
+      if (m) return canon(m[1]);
+    }
+    return null;
+  }
+
+  function linksOf(text) {
+    var out = [], re = /\[\[([\s\S]*?)\]\]/g, m;
+    while ((m = re.exec(text))) {
+      var t = m[1], k = t.indexOf('->');
+      if (k >= 0) t = t.slice(k + 2);
+      else { k = t.indexOf('<-'); if (k >= 0) t = t.slice(0, k); }
+      out.push(t.replace(/^\s+|\s+$/g, ''));
+    }
+    return out;
+  }
+
+  function prefetchAhead(link) {
+    try {
+      var idx = passageIndex();
+      var first = link && link.getAttribute('passage-name');
+      if (!first) return;
+      var queue = [first], seen = {}, depth = 0;
+      while (queue.length && depth < LOOKAHEAD) {
+        var next = [];
+        for (var q = 0; q < queue.length; q++) {
+          var name = queue[q], p = idx[name];
+          if (!p || seen[name]) continue;
+          seen[name] = true;
+          var tags = p.tags.split(/\s+/);
+          if (tags.indexOf('vn') < 0 && tags.indexOf('vn-choice') < 0) continue;   // 대화 장면이 아니면 여기서 멈춤
+          var sp = speakerOf(p.text);
+          if (sp && CHAR[sp]) loadSprite(sp);
+          next = next.concat(linksOf(p.text));
+        }
+        queue = next;
+        depth++;
+      }
+    } catch (e) {}
+  }
+
   /* 벨 발끝이 화면 맨 아래에 닿는 기준선: 벨 눈높이가 바닥에서 얼마나 떨어져 있는지 */
   function eyeLineFromBottom() {
     var a = CHAR[ANCHOR];
@@ -2433,6 +2654,14 @@ window.BB = {
     img.style.height = 'calc(var(--u) * ' + (m.size[1] * s).toFixed(3) + ')';
     img.style.left = 'calc(var(--u) * ' + left.toFixed(3) + ')';
     img.style.bottom = 'calc(var(--u) * ' + bottom.toFixed(3) + ')';
+  }
+
+  /* 같은 인물이 같은 자리에 계속 서 있으면 그림을 지웠다 다시 그리지 않고 그대로 둠 (깜빡임 방지) */
+  function setSlot(slot, name, side) {
+    var key = name || '';
+    if (slot.getAttribute('data-name') === key && (!key || slot.firstChild)) return;
+    slot.setAttribute('data-name', key);
+    fillSlot(slot, name, side);
   }
 
   function fillSlot(slot, name, side) {
@@ -2759,6 +2988,22 @@ window.BB = {
     var n = 0;
     for (var k = 1; k <= G_NORMAL; k++) if (seen[k]) n++;
     gl.count.textContent = n + '/' + G_NORMAL;
+    var nextPage = gl.page + 1;
+    setTimeout(function () { prefetchEndings(nextPage); }, 600);     // 지금 페이지 그림이 먼저 오도록 잠깐 뒤에
+  }
+
+  /* 다음 페이지에 있는 (해금된) 엔딩 그림을 미리 받아둠 */
+  function prefetchEndings(page) {
+    if (page > G_PAGES || !gl.root || gl.root.hidden) return;
+    var seen = readUnlocked(), first = (page - 1) * G_PER_PAGE + 1;
+    gl.pre = [];
+    for (var i = 0; i < G_PER_PAGE; i++) {
+      var id = first + i, files = endingCandidates(id);
+      if (id > G_TOTAL || !seen[id] || !files.length) continue;
+      var im = new Image();
+      im.src = endingUrl(files[0]);
+      gl.pre.push(im);
+    }
   }
 
   function showGallery(p) {
@@ -2850,8 +3095,12 @@ window.BB = {
     document.body.classList.toggle('hm-on', show);
   }
 
+  var sceneSeq = 0;                       // 장면 번호 (기다리는 사이에 다른 장면으로 넘어가면 예전 장면은 취소)
+
   function onPassage(p) {
     build();
+    var seq = ++sceneSeq;
+    textEl.classList.remove('vn-loading');
     var tags = (p.getAttribute('tags') || '').split(/\s+/);
     updateHome(tags);
     lockUntil = Date.now() + LOCK_MS;
@@ -2862,8 +3111,6 @@ window.BB = {
 
     var parsed = parseSpeaker(info.text);
     placeSpeaker(parsed.speaker);
-    fillSlot(slotL, stage.L, 'L');
-    fillSlot(slotR, stage.R, 'R');
 
     if (parsed.speaker) {
       nameEl.textContent = parsed.speaker;
@@ -2872,10 +3119,50 @@ window.BB = {
       nameEl.textContent = '\u00a0';
       nameEl.classList.add('vn-noname');
     }
-    advanceLink = info.link;
     document.body.classList.add('vn-on');
     root.hidden = false;
-    startTyping(parsed.body);
+    stopTyping();
+    textEl.textContent = '';
+    advanceLink = null;                   // 그림이 준비되는 동안은 탭해도 넘어가지 않음
+
+    // 이 장면에 나올 인물 중 아직 못 받은 그림이 있으면, 올 때까지 (최대 WAIT_MAX_MS) 기다렸다가 대사를 시작
+    var pending = [stage.L, stage.R].filter(function (n) {
+      var e = n && sprites[n];
+      return n && (!e || e.state === 'loading');
+    });
+    var released = false, counted = false, timer = null;
+
+    function go() {
+      if (released || seq !== sceneSeq) return;
+      released = true;
+      textEl.classList.remove('vn-loading');
+      setSlot(slotL, stage.L, 'L');
+      setSlot(slotR, stage.R, 'R');
+      advanceLink = info.link;
+      startTyping(parsed.body);
+      prefetchAhead(info.link);
+    }
+    function unhold() {
+      if (!counted) return;
+      counted = false;
+      urgent--;
+      if (bgPump) bgPump();
+    }
+    function done() {
+      clearTimeout(timer);
+      unhold();
+      go();
+    }
+
+    if (!pending.length) { go(); return; }
+    counted = true;
+    urgent++;
+    textEl.classList.add('vn-loading');
+    var left = pending.length;
+    timer = setTimeout(done, WAIT_MAX_MS);
+    pending.forEach(function (n) {
+      loadSprite(n, function () { left--; if (left <= 0) done(); });
+    });
   }
 
   function check() {
@@ -2891,6 +3178,7 @@ window.BB = {
     document.documentElement.style.setProperty('--bg-url', 'url("' + imgUrl(BG_FILE) + '")');
     loadStage();
     build();
+    startPreload();
     new MutationObserver(check).observe(document.body, { childList: true, subtree: true });
     check();
   }
@@ -3328,3 +3616,55 @@ body.hm-on tw-passage tw-sidebar { right: calc(var(--u) * 10); }
 .hm-row { margin-top: calc(var(--u) * 5); display: flex; gap: calc(var(--u) * 3); }
 .hm-choice { flex: 1 1 0; height: calc(var(--u) * 11); font-size: calc(var(--u) * 4.4); font-weight: 700; }
 .hm-choice.hm-no { background: rgba(255, 255, 255, 0.14); }
+
+/* ===== 불러오는 중 화면 (나중에 예쁘게 바꿀 때는 이 부분과 스크립트의 buildLoading / setLoading / hideLoading 만 고치면 돼) ===== */
+#ld-root {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: var(--stage-w);
+  transform: translateX(-50%);
+  z-index: 20;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: calc(var(--u) * 4);
+  background: #060c1c;
+  color: #fff;
+  font-family: var(--font);
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+#ld-root[hidden] { display: none; }
+.ld-title { font-size: calc(var(--u) * 7); font-weight: 700; letter-spacing: 0.02em; }
+.ld-bar {
+  box-sizing: border-box;
+  width: 64%;
+  height: calc(var(--u) * 2.6);
+  border-radius: calc(var(--u) * 1.3);
+  border: calc(var(--u) * 0.4) solid rgba(255, 255, 255, 0.6);
+  background: rgba(255, 255, 255, 0.12);
+  overflow: hidden;
+}
+.ld-fill {
+  width: 0;
+  height: 100%;
+  background: linear-gradient(90deg, var(--name-color-a), var(--name-color-b));
+  transition: width 0.25s ease-out;
+}
+.ld-msg { font-size: calc(var(--u) * 3.8); opacity: 0.85; }
+.ld-skip { padding: 0 calc(var(--u) * 6); height: calc(var(--u) * 11); font-size: calc(var(--u) * 4.2); font-weight: 700; }
+.ld-skip[hidden] { display: none; }
+
+/* 인물 그림을 기다리는 동안 대사창에 점 세 개가 깜빡임 */
+.vn-text.vn-loading::after { content: '…'; opacity: 0.6; animation: ld-blink 1s ease-in-out infinite; }
+@keyframes ld-blink { 0%, 100% { opacity: 0.15; } 50% { opacity: 0.8; } }
+@media (prefers-reduced-motion: reduce) {
+  .vn-text.vn-loading::after { animation: none; }
+  .ld-fill { transition: none; }
+}
+
