@@ -2213,8 +2213,10 @@ window.BB = {
   // 웹(GitHub Pages)에 올렸을 때 이미지를 찾을 폴더 (index.html 옆의 images 폴더)
   var WEB_BASE = 'images/';
   var IMAGE_BASE = (location.protocol === 'file:') ? LOCAL_BASE : WEB_BASE;
+  // 웹에서는 용량을 줄인 .webp 를 먼저 찾고, 없으면 .png 를 씀. (내 컴퓨터에서 파일로 열 때는 원본 .png 만 씀)
+  var WEB_MODE = (location.protocol !== 'file:');
 
-  var BG_FILE = '해변.png';               // 배경 이미지 파일 이름
+  var BG_FILE = WEB_MODE ? '해변.webp' : '해변.png';   // 배경 이미지 파일 이름
 
   /* 인물 이미지 파일은 '인물이름.png' 로 찾아. (예: 수나 -> 수나.png)
      - 화면에 쓰는 이름표와 파일 이름이 다른 경우만 아래에 적어줘. */
@@ -2403,7 +2405,10 @@ window.BB = {
     var names = [name];
     Object.keys(ALIAS).forEach(function (a) { if (ALIAS[a] === name) names.push(a); });
     if (CHAR[name]) {
-      names.forEach(function (n) { out.push({ url: charUrl(n + '_' + EXPRESSION + '.png'), face: true }); });
+      names.forEach(function (n) {
+        if (WEB_MODE) out.push({ url: charUrl(n + '_' + EXPRESSION + '.webp'), face: true });
+        out.push({ url: charUrl(n + '_' + EXPRESSION + '.png'), face: true });
+      });
     }
     (FILE_CANDIDATES[name] || [name + '.png']).forEach(function (f) { out.push({ url: imgUrl(f), face: false }); });
     return out.filter(function (c) { return !badUrls[c.url]; });
