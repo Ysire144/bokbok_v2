@@ -2278,7 +2278,10 @@ window.BB = {
     '트리거': { size: [402, 720], box: [54, 35, 312, 701], eye: [203.0, 104.0], d: 22.0, tune: 1 },
     '야나기': { size: [401, 720], box: [74, 30, 302, 708], eye: [202.6, 88.4], d: 28.4, tune: 1 },   // 고개가 살짝 기울어 있어서 눈 높이가 좌우로 약간 다름 (d는 눈동자 사이 실제 거리)
     '유즈하': { size: [402, 720], box: [0, 0, 402, 720], eye: [209.1, 147.1], d: 40.4, tune: 1 },
-    '의현': { size: [401, 720], box: [10, 36, 374, 715], eye: [201.2, 111.3], d: 30.5, tune: 1 }
+    '의현': { size: [401, 720], box: [10, 36, 374, 715], eye: [201.2, 111.3], d: 30.5, tune: 1 },
+    // 포포: 눈이 하나(가운데 검은 구멍)인 큰 괴물이라 d 는 실제 눈 간격이 아니라 '크기 맞춤용' 값이야.
+    //       foot 을 적으면 눈높이를 벨에 맞추지 않고, 발끝이 화면 바닥에서 foot(화면 폭의 %) 만큼 위에 오게 세워 (대사창 뒤로 다리가 가려짐)
+    '포포': { size: [720, 720], box: [4, 31, 717, 651], eye: [365.0, 343.0], d: 51.3, tune: 1, foot: 40 }
   };
   /* ------------------------------------------------------ */
 
@@ -2425,6 +2428,7 @@ window.BB = {
       names.forEach(function (n) {
         if (WEB_MODE) out.push({ url: charUrl(n + '_' + EXPRESSION + '.webp'), face: true });
         out.push({ url: charUrl(n + '_' + EXPRESSION + '.png'), face: true });
+        if (!WEB_MODE) out.push({ url: charUrl(n + '_' + EXPRESSION + '.webp'), face: true });   // 내 컴퓨터 폴더에 webp 만 있는 인물도 찾도록
       });
     }
     (FILE_CANDIDATES[name] || [name + '.png']).forEach(function (f) { out.push({ url: imgUrl(f), face: false }); });
@@ -2695,7 +2699,9 @@ window.BB = {
     var l = left + m.box[0] * s, r = left + m.box[2] * s;               // 실제 그려진 부분의 좌우 끝
     if (l < 0.5) left += 0.5 - l;                                        // 화면 밖으로 잘리면 안쪽으로 밀어줌
     else if (r > 99.5) left -= r - 99.5;
-    var bottom = eyeLineFromBottom() - (m.size[1] - m.eye[1]) * s;
+    var bottom = (m.foot != null)
+      ? m.foot - (m.size[1] - m.box[3]) * s                               // 발끝 기준 (괴물처럼 눈높이를 맞출 수 없는 인물)
+      : eyeLineFromBottom() - (m.size[1] - m.eye[1]) * s;                 // 눈높이를 벨과 같은 줄에
     img.style.width = 'calc(var(--u) * ' + (m.size[0] * s).toFixed(3) + ')';
     img.style.height = 'calc(var(--u) * ' + (m.size[1] * s).toFixed(3) + ')';
     img.style.left = 'calc(var(--u) * ' + left.toFixed(3) + ')';
