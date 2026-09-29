@@ -1531,10 +1531,9 @@
 [[제목 없는 구절 291]]
 
 
-:: 제목 없는 구절 291 {"position":"5000,2800","size":"100,100"}
+:: 제목 없는 구절 291 [vn] {"position":"5000,2800","size":"100,100"}
 의현: 내가 너무 늦은 건 아니지?
-[[크레딧]]
-[[타이틀 화면]](set: $seen to it + (ds: 17))<script>if (window.BB) { BB.save(Array.from($seen)); }</script>
+[[크레딧]](set: $seen to it + (ds: 17))<script>if (window.BB) { BB.save(Array.from($seen)); }</script>
 
 
 :: 제목 없는 구절 292 [vn] {"position":"1300,1400","size":"100,100"}
@@ -2352,6 +2351,7 @@ window.BB = {
     document.addEventListener('keydown', function (e) {
       if (!document.body.classList.contains('vn-on') || document.body.classList.contains('hm-open')) return;
       if (e.key === ' ' || e.key === 'Enter') { e.preventDefault(); onTap(); }
+      else if (e.key === 'ArrowLeft') { e.preventDefault(); goBack(); }
     });
   }
 
@@ -3198,7 +3198,44 @@ window.BB = {
      '타이틀 화면' 과 엔딩 갤러리를 뺀 어느 장면에서든 오른쪽 위에 집 모양 버튼이 떠.
      누르면 한 번 물어보고(HOME_CONFIRM), '홈 버튼 링크' 헤더 패시지에 숨겨둔 링크를 대신 눌러서 타이틀로 가. */
   var HOME_CONFIRM = true;               // false 로 바꾸면 묻지 않고 바로 타이틀로 감
-  var hm = { btn: null, dlg: null };
+  var hm = { btn: null, dlg: null, back: null };
+
+  /* ================= 이전 대사 보기 (왼쪽 위 화살표) =================
+     대화 장면(vn / vn-choice)에서 왼쪽 위에 화살표 버튼이 떠. 누르면 Harlowe 의 '되돌리기'로 바로 앞 장면으로 돌아가.
+     - 돌아갈 때 인물 배치도 그 장면의 모습으로 되돌림 (장면마다 배치를 기록해 둠)
+     - 타이틀에서 막 시작한 첫 장면에서는 나오지 않음 (돌아갈 곳이 타이틀이라서)
+     - 키보드 왼쪽 화살표로도 됨 */
+  var hist = [];                          // 지나온 화면들의 기록: { L, R, tags }
+  var backPending = false;                // 되돌리기를 눌렀고, 그 결과 화면이 곧 나올 예정
+
+  function undoIcon() {
+    return document.querySelector('tw-passage tw-sidebar tw-icon[alt="Undo"]');
+  }
+
+  function canGoBack() {
+    var ic = undoIcon();
+    if (!ic || ic.style.visibility === 'hidden') return false;
+    var prev = hist.length >= 2 ? hist[hist.length - 2] : null;
+    if (prev && /(^|\s)(title|gallery)(\s|$)/.test(prev.tags)) return false;
+    return true;
+  }
+
+  function goBack() {
+    if (Date.now() < lockUntil || document.body.classList.contains('hm-open')) return;
+    var ic = undoIcon();
+    if (!ic || ic.style.visibility === 'hidden') return;
+    backPending = true;
+    setTimeout(function () { backPending = false; }, 800);      // 혹시 되돌려지지 않았을 때를 대비한 안전장치
+    ic.click();
+  }
+
+  /* 화면 하나를 다 처리한 뒤 호출: 그 화면의 인물 배치를 기록하고, 이전 대사 버튼을 보일지 정함 */
+  function finishNav(tags) {
+    hist.push({ L: stage.L, R: stage.R, tags: tags.join(' ') });
+    if (hist.length > 500) hist.shift();
+    var show = (tags.indexOf('vn') >= 0 || tags.indexOf('vn-choice') >= 0) && canGoBack();
+    if (hm.back) hm.back.hidden = !show;
+  }
 
   function goTitle() {
     var l = document.querySelector('tw-hook[name="home"] tw-link');
@@ -3218,6 +3255,13 @@ window.BB = {
     hm.btn.setAttribute('aria-label', '타이틀 화면으로');
     hm.btn.innerHTML = ICON_HOME;
     hm.btn.hidden = true;
+
+    hm.back = el('button', 'gl-btn hm-btn hm-back');
+    hm.back.type = 'button';
+    hm.back.setAttribute('aria-label', '이전 대사');
+    hm.back.innerHTML = ICON_PREV;
+    hm.back.hidden = true;
+    hm.back.addEventListener('click', function () { hm.back.blur(); goBack(); });
 
     hm.dlg = el('div');
     hm.dlg.id = 'hm-dlg';
@@ -3255,6 +3299,7 @@ window.BB = {
     });
 
     document.body.appendChild(hm.btn);
+    document.body.appendChild(hm.back);
     document.body.appendChild(hm.dlg);
   }
 
@@ -3275,15 +3320,22 @@ window.BB = {
     var tags = (p.getAttribute('tags') || '').split(/\s+/);
     updateHome(tags);
     lockUntil = Date.now() + LOCK_MS;
+    if (backPending) {                    // 이전 대사 버튼으로 돌아온 화면: 그때의 인물 배치를 복원
+      backPending = false;
+      hist.pop();                         // 방금 떠난 화면의 기록
+      var snap = hist.pop();              // 돌아온 화면의 예전 기록 (이 화면은 아래에서 다시 기록됨)
+      if (snap) { stage.L = snap.L; stage.R = snap.R; saveStage(); }
+    }
     if (tags.indexOf('title') < 0) hideTitle();          // 타이틀이 아닌 화면으로 넘어가면 (갤러리 포함) 타이틀 층을 치움
-    if (tags.indexOf('gallery') >= 0) { leaveVN(false); showGallery(p); return; }
+    if (tags.indexOf('gallery') >= 0) { leaveVN(false); showGallery(p); finishNav(tags); return; }
     hideGallery();
-    if (tags.indexOf('title') >= 0) { leaveVN(false); showTitle(p); return; }
+    if (tags.indexOf('title') >= 0) { leaveVN(false); showTitle(p); finishNav(tags); return; }
     var info = tags.indexOf('vn') >= 0 ? extract(p) : null;
-    if (!info) { leaveVN(tags.indexOf('vn-choice') >= 0); return; }
+    if (!info) { leaveVN(tags.indexOf('vn-choice') >= 0); finishNav(tags); return; }
 
     var parsed = parseSpeaker(info.text);
     placeSpeaker(parsed.speaker);
+    finishNav(tags);
 
     if (parsed.speaker) {
       nameEl.textContent = parsed.speaker;
@@ -3370,8 +3422,9 @@ window.BB = {
   --char-left-w: 0.47;                           /* 왼쪽 캐릭터 칸 너비 (화면 폭의 47%) */
   --char-right-w: 0.50;                          /* 오른쪽 캐릭터 칸 너비 (화면 폭의 50%) */
   --box-color: rgba(12, 24, 48, 0.78);           /* 대사창 색과 투명도 */
-  --name-color-a: #0b2a8a;                       /* 이름표 색 (왼쪽) */
-  --name-color-b: #1a55e0;                       /* 이름표 색 (오른쪽) */
+  --name-color-a: #e4701a;                       /* 이름표 / 홈 버튼 등 색 (진한 쪽, 해변의 오렌지) */
+  --name-color-b: #ffb23c;                       /* 이름표 / 홈 버튼 등 색 (밝은 쪽, 햇살 노랑) */
+  --name-shadow: rgba(110, 48, 0, 0.6);          /* 오렌지 위 흰 글자가 잘 읽히도록 까는 그림자 색 */
   --font: "Noto Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", "맑은 고딕", sans-serif;
 }
 :root { --stage-h: 100vh; }
@@ -3439,7 +3492,7 @@ tw-passage tw-sidebar {
 tw-passage tw-sidebar tw-icon { font-size: calc(var(--u) * 6); margin: 0 calc(var(--u) * 1); }
 
 tw-passage tw-link,
-tw-passage .enchantment-link { color: #9bd3ff; }
+tw-passage .enchantment-link { color: #ffd48a; }
 tw-passage tw-link:hover,
 tw-passage .enchantment-link:hover { color: #ffffff; }
 
@@ -3630,7 +3683,7 @@ body.gl-on tw-passage { display: none; }
   border-radius: calc(var(--u) * 2.4);
 }
 .gl-btn:active { transform: scale(0.94); }
-.gl-btn:focus-visible { outline: calc(var(--u) * 0.8) solid #9bd3ff; outline-offset: calc(var(--u) * 0.6); }
+.gl-btn:focus-visible { outline: calc(var(--u) * 0.8) solid #ffe3b0; outline-offset: calc(var(--u) * 0.6); }
 .gl-btn svg { width: 58%; height: 58%; display: block; }
 
 .gl-home {
@@ -3680,7 +3733,7 @@ body.gl-on tw-passage { display: none; }
 }
 .gl-cell.gl-open { cursor: pointer; }
 .gl-cell.gl-open:active { transform: scale(0.97); }
-.gl-cell.gl-open:focus-visible { outline: calc(var(--u) * 0.8) solid #9bd3ff; outline-offset: calc(var(--u) * 0.6); }
+.gl-cell.gl-open:focus-visible { outline: calc(var(--u) * 0.8) solid #ffe3b0; outline-offset: calc(var(--u) * 0.6); }
 .gl-cell img {
   position: absolute;
   top: 0;
@@ -3756,6 +3809,10 @@ tw-hook[name="home"] { display: none; }
   z-index: 8;
 }
 .hm-btn[hidden] { display: none; }
+/* 이전 대사 버튼: 홈 버튼과 같은 모양, 왼쪽 위 */
+.hm-back { left: calc(50% - var(--stage-w) / 2 + var(--u) * 3.5); }
+/* 홈 / 이전 대사 버튼이 있을 때는 일반 화면(선택지, 엔딩 글 등)의 글판을 버튼 아래로 내려서 글자를 가리지 않게 함 */
+body.hm-on tw-passage { margin-top: calc(var(--u) * 17); }
 /* 홈 버튼이 있을 때는 Harlowe 되돌리기 아이콘을 왼쪽으로 비켜줌 */
 body.hm-on tw-passage tw-sidebar { right: calc(var(--u) * 10); }
 
@@ -4013,3 +4070,7 @@ body.tt-on tw-passage { display: none; }
   .ld-fill { transition: none; }
 }
 
+/* ===== 오렌지 테마 보정: 밝은 오렌지 위에서도 흰 글자와 아이콘이 잘 읽히도록 ===== */
+.vn-name { text-shadow: 0 calc(var(--u) * 0.4) 0 var(--name-shadow); }
+.gl-btn { text-shadow: 0 calc(var(--u) * 0.4) 0 var(--name-shadow); }
+.gl-btn svg { filter: drop-shadow(0 calc(var(--u) * 0.4) 0 var(--name-shadow)); }
