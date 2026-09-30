@@ -2439,7 +2439,7 @@ window.BB = {
 
   var BG_FILE = WEB_MODE ? '해변.webp' : '해변.png';   // 배경 이미지 파일 이름
   var TITLE_FILE = WEB_MODE ? '타이틀.webp' : '타이틀.png';   // 타이틀 화면 그림 (제목 글자까지 들어 있는 그림). 내 컴퓨터에서 열 때는 '완성본 모음' 폴더에 타이틀.png 를 넣어줘
-  var SHOW_TEST_MENU = true;              // 타이틀 왼쪽 위 'TEST' 버튼 (기록 초기화 / 모든 엔딩 열기). 배포할 때는 false 로
+  var SHOW_TEST_MENU = true;              // 타이틀 오른쪽 위 'TEST' 버튼 (기록 초기화 / 모든 엔딩 열기). 배포할 때는 false 로
 
   /* 인물 이미지 파일 이름은 '이름_표정.webp' (예: 시드_노말.webp). 화면에 쓰는 이름표와 파일 이름이 다른 경우만 아래에 적어줘. */
   var ALIAS = { '엽빛나': '빛나' };        // 같은 인물로 취급할 이름 -> 대표 이름
@@ -2447,7 +2447,7 @@ window.BB = {
   var CHAR_LOCAL_BASE = 'file:///C:/Users/pumha/Desktop/귤복복 살인사건제작/완성본/실제 제작/캐릭터 이미지/';
   var CHAR_WEB_BASE = 'images/characters/';
   var CHAR_BASE = (location.protocol === 'file:') ? CHAR_LOCAL_BASE : CHAR_WEB_BASE;
-  var BUILD_VERSION = '0.08';             // 화면 오른쪽 위에 작게 보이는 버전. 뭔가 바꿀 때마다 0.01 씩 올릴 것 (사용자 요청)
+  var BUILD_VERSION = '0.09';             // 화면 오른쪽 위에 작게 보이는 버전. 뭔가 바꿀 때마다 0.01 씩 올릴 것 (사용자 요청)
 
   /* ---------- 인물 배치 ----------
      제작자가 직접 만든 배치 예시 29장(벨 + 상대)을 읽어서 정리한 값이야. 단위는 전부 '화면 폭의 %' (폰 화면 폭 = 100).
@@ -3502,7 +3502,7 @@ window.BB = {
     { label: '엔딩 갤러리', target: '엔딩 갤러리',       text: '엔딩 갤러리',     cls: 'tt-s', icon: 'image' },
     { label: '용의자 선택', target: '제목 없는 구절 15', text: '용의자 선택으로', cls: 'tt-s', icon: 'search', needsRecord: true }
   ];
-  var TT_LEGAL = { label: '약관', target: '약관', text: '약관' };   // 타이틀 아래쪽 작은 글씨 버튼 (팬 게임 안내 / 저작권 문구 화면으로 감)
+  var TT_LEGAL = { label: '약관', target: '약관', text: '약관' };   // 타이틀 왼쪽 위 작은 칩 (팬 게임 안내 / 저작권 문구 화면으로 감)
   var TT_TESTS = [
     { label: '기록 초기화',    target: '기록 초기화',    text: '테스트용 기록 초기화' },
     { label: '모든 엔딩 열기', target: '모든 엔딩 열기', text: '테스트용 모든 엔딩 열기' }
@@ -3564,11 +3564,11 @@ window.BB = {
     legal.type = 'button';
     legal.textContent = TT_LEGAL.label;
     legal.addEventListener('click', function () { ttPress(TT_LEGAL); });
-    tt.art.appendChild(legal);
     r.appendChild(blur);
     r.appendChild(stripT);
     r.appendChild(stripB);
     r.appendChild(tt.art);
+    r.appendChild(legal);               // 약관: 화면 왼쪽 위 작은 칩
     if (SHOW_TEST_MENU) {
       var box = el('div', 'tt-test');
       var chip = el('button', 'tt-chip');
@@ -4496,28 +4496,25 @@ body.tt-on tw-passage { display: none; }
 .tt-b1 { left: 53.5%; top: 74.6%; }
 .tt-b2 { left: 5.5%;  top: 86.8%; }
 .tt-b3 { left: 53.5%; top: 86.8%; }
-.tt-legal {                             /* 약관: 버튼 아래 한 줄짜리 작은 글씨 */
+.tt-legal {                             /* 약관: 왼쪽 위 작은 칩 (누르면 약관 화면) */
   position: absolute;
-  left: 50%;
-  top: 96.9%;
-  transform: translateX(-50%);
+  left: calc(var(--u) * 1.5);
+  top: calc(var(--u) * 1.5);
+  z-index: 2;
   margin: 0;
-  padding: calc(var(--au) * 1) calc(var(--au) * 5);
+  padding: calc(var(--u) * 0.8) calc(var(--u) * 2.4);
   font-family: inherit;
-  font-size: calc(var(--au) * 3.4);
+  font-size: calc(var(--u) * 3.2);
   font-weight: 700;
   color: #fff;
-  background: none;
-  border: 0;
-  text-decoration: underline;
-  text-underline-offset: calc(var(--au) * 0.6);
-  text-shadow: 0 0 calc(var(--au) * 1.2) rgba(0, 0, 0, 0.7), 0 calc(var(--au) * 0.3) 0 rgba(0, 0, 0, 0.4);
-  opacity: 0.92;
+  background: rgba(0, 0, 0, 0.42);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: calc(var(--u) * 2);
   cursor: pointer;
   -webkit-tap-highlight-color: transparent;
   touch-action: manipulation;
 }
-.tt-legal:focus-visible { outline: calc(var(--au) * 0.6) solid #fff; }
+.tt-legal:focus-visible { outline: calc(var(--u) * 0.6) solid #fff; }
 .tt-btn:active { transform: translateY(calc(var(--au) * 1)); box-shadow: 0 calc(var(--au) * 0.3) 0 var(--edge), 0 calc(var(--au) * 1.2) calc(var(--au) * 2) rgba(6, 36, 56, 0.4), inset 0 calc(var(--au) * 0.5) 0 rgba(255, 255, 255, 0.5); }
 .tt-btn:focus-visible { outline: calc(var(--au) * 0.9) solid #fff; outline-offset: calc(var(--au) * 0.6); }
 .tt-btn.tt-off {                        /* 잠긴 버튼 */
@@ -4530,9 +4527,9 @@ body.tt-on tw-passage { display: none; }
 .tt-ico svg { width: 100%; height: 100%; display: block; filter: drop-shadow(0 calc(var(--au) * 0.5) 0 var(--edge)); }
 .tt-label { position: relative; }
 
-/* 테스트용 버튼 (왼쪽 위). SHOW_TEST_MENU 를 false 로 하면 안 생김 */
-.tt-test { position: absolute; left: calc(var(--u) * 1.5); top: calc(var(--u) * 1.5); z-index: 2; display: flex; flex-direction: column; align-items: flex-start; gap: calc(var(--u) * 1); }
-.tt-panel { display: flex; flex-direction: column; align-items: flex-start; gap: calc(var(--u) * 1); }
+/* 테스트용 버튼 (오른쪽 위, 버전 글자 아래). SHOW_TEST_MENU 를 false 로 하면 안 생김 */
+.tt-test { position: absolute; right: calc(var(--u) * 1.5); top: calc(var(--u) * 6); z-index: 2; display: flex; flex-direction: column; align-items: flex-end; gap: calc(var(--u) * 1); }
+.tt-panel { display: flex; flex-direction: column; align-items: flex-end; gap: calc(var(--u) * 1); }
 .tt-panel[hidden] { display: none; }
 .tt-chip {
   margin: 0;
