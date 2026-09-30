@@ -367,7 +367,8 @@ Other properties and any right, title, and interest thereof and therein (intelle
 [[제목 없는 구절 116]]
 
 
-:: 제목 없는 구절 116 {"position":"1700,850","size":"100,100"}
+:: 제목 없는 구절 116 [ending] {"position":"1700,850","size":"100,100"}
+<span data-ending="5"></span>
 `[END]`
 그렇게 시대착오적인 발언을 한 로프꾼 벨은, SNS에 행실이 박제되어버렸고, 두 번 다시 일감을 얻지 못하고 굶어 죽고 말았다.
 
@@ -387,7 +388,8 @@ Other properties and any right, title, and interest thereof and therein (intelle
 [[제목 없는 구절 119]]
 
 
-:: 제목 없는 구절 119 {"position":"1300,950","size":"100,100"}
+:: 제목 없는 구절 119 [ending] {"position":"1300,950","size":"100,100"}
+<span data-ending="6"></span>
 `[END]`
 그렇게 두 번째 사상자가 발생하며 사건은 더욱더 미궁 속으로 빠져들었다.
 결국 귤복복을 살해한 잔혹한 범인은 찾을 수 없게 되었다.
@@ -823,7 +825,8 @@ Other properties and any right, title, and interest thereof and therein (intelle
 [[제목 없는 구절 174]]
 
 
-:: 제목 없는 구절 174 {"position":"2400,1550","size":"100,100"}
+:: 제목 없는 구절 174 [ending] {"position":"2400,1550","size":"100,100"}
+<span data-ending="11"></span>
 `[END]`
 그렇게, 미각사냥꾼 빛나와 미야비는 같이 과일 모찌 가게를 열었고, 칭파이 하이츠 제일가는 맛집이 되었다.
 
@@ -995,7 +998,8 @@ Other properties and any right, title, and interest thereof and therein (intelle
 [[제목 없는 구절 199]]
 
 
-:: 제목 없는 구절 199 {"position":"1400,1950","size":"100,100"}
+:: 제목 없는 구절 199 [ending] {"position":"1400,1950","size":"100,100"}
+<span data-ending="13"></span>
 `[END]`
 
 그 순간, 앨리스의 레이피어가 하늘을 날았다. 아니 앨리스가 하늘을 날았다. 물음표를 대칭으로 사용하지 않았다는 것이 문제였다. 그렇게 벨은 사망하고 말았다.
@@ -1045,7 +1049,8 @@ Other properties and any right, title, and interest thereof and therein (intelle
 [[제목 없는 구절 204]]
 
 
-:: 제목 없는 구절 204 {"position":"1700,2050","size":"100,100"}
+:: 제목 없는 구절 204 [ending] {"position":"1700,2050","size":"100,100"}
+<span data-ending="14"></span>
 `[END]`
 
 그렇게 앨리스는 사망하고 말았다.
@@ -1176,7 +1181,8 @@ Other properties and any right, title, and interest thereof and therein (intelle
 [[제목 없는 구절 222]]
 
 
-:: 제목 없는 구절 222 {"position":"1700,2150","size":"100,100"}
+:: 제목 없는 구절 222 [ending] {"position":"1700,2150","size":"100,100"}
+<span data-ending="15"></span>
 `[END]`
 
 그렇게 니콜의 무기에 얻어맞은 클라렛은 사망하고 말았다. 하지만, 어쩌면 뉴에리두 강 온도 체크하던 그녀에게는 빠르고 강한 마무리가 아니었을까.
@@ -1239,7 +1245,8 @@ Other properties and any right, title, and interest thereof and therein (intelle
 [[제목 없는 구절 24]]
 
 
-:: 제목 없는 구절 230 {"position":"2000,2250","size":"100,100"}
+:: 제목 없는 구절 230 [ending] {"position":"2000,2250","size":"100,100"}
+<span data-ending="16"></span>
 `[END]`
 그렇게 예산을 전부 잃어버린 중추연산국은 망하고 말았다.
 
@@ -1273,7 +1280,8 @@ Other properties and any right, title, and interest thereof and therein (intelle
 [[제목 없는 구절 235]]
 
 
-:: 제목 없는 구절 235 [confirm] {"position":"2700,1650","size":"100,100"}
+:: 제목 없는 구절 235 [confirm ending] {"position":"2700,1650","size":"100,100"}
+<span data-ending="12"></span>
 `[END]`
 
 미야비와 빛나는 석양 쪽으로 천천히 걸어 사라졌다. 앞으로는 얼마나 더 많은 계화떡을 만들게 될까. 그 아무도 모르는 미래를 향해. 
@@ -1312,7 +1320,8 @@ Other properties and any right, title, and interest thereof and therein (intelle
 [[제목 없는 구절 25]]
 
 
-:: 제목 없는 구절 240 [confirm] {"position":"1800,1050","size":"100,100"}
+:: 제목 없는 구절 240 [confirm ending] {"position":"1800,1050","size":"100,100"}
+<span data-ending="7"></span>
 `[END]`
 
 그렇게 벨은 철도안전법에 따라 1천만 데니의 과태료를 받게 되었다.
@@ -1699,7 +1708,8 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 :: 제목 없는 구절 291 [vn] {"position":"5000,2800","size":"100,100"}
 의현: 내가 너무 늦은 건 아니지?
-[[크레딧]](set: $seen to it + (ds: 17))<script>if (window.BB) { BB.save(Array.from($seen)); }</script>
+
+[[진엔딩]]
 
 
 :: 제목 없는 구절 292 [vn] {"position":"1300,1400","size":"100,100"}
@@ -1709,7 +1719,8 @@ Other properties and any right, title, and interest thereof and therein (intelle
 [[제목 없는 구절 294]]
 
 
-:: 제목 없는 구절 293 {"position":"1800,1150","size":"100,100"}
+:: 제목 없는 구절 293 [ending] {"position":"1800,1150","size":"100,100"}
+<span data-ending="8"></span>
 `[END]`
 
 그렇게 범인 찾기는 그만두고 아스트라와 레미엘의 미모 대결이 펼쳐진다. 귤복복을 죽인 범인이 누구인지는 중요하지 않게 되었다.
@@ -1805,7 +1816,8 @@ Other properties and any right, title, and interest thereof and therein (intelle
 [[제목 없는 구절 305]]
 
 
-:: 제목 없는 구절 305 {"position":"2400,1450","size":"100,100"}
+:: 제목 없는 구절 305 [ending] {"position":"2400,1450","size":"100,100"}
+<span data-ending="10"></span>
 `[END]`
 
 그렇게 반악의 최고급 개그는 끝을 모르고 달렸고,  누군가가 벨과 반악의 머리를 깨기 전까지 이 해변에서 아무도 탈출할 수 없게 되었다.
@@ -1864,7 +1876,8 @@ Other properties and any right, title, and interest thereof and therein (intelle
 [[제목 없는 구절 313]]
 
 
-:: 제목 없는 구절 313 {"position":"2400,1350","size":"100,100"}
+:: 제목 없는 구절 313 [ending] {"position":"2400,1350","size":"100,100"}
+<span data-ending="9"></span>
 `[END]`
 그렇게 다이아린은 체포되었다. 범행 시각 다이아린의 위치를 증명해줄 사람이 없었기 때문이었다.
 
@@ -1932,7 +1945,8 @@ Other properties and any right, title, and interest thereof and therein (intelle
 [[제목 없는 구절 5]]
 
 
-:: 제목 없는 구절 40 {"position":"1900,550","size":"100,100"}
+:: 제목 없는 구절 40 [ending] {"position":"1900,550","size":"100,100"}
+<span data-ending="2"></span>
 `[END]`
 레미엘의 끝없는 문답 게임에 어울려주게 된 벨은, 결국 날이 저물 때까지 범인을 잡지 못했다.
 레미엘이 설명을 한 줄 할 때마다 '그래서 그게 무슨 뜻이라고?'라고 묻는 시드 덕분에, 마치 우로보로스 같은 끝없는 문답을 반복했고, 결국 화를 참지 못한 벨이 레미엘의 머리를 가격하고 치안관에게 잡혀가고 말았다.
@@ -1990,7 +2004,8 @@ Other properties and any right, title, and interest thereof and therein (intelle
 [[제목 없는 구절 46]]
 
 
-:: 제목 없는 구절 46 {"position":"2100,450","size":"100,100"}
+:: 제목 없는 구절 46 [ending] {"position":"2100,450","size":"100,100"}
+<span data-ending="1"></span>
 `[END]`
 공연음란죄로 레미엘은 체포당하고 만다. 공허사냥꾼이요? 왜요? 무슨 일 났대요?
 
@@ -2238,7 +2253,8 @@ Other properties and any right, title, and interest thereof and therein (intelle
 [[제목 없는 구절 81]]
 
 
-:: 제목 없는 구절 81 {"position":"3600,650","size":"100,100"}
+:: 제목 없는 구절 81 [ending] {"position":"3600,650","size":"100,100"}
+<span data-ending="3"></span>
 `[END]`
 그렇게 이블린은 아스트라를 벤에 태우고 멀리 떠나버렸다.
 아직도 벤에 아스트라를 태울 때 이블린이 짓던 싱글벙글한 미소가 떠나지 않는다.
@@ -2359,7 +2375,8 @@ Other properties and any right, title, and interest thereof and therein (intelle
 [[제목 없는 구절 98]]
 
 
-:: 제목 없는 구절 98 {"position":"3600,750","size":"100,100"}
+:: 제목 없는 구절 98 [ending] {"position":"3600,750","size":"100,100"}
+<span data-ending="4"></span>
 `[END]`
 그것은 순식간에 일어난 일이었다. 정신을 차려보니 아리아와 남궁우, 그리고 반악이 총을 맞고 차가운 시체가 되어 있었고, 수나는 김이 피어오르는 총구를 후 불며 하드보일드 미소녀 이중첩자 같은 표정을 지었다.
 수나는 곧바로 살인 현행범으로 체포되었으나, 이마가 넓다는 점을 정상참작하여 집행유예로 풀려나게 되었다.
@@ -2371,6 +2388,13 @@ Other properties and any right, title, and interest thereof and therein (intelle
 반악: 자네들, 혹시 총을 두 발 맞고 사망한 파라오가 누군지 아는가?
 
 [[제목 없는 구절 96]]
+
+
+:: 진엔딩 [ending] {"position":"5000,2850","size":"100,100"}
+<span data-ending="17"></span>
+`[END]`
+
+[[크레딧 보기->크레딧]](set: $seen to it + (ds: 17))<script>if (window.BB) { BB.save(Array.from($seen)); }</script>
 
 
 :: 크레딧 {"position":"5000,2925","size":"100,100"}
@@ -2447,7 +2471,7 @@ window.BB = {
   var CHAR_LOCAL_BASE = 'file:///C:/Users/pumha/Desktop/귤복복 살인사건제작/완성본/실제 제작/캐릭터 이미지/';
   var CHAR_WEB_BASE = 'images/characters/';
   var CHAR_BASE = (location.protocol === 'file:') ? CHAR_LOCAL_BASE : CHAR_WEB_BASE;
-  var BUILD_VERSION = '0.13';             // 화면 오른쪽 위에 작게 보이는 버전. 뭔가 바꿀 때마다 0.01 씩 올릴 것 (사용자 요청)
+  var BUILD_VERSION = '0.14';             // 화면 오른쪽 위에 작게 보이는 버전. 뭔가 바꿀 때마다 0.01 씩 올릴 것 (사용자 요청)
 
   /* ---------- 인물 배치 ----------
      제작자가 직접 만든 배치 예시 29장(벨 + 상대)을 읽어서 정리한 값이야. 단위는 전부 '화면 폭의 %' (폰 화면 폭 = 100).
@@ -2694,7 +2718,7 @@ window.BB = {
     var lockEl = multi ? p.querySelector('[data-lock]') : null;
     var clone = p.cloneNode(true);
     var junk = clone.querySelectorAll(
-      'tw-sidebar, tw-include, script, style, tw-link, tw-expression[name="link-goto"], tw-consecutive-br, [data-lock]');
+      'tw-sidebar, tw-include, script, style, tw-link, tw-expression[name="link-goto"], tw-consecutive-br, tw-verbatim, [data-lock]');
     Array.prototype.forEach.call(junk, function (n) { n.parentNode && n.parentNode.removeChild(n); });
     Array.prototype.forEach.call(clone.querySelectorAll('br'), function (b) {
       b.parentNode.replaceChild(document.createTextNode('\n'), b);
@@ -3045,6 +3069,7 @@ window.BB = {
           if (!p || seen[name]) continue;
           seen[name] = true;
           var tags = p.tags.split(/\s+/);
+          if (tags.indexOf('ending') >= 0) { var em = /data-ending="(\d+)"/.exec(p.text); if (em) prefetchEnding(Number(em[1])); continue; }   // 엔딩 그림도 미리 받아둠
           if (tags.indexOf('vn') < 0 && tags.indexOf('vn-choice') < 0) continue;   // 대화 장면이 아니면 여기서 멈춤
           var sp = speakerOf(p.text), tagged = {};
           var bm, reBx = /data-bx="([^"]+)"/g;               // 다음 장면에서 인물들이 지을 표정 그림도 미리 받음
@@ -3490,6 +3515,122 @@ window.BB = {
     gl.root.hidden = true;
   }
 
+  /* ================= 엔딩 화면 =================
+     'ending' 태그가 붙은 패시지(엔딩 글이 있는 곳)에서 동작해. 패시지 맨 위에 <span data-ending="번호"></span> 로 엔딩 번호를 적어둠.
+     1) 엔딩 그림이 아래에서 스윽 올라오며 나타남 (그림은 갤러리와 같은 ENDING_FILES 표에서 찾음)
+     2) 반투명한 검은 박스가 화면 전체를 덮음
+     3) 흰 글씨로 'END' 와 패시지의 글이 나옴
+     4) 마지막에 패시지 안의 링크(타이틀로 돌아가기 등)가 버튼으로 나옴 (링크 글자가 그대로 버튼 글자)
+     - 애니메이션 중에 화면을 누르면 바로 끝까지 보여줌.  그림이 없으면 검은 박스만 나옴. */
+  var EN_T_SHADE = 900, EN_T_TEXT = 1500, EN_T_BTN = 2300;    // 그림이 나온 뒤 각 단계가 시작하는 시간 (ms)
+  var EN_IMG_WAIT = 3000;                                      // 그림을 기다려주는 최대 시간 (ms)
+  var en = { root: null, img: null, box: null, label: null, text: null, btn: null, link: null, timers: [], seq: 0, done: false };
+  var enPre = {};                                              // 미리 받아둔 엔딩 그림
+
+  function prefetchEnding(id) {
+    if (enPre[id]) return;
+    var c = endingCandidates(id);
+    if (!c.length) return;
+    enPre[id] = new Image();
+    enPre[id].src = endingUrl(c[0]);
+  }
+
+  function buildEnding() {
+    if (en.root) return;
+    var r = el('div');
+    r.id = 'en-root';
+    r.hidden = true;
+    en.img = el('img', 'en-img');
+    en.img.alt = '';
+    en.box = el('div', 'en-box');
+    en.label = el('div', 'en-label');
+    en.text = el('div', 'en-text');
+    en.btn = el('button', 'en-btn');
+    en.btn.type = 'button';
+    en.btn.addEventListener('click', function (e) {
+      e.stopPropagation();
+      if (!en.done) return;
+      if (en.link && document.contains(en.link)) en.link.click();
+    });
+    en.box.appendChild(en.label);
+    en.box.appendChild(en.text);
+    en.box.appendChild(en.btn);
+    r.appendChild(en.img);
+    r.appendChild(en.box);
+    r.addEventListener('click', function () { enSkip(); });
+    document.body.appendChild(r);
+    en.root = r;
+    document.addEventListener('keydown', function (e) {
+      if (!en.root || en.root.hidden || document.body.classList.contains('hm-open')) return;
+      if (e.key === ' ' || e.key === 'Enter') { e.preventDefault(); if (en.done) { if (en.link && document.contains(en.link)) en.link.click(); } else enSkip(); }
+    });
+  }
+
+  function enClear() { en.timers.forEach(clearTimeout); en.timers = []; }
+  function enSet(cls) { if (en.root) en.root.classList.add(cls); }
+  function enSkip() {                     // 애니메이션을 건너뛰고 끝 모습으로
+    if (!en.root || en.root.hidden || en.done) return;
+    enClear();
+    en.root.classList.add('st-skip');
+    ['st-go', 'st-shade', 'st-text', 'st-btn'].forEach(enSet);
+    en.done = true;
+  }
+
+  function showEnding(p) {
+    buildEnding();
+    var seq = ++en.seq;
+    enClear();
+    var info = extract(p) || { text: '', link: null };
+    var st = p.querySelector('[data-ending]');
+    var id = st ? Number(st.getAttribute('data-ending')) : 0;
+    en.link = info.link;
+    en.done = false;
+    en.label.textContent = id === G_TRUE ? 'TRUE END' : 'END';
+    en.text.textContent = info.text;
+    en.text.hidden = !info.text;
+    en.btn.textContent = info.link ? info.link.textContent.replace(/^\s+|\s+$/g, '') : '타이틀 화면으로 돌아가기';
+    var len = info.text.length;
+    en.root.className = len > 230 ? 'st-long' : (len > 120 ? 'st-mid' : '');
+    en.img.removeAttribute('src');
+    en.img.hidden = true;
+    document.body.classList.add('en-on');
+    en.root.hidden = false;
+
+    var started = false;
+    function go() {                        // 그림이 준비됐거나 기다리다 지쳤을 때 애니메이션 시작
+      if (started || seq !== en.seq) return;
+      started = true;
+      enSet('st-go');
+      en.timers.push(setTimeout(function () { enSet('st-shade'); }, EN_T_SHADE));
+      en.timers.push(setTimeout(function () { enSet('st-text'); }, EN_T_TEXT));
+      en.timers.push(setTimeout(function () { enSet('st-btn'); en.done = true; }, EN_T_BTN));
+    }
+    var cands = endingCandidates(id), i = 0;
+    function tryImg() {
+      if (seq !== en.seq) return;
+      if (i >= cands.length) { go(); return; }        // 그림이 없으면 검은 박스만
+      var im = new Image();
+      im.onload = function () {
+        if (seq !== en.seq) return;
+        en.img.src = im.src;
+        en.img.hidden = false;
+        go();
+      };
+      im.onerror = function () { i++; tryImg(); };
+      im.src = endingUrl(cands[i]);
+    }
+    tryImg();
+    en.timers.push(setTimeout(go, EN_IMG_WAIT));
+  }
+
+  function hideEnding() {
+    if (!en.root) return;
+    en.seq++;
+    enClear();
+    en.root.hidden = true;
+    document.body.classList.remove('en-on');
+  }
+
   /* ================= 타이틀 화면 =================
      'title' 태그가 붙은 패시지에서 동작해. 그림 위에 버튼 4개(2x2)를 올리고,
      버튼을 누르면 패시지 안에 숨어 있는 링크를 대신 눌러줘. (패시지의 링크 글자는 화면에 안 보임)
@@ -3750,6 +3891,8 @@ window.BB = {
     if (tags.indexOf('title') < 0) hideTitle();          // 타이틀이 아닌 화면으로 넘어가면 (갤러리 포함) 타이틀 층을 치움
     if (tags.indexOf('gallery') >= 0) { leaveVN(false); showGallery(p); finishNav(tags); return; }
     hideGallery();
+    hideEnding();
+    if (tags.indexOf('ending') >= 0) { leaveVN(false); showEnding(p); finishNav(tags); return; }
     if (tags.indexOf('title') >= 0) { leaveVN(false); showTitle(p); finishNav(tags); return; }
     hideChoices();
     var isHub = tags.indexOf('hub') >= 0, isChoice = isHub || tags.indexOf('vn-choice') >= 0;
@@ -4109,6 +4252,111 @@ body.vn-on tw-passage { display: none; }
   from { opacity: 0; transform: translateX(calc(var(--u) * -6)); }
   to   { opacity: 1; transform: none; }
 }
+
+/* ===== 엔딩 화면 (엔딩 그림이 스윽 나오고, 반투명한 검은 박스 위에 흰 글씨) ===== */
+body.en-on tw-passage { display: none; }
+#en-root {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: var(--stage-w);
+  transform: translateX(-50%);
+  z-index: 7;                 /* 대사 장면(5)과 갤러리(6) 위, 홈 버튼(8) 아래 */
+  overflow: hidden;
+  background: #000;
+  color: #fff;
+  font-family: var(--font);
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+#en-root[hidden] { display: none; }
+.en-img {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 30%;
+  opacity: 0;
+}
+.en-img[hidden] { display: none; }
+#en-root.st-go .en-img { animation: en-img-in 1s cubic-bezier(0.2, 0.8, 0.25, 1) both; }
+#en-root.st-skip .en-img { animation: none; opacity: 1; }
+@keyframes en-img-in {
+  from { opacity: 0; transform: translateY(7%) scale(1.07); }
+  to   { opacity: 1; transform: none; }
+}
+.en-box {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  box-sizing: border-box;
+  padding: calc(var(--u) * 16) calc(var(--u) * 8) calc(var(--u) * 10);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: calc(var(--u) * 4.5);
+  background: rgba(0, 0, 0, 0.62);
+  opacity: 0;
+  transition: opacity 0.7s ease;
+}
+#en-root.st-shade .en-box { opacity: 1; }
+#en-root.st-skip .en-box { transition: none; }
+.en-label {
+  font-size: calc(var(--u) * 6.4);
+  font-weight: 800;
+  letter-spacing: 0.22em;
+  color: #fff;
+  text-shadow: 0 0 calc(var(--u) * 1.6) rgba(255, 178, 60, 0.7);
+  opacity: 0;
+  transform: translateY(calc(var(--u) * 2));
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.en-text {
+  font-size: calc(var(--u) * 4.6);
+  line-height: 1.75;
+  white-space: pre-wrap;
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+  max-height: 58%;
+  overflow-y: auto;
+  opacity: 0;
+  transform: translateY(calc(var(--u) * 2));
+  transition: opacity 0.7s ease 0.15s, transform 0.7s ease 0.15s;
+}
+.en-text[hidden] { display: none; }
+#en-root.st-mid .en-text { font-size: calc(var(--u) * 4.2); }
+#en-root.st-long .en-text { font-size: calc(var(--u) * 3.8); line-height: 1.7; }
+#en-root.st-text .en-label, #en-root.st-text .en-text { opacity: 1; transform: none; }
+.en-btn {
+  align-self: center;
+  margin: calc(var(--u) * 2) 0 0;
+  padding: calc(var(--u) * 3) calc(var(--u) * 8);
+  font-family: inherit;
+  font-size: calc(var(--u) * 4.6);
+  font-weight: 700;
+  color: #fff;
+  border: calc(var(--u) * 0.5) solid rgba(255, 255, 255, 0.85);
+  border-radius: calc(var(--u) * 7);
+  background:
+    radial-gradient(rgba(255, 255, 255, 0.16) 1px, transparent 1.4px) 0 0 / 4px 4px,
+    linear-gradient(90deg, var(--name-color-a), var(--name-color-b));
+  text-shadow: 0 calc(var(--u) * 0.3) 0 var(--name-shadow);
+  cursor: pointer;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(calc(var(--u) * 2));
+  transition: opacity 0.6s ease, transform 0.6s ease;
+  touch-action: manipulation;
+}
+#en-root.st-btn .en-btn { opacity: 1; pointer-events: auto; transform: none; }
+#en-root.st-skip .en-label, #en-root.st-skip .en-text, #en-root.st-skip .en-btn { transition: none; }
+.en-btn:active { transform: translateY(calc(var(--u) * 0.6)); }
 
 /* ===== 엔딩 갤러리 ===== */
 body.gl-on tw-passage { display: none; }
