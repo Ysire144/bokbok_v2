@@ -92,6 +92,11 @@ tw-passage tw-link,
 tw-passage .enchantment-link { color: #ffd48a; }
 tw-passage tw-link:hover,
 tw-passage .enchantment-link:hover { color: #ffffff; }
+/* 이미 가본 링크(타이틀 화면 등)도 같은 색으로: Harlowe 기본 보라색이 어두운 글판에서 안 보임 */
+tw-passage tw-link.visited,
+tw-passage .enchantment-link.visited { color: #ffd48a; }
+tw-passage tw-link.visited:hover,
+tw-passage .enchantment-link.visited:hover { color: #ffffff; }
 
 /* 대화 장면에서는 Harlowe 원래 글자와 링크를 숨김 (내용은 스크립트가 읽어서 대사창에 넣음) */
 body.vn-on tw-passage { display: none; }
@@ -601,6 +606,28 @@ body.tt-on tw-passage { display: none; }
 .tt-b1 { left: 53.5%; top: 74.6%; }
 .tt-b2 { left: 5.5%;  top: 86.8%; }
 .tt-b3 { left: 53.5%; top: 86.8%; }
+.tt-legal {                             /* 약관: 버튼 아래 한 줄짜리 작은 글씨 */
+  position: absolute;
+  left: 50%;
+  top: 96.9%;
+  transform: translateX(-50%);
+  margin: 0;
+  padding: calc(var(--au) * 1) calc(var(--au) * 5);
+  font-family: inherit;
+  font-size: calc(var(--au) * 3.4);
+  font-weight: 700;
+  color: #fff;
+  background: none;
+  border: 0;
+  text-decoration: underline;
+  text-underline-offset: calc(var(--au) * 0.6);
+  text-shadow: 0 0 calc(var(--au) * 1.2) rgba(0, 0, 0, 0.7), 0 calc(var(--au) * 0.3) 0 rgba(0, 0, 0, 0.4);
+  opacity: 0.92;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+.tt-legal:focus-visible { outline: calc(var(--au) * 0.6) solid #fff; }
 .tt-btn:active { transform: translateY(calc(var(--au) * 1)); box-shadow: 0 calc(var(--au) * 0.3) 0 var(--edge), 0 calc(var(--au) * 1.2) calc(var(--au) * 2) rgba(6, 36, 56, 0.4), inset 0 calc(var(--au) * 0.5) 0 rgba(255, 255, 255, 0.5); }
 .tt-btn:focus-visible { outline: calc(var(--au) * 0.9) solid #fff; outline-offset: calc(var(--au) * 0.6); }
 .tt-btn.tt-off {                        /* 잠긴 버튼 */
@@ -748,7 +775,7 @@ body.tt-on tw-passage { display: none; }
   var CHAR_WEB_BASE = 'images/characters/';
   var CHAR_BASE = (location.protocol === 'file:') ? CHAR_LOCAL_BASE : CHAR_WEB_BASE;
   var EXPRESSION = '진지';                // 기본 표정 이름: 파일 이름 뒤에 붙음 (이름_진지.png). 인물마다 CHAR 안에 expr 로 따로 정할 수 있음 (예: 벨_고뇌.webp)
-  var BUILD_VERSION = '0.04';             // 화면 오른쪽 위에 작게 보이는 버전. 뭔가 바꿀 때마다 0.01 씩 올릴 것 (사용자 요청)
+  var BUILD_VERSION = '0.05';             // 화면 오른쪽 위에 작게 보이는 버전. 뭔가 바꿀 때마다 0.01 씩 올릴 것 (사용자 요청)
   var ANCHOR = '벨';                      // 기준 인물
   // 다른 인물들의 크기/눈높이 기준은 예전 벨 그림의 수치를 그대로 쓴다 (벨 그림을 새로 바꿔도 다른 인물 배치가 안 변하게 고정)
   var ANCHOR_REF = { box: [90, 22, 301, 704], eye: [211.5, 98.4], d: 31.6 };
@@ -1688,6 +1715,7 @@ body.tt-on tw-passage { display: none; }
     { label: '엔딩 갤러리', target: '엔딩 갤러리',       text: '엔딩 갤러리',     cls: 'tt-s', icon: 'image' },
     { label: '용의자 선택', target: '제목 없는 구절 15', text: '용의자 선택으로', cls: 'tt-s', icon: 'search', needsRecord: true }
   ];
+  var TT_LEGAL = { label: '약관', target: '약관', text: '약관' };   // 타이틀 아래쪽 작은 글씨 버튼 (팬 게임 안내 / 저작권 문구 화면으로 감)
   var TT_TESTS = [
     { label: '기록 초기화',    target: '기록 초기화',    text: '테스트용 기록 초기화' },
     { label: '모든 엔딩 열기', target: '모든 엔딩 열기', text: '테스트용 모든 엔딩 열기' }
@@ -1745,6 +1773,11 @@ body.tt-on tw-passage { display: none; }
       tt.art.appendChild(b);
       tt.btns.push(b);
     });
+    var legal = el('button', 'tt-legal');
+    legal.type = 'button';
+    legal.textContent = TT_LEGAL.label;
+    legal.addEventListener('click', function () { ttPress(TT_LEGAL); });
+    tt.art.appendChild(legal);
     r.appendChild(blur);
     r.appendChild(stripT);
     r.appendChild(stripB);
@@ -2025,6 +2058,9 @@ body.tt-on tw-passage { display: none; }
 })();</script><tw-tag name="confirm" color="red"></tw-tag><tw-passagedata pid="1" name="게임 방법" tags="" position="200,0" size="100,100">게임 방법
 모든 엔딩을 확인하고 나면 진엔딩을 확인할 수 있습니다.
 엔딩 이미지를 수집하고 엔딩 갤러리에서 확인해보세요.
+[[타이틀 화면]]</tw-passagedata><tw-passagedata pid="369" name="약관" tags="" position="100,300" size="100,100">본 게임은 &#39;젠레스 존 제로&#39;의 팬 게임이며 개인이 제작하였습니다.
+© All rights reserved by miHoYo
+Other properties and any right, title, and interest thereof and therein (intellectual property rights included) not derived from Zenless Zone Zero belong to their respective owners.
 [[타이틀 화면]]</tw-passagedata><tw-passagedata pid="2" name="기록 동기화" tags="header" position="700,0" size="100,100">&lt;script&gt;if (window.BB) { var m = new Set(BB.load()); var cur = $seen; if (cur &amp;&amp; cur.forEach) { cur.forEach(function (v) { m.add(v); }); } $seen = m; }&lt;/script&gt;</tw-passagedata><tw-passagedata pid="3" name="기록 불러오기" tags="startup" position="600,0" size="100,100">(set: $seen to (ds:))&lt;script&gt;if (window.BB) { $seen = new Set(BB.load()); }&lt;/script&gt;</tw-passagedata><tw-passagedata pid="4" name="기록 초기화" tags="" position="300,0" size="100,100">기록을 지웠습니다.
 (set: $seen to (ds:))&lt;script&gt;if (window.BB) { BB.clear(); }&lt;/script&gt;
 [[타이틀 화면으로 돌아가기-&gt;타이틀 화면]]</tw-passagedata><tw-passagedata pid="5" name="모든 엔딩 열기" tags="" position="400,0" size="100,100">모든 엔딩을 열었습니다.
@@ -2127,7 +2163,7 @@ body.tt-on tw-passage { display: none; }
 
 [[제목 없는 구절 107]]</tw-passagedata><tw-passagedata pid="44" name="제목 없는 구절 107" tags="vn" position="800,900" size="100,100">루시아: 맞아 벨, 그래서 귤복복 씨가 살해당하던 오전 10시에 뭘 하고 있냐고 물었지? 나는 포포랑 놀면서 간식 주고 있었어,
 
-[[제목 없는 구절 108]]</tw-passagedata><tw-passagedata pid="45" name="제목 없는 구절 108" tags="vn" position="900,900" size="100,100">육포...? 벨은 순간 에테리얼이 육포를 먹나? 라는 생각을 했다. 아니 반대로 에테리얼용 육포가 있는 것인가? 그게 아니라면 진짜 포메라니안 희귀종인가?
+[[제목 없는 구절 108]]</tw-passagedata><tw-passagedata pid="45" name="제목 없는 구절 108" tags="vn" position="900,900" size="100,100">육포...? 벨은 순간 에테리얼이 간식을 먹나? 라는 생각을 했다. 내가 간식인가? 그것도 아니면 진짜 포메라니안 희귀종인가?
 
 [[제목 없는 구절 109]]</tw-passagedata><tw-passagedata pid="46" name="제목 없는 구절 109" tags="vn-choice" position="1000,900" size="100,100">벨: ...
 
@@ -2167,9 +2203,9 @@ body.tt-on tw-passage { display: none; }
 [[제목 없는 구절 121]]</tw-passagedata><tw-passagedata pid="60" name="제목 없는 구절 121" tags="vn" position="200,1100" size="100,100">시드: 응? 나한테도 물어보는 거야? 나도 용의자가 되어보는구나~ 
 
 [[제목 없는 구절 122]]</tw-passagedata><tw-passagedata pid="61" name="제목 없는 구절 122" tags="vn" position="300,1100" size="100,100">&lt;span data-bx=&quot;지목&quot;&gt;&lt;/span&gt;
-벨: 시드 씨, 지금 사람이 죽었는데 왜 그렇게 태연하신 건가요? 역시 &#39;사람이 상자에 안 들어가면 접어서 넣으면 된다.&#39; 는 사고방식을 지닌 사이코패스라서 그런 건가요?
+벨: 시드 씨, 지금 사람이 죽었는데 왜 그렇게 태연하신 건가요? 역시 &#39;사람이 냉장고에 안 들어가면 접어서 넣으면 된다.&#39; 는 사고방식을 지닌 사이코패스라서 그런 건가요?
 
-[[제목 없는 구절 123]]</tw-passagedata><tw-passagedata pid="62" name="제목 없는 구절 123" tags="vn" position="400,1100" size="100,100">시드: 그야 복복 씨는 저기 멀쩡하게 살아있잖아~ 그래도 너희들이 즐거워하는 것 같으니까 어울려줄게
+[[제목 없는 구절 123]]</tw-passagedata><tw-passagedata pid="62" name="제목 없는 구절 123" tags="vn" position="400,1100" size="100,100">시드: 그야 복복 씨는 저기 멀쩡하게 살아있잖아~ 그래도 너희들이 즐거워하는 것 같으니까 어울려줄게. 근데, 냉장고에 사람을 접어서 넣는게 뭐가 어때서?
 
 [[제목 없는 구절 124]]</tw-passagedata><tw-passagedata pid="63" name="제목 없는 구절 124" tags="vn" position="500,1100" size="100,100">시드: 오전 10시에 난 트리거랑 같이 사람 구경을 하고 있었어~
 
@@ -2179,6 +2215,7 @@ body.tt-on tw-passage { display: none; }
 [[제목 없는 구절 128]]</tw-passagedata><tw-passagedata pid="65" name="제목 없는 구절 126" tags="vn" position="1400,1150" size="100,100">&lt;span data-bx=&quot;놀람&quot;&gt;&lt;/span&gt;
 벨: 비장의 수?!
 [[제목 없는 구절 129]]</tw-passagedata><tw-passagedata pid="66" name="제목 없는 구절 127" tags="vn" position="1000,1050" size="100,100">벨: 생각해보니 그렇네요... 아무래도 앞이 안 보이는 사람이 범인일 리 없죠. 그럼 시드 씨, 당신을 테스트하겠어요. 
+(수긍한다)
 
 [[제목 없는 구절 133]]</tw-passagedata><tw-passagedata pid="67" name="제목 없는 구절 128" tags="vn" position="700,1100" size="100,100">트리거: 벨, 내가 사용하는 총은 3500줄(J)의 에너지를 총구에서 내뿜어. 이게 무슨 소리인지 알겠어? 
 
@@ -2192,8 +2229,13 @@ body.tt-on tw-passage { display: none; }
 [[제목 없는 구절 127]]
 [[제목 없는 구절 241]]</tw-passagedata><tw-passagedata pid="72" name="제목 없는 구절 132" tags="vn" position="800,1100" size="100,100">벨: 줄... 이요? 무슨... 말인데요?
 
-[[제목 없는 구절 131]]</tw-passagedata><tw-passagedata pid="73" name="제목 없는 구절 133" tags="vn" position="1100,1050" size="100,100">벨: 시드 씨는, 전에 전장에서 적들에게 사이코패스 같은 모습을 보인 적이 있으니까요. 트롤리 문제 아시죠? 레버를 당기면 1명이 죽고, 레버를 안 당기면 5명이 죽는다고 할 때, 레버를 어떻게 하시겠어요?
+[[제목 없는 구절 131]]</tw-passagedata><tw-passagedata pid="73" name="제목 없는 구절 133" tags="vn" position="1100,1050" size="100,100">벨: 그러면 시드 씨를 추궁해야겠어요. 시드 씨, 사람을 죽이는 것을 어떻게 생각하죠?
 
+[[시드 추가1]]</tw-passagedata><tw-passagedata pid="353" name="시드 추가1" tags="vn" position="1200,1050" size="100,100">시드: 어떻게 생각하냐구? 당연히 나쁜 일이지.
+[[시드 추가2]]</tw-passagedata><tw-passagedata pid="354" name="시드 추가2" tags="vn" position="1250,1050" size="100,100">벨: 의외로 정상이군요, 역시... 인게임에서는 머리가 좀 고쳐진...
+[[시드 추가3]]</tw-passagedata><tw-passagedata pid="355" name="시드 추가3" tags="vn" position="1300,1050" size="100,100">시드: 계화떡 두개가 있는데, 하나를 쓰레기통에 갖다 버리면 아깝잖아~ 당연한거지.
+[[시드 추가4]]</tw-passagedata><tw-passagedata pid="356" name="시드 추가4" tags="vn" position="1350,1050" size="100,100">벨: ...
+[[시드 추가5]]</tw-passagedata><tw-passagedata pid="357" name="시드 추가5" tags="vn" position="1400,1050" size="100,100">벨: 그냥 혹시나 해서 물어보는 건데요, 시드 씨는 트롤리 딜레마 아시나요? 레버를 놔두면 5명이 죽고, 레버를 당기면 1명이 죽는 그 문제요. 시드 씨라면 뭐라고 답할지 궁금해서.
 [[제목 없는 구절 130]]</tw-passagedata><tw-passagedata pid="74" name="제목 없는 구절 134" tags="vn" position="1100,1400" size="100,100">반악: 선착순 한명, 십만 데니!
 
 [[제목 없는 구절 150]]</tw-passagedata><tw-passagedata pid="75" name="제목 없는 구절 135" tags="vn" position="100,1400" size="100,100">벨: 자오 씨, 앗 아니다. 당신은 상관 없어요.
@@ -2249,7 +2291,7 @@ body.tt-on tw-passage { display: none; }
 
 [[제목 없는 구절 154]]</tw-passagedata><tw-passagedata pid="96" name="제목 없는 구절 154" tags="vn" position="400,1600" size="100,100">빛나: 계화떡... 먹을래?
 
-[[제목 없는 구절 155]]</tw-passagedata><tw-passagedata pid="97" name="제목 없는 구절 155" tags="vn" position="500,1600" size="100,100">네코미야: 사... 살려달라냥...
+[[제목 없는 구절 155]]</tw-passagedata><tw-passagedata pid="97" name="제목 없는 구절 155" tags="vn" position="500,1600" size="100,100">네코미야: 사... 살려달라냥... 배가 터질 것 같다냥...
 
 [[제목 없는 구절 156]]</tw-passagedata><tw-passagedata pid="98" name="제목 없는 구절 156" tags="vn" position="600,1600" size="100,100">미야비: 더 먹을 수 있... 큽... 아니, 더 못 먹습니다...
 
@@ -2293,9 +2335,9 @@ body.tt-on tw-passage { display: none; }
 [[제목 없는 구절 173]]</tw-passagedata><tw-passagedata pid="117" name="제목 없는 구절 173" tags="vn" position="2300,1550" size="100,100">미야비: 그렇군요... 그렇다면 함께 만들어가요. 우리의 과일 모찌를.
 
 [[제목 없는 구절 174]]</tw-passagedata><tw-passagedata pid="118" name="제목 없는 구절 174" tags="" position="2400,1550" size="100,100">`[END]`
-그렇게, 미각사냥꾼 빛나와 미야비는 같이 과일 모찌 가게를 열었고, 칭파이 하이츠 제일가는 맛집이 되었다. 에테리얼이요? 그게 뭐요? 무슨 일 났대요?
+그렇게, 미각사냥꾼 빛나와 미야비는 같이 과일 모찌 가게를 열었고, 칭파이 하이츠 제일가는 맛집이 되었다.
 
-[[타이틀 화면으로 돌아가기-&gt;타이틀 화면]](set: $seen to it + (ds: 11))&lt;script&gt;if (window.BB) { BB.save(Array.from($seen)); }&lt;/script&gt;</tw-passagedata><tw-passagedata pid="119" name="제목 없는 구절 175" tags="vn" position="2200,1650" size="100,100">빛나: 미야비 씨, &#39;사실은 나도 요리를 정식으로 배워본 적이 없어&#39;
+[[타이틀 화면으로 돌아가기-&gt;타이틀 화면]](set: $seen to it + (ds: 11))&lt;script&gt;if (window.BB) { BB.save(Array.from($seen)); }&lt;/script&gt;</tw-passagedata><tw-passagedata pid="119" name="제목 없는 구절 175" tags="vn" position="2200,1650" size="100,100">빛나: 미야비 씨, 사실은 요리 학원에 다녀보고 싶어, 사실은 인터넷으로는 레시피를 찾아본 적도 없고.
 
 [[제목 없는 구절 231]]</tw-passagedata><tw-passagedata pid="120" name="제목 없는 구절 176" tags="vn" position="700,1800" size="100,100">&lt;span data-bx=&quot;지목&quot;&gt;&lt;/span&gt;
 벨: 우선 루시아 씨, 당신은 거짓말을 하고 있어요, 그 포포. 포메라니안이 아니라... 스피츠예요.
@@ -2368,9 +2410,9 @@ body.tt-on tw-passage { display: none; }
 
 [[제목 없는 구절 201]]</tw-passagedata><tw-passagedata pid="149" name="제목 없는 구절 201" tags="vn" position="1400,2050" size="100,100">벨의 터무니없는 연기에, 유즈하가 아연실색한 표정을 보냈다. 그러나 다음 순간, 앨리스가 보여준 모습은 상상 초월이었다.
 
-[[제목 없는 구절 202]]</tw-passagedata><tw-passagedata pid="150" name="제목 없는 구절 202" tags="vn" position="1500,2050" size="100,100">앨리스: 벨 씨, 지금 제가 겁이 많으니까 그렇게 놀래키면 상황을 벗어날 수 있을 거라고 생각하셨나요? 
+[[제목 없는 구절 202]]</tw-passagedata><tw-passagedata pid="150" name="제목 없는 구절 202" tags="vn" position="1500,2050" size="100,100">앨리스: 벨 씨, 지금 제가 겁이 많으니까 그렇게 놀래키면 상황을 벗어날 수 있을 거라고 생각하셨나요? 당신은 절 뭐라고 생각하시는거죠?
 
-[[제목 없는 구절 203]]</tw-passagedata><tw-passagedata pid="151" name="제목 없는 구절 203" tags="vn" position="1600,2050" size="100,100">앨리스: 정답이네요.
+[[제목 없는 구절 203]]</tw-passagedata><tw-passagedata pid="151" name="제목 없는 구절 203" tags="vn" position="1600,2050" size="100,100">앨리스: 잠시만요? 기절 좀 하고...
 
 [[제목 없는 구절 204]]</tw-passagedata><tw-passagedata pid="152" name="제목 없는 구절 204" tags="" position="1700,2050" size="100,100">`[END]`
 
@@ -2394,7 +2436,7 @@ body.tt-on tw-passage { display: none; }
 
 [[제목 없는 구절 212]]</tw-passagedata><tw-passagedata pid="161" name="제목 없는 구절 212" tags="vn" position="700,2200" size="100,100">클라렛: 잘... 들으라고? 이 상황을 벗어날 묘수라도?
 
-[[제목 없는 구절 213]]</tw-passagedata><tw-passagedata pid="162" name="제목 없는 구절 213" tags="vn" position="800,2200" size="100,100">록시: 아뇨, 그 무기 잘 들고 가시라고요. 지금부터라도 근육을 유지해야 나중에 막노동이라도 하죠.
+[[제목 없는 구절 213]]</tw-passagedata><tw-passagedata pid="162" name="제목 없는 구절 213" tags="vn" position="800,2200" size="100,100">록시: 아뇨, 그 무기 잘 들고 가시라고요. 나중에 급하면 그거라도 팔아야죠.
 
 [[제목 없는 구절 214]]</tw-passagedata><tw-passagedata pid="163" name="제목 없는 구절 214" tags="vn" position="900,2200" size="100,100">클라렛: 야아아아아악...!
 
@@ -2438,9 +2480,9 @@ body.tt-on tw-passage { display: none; }
 벨: 어...? 갑자기?
 
 [[제목 없는 구절 24]]</tw-passagedata><tw-passagedata pid="181" name="제목 없는 구절 230" tags="" position="2000,2250" size="100,100">`[END]`
-그렇게 클라렛은 사망하고 말았다.
+그렇게 예산을 전부 잃어버린 중추연산국은 망하고 말았다.
 
-[[타이틀 화면으로 돌아가기-&gt;타이틀 화면]](set: $seen to it + (ds: 16))&lt;script&gt;if (window.BB) { BB.save(Array.from($seen)); }&lt;/script&gt;</tw-passagedata><tw-passagedata pid="182" name="제목 없는 구절 231" tags="vn" position="2300,1650" size="100,100">미야비: 빛나 씨... 야매 요리를 사람들한테 강제로 먹이고 다닌 건가요?
+[[타이틀 화면으로 돌아가기-&gt;타이틀 화면]](set: $seen to it + (ds: 16))&lt;script&gt;if (window.BB) { BB.save(Array.from($seen)); }&lt;/script&gt;</tw-passagedata><tw-passagedata pid="182" name="제목 없는 구절 231" tags="vn" position="2300,1650" size="100,100">네코미야: 인터넷으로 레시피도 찾아본 적이 없는거냥? 그래놓고 맛있어질 때까지 사람들한테 먹인거냥?!
 
 [[제목 없는 구절 232]]</tw-passagedata><tw-passagedata pid="183" name="제목 없는 구절 232" tags="vn" position="2400,1650" size="100,100">빛나: 같이 요리를 배우러 가자. 미야비 씨.
 
@@ -2450,7 +2492,7 @@ body.tt-on tw-passage { display: none; }
 
 [[제목 없는 구절 235]]</tw-passagedata><tw-passagedata pid="186" name="제목 없는 구절 235" tags="confirm" position="2700,1650" size="100,100">`[END]`
 
-그 모습을 본 네코미야는 거품을 물고 기절하고 말았다. 오늘 먹은 계화떡의 수가 몇 개였더라?
+미야비와 빛나는 석양 쪽으로 천천히 걸어 사라졌다. 앞으로는 얼마나 더 많은 계화떡을 만들게 될까. 그 아무도 모르는 미래를 향해. 
 
 [[타이틀 화면으로 돌아가기-&gt;타이틀 화면]](set: $seen to it + (ds: 12))&lt;script&gt;if (window.BB) { BB.save(Array.from($seen)); }&lt;/script&gt;</tw-passagedata><tw-passagedata pid="187" name="제목 없는 구절 236" tags="vn" position="1775,1775" size="100,100">&lt;span data-bx=&quot;지목&quot;&gt;&lt;/span&gt;
 벨: 그리고 아스트라 씨, 당신은 이미 동물을 죽인 적이 있는데, 거짓말을 했죠. 바로 북극곰 말입니다!
@@ -2498,6 +2540,13 @@ body.tt-on tw-passage { display: none; }
 벨: 자오 씨, 당신은 시렌이 아닙니다. 
 
 [[제목 없는 구절 254]]</tw-passagedata><tw-passagedata pid="206" name="제목 없는 구절 253" tags="vn" position="1700,1150" size="100,100">벨: 어?
+[[트리거 추가1]]</tw-passagedata><tw-passagedata pid="362" name="트리거 추가1" tags="vn" position="1550,1150" size="100,100">레미엘: 잠깐! 거기까지에요! 정실은 접니다! 제가 예쁩니다!!
+[[트리거 추가2]]</tw-passagedata><tw-passagedata pid="363" name="트리거 추가2" tags="vn" position="1600,1150" size="100,100">미야비: 큰일이에요, 사람이 쓰러졌어요. 어디 예쁜 사람 안 계십니까?
+[[트리거 추가3]]</tw-passagedata><tw-passagedata pid="364" name="트리거 추가3" tags="vn" position="1600,1200" size="100,100">레미엘: 저요! 제가 예쁩니다!! 환자는 어딨죠?
+[[트리거 추가4]]</tw-passagedata><tw-passagedata pid="365" name="트리거 추가4" tags="vn" position="1650,1200" size="100,100">이블린: 거기까지입니다! 대 황 아스트라님이 더 예쁩니다!!
+[[트리거 추가5]]</tw-passagedata><tw-passagedata pid="366" name="트리거 추가5" tags="vn" position="1725,1200" size="100,100">루시아: 예삐 왔어? 야옹~ 에옹~
+[[제목 없는 구절 321]]</tw-passagedata><tw-passagedata pid="367" name="제목 없는 구절 321" tags="vn" position="1825,1200" size="100,100">네코미야: 야옹~
+[[제목 없는 구절 322]]</tw-passagedata><tw-passagedata pid="368" name="제목 없는 구절 322" tags="vn" position="1925,1200" size="100,100">벨: 이 게임을 왜 하고 계신거죠...?
 [[제목 없는 구절 293]]</tw-passagedata><tw-passagedata pid="207" name="제목 없는 구절 254" tags="vn" position="1575,1725" size="100,100">자오: 그렇다는 건...?!
 
 [[제목 없는 구절 255]]</tw-passagedata><tw-passagedata pid="208" name="제목 없는 구절 255" tags="vn" position="1625,1775" size="100,100">&lt;span data-bx=&quot;지목&quot;&gt;&lt;/span&gt;
@@ -2590,7 +2639,7 @@ body.tt-on tw-passage { display: none; }
 
 [[제목 없는 구절 294]]</tw-passagedata><tw-passagedata pid="250" name="제목 없는 구절 293" tags="" position="1800,1150" size="100,100">`[END]`
 
-그렇게 트리거는 정실 무브먼트로 용의 선상에서 벗어나게 되었다. 추가로, 모니터 너머의 누군가는 트리거가 로스캘리퍼에 파견된다는 스토리를 제작하게 된다.
+그렇게 범인 찾기는 그만두고 아스트라와 레미엘의 미모 대결이 펼쳐진다. 귤복복을 죽인 범인이 누구인지는 중요하지 않게 되었다.
 
 [[타이틀 화면으로 돌아가기-&gt;타이틀 화면]](set: $seen to it + (ds: 8))&lt;script&gt;if (window.BB) { BB.save(Array.from($seen)); }&lt;/script&gt;</tw-passagedata><tw-passagedata pid="251" name="제목 없는 구절 294" tags="vn" position="1400,1400" size="100,100">네코미야: 네...?
 
@@ -2623,7 +2672,7 @@ body.tt-on tw-passage { display: none; }
 
 [[제목 없는 구절 305]]</tw-passagedata><tw-passagedata pid="264" name="제목 없는 구절 305" tags="" position="2400,1450" size="100,100">`[END]`
 
-그렇게 반악의 최고급 개그는 끝을 모르고 달렸고, 결국 범인 찾는건 아무도 중요하게 생각하지 않게 되었다. 누군가가 벨과 반악의 머리를 깨기 전까지 이 해변에서 아무도 탈출할 수 없게 되었다.
+그렇게 반악의 최고급 개그는 끝을 모르고 달렸고,  누군가가 벨과 반악의 머리를 깨기 전까지 이 해변에서 아무도 탈출할 수 없게 되었다.
 
 [[타이틀 화면으로 돌아가기-&gt;타이틀 화면]](set: $seen to it + (ds: 10))&lt;script&gt;if (window.BB) { BB.save(Array.from($seen)); }&lt;/script&gt;</tw-passagedata><tw-passagedata pid="265" name="제목 없는 구절 306" tags="vn" position="1700,1350" size="100,100">반악: 다이아린은 그런 짓을 할 사람이 아니라네, 물론 다이아린의 토끼도 사람을 죽이는 종류의 동물이 아니야. 튜링 테스트를 통과했거든.
 
@@ -2671,20 +2720,24 @@ body.tt-on tw-passage { display: none; }
 
 [[제목 없는 구절 5]]</tw-passagedata><tw-passagedata pid="284" name="제목 없는 구절 40" tags="" position="1900,550" size="100,100">`[END]`
 레미엘의 끝없는 문답 게임에 어울려주게 된 벨은, 결국 날이 저물 때까지 범인을 잡지 못했다.
-레미엘이 설명을 한 줄 할 때마다 &#39;그래서 복숭아를 왜 골랐죠?&#39;라고 묻는 시드 덕분에, 마치 우로보로스 같은 끝없는 문답을 반복했고, 결국 화를 참지 못한 벨이 레미엘의 머리를 가격하고 치안관에게 잡혀가고 말았다.
+레미엘이 설명을 한 줄 할 때마다 &#39;그래서 그게 무슨 뜻이라고?&#39;라고 묻는 시드 덕분에, 마치 우로보로스 같은 끝없는 문답을 반복했고, 결국 화를 참지 못한 벨이 레미엘의 머리를 가격하고 치안관에게 잡혀가고 말았다.
 
-[[타이틀 화면으로 돌아가기-&gt;타이틀 화면]](set: $seen to it + (ds: 2))&lt;script&gt;if (window.BB) { BB.save(Array.from($seen)); }&lt;/script&gt;</tw-passagedata><tw-passagedata pid="285" name="제목 없는 구절 41" tags="vn" position="1600,450" size="100,100">레미엘: 어머 벨 씨... 너무해요, 그런 식으로 낙인 효과를 준다면 이 세상에서 갱생할 수 있는 범죄자가 얼마나 되겠어요!
+[[타이틀 화면으로 돌아가기-&gt;타이틀 화면]](set: $seen to it + (ds: 2))&lt;script&gt;if (window.BB) { BB.save(Array.from($seen)); }&lt;/script&gt;</tw-passagedata><tw-passagedata pid="285" name="제목 없는 구절 41" tags="vn" position="1600,450" size="100,100">레미엘: 어머 벨 씨... 너무해요, 그런 식으로 낙인 효과를 준다면 이 세상에서 갱생할 수 있는 범죄자가 얼마나 되겠어요! 게다가 저는 예쁘잖아요!
 
 [[제목 없는 구절 42]]</tw-passagedata><tw-passagedata pid="286" name="제목 없는 구절 42" tags="vn" position="1700,450" size="100,100">야나기: 잠시만요. 여자친구를 팼다고요? 데이트 폭력인가요?
 
 [[제목 없는 구절 43]]</tw-passagedata><tw-passagedata pid="287" name="제목 없는 구절 43" tags="vn" position="1800,450" size="100,100">벨: 진정하세요, 야나기 씨, 레미엘 씨가 나빠서 그런 것도 아니고, 어쩔 수 없는 상황이었다고요. 게다가 그 여자친구는 지금 죽었으니 괜찮아요. 원래 데이트 폭력이 호요버스 전통이기도 하고요.
 
-[[제목 없는 구절 44]]</tw-passagedata><tw-passagedata pid="288" name="제목 없는 구절 44" tags="vn" position="1900,450" size="100,100">그 순간, 마치 차가운 빙수를 들이붓기라도 한 듯, 침묵이 흘렀다.
+[[제목 없는 구절 44]]</tw-passagedata><tw-passagedata pid="288" name="제목 없는 구절 44" tags="vn" position="1900,450" size="100,100">레미엘: 맞아요, 저 대신 수나 양을 잡아가도록 해요.
 
-[[제목 없는 구절 45]]</tw-passagedata><tw-passagedata pid="289" name="제목 없는 구절 45" tags="vn" position="2000,450" size="100,100">야나기: 여친을 패서... 죽였어... ? 레미엘, 당신을 살인 혐의로 긴급 체포하겠어요!!
+[[제목 없는 구절 45]]</tw-passagedata><tw-passagedata pid="289" name="제목 없는 구절 45" tags="vn" position="2000,450" size="100,100">야나기: 수나 양... 확실히 그게 더 합리적일 수도 있겠죠. 하지만, 아무래도 당신을 체포하겠어요.
 
+[[야나기의 억까]]</tw-passagedata><tw-passagedata pid="358" name="야나기의 억까" tags="vn" position="2100,450" size="100,100">레미엘: 왜죠?!
+[[제목 없는 구절 315]]</tw-passagedata><tw-passagedata pid="359" name="제목 없는 구절 315" tags="vn" position="2200,450" size="100,100">야나기: 공연음란죄입니다. 전투중에 갑자기 드러눕는 사람은 당신밖에 없어요.
+[[제목 없는 구절 316]]</tw-passagedata><tw-passagedata pid="360" name="제목 없는 구절 316" tags="vn" position="2300,450" size="100,100">레미엘: 난 예쁘잖아!!
+[[제목 없는 구절 317]]</tw-passagedata><tw-passagedata pid="361" name="제목 없는 구절 317" tags="vn" position="2400,450" size="100,100">루시아: 예삐 왔어? 오로로로로
 [[제목 없는 구절 46]]</tw-passagedata><tw-passagedata pid="290" name="제목 없는 구절 46" tags="" position="2100,450" size="100,100">`[END]`
-그렇게 오해(?) 가 생겨서 야나기에게 체포된 레미엘은 로스캘리퍼 지명수배자라는 것까지 들킨다. 하지만 &#39;내가 죽였냐? 건물이 무너져서 죽었지&#39; 라는 설득에 치안관들이 모두 넘어가고 말았고, 레미엘은 무죄로 결정되었지만, &#39;내가 가뒀나? 치안국 감옥이 가뒀지&#39; 라는 논리에 의해서 구금되고 말았다.
+공연음란죄로 레미엘은 체포당하고 만다. 공허사냥꾼이요? 왜요? 무슨 일 났대요?
 
 [[타이틀 화면으로 돌아가기-&gt;타이틀 화면]](set: $seen to it + (ds: 1))&lt;script&gt;if (window.BB) { BB.save(Array.from($seen)); }&lt;/script&gt;</tw-passagedata><tw-passagedata pid="291" name="제목 없는 구절 47" tags="vn" position="200,700" size="100,100">아스트라: 축제 공연에서 노래를 해야 하니까... 목을 풀고 있었어, 물도 많이 마시고.
 
@@ -2740,7 +2793,7 @@ body.tt-on tw-passage { display: none; }
 [[제목 없는 구절 68]]</tw-passagedata><tw-passagedata pid="314" name="제목 없는 구절 68" tags="vn" position="2300,650" size="100,100">아스트라: ...?
 
 [[제목 없는 구절 69]]</tw-passagedata><tw-passagedata pid="315" name="제목 없는 구절 69" tags="vn" position="2400,650" size="100,100">&lt;span data-bx=&quot;지목&quot;&gt;&lt;/span&gt;
-벨: 사람의 생명은 소중하다고요...? 맞는 말이죠... 하지만 귤복복 씨는 사람이 아닌 호랑이! 그것도 귤과 혼혈입니다!
+벨: 사람의 생명은 소중하다고요...? 맞는 말이죠... 하지만 귤복복 씨는 사람이 아닌 호랑이! 그것도 귤과 혼혈입니다! 공동에서 생존한 전적이 있는 아스트라씨는 호랑이 고기라도 맛있게 드실 수 있겠죠.
 
 [[제목 없는 구절 70]]</tw-passagedata><tw-passagedata pid="316" name="제목 없는 구절 7" tags="vn" position="600,200" size="100,100">야나기: 그러니 이 사건의 진범을 밝혀낼 수 있는 사람은 바로 벨 씨 당신 뿐이에요. 제가 용의자들을 추려놨으니, 한 명씩 대화를 나눠 정보를 모은 후, 진범을 밝혀내도록 하죠.
 
@@ -2751,7 +2804,7 @@ body.tt-on tw-passage { display: none; }
 
 [[제목 없는 구절 72]]</tw-passagedata><tw-passagedata pid="319" name="제목 없는 구절 72" tags="vn" position="2700,650" size="100,100">아스트라: 말도 안 되는 소리야! 벨...
 
-[[제목 없는 구절 73]]</tw-passagedata><tw-passagedata pid="320" name="제목 없는 구절 73" tags="vn" position="2800,650" size="100,100">이블린: 윽... 아가씨... 죄송합니다... 분명 함께 알리바이를 만들자고 하셨는데...
+[[제목 없는 구절 73]]</tw-passagedata><tw-passagedata pid="320" name="제목 없는 구절 73" tags="vn" position="2800,650" size="100,100">이블린: 윽... 아가씨... 죄송합니다... 분명 함께 알리바이를 만들자고 하셨는데... 제가 너무 못했군요.
 
 [[제목 없는 구절 74]]</tw-passagedata><tw-passagedata pid="321" name="제목 없는 구절 74" tags="vn" position="2900,650" size="100,100">아스트라: 이브...? 잠깐, 무슨 말을 하는 거야?
 
@@ -2766,7 +2819,7 @@ body.tt-on tw-passage { display: none; }
 
 [[제목 없는 구절 80]]</tw-passagedata><tw-passagedata pid="327" name="제목 없는 구절 8" tags="vn" position="300,200" size="100,100">엽빛나: 계화떡 먹을래?
 
-[[제목 없는 구절 9]]</tw-passagedata><tw-passagedata pid="328" name="제목 없는 구절 80" tags="vn" position="3500,650" size="100,100">아스트라: 잠깐...! 벨...! 벨...! 오해야!! 나 진짜 아무것도 안했어!!! 이블린 좀 말려봐!
+[[제목 없는 구절 9]]</tw-passagedata><tw-passagedata pid="328" name="제목 없는 구절 80" tags="vn" position="3500,650" size="100,100">아스트라: 잠깐...! 벨...! 벨...! 오해야!! 나 진짜 아무것도 안했어!!! 이블린 좀 말려봐! 그리고 스위스가 뭔데!!
 
 [[제목 없는 구절 81]]</tw-passagedata><tw-passagedata pid="329" name="제목 없는 구절 81" tags="" position="3600,650" size="100,100">`[END]`
 그렇게 이블린은 아스트라를 벤에 태우고 멀리 떠나버렸다.
@@ -2789,7 +2842,7 @@ body.tt-on tw-passage { display: none; }
 
 [[제목 없는 구절 88]]</tw-passagedata><tw-passagedata pid="336" name="제목 없는 구절 88" tags="vn" position="2600,750" size="100,100">남궁우: 맞아, 비록 이마가 너무 넓은 초록머리 소녀가 팀에 있어도 물로 입을 헹구고 귀여운 동물 영상을 보는게 때론 도움이 된다고 했지.
 
-[[제목 없는 구절 89]]</tw-passagedata><tw-passagedata pid="337" name="제목 없는 구절 89" tags="vn" position="2700,750" size="100,100">수나: 아, 맞아요... 분명
+[[제목 없는 구절 89]]</tw-passagedata><tw-passagedata pid="337" name="제목 없는 구절 89" tags="vn" position="2700,750" size="100,100">수나: 아, 맞아요... 분명...
 
 [[제목 없는 구절 90]]</tw-passagedata><tw-passagedata pid="338" name="제목 없는 구절 9" tags="vn" position="400,200" size="100,100">미야비: 먹을래
 
@@ -2835,6 +2888,7 @@ Thanks for playing
 [[시작1]]
 [[게임 방법]]
 [[엔딩 갤러리]]
+[[약관]]
 (if: $seen&#39;s length &gt; 0)[ [[용의자 선택으로-&gt;제목 없는 구절 15]] ]
 [[테스트용 기록 초기화-&gt;기록 초기화]]
 [[테스트용 모든 엔딩 열기-&gt;모든 엔딩 열기]]</tw-passagedata><tw-passagedata pid="351" name="트루 엔딩" tags="" position="1500,2700" size="100,100">트루 엔딩 (이미지 자리)
