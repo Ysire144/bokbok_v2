@@ -1771,6 +1771,7 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 
 :: 제목 없는 구절 3 [confirm vn] {"position":"1100,100","size":"100,100"}
+<span data-fx="hit:시시아,귤복복"></span>
 (시시아가 귤복복을 치고 지나감)
 시시아: 저저저저저저저기... 저 늦은 거 아니죠? 저 진짜 제시간에 출발했는데 케이블카가 늦게 와서!!
 
@@ -2471,7 +2472,7 @@ window.BB = {
   var CHAR_LOCAL_BASE = 'file:///C:/Users/pumha/Desktop/귤복복 살인사건제작/완성본/실제 제작/캐릭터 이미지/';
   var CHAR_WEB_BASE = 'images/characters/';
   var CHAR_BASE = (location.protocol === 'file:') ? CHAR_LOCAL_BASE : CHAR_WEB_BASE;
-  var BUILD_VERSION = '0.14';             // 화면 오른쪽 위에 작게 보이는 버전. 뭔가 바꿀 때마다 0.01 씩 올릴 것 (사용자 요청)
+  var BUILD_VERSION = '0.15';             // 화면 오른쪽 위에 작게 보이는 버전. 뭔가 바꿀 때마다 0.01 씩 올릴 것 (사용자 요청)
 
   /* ---------- 인물 배치 ----------
      제작자가 직접 만든 배치 예시 29장(벨 + 상대)을 읽어서 정리한 값이야. 단위는 전부 '화면 폭의 %' (폰 화면 폭 = 100).
@@ -3873,11 +3874,101 @@ window.BB = {
     document.body.classList.toggle('hm-on', show);
   }
 
+  /* ================= 장면 효과 (연출) =================
+     장면 글 맨 위에 <span data-fx="hit:때리는사람,맞는사람"></span> 를 넣으면 그 장면이 시작될 때 연출이 나와.
+     - hit: 때리는 사람이 화면 밖에서 달려와 맞는 사람을 '퍽!' 치고, 맞는 사람은 빙글 돌며 옆으로 날아가 화면 밖으로 사라짐.
+            (맞는 사람은 그 자리에서 빠지고, 대사는 때리는 순간부터 나오기 시작함)
+     - 연출이 끝나기 전에 다음 장면으로 넘어가도 깔끔하게 정리됨. 두 사람이 모두 화면에 없으면 연출 없이 바로 대사가 나옴. */
+  var fxCur = null;
+
+  function parseFx(raw) {
+    var s = String(raw), i = s.indexOf(':');
+    if (i < 0) return null;
+    var kind = s.slice(0, i).trim(), a = s.slice(i + 1).split(',').map(function (x) { return canon(x.trim()); });
+    return (kind === 'hit' && a.length === 2) ? { kind: 'hit', a: a[0], v: a[1] } : null;
+  }
+
+  function fxCancel() {
+    var c = fxCur;
+    if (!c) return;
+    fxCur = null;
+    c.timers.forEach(clearTimeout);
+    c.anims.forEach(function (a) { try { a.cancel(); } catch (e) {} });
+    c.els.forEach(function (e) { if (e.parentNode) e.parentNode.removeChild(e); });
+    c.clean();                            // 맞은 사람을 무대에서 치우는 일은 중간에 끊겨도 꼭 함
+  }
+
+  function fxRun(fx, onImpact) {
+    var seatA = seatOf(fx.a), seatV = seatOf(fx.v);
+    var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var slotA = seatA === 'L' ? slotL : slotR, slotV = seatV === 'L' ? slotL : slotR;
+    var c = { anims: [], timers: [], els: [], removed: false };
+    c.clean = function () {               // 맞은 사람을 그림과 무대 기록에서 지움
+      if (c.removed || !seatV) return;
+      c.removed = true;
+      slotV.innerHTML = '';
+      slotV.classList.remove('vn-norm');
+      slotV.setAttribute('data-name', '');
+      slotV.setAttribute('data-key', '');
+      slotV.style.transformOrigin = '';
+      if (stage[seatV] === fx.v) { stage[seatV] = null; saveStage(); }
+    };
+    if (!seatA || !seatV || seatA === seatV || !root.animate || reduce) { c.clean(); onImpact(); return; }
+    fxCur = c;
+
+    var rr = root.getBoundingClientRect(), u = rr.width / 100;
+    var bt = root.querySelector('.vn-box').getBoundingClientRect().top - rr.top;
+    var dir = seatA === 'L' ? 1 : -1;     // 때리는 사람이 달려가는 방향 (맞는 사람도 이쪽으로 날아감)
+    var cv = CHAR[fx.v];
+    var vx = (seatV === 'L' ? SEAT_L : cv.fx) * u, vy = bt + (cv.fy + 14) * u;      // 맞는 곳: 얼굴 조금 아래
+    var T_HIT = 450, T_FLY = 800;
+
+    // 때리는 사람: 화면 밖에서 달려와 맞는 쪽으로 살짝 더 나갔다가 제자리로
+    c.anims.push(slotA.animate([
+      { transform: 'translateX(' + (-dir * 105 * u) + 'px)' },
+      { transform: 'translateX(' + (dir * 5 * u) + 'px)', offset: 0.72 },
+      { transform: 'translateX(0)' }
+    ], { duration: 620, easing: 'cubic-bezier(0.25, 0.7, 0.4, 1)' }));
+
+    // 맞는 사람: 맞는 순간부터 빙글 돌며 옆으로 날아가 화면 밖으로
+    slotV.style.transformOrigin = vx + 'px ' + vy + 'px';
+    c.anims.push(slotV.animate([
+      { transform: 'translate(0px, 0px) rotate(0deg)' },
+      { transform: 'translate(' + (dir * 58 * u) + 'px, ' + (-10 * u) + 'px) rotate(' + (dir * 42) + 'deg)', offset: 0.45 },
+      { transform: 'translate(' + (dir * 125 * u) + 'px, ' + (50 * u) + 'px) rotate(' + (dir * 95) + 'deg)' }
+    ], { delay: T_HIT, duration: T_FLY, easing: 'cubic-bezier(0.2, 0.55, 0.35, 1)', fill: 'both' }));
+
+    c.timers.push(setTimeout(function () {       // 맞는 순간: 퍽! 표시 + 화면 흔들림 + 대사 시작
+      if (fxCur !== c) return;
+      var f = el('div', 'vn-fx');
+      f.style.left = vx + 'px';
+      f.style.top = vy + 'px';
+      f.innerHTML = '<div class="vn-fx-burst"></div><div class="vn-fx-text">퍽!</div>';
+      root.appendChild(f);
+      c.els.push(f);
+      c.anims.push(f.animate([
+        { transform: 'translate(-50%, -50%) scale(0.2) rotate(-14deg)', opacity: 0 },
+        { transform: 'translate(-50%, -50%) scale(1.25) rotate(5deg)', opacity: 1, offset: 0.3 },
+        { transform: 'translate(-50%, -50%) scale(1) rotate(0deg)', opacity: 1, offset: 0.7 },
+        { transform: 'translate(-50%, -50%) scale(1.08) rotate(0deg)', opacity: 0 }
+      ], { duration: 600, fill: 'forwards' }));
+      var sh = function (x, y) { return { transform: 'translate(calc(-50% + ' + x + 'px), ' + y + 'px)' }; };
+      c.anims.push(root.animate([sh(0, 0), sh(-5, 3), sh(5, -3), sh(-4, 2), sh(3, -2), sh(-1, 1), sh(0, 0)], { duration: 320, easing: 'linear' }));
+      onImpact();
+    }, T_HIT));
+
+    c.timers.push(setTimeout(function () {       // 다 날아가면 정리
+      if (fxCur !== c) return;
+      fxCancel();
+    }, T_HIT + T_FLY + 60));
+  }
+
   var sceneSeq = 0;                       // 장면 번호 (기다리는 사이에 다른 장면으로 넘어가면 예전 장면은 취소)
 
   function onPassage(p) {
     build();
     var seq = ++sceneSeq;
+    fxCancel();                           // 앞 장면의 연출이 남아 있으면 정리
     textEl.classList.remove('vn-loading');
     var tags = (p.getAttribute('tags') || '').split(/\s+/);
     updateHome(tags);
@@ -3906,6 +3997,8 @@ window.BB = {
     placeSpeaker(parsed.speaker);
     var stEl = p.querySelector('[data-stage]');           // 정황상 같이 나와야 하는 사람을 장면 글에서 지정했으면 그대로 보여줌
     if (stEl) applyCast(String(stEl.getAttribute('data-stage')).split(',').map(function (s) { return canon(s.trim()); }));
+    var fxEl = p.querySelector('[data-fx]');              // 장면 시작 연출 (hit:때리는사람,맞는사람)
+    var fx = fxEl ? parseFx(fxEl.getAttribute('data-fx')) : null;
     finishNav(tags);
 
     if (parsed.speaker) {
@@ -3929,16 +4022,20 @@ window.BB = {
     });
     var released = false, counted = false, timer = null;
 
-    function go() {
-      if (released || seq !== sceneSeq) return;
-      released = true;
-      textEl.classList.remove('vn-loading');
-      layoutStage(keyL, keyR);
+    function begin() {                     // 대사 시작 (연출이 있으면 맞는 순간에 시작)
+      if (seq !== sceneSeq) return;
       advanceLink = info.link;
       if (info.choices) pendingChoice = { items: info.choices, lock: info.lock };
       startTyping(parsed.body);
       if (!typing) typedEnd();
       if (info.link) prefetchAhead(info.link);
+    }
+    function go() {
+      if (released || seq !== sceneSeq) return;
+      released = true;
+      textEl.classList.remove('vn-loading');
+      layoutStage(keyL, keyR);
+      if (fx) fxRun(fx, begin); else begin();
     }
     function unhold() {
       if (!counted) return;
@@ -4184,6 +4281,41 @@ body.vn-on tw-passage { display: none; }
   word-break: keep-all;
   overflow-wrap: anywhere;
   overflow-y: auto;
+}
+
+/* ===== 장면 효과: 퍽! (때리는 연출) ===== */
+.vn-fx {
+  position: absolute;
+  z-index: 4;                 /* 인물 그림(1~2) 위, 선택지(6)와 대사창(10) 아래 */
+  width: 0;
+  height: 0;
+  pointer-events: none;
+}
+.vn-fx-burst {
+  position: absolute;
+  left: calc(var(--u) * -19);
+  top: calc(var(--u) * -19);
+  width: calc(var(--u) * 38);
+  height: calc(var(--u) * 38);
+  background: radial-gradient(circle, #ffffff 0 24%, #ffe45c 25% 58%, #ff9a1f 59% 100%);
+  clip-path: polygon(50% 0%, 61% 24%, 88% 11%, 76% 38%, 100% 50%, 76% 62%, 88% 89%, 61% 76%, 50% 100%, 39% 76%, 12% 89%, 24% 62%, 0% 50%, 24% 38%, 12% 11%, 39% 24%);
+}
+.vn-fx-text {
+  position: absolute;
+  left: 0;
+  top: 0;
+  transform: translate(-50%, -50%) rotate(-9deg);
+  font-family: var(--font);
+  font-size: calc(var(--u) * 13);
+  font-weight: 900;
+  color: #fff;
+  white-space: nowrap;
+  text-shadow:
+    calc(var(--u) * 0.8) 0 0 #c2410c, calc(var(--u) * -0.8) 0 0 #c2410c,
+    0 calc(var(--u) * 0.8) 0 #c2410c, 0 calc(var(--u) * -0.8) 0 #c2410c,
+    calc(var(--u) * 0.6) calc(var(--u) * 0.6) 0 #c2410c, calc(var(--u) * -0.6) calc(var(--u) * 0.6) 0 #c2410c,
+    calc(var(--u) * 0.6) calc(var(--u) * -0.6) 0 #c2410c, calc(var(--u) * -0.6) calc(var(--u) * -0.6) 0 #c2410c,
+    0 calc(var(--u) * 1.2) calc(var(--u) * 1.2) rgba(0, 0, 0, 0.4);
 }
 
 /* ===== 선택지 띠 (선택지가 있는 장면: 대사가 끝나면 대사창 위 빈 공간에 위에서부터 차례로 나타남) ===== */
