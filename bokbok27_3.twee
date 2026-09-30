@@ -2246,7 +2246,7 @@ window.BB = {
   var CHAR_WEB_BASE = 'images/characters/';
   var CHAR_BASE = (location.protocol === 'file:') ? CHAR_LOCAL_BASE : CHAR_WEB_BASE;
   var EXPRESSION = '진지';                // 기본 표정 이름: 파일 이름 뒤에 붙음 (이름_진지.png). 인물마다 CHAR 안에 expr 로 따로 정할 수 있음 (예: 벨_고뇌.webp)
-  var BUILD_VERSION = '0.01';             // 화면 오른쪽 위에 작게 보이는 버전. 뭔가 바꿀 때마다 0.01 씩 올릴 것 (사용자 요청)
+  var BUILD_VERSION = '0.02';             // 화면 오른쪽 위에 작게 보이는 버전. 뭔가 바꿀 때마다 0.01 씩 올릴 것 (사용자 요청)
   var ANCHOR = '벨';                      // 기준 인물
   // 다른 인물들의 크기/눈높이 기준은 예전 벨 그림의 수치를 그대로 쓴다 (벨 그림을 새로 바꿔도 다른 인물 배치가 안 변하게 고정)
   var ANCHOR_REF = { box: [90, 22, 301, 704], eye: [211.5, 98.4], d: 31.6 };
@@ -2255,7 +2255,7 @@ window.BB = {
   var CHAR = {
     // 벨 2차 그림(측면, 턱에 손, 파일 이름 벨_고뇌): knee 는 무릎 높이(그림 픽셀). 무릎이 화면 맨 아래, 모자 꼭대기(top)가 화면 높이의 topAt 에 오도록 크기를 정함.
     //   (top/topAt 대신 눈높이를 화면 정중앙에 두려면 top, topAt 을 지우면 돼) faceX: 얼굴 가운데의 화면 가로 위치 (화면 폭의 %)
-    '벨':    { expr: '고뇌', size: [510, 1955], box: [14, 14, 493, 1943], eye: [293, 234], d: 75, knee: 1325, top: 14, topAt: 0.72, faceX: 30, tune: 1 },
+    '벨':    { expr: '고뇌', size: [490, 1940], box: [13, 21, 473, 1932], eye: [305, 240], d: 70, knee: 1325, top: 21, topAt: 0.72, faceX: 30, tune: 1 },
     '이블린': { size: [402, 719], box: [54, 31, 344, 706],  eye: [209.5, 95.4],  d: 30.6, tune: 1 },
     '아리아': { size: [402, 720], box: [27, 33, 371, 697],  eye: [191.8, 112.2], d: 29.2, tune: 1 },
     '레미엘': { size: [402, 720], box: [0, 14, 402, 720],   eye: [195.9, 78.8],  d: 32.8, tune: 1 },
