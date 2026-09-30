@@ -406,6 +406,20 @@ tw-hook[name="home"] { display: none; }
   z-index: 8;
 }
 .hm-btn[hidden] { display: none; }
+/* 버전 표시: 오른쪽 위 구석에 아주 작게 */
+#ver-tag {
+  position: fixed;
+  top: calc(var(--u) * 0.8);
+  left: calc(50% + var(--stage-w) / 2 - var(--u) * 1.5);
+  transform: translateX(-100%);
+  z-index: 100000;
+  font: 600 calc(var(--u) * 2.6) / 1 var(--font);
+  color: rgba(255, 255, 255, 0.85);
+  text-shadow: 0 0 calc(var(--u) * 0.6) rgba(0, 0, 0, 0.75), 0 0 calc(var(--u) * 0.3) rgba(0, 0, 0, 0.9);
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-select: none;
+}
 /* 이전 대사 버튼: 홈 버튼과 같은 모양, 왼쪽 위 */
 .hm-back { left: calc(50% - var(--stage-w) / 2 + var(--u) * 3.5); }
 /* 홈 / 이전 대사 버튼이 있을 때는 일반 화면(선택지, 엔딩 글 등)의 글판을 버튼 아래로 내려서 글자를 가리지 않게 함 */
@@ -733,15 +747,17 @@ body.tt-on tw-passage { display: none; }
   var CHAR_LOCAL_BASE = 'file:///C:/Users/pumha/Desktop/귤복복 살인사건제작/완성본/실제 제작/캐릭터 이미지/';
   var CHAR_WEB_BASE = 'images/characters/';
   var CHAR_BASE = (location.protocol === 'file:') ? CHAR_LOCAL_BASE : CHAR_WEB_BASE;
-  var EXPRESSION = '진지';                // 파일 이름 뒤에 붙는 표정 이름 (이름_진지.png)
+  var EXPRESSION = '진지';                // 기본 표정 이름: 파일 이름 뒤에 붙음 (이름_진지.png). 인물마다 CHAR 안에 expr 로 따로 정할 수 있음 (예: 벨_고뇌.webp)
+  var BUILD_VERSION = '0.01';             // 화면 오른쪽 위에 작게 보이는 버전. 뭔가 바꿀 때마다 0.01 씩 올릴 것 (사용자 요청)
   var ANCHOR = '벨';                      // 기준 인물
   // 다른 인물들의 크기/눈높이 기준은 예전 벨 그림의 수치를 그대로 쓴다 (벨 그림을 새로 바꿔도 다른 인물 배치가 안 변하게 고정)
   var ANCHOR_REF = { box: [90, 22, 301, 704], eye: [211.5, 98.4], d: 31.6 };
   var ANCHOR_SCALE = 0.211;               // 기준 인물 그림 한 픽셀이 화면에서 차지하는 크기 (화면 폭의 %). 키우면 모두 같이 커져
   var FACE_X_LEFT = 27, FACE_X_RIGHT = 73; // 왼쪽 / 오른쪽 인물 얼굴 가운데의 화면 가로 위치 (화면 폭의 %)
   var CHAR = {
-    // 벨 2차 그림(측면, 턱에 손): knee 를 적으면 '눈이 화면 높이의 정중앙, 무릎이 화면 맨 아래'가 되게 크기와 위치를 정해 (대사창 뒤로 무릎 아래가 가려짐)
-    '벨':    { size: [510, 1955], box: [14, 14, 492, 1943], eye: [293, 234], d: 75, knee: 1325, tune: 1 },
+    // 벨 2차 그림(측면, 턱에 손, 파일 이름 벨_고뇌): knee 는 무릎 높이(그림 픽셀). 무릎이 화면 맨 아래, 모자 꼭대기(top)가 화면 높이의 topAt 에 오도록 크기를 정함.
+    //   (top/topAt 대신 눈높이를 화면 정중앙에 두려면 top, topAt 을 지우면 돼) faceX: 얼굴 가운데의 화면 가로 위치 (화면 폭의 %)
+    '벨':    { expr: '고뇌', size: [510, 1955], box: [14, 14, 493, 1943], eye: [293, 234], d: 75, knee: 1325, top: 14, topAt: 0.72, faceX: 30, tune: 1 },
     '이블린': { size: [402, 719], box: [54, 31, 344, 706],  eye: [209.5, 95.4],  d: 30.6, tune: 1 },
     '아리아': { size: [402, 720], box: [27, 33, 371, 697],  eye: [191.8, 112.2], d: 29.2, tune: 1 },
     '레미엘': { size: [402, 720], box: [0, 14, 402, 720],   eye: [195.9, 78.8],  d: 32.8, tune: 1 },
@@ -916,10 +932,11 @@ body.tt-on tw-passage { display: none; }
     var names = [name];
     Object.keys(ALIAS).forEach(function (a) { if (ALIAS[a] === name) names.push(a); });
     if (CHAR[name]) {
+      var ex = CHAR[name].expr || EXPRESSION;
       names.forEach(function (n) {
-        if (WEB_MODE) out.push({ url: charUrl(n + '_' + EXPRESSION + '.webp'), face: true });
-        out.push({ url: charUrl(n + '_' + EXPRESSION + '.png'), face: true });
-        if (!WEB_MODE) out.push({ url: charUrl(n + '_' + EXPRESSION + '.webp'), face: true });   // 내 컴퓨터 폴더에 webp 만 있는 인물도 찾도록
+        if (WEB_MODE) out.push({ url: charUrl(n + '_' + ex + '.webp'), face: true });
+        out.push({ url: charUrl(n + '_' + ex + '.png'), face: true });
+        if (!WEB_MODE) out.push({ url: charUrl(n + '_' + ex + '.webp'), face: true });   // 내 컴퓨터 폴더에 webp 만 있는 인물도 찾도록
       });
     }
     (FILE_CANDIDATES[name] || [name + '.png']).forEach(function (f) { out.push({ url: imgUrl(f), face: false }); });
@@ -1187,12 +1204,18 @@ body.tt-on tw-passage { display: none; }
      화면 높이 기준(%)이라 폰 화면 비율이 달라도 눈은 항상 정중앙. 가로는 얼굴이 FACE_X 자리에 오게 그림 자기 너비 비율로 밀어줌 */
   var EYE_AT = 0.5;
   function placeKnee(img, m, side) {
-    var k = EYE_AT / (m.knee - m.eye[1]);                                // 그림 한 픽셀이 차지하는 화면 높이 비율
+    // 그림 한 픽셀이 차지하는 화면 높이 비율: 모자 꼭대기가 topAt 에 오게(top 이 있을 때) 또는 눈이 EYE_AT 에 오게
+    var k = (m.top != null) ? (m.topAt || 0.72) / (m.knee - m.top) : EYE_AT / (m.knee - m.eye[1]);
+    var fx = (m.faceX != null) ? m.faceX : (side === 'L' ? FACE_X_LEFT : FACE_X_RIGHT);
+    var H = 'var(--stage-h) * ';
     img.style.height = (m.size[1] * k * 100).toFixed(3) + '%';
     img.style.width = 'auto';
     img.style.bottom = (-(m.size[1] - m.knee) * k * 100).toFixed(3) + '%';
-    img.style.left = 'calc(var(--u) * ' + (side === 'L' ? FACE_X_LEFT : FACE_X_RIGHT) + ')';
-    img.style.transform = 'translateX(-' + (m.eye[0] / m.size[0] * 100).toFixed(3) + '%)';
+    // 얼굴 가운데를 fx 자리에 두되, 그려진 부분이 화면 왼쪽/오른쪽 밖으로 잘리지 않게 안쪽으로 밀어줌
+    var want = 'calc(var(--u) * ' + fx + ' - ' + H + (m.eye[0] * k).toFixed(5) + ')';
+    var minL = 'calc(var(--u) * 0.5 - ' + H + (m.box[0] * k).toFixed(5) + ')';
+    var maxL = 'calc(var(--u) * 99.5 - ' + H + (m.box[2] * k).toFixed(5) + ')';
+    img.style.left = 'min(' + maxL + ', max(' + minL + ', ' + want + '))';
   }
 
   function placeFace(img, name, side) {
@@ -1902,12 +1925,22 @@ body.tt-on tw-passage { display: none; }
     setTimeout(function () { onPassage(p); }, 0);
   }
 
+  /* 화면 오른쪽 위에 작게 버전을 보여줌 (어떤 화면에서든 보이고, 누르는 데는 방해 안 됨) */
+  function mountVersionTag() {
+    if (document.getElementById('ver-tag')) return;
+    var v = document.createElement('div');
+    v.id = 'ver-tag';
+    v.textContent = 'v' + BUILD_VERSION;
+    document.body.appendChild(v);
+  }
+
   function start() {
     if (!document.body) { setTimeout(start, 20); return; }
     document.documentElement.style.setProperty('--bg-url', 'url("' + imgUrl(BG_FILE) + '")');
     document.documentElement.style.setProperty('--tt-url', 'url("' + imgUrl(TITLE_FILE) + '")');
     loadStage();
     build();
+    mountVersionTag();
     startPreload();
     new MutationObserver(check).observe(document.body, { childList: true, subtree: true });
     check();
