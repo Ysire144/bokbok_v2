@@ -735,10 +735,13 @@ body.tt-on tw-passage { display: none; }
   var CHAR_BASE = (location.protocol === 'file:') ? CHAR_LOCAL_BASE : CHAR_WEB_BASE;
   var EXPRESSION = '진지';                // 파일 이름 뒤에 붙는 표정 이름 (이름_진지.png)
   var ANCHOR = '벨';                      // 기준 인물
+  // 다른 인물들의 크기/눈높이 기준은 예전 벨 그림의 수치를 그대로 쓴다 (벨 그림을 새로 바꿔도 다른 인물 배치가 안 변하게 고정)
+  var ANCHOR_REF = { box: [90, 22, 301, 704], eye: [211.5, 98.4], d: 31.6 };
   var ANCHOR_SCALE = 0.211;               // 기준 인물 그림 한 픽셀이 화면에서 차지하는 크기 (화면 폭의 %). 키우면 모두 같이 커져
   var FACE_X_LEFT = 27, FACE_X_RIGHT = 73; // 왼쪽 / 오른쪽 인물 얼굴 가운데의 화면 가로 위치 (화면 폭의 %)
   var CHAR = {
-    '벨':    { size: [402, 719], box: [90, 22, 301, 704],  eye: [211.5, 98.4],  d: 31.6, tune: 1 },
+    // 벨 2차 그림(측면, 턱에 손): knee 를 적으면 '눈이 화면 높이의 정중앙, 무릎이 화면 맨 아래'가 되게 크기와 위치를 정해 (대사창 뒤로 무릎 아래가 가려짐)
+    '벨':    { size: [510, 1955], box: [14, 14, 492, 1943], eye: [293, 234], d: 75, knee: 1325, tune: 1 },
     '이블린': { size: [402, 719], box: [54, 31, 344, 706],  eye: [209.5, 95.4],  d: 30.6, tune: 1 },
     '아리아': { size: [402, 720], box: [27, 33, 371, 697],  eye: [191.8, 112.2], d: 29.2, tune: 1 },
     '레미엘': { size: [402, 720], box: [0, 14, 402, 720],   eye: [195.9, 78.8],  d: 32.8, tune: 1 },
@@ -1175,14 +1178,27 @@ body.tt-on tw-passage { display: none; }
 
   /* 벨 발끝이 화면 맨 아래에 닿는 기준선: 벨 눈높이가 바닥에서 얼마나 떨어져 있는지 */
   function eyeLineFromBottom() {
-    var a = CHAR[ANCHOR];
+    var a = ANCHOR_REF;
     return (a.box[3] - a.eye[1]) * ANCHOR_SCALE;
   }
 
   /* 얼굴 크기를 맞춘 배치: 눈 사이 간격이 벨과 같아지도록 크기를 정하고, 눈높이를 벨과 같은 줄에 둠 */
+  /* 눈-무릎 배치: 눈이 화면 높이의 EYE_AT(정중앙)에 오고 무릎이 화면 맨 아래에 오도록 그림 크기를 정함.
+     화면 높이 기준(%)이라 폰 화면 비율이 달라도 눈은 항상 정중앙. 가로는 얼굴이 FACE_X 자리에 오게 그림 자기 너비 비율로 밀어줌 */
+  var EYE_AT = 0.5;
+  function placeKnee(img, m, side) {
+    var k = EYE_AT / (m.knee - m.eye[1]);                                // 그림 한 픽셀이 차지하는 화면 높이 비율
+    img.style.height = (m.size[1] * k * 100).toFixed(3) + '%';
+    img.style.width = 'auto';
+    img.style.bottom = (-(m.size[1] - m.knee) * k * 100).toFixed(3) + '%';
+    img.style.left = 'calc(var(--u) * ' + (side === 'L' ? FACE_X_LEFT : FACE_X_RIGHT) + ')';
+    img.style.transform = 'translateX(-' + (m.eye[0] / m.size[0] * 100).toFixed(3) + '%)';
+  }
+
   function placeFace(img, name, side) {
     var m = CHAR[name];
-    var s = ANCHOR_SCALE * (CHAR[ANCHOR].d / m.d) * (m.tune || 1);       // 그림 한 픽셀의 화면 크기
+    if (m.knee != null) { placeKnee(img, m, side); return; }
+    var s = ANCHOR_SCALE * (ANCHOR_REF.d / m.d) * (m.tune || 1);       // 그림 한 픽셀의 화면 크기
     var left = (side === 'L' ? FACE_X_LEFT : FACE_X_RIGHT) - m.eye[0] * s;
     var l = left + m.box[0] * s, r = left + m.box[2] * s;               // 실제 그려진 부분의 좌우 끝
     if (l < 0.5) left += 0.5 - l;                                        // 화면 밖으로 잘리면 안쪽으로 밀어줌
