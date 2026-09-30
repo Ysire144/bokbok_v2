@@ -748,7 +748,7 @@ body.tt-on tw-passage { display: none; }
   var CHAR_WEB_BASE = 'images/characters/';
   var CHAR_BASE = (location.protocol === 'file:') ? CHAR_LOCAL_BASE : CHAR_WEB_BASE;
   var EXPRESSION = '진지';                // 기본 표정 이름: 파일 이름 뒤에 붙음 (이름_진지.png). 인물마다 CHAR 안에 expr 로 따로 정할 수 있음 (예: 벨_고뇌.webp)
-  var BUILD_VERSION = '0.03';             // 화면 오른쪽 위에 작게 보이는 버전. 뭔가 바꿀 때마다 0.01 씩 올릴 것 (사용자 요청)
+  var BUILD_VERSION = '0.04';             // 화면 오른쪽 위에 작게 보이는 버전. 뭔가 바꿀 때마다 0.01 씩 올릴 것 (사용자 요청)
   var ANCHOR = '벨';                      // 기준 인물
   // 다른 인물들의 크기/눈높이 기준은 예전 벨 그림의 수치를 그대로 쓴다 (벨 그림을 새로 바꿔도 다른 인물 배치가 안 변하게 고정)
   var ANCHOR_REF = { box: [90, 22, 301, 704], eye: [211.5, 98.4], d: 31.6 };
@@ -763,7 +763,10 @@ body.tt-on tw-passage { display: none; }
                          '놀람': { size: [490, 1940], box: [10, 24, 472, 1940] }, '지목': { size: [797, 1940], box: [11, 22, 787, 1934] } } },
     '이블린': { size: [402, 719], box: [54, 31, 344, 706],  eye: [209.5, 95.4],  d: 30.6, tune: 1 },
     '아리아': { size: [402, 720], box: [27, 33, 371, 697],  eye: [191.8, 112.2], d: 29.2, tune: 1 },
-    '레미엘': { size: [402, 720], box: [0, 14, 402, 720],   eye: [195.9, 78.8],  d: 32.8, tune: 1 },
+    '레미엘': { size: [402, 720], box: [0, 14, 402, 720],   eye: [195.9, 78.8],  d: 32.8, tune: 1,
+             // 새 그림(1117x2000, 비스듬한 각도): 얼굴 크기는 벨과 같게, 무릎은 화면 맨 아래에 (eye 는 두 눈 가운데, d 는 눈동자 간격, knee 는 무릎 높이, 전부 그림 픽셀)
+             // 원본 그림은 얼굴이 오른쪽을 봐서 flip 으로 왼쪽을 보게 뒤집음 (좌표는 원본 기준)
+             variants: { '미소': { size: [1117, 2000], box: [66, 75, 989, 1973], eye: [637, 260], d: 82, knee: 1365, flip: true, slack: 25 } } },
     '버니스': { size: [402, 720], box: [94, 40, 325, 715],  eye: [211.3, 117.9], d: 34.9, tune: 1 },
     '빛나':  { size: [402, 719], box: [72, 29, 339, 707],  eye: [200.3, 102.4], d: 36.1, tune: 1 },
     '11호': { size: [402, 719], box: [78, 24, 336, 711], eye: [197.8, 125.0], d: 37.5, tune: 1 },
@@ -777,7 +780,11 @@ body.tt-on tw-passage { display: none; }
     '미야비': { size: [402, 720], box: [85, 7, 315, 716], eye: [202.0, 125.4], d: 31.2, tune: 1 },
     '반악': { size: [402, 720], box: [15, 15, 402, 705], eye: [200.7, 93.1], d: 27.4, tune: 0.75 },   // 짐승 얼굴이라 눈 간격이 좁아서 그대로면 너무 커져서 줄임
     '벨리나': { size: [402, 720], box: [30, 24, 333, 709], eye: [207.3, 94.0], d: 28.7, tune: 1 },
-    '수나': { size: [401, 720], box: [64, 31, 339, 720], eye: [214.5, 135.3], d: 47.1, tune: 1 },
+    '수나': { size: [401, 720], box: [64, 31, 339, 720], eye: [214.5, 135.3], d: 47.1, tune: 1,
+             // 새 그림 3장 (1117x2000, 비스듬한 각도, 전부 왼쪽을 봄): 몸은 같은 자세라 무릎/눈동자 간격은 같고, 눈 위치와 그려진 사각형만 조금씩 다름
+             variants: { '경멸': { size: [1117, 2000], box: [263, 80, 965, 1964], eye: [450, 345], d: 88, knee: 1380, slack: 20 },
+                         '권총': { size: [1117, 2000], box: [155, 83, 970, 1985], eye: [448, 350], d: 88, knee: 1380, slack: 20 },
+                         '억울': { size: [1117, 2000], box: [264, 73, 962, 1967], eye: [446, 339], d: 88, knee: 1380, slack: 20 } } },
     '시드': { size: [402, 720], box: [109, 23, 294, 693], eye: [202.7, 97.5], d: 33.8, tune: 1 },
     '시시아': { size: [402, 719], box: [52, 16, 337, 717], eye: [204.3, 99.6], d: 32.8, tune: 1 },
     '아스트라': { size: [401, 720], box: [22, 19, 375, 702], eye: [203.7, 116.0], d: 31.5, tune: 1 },
@@ -825,10 +832,29 @@ body.tt-on tw-passage { display: none; }
   function imgUrl(file) { return encodeURI(IMAGE_BASE + file); }
   function canon(n) { return ALIAS[n] || n; }
   function hasChar(n) { return !!CHAR[String(n).split('#')[0]]; }
-  var sceneExpr = null;                   // 지금 장면에서 벨이 지을 표정 (장면 글에 넣은 data-bx 표시). 없으면 기본 표정
+  /* 장면마다 인물이 지을 표정: 장면 글 맨 위에 <span data-bx="..."></span> 를 넣어서 정함. 표시가 없는 인물은 기본 표정.
+     - <span data-bx="수나:권총"></span>  ->  수나만 '권총' 표정 (인물 이름:표정 이름). 나란히 여러 개 넣어도 돼.
+     - <span data-bx="지목"></span>       ->  '지목' 그림이 있는 인물이면 누구나 그 표정 (이름 없이 쓴 예전 방식, 벨 장면들)
+     표정 그림은 CHAR 의 그 인물 variants 에 적어두고, 파일 이름은 '이름_표정.webp' (예: 수나_권총.webp) */
+  var sceneExprs = [];                    // 지금 장면의 표정 표시들: [{ who, expr }]
+  function parseBx(raw) {
+    var s = String(raw), i = s.indexOf(':');
+    return i < 0 ? { who: null, expr: s.trim() } : { who: canon(s.slice(0, i).trim()), expr: s.slice(i + 1).trim() };
+  }
+  function sceneExprFor(n) {              // 지금 장면에서 이 인물이 지을 표정 이름 (없으면 null)
+    var m = CHAR[n], vs = m && m.variants, bare = null, i;
+    if (!vs) return null;
+    for (i = 0; i < sceneExprs.length; i++) {
+      var b = sceneExprs[i];
+      if (!vs[b.expr]) continue;
+      if (b.who === n) return b.expr;     // 이름을 적은 표시가 우선
+      if (!b.who && !bare) bare = b.expr;
+    }
+    return bare;
+  }
   function exprKey(n) {                   // 인물 이름 -> 그림 이름표 ('벨' 또는 '벨#미소')
-    var m = n && CHAR[n];
-    return (m && m.variants && sceneExpr && m.variants[sceneExpr]) ? n + '#' + sceneExpr : n;
+    var x = n && sceneExprFor(n);
+    return x ? n + '#' + x : n;
   }
 
   function el(tag, cls) {
@@ -1132,6 +1158,10 @@ body.tt-on tw-passage { display: none; }
     // 순서: 오프닝 인물 중 아직 안 받은 사람 -> 용의자 루트 첫 인물 -> 나머지 인물
     var first = PRELOAD_CORE.concat(PRELOAD_HUB).filter(hasChar);
     var rest = first.concat(Object.keys(CHAR).filter(function (n) { return first.indexOf(n) < 0; }));
+    Object.keys(CHAR).forEach(function (n) {                           // 표정별 그림 (예: 수나#권총)
+      var vs = CHAR[n].variants;
+      if (vs) Object.keys(vs).forEach(function (x) { if (rest.indexOf(n + '#' + x) < 0) rest.push(n + '#' + x); });
+    });
     var active = 0;
     function pump() {
       if (urgent > 0) return;             // 지금 화면에 필요한 그림을 기다리는 중이면 양보
@@ -1196,8 +1226,15 @@ body.tt-on tw-passage { display: none; }
           if (tags.indexOf('vn') < 0 && tags.indexOf('vn-choice') < 0) continue;   // 대화 장면이 아니면 여기서 멈춤
           var sp = speakerOf(p.text);
           if (sp && CHAR[sp]) loadSprite(sp);
-          var bm = /data-bx="([^"]+)"/.exec(p.text);        // 다음 장면에서 벨이 지을 표정 그림도 미리 받음
-          if (bm && CHAR[LEFT_MAIN] && CHAR[LEFT_MAIN].variants && CHAR[LEFT_MAIN].variants[bm[1]]) loadSprite(LEFT_MAIN + '#' + bm[1]);
+          var bm, reBx = /data-bx="([^"]+)"/g;               // 다음 장면에서 인물들이 지을 표정 그림도 미리 받음
+          while ((bm = reBx.exec(p.text))) {
+            (function (bx) {
+              Object.keys(CHAR).forEach(function (n) {
+                var vs = CHAR[n].variants;
+                if (vs && vs[bx.expr] && (!bx.who || bx.who === n)) loadSprite(n + '#' + bx.expr);
+              });
+            })(parseBx(bm[1]));
+          }
           next = next.concat(linksOf(p.text));
         }
         queue = next;
@@ -1216,27 +1253,48 @@ body.tt-on tw-passage { display: none; }
   /* 눈-무릎 배치: 눈이 화면 높이의 EYE_AT(정중앙)에 오고 무릎이 화면 맨 아래에 오도록 그림 크기를 정함.
      화면 높이 기준(%)이라 폰 화면 비율이 달라도 눈은 항상 정중앙. 가로는 얼굴이 FACE_X 자리에 오게 그림 자기 너비 비율로 밀어줌 */
   var EYE_AT = 0.5;
+  /* 벨 그림 한 픽셀이 차지하는 화면 높이 비율 (다른 인물의 얼굴 크기를 벨에 맞출 때 기준) */
+  function anchorK() {
+    var a = CHAR[ANCHOR];
+    return (a.top != null) ? (a.topAt || 0.72) / (a.knee - a.top) : EYE_AT / (a.knee - a.eye[1]);
+  }
+
+  /* 무릎 기준 배치. 인물 값(m)에 표정별 값(variants)이 있으면 그걸 우선 씀. (size, box, eye, d, knee, tune, flip)
+     - 벨처럼 top 이 있으면: 무릎이 화면 맨 아래, 모자 꼭대기가 화면 높이의 topAt 에 오게 크기를 정함
+     - top 이 없고 d(눈동자 사이 거리)가 있으면: 얼굴 크기가 벨과 같아지게 크기를 정하고, 무릎을 화면 맨 아래에 둠
+       (비스듬한 각도의 그림은 눈 간격이 좁아 보이니까 d 는 그림에서 실제로 잰 값을 적으면 되고, 얼굴이 크거나 작아 보이면 tune 으로 미세 조정)
+     - flip: true 면 그림을 좌우로 뒤집어서 보여줌 (눈/사각형 좌표는 원본 그림 기준 그대로 적어)
+     - slack: 그림이 옆으로 넓을 때(날개, 꼬리머리 등) 화면 밖으로 잘려도 되는 폭 (화면 폭의 %). 크면 얼굴이 제자리에 오고 대신 바깥쪽이 더 잘림 */
   function placeKnee(img, m, side, variant) {
     var v = (m.variants && (m.variants[variant] || m.variants[m.expr])) || m;
-    var size = v.size || m.size, box = v.box || m.box;
-    // 그림 한 픽셀이 차지하는 화면 높이 비율: 모자 꼭대기가 topAt 에 오게(top 이 있을 때) 또는 눈이 EYE_AT 에 오게
-    var k = (m.top != null) ? (m.topAt || 0.72) / (m.knee - m.top) : EYE_AT / (m.knee - m.eye[1]);
+    function g(key) { return v[key] != null ? v[key] : m[key]; }
+    var size = g('size'), box = g('box'), eye = g('eye'), knee = g('knee'), flip = !!g('flip');
+    // 그림 한 픽셀이 차지하는 화면 높이 비율
+    var k;
+    if (g('top') != null) k = (g('topAt') || 0.72) / (knee - g('top'));
+    else if (g('d') != null) k = anchorK() * (CHAR[ANCHOR].d / g('d')) * (g('tune') || 1);
+    else k = EYE_AT / (knee - eye[1]);
+    var ex = flip ? size[0] - eye[0] : eye[0];
+    var bl = flip ? size[0] - box[2] : box[0], br = flip ? size[0] - box[0] : box[2];
     var fx = (m.faceX != null) ? m.faceX : (side === 'L' ? FACE_X_LEFT : FACE_X_RIGHT);
     var H = 'var(--stage-h) * ';
     img.style.height = (size[1] * k * 100).toFixed(3) + '%';
     img.style.width = 'auto';
-    img.style.bottom = (-(size[1] - m.knee) * k * 100).toFixed(3) + '%';
+    img.style.bottom = (-(size[1] - knee) * k * 100).toFixed(3) + '%';
+    if (flip) img.style.transform = 'scaleX(-1)';
     // 얼굴 가운데를 fx 자리에 두되, 그려진 부분이 화면 왼쪽/오른쪽 밖으로 잘리지 않게 안쪽으로 밀어줌
-    var want = 'calc(var(--u) * ' + fx + ' - ' + H + (m.eye[0] * k).toFixed(5) + ')';
-    var minL = 'calc(var(--u) * 0.5 - ' + H + (box[0] * k).toFixed(5) + ')';
-    var maxL = 'calc(var(--u) * 99.5 - ' + H + (box[2] * k).toFixed(5) + ')';
+    var want = 'calc(var(--u) * ' + fx + ' - ' + H + (ex * k).toFixed(5) + ')';
+    var sl = g('slack') || 0;
+    var minL = 'calc(var(--u) * ' + (0.5 - sl) + ' - ' + H + (bl * k).toFixed(5) + ')';
+    var maxL = 'calc(var(--u) * ' + (99.5 + sl) + ' - ' + H + (br * k).toFixed(5) + ')';
     img.style.left = 'min(' + maxL + ', max(' + minL + ', ' + want + '))';
   }
 
   function placeFace(img, name, side) {
     var kp = String(name).split('#');
     var m = CHAR[kp[0]];
-    if (m.knee != null) { placeKnee(img, m, side, kp[1]); return; }
+    var vv = m.variants && kp[1] && m.variants[kp[1]];
+    if (m.knee != null || (vv && vv.knee != null)) { placeKnee(img, m, side, kp[1]); return; }   // 무릎 기준 그림 (벨, 새로 그린 표정 그림)
     var s = ANCHOR_SCALE * (ANCHOR_REF.d / m.d) * (m.tune || 1);       // 그림 한 픽셀의 화면 크기
     var left = (side === 'L' ? FACE_X_LEFT : FACE_X_RIGHT) - m.eye[0] * s;
     var l = left + m.box[0] * s, r = left + m.box[2] * s;               // 실제 그려진 부분의 좌우 끝
@@ -1876,8 +1934,7 @@ body.tt-on tw-passage { display: none; }
     var info = tags.indexOf('vn') >= 0 ? extract(p) : null;
     if (!info) { leaveVN(tags.indexOf('vn-choice') >= 0); finishNav(tags); return; }
 
-    var bx = p.querySelector('[data-bx]');                // 이 장면에서 벨이 지을 표정 (없으면 기본 표정)
-    sceneExpr = bx ? bx.getAttribute('data-bx') : null;
+    sceneExprs = Array.prototype.map.call(p.querySelectorAll('[data-bx]'), function (b) { return parseBx(b.getAttribute('data-bx')); });   // 이 장면에서 인물들이 지을 표정 (없으면 기본 표정)
     var parsed = parseSpeaker(info.text);
     placeSpeaker(parsed.speaker);
     finishNav(tags);
@@ -2044,7 +2101,8 @@ body.tt-on tw-passage { display: none; }
 (click: ?page)[(go-to: &quot;엔딩 갤러리 2페이지&quot;)]
 [[엔딩 갤러리 2페이지]]</tw-passagedata><tw-passagedata pid="32" name="엔딩9" tags="" position="900,2800" size="100,100">엔딩 9 (이미지 자리)
 (click: ?page)[(go-to: &quot;엔딩 갤러리 2페이지&quot;)]
-[[엔딩 갤러리 2페이지]]</tw-passagedata><tw-passagedata pid="33" name="재밌게 했다면 제작자에게 커피 한 잔?" tags="" position="5000,3050" size="100,100">[[타이틀 화면]]</tw-passagedata><tw-passagedata pid="34" name="제목 없는 구절" tags="vn" position="700,100" size="100,100">수나: 엣...?! 뭐라고요?
+[[엔딩 갤러리 2페이지]]</tw-passagedata><tw-passagedata pid="33" name="재밌게 했다면 제작자에게 커피 한 잔?" tags="" position="5000,3050" size="100,100">[[타이틀 화면]]</tw-passagedata><tw-passagedata pid="34" name="제목 없는 구절" tags="vn" position="700,100" size="100,100">&lt;span data-bx=&quot;수나:억울&quot;&gt;&lt;/span&gt;
+수나: 엣...?! 뭐라고요?
 
 [[시작7]]</tw-passagedata><tw-passagedata pid="35" name="제목 없는 구절 1" tags="vn" position="900,100" size="100,100">야나기: 잠시만요, 이런 상황일수록 침착해야 합니다. 우선 벨 씨, 벨 씨가 이 사건의 수사를 맡아주시는 게 좋겠어요. 
 
@@ -2351,7 +2409,8 @@ body.tt-on tw-passage { display: none; }
 
 [[제목 없는 구절 219]]</tw-passagedata><tw-passagedata pid="168" name="제목 없는 구절 219" tags="vn" position="1400,2150" size="100,100">니콜: 걱정 마, 덕분에 차 한 대 뽑았으니까.
 
-[[제목 없는 구절 220]]</tw-passagedata><tw-passagedata pid="169" name="제목 없는 구절 22" tags="vn" position="200,500" size="100,100">레미엘: 벨 씨, 저랑 문답 게임 하나 하실래요?
+[[제목 없는 구절 220]]</tw-passagedata><tw-passagedata pid="169" name="제목 없는 구절 22" tags="vn" position="200,500" size="100,100">&lt;span data-bx=&quot;레미엘:미소&quot;&gt;&lt;/span&gt;
+레미엘: 벨 씨, 저랑 문답 게임 하나 하실래요?
 
 [[제목 없는 구절 23]]</tw-passagedata><tw-passagedata pid="170" name="제목 없는 구절 220" tags="vn" position="1500,2150" size="100,100">클라렛: 앗?! 그렇다면 혹시 반대로 사셨나요? 다행...
 
@@ -2375,7 +2434,8 @@ body.tt-on tw-passage { display: none; }
 
 [[제목 없는 구절 229]]</tw-passagedata><tw-passagedata pid="179" name="제목 없는 구절 229" tags="vn" position="1900,2250" size="100,100">벨리나: 그야 이제 집이 없으니까요~ 역 앞에서 살고있어요.
 
-[[제목 없는 구절 230]]</tw-passagedata><tw-passagedata pid="180" name="제목 없는 구절 23" tags="vn" position="300,500" size="100,100">벨: 어...? 갑자기?
+[[제목 없는 구절 230]]</tw-passagedata><tw-passagedata pid="180" name="제목 없는 구절 23" tags="vn" position="300,500" size="100,100">&lt;span data-bx=&quot;레미엘:미소&quot;&gt;&lt;/span&gt;
+벨: 어...? 갑자기?
 
 [[제목 없는 구절 24]]</tw-passagedata><tw-passagedata pid="181" name="제목 없는 구절 230" tags="" position="2000,2250" size="100,100">`[END]`
 그렇게 클라렛은 사망하고 말았다.
@@ -2401,7 +2461,8 @@ body.tt-on tw-passage { display: none; }
 
 [[제목 없는 구절 239]]</tw-passagedata><tw-passagedata pid="190" name="제목 없는 구절 239" tags="vn" position="1700,1050" size="100,100">벨: 어... 그, 잘 모르겠는데.
 
-[[제목 없는 구절 240]]</tw-passagedata><tw-passagedata pid="191" name="제목 없는 구절 24" tags="vn" position="400,500" size="100,100">레미엘: 혹시, 미녀와 야수 이야기 들어보셨나요?
+[[제목 없는 구절 240]]</tw-passagedata><tw-passagedata pid="191" name="제목 없는 구절 24" tags="vn" position="400,500" size="100,100">&lt;span data-bx=&quot;레미엘:미소&quot;&gt;&lt;/span&gt;
+레미엘: 혹시, 미녀와 야수 이야기 들어보셨나요?
 
 [[제목 없는 구절 25]]</tw-passagedata><tw-passagedata pid="192" name="제목 없는 구절 240" tags="confirm" position="1800,1050" size="100,100">`[END]`
 
@@ -2426,7 +2487,8 @@ body.tt-on tw-passage { display: none; }
 
 [[제목 없는 구절 249]]</tw-passagedata><tw-passagedata pid="201" name="제목 없는 구절 249" tags="vn" position="2300,1800" size="100,100">레미엘: 시작은... 클라렛 씨였어요. 어느 날, 우연히 클라렛 씨를 강가에서 마주친 복복 씨가 말했죠. &quot;주식에 물리셨다고요? 투자는 잃어도 되는 돈으로만 하는 거예요.&quot;
 
-[[제목 없는 구절 250]]</tw-passagedata><tw-passagedata pid="202" name="제목 없는 구절 25" tags="vn" position="500,500" size="100,100">벨: 어... 그럴지도?
+[[제목 없는 구절 250]]</tw-passagedata><tw-passagedata pid="202" name="제목 없는 구절 25" tags="vn" position="500,500" size="100,100">&lt;span data-bx=&quot;레미엘:미소&quot;&gt;&lt;/span&gt;
+벨: 어... 그럴지도?
 
 [[제목 없는 구절 26]]</tw-passagedata><tw-passagedata pid="203" name="제목 없는 구절 250" tags="vn" position="2400,1800" size="100,100">클라렛: 잃어도 되는 돈이 어딨어...!! 그런 돈 있으면 나한테 주고 죽어!!!
 
@@ -2449,7 +2511,8 @@ body.tt-on tw-passage { display: none; }
 
 [[제목 없는 구절 259]]</tw-passagedata><tw-passagedata pid="212" name="제목 없는 구절 259" tags="vn" position="2800,1800" size="100,100">레미엘: 트리거 씨에게는 &#39;앞이 안 보이면 휴대폰은 어떻게 쓰세요?&#39; 라는 잔인한 말을!!!
 
-[[제목 없는 구절 260]]</tw-passagedata><tw-passagedata pid="213" name="제목 없는 구절 26" tags="vn" position="600,500" size="100,100">벨이라는 존재를 만나기 전까지, 저주에 걸려 성에 유폐된 왕자님과 같은 상태였답니다. 저는 장미과의 벚나무속의 식물로 모두를 홀리기 위해 준비를 하고 있었죠.
+[[제목 없는 구절 260]]</tw-passagedata><tw-passagedata pid="213" name="제목 없는 구절 26" tags="vn" position="600,500" size="100,100">&lt;span data-bx=&quot;레미엘:미소&quot;&gt;&lt;/span&gt;
+벨이라는 존재를 만나기 전까지, 저주에 걸려 성에 유폐된 왕자님과 같은 상태였답니다. 저는 장미과의 벚나무속의 식물로 모두를 홀리기 위해 준비를 하고 있었죠.
 
 [[제목 없는 구절 27]]</tw-passagedata><tw-passagedata pid="214" name="제목 없는 구절 260" tags="vn" position="2900,1800" size="100,100">레미엘: 빛나 씨에게는 &#39;요리 말고 다른 건 안 해보고 싶나요? 검술 같은...&#39; 이라는 말도 안 되는 말을 했어요! 평생을 요리에 바쳐온 빛나 씨한테!
 
@@ -2472,7 +2535,8 @@ body.tt-on tw-passage { display: none; }
 [[제목 없는 구절 269]]</tw-passagedata><tw-passagedata pid="223" name="제목 없는 구절 269" tags="vn" position="3800,1800" size="100,100">&lt;span data-bx=&quot;놀람&quot;&gt;&lt;/span&gt;
 벨: 그런 잔인한!!
 
-[[제목 없는 구절 270]]</tw-passagedata><tw-passagedata pid="224" name="제목 없는 구절 27" tags="vn" position="700,500" size="100,100">벨: ...?
+[[제목 없는 구절 270]]</tw-passagedata><tw-passagedata pid="224" name="제목 없는 구절 27" tags="vn" position="700,500" size="100,100">&lt;span data-bx=&quot;레미엘:미소&quot;&gt;&lt;/span&gt;
+벨: ...?
 
 [[제목 없는 구절 28]]</tw-passagedata><tw-passagedata pid="225" name="제목 없는 구절 270" tags="vn" position="3900,1800" size="100,100">시드: 타우미엘로 120번 베어지고 살아남은 것도 대단하네~
 
@@ -2494,7 +2558,8 @@ body.tt-on tw-passage { display: none; }
 
 [[제목 없는 구절 279]]</tw-passagedata><tw-passagedata pid="234" name="제목 없는 구절 279" tags="vn" position="4700,2000" size="100,100">벨: 신이시여, 탐정으로 살아온 지난 135년간, 이런 결정을 내린 적이 없습니다. 세상에는 흑과 백, 두가지만 있다고 생각했죠.
 
-[[제목 없는 구절 280]]</tw-passagedata><tw-passagedata pid="235" name="제목 없는 구절 28" tags="vn" position="800,500" size="100,100">레미엘: 후후, 혹시 프루누스 페르시카라는 말을 들어보셨나요? 정말 마법같은 단어에요.
+[[제목 없는 구절 280]]</tw-passagedata><tw-passagedata pid="235" name="제목 없는 구절 28" tags="vn" position="800,500" size="100,100">&lt;span data-bx=&quot;레미엘:미소&quot;&gt;&lt;/span&gt;
+레미엘: 후후, 혹시 프루누스 페르시카라는 말을 들어보셨나요? 정말 마법같은 단어에요.
 
 [[제목 없는 구절 29]]</tw-passagedata><tw-passagedata pid="236" name="제목 없는 구절 280" tags="vn" position="4700,2100" size="100,100">벨: 하지만 저는, 인간의 영혼에 난 균열을 봤습니다.
 
@@ -2508,13 +2573,15 @@ body.tt-on tw-passage { display: none; }
 
 [[제목 없는 구절 285]]</tw-passagedata><tw-passagedata pid="241" name="제목 없는 구절 285" tags="vn" position="5000,2300" size="100,100">그 한마디 말과 함께, 냉동실에서 딱딱하게 얼어붙은 돼지고기 같던 분위기가 녹았다. 한순간에 흘러나온 온기가 서늘한 저녁공기를 전부 메우는 듯했다.
 
-[[제목 없는 구절 286]]</tw-passagedata><tw-passagedata pid="242" name="제목 없는 구절 286" tags="vn" position="5000,2400" size="100,100">레미엘: 벨 씨... 고마워요.
+[[제목 없는 구절 286]]</tw-passagedata><tw-passagedata pid="242" name="제목 없는 구절 286" tags="vn" position="5000,2400" size="100,100">&lt;span data-bx=&quot;레미엘:미소&quot;&gt;&lt;/span&gt;
+레미엘: 벨 씨... 고마워요.
 
 [[제목 없는 구절 287]]</tw-passagedata><tw-passagedata pid="243" name="제목 없는 구절 287" tags="vn" position="5000,2500" size="100,100">귤복복: 여러분... 정말... 끝까지 제 말은 하나도 안 듣고...!! 진짜 한마디도 안 듣고!!!!
 
 [[제목 없는 구절 288]]</tw-passagedata><tw-passagedata pid="244" name="제목 없는 구절 288" tags="vn" position="5000,2600" size="100,100">그렇게 길고도 길었던 젠레스 존 제로 2.2주년 축제는 막을 내렸다.
 
-[[제목 없는 구절 290]]</tw-passagedata><tw-passagedata pid="245" name="제목 없는 구절 289" tags="" position="800,2350" size="100,100"></tw-passagedata><tw-passagedata pid="246" name="제목 없는 구절 29" tags="vn" position="900,500" size="100,100">벨: 레미엘, 장난 그만치고 10시경에 뭘 했는지 알려줘.
+[[제목 없는 구절 290]]</tw-passagedata><tw-passagedata pid="245" name="제목 없는 구절 289" tags="" position="800,2350" size="100,100"></tw-passagedata><tw-passagedata pid="246" name="제목 없는 구절 29" tags="vn" position="900,500" size="100,100">&lt;span data-bx=&quot;레미엘:미소&quot;&gt;&lt;/span&gt;
+벨: 레미엘, 장난 그만치고 10시경에 뭘 했는지 알려줘.
 
 [[제목 없는 구절 30]]</tw-passagedata><tw-passagedata pid="247" name="제목 없는 구절 290" tags="vn" position="5000,2700" size="100,100">...
 
@@ -2541,7 +2608,8 @@ body.tt-on tw-passage { display: none; }
 [[제목 없는 구절 300]]</tw-passagedata><tw-passagedata pid="257" name="제목 없는 구절 3" tags="confirm vn" position="1100,100" size="100,100">(시시아가 귤복복을 치고 지나감)
 시시아: 저저저저저저저기... 저 늦은 거 아니죠? 저 진짜 제시간에 출발했는데 케이블카가 늦게 와서!!
 
-[[제목 없는 구절 4]]</tw-passagedata><tw-passagedata pid="258" name="제목 없는 구절 30" tags="vn" position="1000,500" size="100,100">레미엘: 후후후, 어쩌면 벨 씨를 만나기를 기다리고 있었을지도? 
+[[제목 없는 구절 4]]</tw-passagedata><tw-passagedata pid="258" name="제목 없는 구절 30" tags="vn" position="1000,500" size="100,100">&lt;span data-bx=&quot;레미엘:미소&quot;&gt;&lt;/span&gt;
+레미엘: 후후후, 어쩌면 벨 씨를 만나기를 기다리고 있었을지도? 
 
 [[제목 없는 구절 31]]</tw-passagedata><tw-passagedata pid="259" name="제목 없는 구절 300" tags="vn" position="1900,1450" size="100,100">반악: 떠나간 제자의 조언을 듣지 않은 것이지...
 
@@ -2590,11 +2658,14 @@ body.tt-on tw-passage { display: none; }
 [[제목 없는 구절 41]]</tw-passagedata><tw-passagedata pid="279" name="제목 없는 구절 36" tags="vn" position="1500,550" size="100,100">(추궁한다)
 벨: 왜 복숭아 케이크였던 거야? 
 
-[[제목 없는 구절 37]]</tw-passagedata><tw-passagedata pid="280" name="제목 없는 구절 37" tags="vn" position="1600,550" size="100,100">레미엘: 벨 씨... 혹시 곰 세 마리와 늑대 이야기를 들어보신 적 있나요?
+[[제목 없는 구절 37]]</tw-passagedata><tw-passagedata pid="280" name="제목 없는 구절 37" tags="vn" position="1600,550" size="100,100">&lt;span data-bx=&quot;레미엘:미소&quot;&gt;&lt;/span&gt;
+레미엘: 벨 씨... 혹시 곰 세 마리와 늑대 이야기를 들어보신 적 있나요?
 
-[[제목 없는 구절 38]]</tw-passagedata><tw-passagedata pid="281" name="제목 없는 구절 38" tags="vn" position="1700,550" size="100,100">벨: 어...? 들어봤을지도?
+[[제목 없는 구절 38]]</tw-passagedata><tw-passagedata pid="281" name="제목 없는 구절 38" tags="vn" position="1700,550" size="100,100">&lt;span data-bx=&quot;레미엘:미소&quot;&gt;&lt;/span&gt;
+벨: 어...? 들어봤을지도?
 
-[[제목 없는 구절 39]]</tw-passagedata><tw-passagedata pid="282" name="제목 없는 구절 39" tags="vn" position="1800,550" size="100,100">레미엘: 마치, 어느 집을 먼저 들어갈까 고민하던 늑대 씨처럼... 저도 깊은 고민에 빠져 있었답니다.
+[[제목 없는 구절 39]]</tw-passagedata><tw-passagedata pid="282" name="제목 없는 구절 39" tags="vn" position="1800,550" size="100,100">&lt;span data-bx=&quot;레미엘:미소&quot;&gt;&lt;/span&gt;
+레미엘: 마치, 어느 집을 먼저 들어갈까 고민하던 늑대 씨처럼... 저도 깊은 고민에 빠져 있었답니다.
 
 [[제목 없는 구절 40]]</tw-passagedata><tw-passagedata pid="283" name="제목 없는 구절 4" tags="vn" position="100,200" size="100,100">11호: 시시아 씨, 오늘같이 수많은 사람들이 모이는 중대 일정에는 30분 일찍 도착하는 게 예의입니다. 아슬아슬하게 시간에 맞춰 온다는 건 시작부터 틀렸다고요.
 
@@ -2711,7 +2782,8 @@ body.tt-on tw-passage { display: none; }
 
 [[제목 없는 구절 85]]</tw-passagedata><tw-passagedata pid="333" name="제목 없는 구절 85" tags="vn" position="2300,750" size="100,100">벨: 아리아 씨, 남궁우 씨, 그리고 굴러다니는 감자 씨, 아스트라 씨와 10시경에 통화했었나요?
 
-[[제목 없는 구절 86]]</tw-passagedata><tw-passagedata pid="334" name="제목 없는 구절 86" tags="vn" position="2400,750" size="100,100">수나: 에...?
+[[제목 없는 구절 86]]</tw-passagedata><tw-passagedata pid="334" name="제목 없는 구절 86" tags="vn" position="2400,750" size="100,100">&lt;span data-bx=&quot;수나:억울&quot;&gt;&lt;/span&gt;
+수나: 에...?
 
 [[제목 없는 구절 87]]</tw-passagedata><tw-passagedata pid="335" name="제목 없는 구절 87" tags="vn" position="2500,750" size="100,100">아리아: 맞아요. 분명 아스트라 씨가 저희한테 전화해서 긴장 푸는 법을 알려주셨어요.
 
@@ -2725,20 +2797,24 @@ body.tt-on tw-passage { display: none; }
 
 [[제목 없는 구절 91]]</tw-passagedata><tw-passagedata pid="340" name="제목 없는 구절 91" tags="vn" position="2900,750" size="100,100">수나: 네...?
 
-[[제목 없는 구절 92]]</tw-passagedata><tw-passagedata pid="341" name="제목 없는 구절 92" tags="vn" position="3000,750" size="100,100">&lt;span data-bx=&quot;놀람&quot;&gt;&lt;/span&gt;
+[[제목 없는 구절 92]]</tw-passagedata><tw-passagedata pid="341" name="제목 없는 구절 92" tags="vn" position="3000,750" size="100,100">&lt;span data-bx=&quot;수나:경멸&quot;&gt;&lt;/span&gt;
+&lt;span data-bx=&quot;놀람&quot;&gt;&lt;/span&gt;
 그 순간, 수나의 분위기가 급변했다. 한순간에 귀엽던 목소리는 마치 미녀 이중첩자처럼 내리깔았고, 주머니에서 검은 무언가를 꺼냈다.
 
-[[제목 없는 구절 93]]</tw-passagedata><tw-passagedata pid="342" name="제목 없는 구절 93" tags="vn" position="3100,750" size="100,100">&lt;span data-bx=&quot;놀람&quot;&gt;&lt;/span&gt;
+[[제목 없는 구절 93]]</tw-passagedata><tw-passagedata pid="342" name="제목 없는 구절 93" tags="vn" position="3100,750" size="100,100">&lt;span data-bx=&quot;수나:권총&quot;&gt;&lt;/span&gt;
+&lt;span data-bx=&quot;놀람&quot;&gt;&lt;/span&gt;
 그것은 바로 권총이라고도 불리는 권총! 단 한발만으로도 사람을 죽일 수 있는 막강한 무기! 
 
-[[제목 없는 구절 94]]</tw-passagedata><tw-passagedata pid="343" name="제목 없는 구절 94" tags="vn" position="3200,750" size="100,100">&lt;span data-bx=&quot;놀람&quot;&gt;&lt;/span&gt;
+[[제목 없는 구절 94]]</tw-passagedata><tw-passagedata pid="343" name="제목 없는 구절 94" tags="vn" position="3200,750" size="100,100">&lt;span data-bx=&quot;수나:권총&quot;&gt;&lt;/span&gt;
+&lt;span data-bx=&quot;놀람&quot;&gt;&lt;/span&gt;
 수나: 보자 보자 하니까... 하꼬 아이돌 좀 벗어났다고 눈에 뵈는 게 없나 봐?
 
 [[제목 없는 구절 99]]</tw-passagedata><tw-passagedata pid="344" name="제목 없는 구절 95" tags="vn" position="75,925" size="100,100">&lt;span data-bx=&quot;놀람&quot;&gt;&lt;/span&gt;
 그렇다. 루시아의 옆에 서 있는 커다란 에테리얼. 날카로운 이빨을 내보이며 거대한 그림자를 만들고 있었다.
 [[제목 없는 구절 101]]</tw-passagedata><tw-passagedata pid="345" name="제목 없는 구절 96" tags="vn" position="3400,750" size="100,100">반악: 정답은 투탕카멘이라네... 투는 둘, 탕은 총 소리, 투탕카멘은 파라오니까. 반 학학학학하~
 
-[[제목 없는 구절 97]]</tw-passagedata><tw-passagedata pid="346" name="제목 없는 구절 97" tags="vn" position="3500,750" size="100,100">수나: 너도 죽어.
+[[제목 없는 구절 97]]</tw-passagedata><tw-passagedata pid="346" name="제목 없는 구절 97" tags="vn" position="3500,750" size="100,100">&lt;span data-bx=&quot;수나:권총&quot;&gt;&lt;/span&gt;
+수나: 너도 죽어.
 
 [[제목 없는 구절 98]]</tw-passagedata><tw-passagedata pid="347" name="제목 없는 구절 98" tags="" position="3600,750" size="100,100">`[END]`
 그것은 순식간에 일어난 일이었다. 정신을 차려보니 아리아와 남궁우, 그리고 반악이 총을 맞고 차가운 시체가 되어 있었고, 수나는 김이 피어오르는 총구를 후 불며 하드보일드 미소녀 이중첩자 같은 표정을 지었다.
