@@ -200,6 +200,73 @@ body.vn-on tw-passage { display: none; }
   overflow-y: auto;
 }
 
+/* ===== 선택지 띠 (선택지가 있는 장면: 대사가 끝나면 대사창 위 빈 공간에 위에서부터 차례로 나타남) ===== */
+.vn-choices {
+  position: absolute;
+  z-index: 6;               /* 인물 그림(1~2) 위, 대사창(10) 아래 */
+  left: 0;
+  right: 0;
+  top: calc(var(--u) * 11);                                   /* 왼쪽 위 버튼들 아래부터 */
+  bottom: calc(var(--box-h) + var(--u) * 2);
+  display: grid;
+  grid-template-rows: repeat(var(--n, 2), 1fr);               /* 선택지 수만큼 위아래로 고르게 나눔 */
+  pointer-events: none;
+}
+.vn-choices[hidden] { display: none; }
+.vn-ch {
+  position: relative;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 0;
+  margin: 0;
+  padding: 0 calc(var(--u) * 5);
+  border: 0;
+  background: none;         /* 눌리는 칸은 칸 전체, 눈에 보이는 띠는 ::before */
+  color: #fff;
+  font: inherit;
+  font-size: calc(var(--u) * 5);
+  font-weight: 700;
+  line-height: 1.3;
+  text-align: left;
+  cursor: pointer;
+  pointer-events: auto;
+  -webkit-tap-highlight-color: transparent;
+  animation: vn-ch-in 0.3s ease-out both;
+  animation-delay: calc(var(--i, 0) * 110ms);
+}
+.vn-ch::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  height: min(60%, calc(var(--u) * 16));
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.62);
+  border-left: calc(var(--u) * 1.4) solid var(--name-color-a);
+  transition: background 0.12s;
+}
+.vn-ch:hover::before, .vn-ch:active::before, .vn-ch:focus-visible::before { background: rgba(0, 0, 0, 0.8); }
+.vn-ch:focus { outline: none; }
+.vn-ch-t {
+  position: relative;
+  display: block;
+  min-width: 0;
+  text-shadow: 0 calc(var(--u) * 0.2) calc(var(--u) * 0.8) rgba(0, 0, 0, 0.6);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.vn-ch-lock { cursor: default; pointer-events: none; }
+.vn-ch-lock::before { background: rgba(0, 0, 0, 0.42); border-left-color: rgba(255, 255, 255, 0.35); }
+.vn-ch-lock .vn-ch-t { color: rgba(255, 255, 255, 0.6); font-weight: 400; }
+@keyframes vn-ch-in {
+  from { opacity: 0; transform: translateX(calc(var(--u) * -6)); }
+  to   { opacity: 1; transform: none; }
+}
+
 /* ===== 엔딩 갤러리 ===== */
 body.gl-on tw-passage { display: none; }
 
@@ -710,7 +777,7 @@ body.tt-on tw-passage { display: none; }
 
 /* ===== 귤복복 살인사건 : 대화 장면 처리 =====
    'vn' 태그가 붙은 패시지에서 동작해. (선택지가 하나뿐인 장면 전부)
-   'vn-choice' 태그: 선택지가 둘인 장면. 화면은 기본 모양이지만 인물 배치는 기억해 둬.
+   'vn-choice' 태그: 선택지가 둘인 장면. 'hub' 태그: 용의자 선택 화면. 둘 다 대사가 끝나면 반투명한 띠 모양 선택지가 위에서부터 떠.
    태그를 빼면 그 패시지는 원래 화면으로 돌아가. */
 (function () {
   'use strict';
@@ -734,7 +801,7 @@ body.tt-on tw-passage { display: none; }
   var CHAR_LOCAL_BASE = 'file:///C:/Users/pumha/Desktop/귤복복 살인사건제작/완성본/실제 제작/캐릭터 이미지/';
   var CHAR_WEB_BASE = 'images/characters/';
   var CHAR_BASE = (location.protocol === 'file:') ? CHAR_LOCAL_BASE : CHAR_WEB_BASE;
-  var BUILD_VERSION = '0.07';             // 화면 오른쪽 위에 작게 보이는 버전. 뭔가 바꿀 때마다 0.01 씩 올릴 것 (사용자 요청)
+  var BUILD_VERSION = '0.08';             // 화면 오른쪽 위에 작게 보이는 버전. 뭔가 바꿀 때마다 0.01 씩 올릴 것 (사용자 요청)
 
   /* ---------- 인물 배치 ----------
      제작자가 직접 만든 배치 예시 29장(벨 + 상대)을 읽어서 정리한 값이야. 단위는 전부 '화면 폭의 %' (폰 화면 폭 = 100).
@@ -784,95 +851,88 @@ body.tt-on tw-passage { display: none; }
      t: 1 이면 벨리나의 좌우 반전을 반대로. 표에 없는 조합은 기본(왼쪽이 앞, 제자리)이 그대로 괜찮은 경우야.
      (벨이 왼쪽인 조합은 제작자의 배치 예시를 그대로 따르니까 여기에 없음) */
   var PAIR = {
-    '귤복복|11호': { f: 'R' }, '귤복복|남궁우': { a: -6, b: 6 }, '귤복복|네코미야': { f: 'R' }, '귤복복|니콜': { f: 'R', b: 1.5 },
-    '귤복복|다이아린': { f: 'R' }, '귤복복|레미엘': { a: -6, b: 6 }, '귤복복|록시': { f: 'R' }, '귤복복|루시아': { f: 'R', a: -6, b: 6 },
-    '귤복복|미야비': { f: 'R' }, '귤복복|반악': { f: 'R', a: -6, b: 6 }, '귤복복|버니스': { f: 'R' }, '귤복복|벨리나': { f: 'R', a: -1.5, b: 6 },
-    '귤복복|빛나': { f: 'R' }, '귤복복|수나': { f: 'R', b: 1.5 }, '귤복복|시드': { f: 'R' }, '귤복복|시시아': { f: 'R', b: 6 },
-    '귤복복|아리아': { f: 'R', b: 4.5 }, '귤복복|아스트라': { f: 'R', a: -6, b: 6 }, '귤복복|앨리스': { f: 'R' }, '귤복복|야나기': { f: 'R' },
-    '귤복복|유즈하': { f: 'R', a: -6, b: 6 }, '귤복복|의현': { f: 'R', a: -6, b: 6 }, '귤복복|이블린': { f: 'R', b: 3 }, '귤복복|자오': { f: 'R' },
-    '귤복복|클라렛': { f: 'R', a: -4.5, b: 6 }, '귤복복|트리거': { f: 'R', a: -6, b: 6 }, '귤복복|포포': { a: -6, b: 6 }, '남궁우|버니스': { a: -1.5 },
-    '남궁우|의현': { b: 3 }, '니콜|11호': { f: 'R' }, '니콜|귤복복': { f: 'R' }, '니콜|남궁우': { a: -6, b: 6 },
-    '니콜|네코미야': { f: 'R' }, '니콜|다이아린': { f: 'R' }, '니콜|레미엘': { a: -6, b: 6 }, '니콜|록시': { f: 'R' },
-    '니콜|루시아': { a: -6, b: 6 }, '니콜|미야비': { f: 'R' }, '니콜|반악': { b: 3 }, '니콜|버니스': { f: 'R', b: 3 },
-    '니콜|벨리나': { f: 'R' }, '니콜|빛나': { f: 'R' }, '니콜|수나': { f: 'R' }, '니콜|시드': { f: 'R' },
-    '니콜|시시아': { f: 'R', b: 3 }, '니콜|아리아': { f: 'R' }, '니콜|아스트라': { b: 6 }, '니콜|앨리스': { f: 'R' },
-    '니콜|야나기': { f: 'R' }, '니콜|유즈하': { a: -3, b: 6 }, '니콜|의현': { a: -1.5, b: 6 }, '니콜|이블린': { f: 'R', b: 1.5 },
-    '니콜|자오': { f: 'R' }, '니콜|클라렛': { f: 'R', a: -3, b: 6 }, '니콜|포포': { a: -3, b: 6 }, '다이아린|귤복복': { f: 'R' },
-    '다이아린|남궁우': { b: 1.5 }, '다이아린|네코미야': { f: 'R' }, '다이아린|니콜': { f: 'R' }, '다이아린|루시아': { b: 3 },
-    '다이아린|버니스': { f: 'R' }, '다이아린|빛나': { f: 'R' }, '다이아린|수나': { f: 'R' }, '다이아린|아리아': { f: 'R' },
-    '다이아린|자오': { f: 'R' }, '다이아린|포포': { a: -4.5, b: 6 }, '레미엘|11호': { f: 'R' }, '레미엘|귤복복': { f: 'R' },
-    '레미엘|남궁우': { f: 'R', a: -6, b: 1.5 }, '레미엘|네코미야': { f: 'R' }, '레미엘|니콜': { f: 'R' }, '레미엘|다이아린': { f: 'R' },
-    '레미엘|록시': { f: 'R' }, '레미엘|루시아': { f: 'R', a: -6, b: 6 }, '레미엘|미야비': { f: 'R' }, '레미엘|반악': { f: 'R', a: -6, b: 6 },
-    '레미엘|버니스': { f: 'R', b: 1.5 }, '레미엘|벨리나': { f: 'R' }, '레미엘|빛나': { f: 'R' }, '레미엘|수나': { f: 'R' },
-    '레미엘|시드': { f: 'R' }, '레미엘|시시아': { f: 'R' }, '레미엘|아리아': { f: 'R' }, '레미엘|아스트라': { f: 'R', a: -6, b: 6 },
-    '레미엘|앨리스': { f: 'R' }, '레미엘|야나기': { f: 'R' }, '레미엘|유즈하': { f: 'R' }, '레미엘|의현': { f: 'R', a: -6, b: 6 },
-    '레미엘|이블린': { f: 'R' }, '레미엘|자오': { f: 'R' }, '레미엘|클라렛': { f: 'R', a: -3, b: 6 }, '레미엘|트리거': { f: 'R' },
-    '레미엘|포포': { f: 'R', a: -3, b: 6 }, '록시|네코미야': { f: 'R' }, '록시|자오': { f: 'R' }, '루시아|11호': { f: 'R' },
-    '루시아|귤복복': { a: -3, b: 6 }, '루시아|남궁우': { a: -4.5, b: 6 }, '루시아|네코미야': { f: 'R' }, '루시아|니콜': { f: 'R', b: 4.5 },
-    '루시아|다이아린': { f: 'R' }, '루시아|록시': { f: 'R' }, '루시아|미야비': { f: 'R' }, '루시아|빛나': { f: 'R' },
-    '루시아|수나': { f: 'R' }, '루시아|시드': { f: 'R' }, '루시아|시시아': { a: -3, b: 6 }, '루시아|아리아': { f: 'R', a: -1.5, b: 6 },
-    '루시아|앨리스': { f: 'R' }, '루시아|유즈하': { a: -1.5, b: 6 }, '루시아|클라렛': { a: -1.5, b: 6 }, '루시아|포포': { b: 4.5 },
-    '미야비|네코미야': { f: 'R' }, '미야비|자오': { f: 'R' }, '미야비|포포': { a: -1.5, b: 3 }, '반악|11호': { f: 'R' },
-    '반악|귤복복': { f: 'R' }, '반악|남궁우': { f: 'R', a: -3, b: 6 }, '반악|네코미야': { f: 'R' }, '반악|니콜': { f: 'R' },
-    '반악|다이아린': { f: 'R' }, '반악|레미엘': { a: -6, b: 6 }, '반악|록시': { f: 'R' }, '반악|루시아': { f: 'R', a: -6, b: 6 },
-    '반악|미야비': { f: 'R' }, '반악|버니스': { f: 'R' }, '반악|벨리나': { f: 'R' }, '반악|빛나': { f: 'R' },
-    '반악|수나': { f: 'R' }, '반악|시드': { f: 'R' }, '반악|시시아': { f: 'R' }, '반악|아리아': { f: 'R' },
-    '반악|아스트라': { a: -6, b: 6 }, '반악|앨리스': { f: 'R' }, '반악|야나기': { f: 'R' }, '반악|유즈하': { f: 'R' },
-    '반악|의현': { a: -6, b: 6 }, '반악|이블린': { f: 'R' }, '반악|자오': { f: 'R' }, '반악|클라렛': { f: 'R', b: 1.5 },
-    '반악|트리거': { f: 'R' }, '반악|포포': { f: 'R' }, '버니스|네코미야': { f: 'R' }, '버니스|빛나': { f: 'R' },
-    '버니스|아스트라': { b: 1.5 }, '버니스|의현': { b: 3 }, '버니스|자오': { f: 'R' }, '벨리나|11호': { f: 'R' },
-    '벨리나|귤복복': { f: 'R' }, '벨리나|남궁우': { t: 1 }, '벨리나|네코미야': { f: 'R' }, '벨리나|니콜': { f: 'R' },
-    '벨리나|다이아린': { f: 'R' }, '벨리나|레미엘': { t: 1 }, '벨리나|록시': { f: 'R' }, '벨리나|루시아': { t: 1 },
-    '벨리나|미야비': { f: 'R' }, '벨리나|버니스': { f: 'R' }, '벨리나|빛나': { f: 'R' }, '벨리나|수나': { f: 'R' },
-    '벨리나|시드': { f: 'R' }, '벨리나|시시아': { f: 'R' }, '벨리나|아리아': { f: 'R' }, '벨리나|아스트라': { t: 1 },
-    '벨리나|앨리스': { f: 'R' }, '벨리나|야나기': { f: 'R' }, '벨리나|유즈하': { f: 'R' }, '벨리나|의현': { t: 1 },
-    '벨리나|이블린': { f: 'R' }, '벨리나|자오': { f: 'R' }, '벨리나|클라렛': { t: 1 }, '벨리나|포포': { f: 'R' },
-    '빛나|귤복복': { f: 'R' }, '빛나|네코미야': { f: 'R' }, '빛나|자오': { f: 'R' }, '빛나|포포': { a: -6, b: 6 },
-    '시시아|11호': { f: 'R' }, '시시아|귤복복': { f: 'R' }, '시시아|남궁우': { a: -1.5, b: 3 }, '시시아|네코미야': { f: 'R' },
-    '시시아|니콜': { f: 'R' }, '시시아|다이아린': { f: 'R' }, '시시아|레미엘': { b: 1.5 }, '시시아|록시': { f: 'R' },
-    '시시아|루시아': { a: -1.5, b: 6 }, '시시아|버니스': { f: 'R' }, '시시아|빛나': { f: 'R' }, '시시아|수나': { f: 'R' },
-    '시시아|아리아': { f: 'R' }, '시시아|자오': { f: 'R' }, '시시아|클라렛': { b: 4.5 }, '시시아|포포': { a: -1.5, b: 3 },
-    '아리아|귤복복': { f: 'R' }, '아리아|남궁우': { a: -6, b: 6 }, '아리아|네코미야': { f: 'R' }, '아리아|록시': { f: 'R' },
-    '아리아|루시아': { f: 'R', a: -4.5, b: 6 }, '아리아|수나': { f: 'R' }, '아리아|자오': { f: 'R' }, '아리아|클라렛': { f: 'R', b: 6 },
-    '아리아|포포': { a: -6, b: 6 }, '아스트라|11호': { f: 'R' }, '아스트라|귤복복': { f: 'R' }, '아스트라|남궁우': { a: -6, b: 6 },
-    '아스트라|네코미야': { f: 'R' }, '아스트라|니콜': { f: 'R' }, '아스트라|다이아린': { f: 'R' }, '아스트라|레미엘': { a: -6, b: 6 },
-    '아스트라|록시': { f: 'R' }, '아스트라|루시아': { f: 'R', a: -6, b: 6 }, '아스트라|미야비': { f: 'R' }, '아스트라|반악': { a: -6, b: 6 },
-    '아스트라|버니스': { f: 'R' }, '아스트라|벨리나': { f: 'R' }, '아스트라|빛나': { f: 'R' }, '아스트라|수나': { f: 'R' },
-    '아스트라|시드': { f: 'R' }, '아스트라|시시아': { f: 'R' }, '아스트라|아리아': { f: 'R' }, '아스트라|앨리스': { f: 'R' },
-    '아스트라|야나기': { f: 'R' }, '아스트라|유즈하': { f: 'R' }, '아스트라|의현': { a: -6, b: 6 }, '아스트라|이블린': { f: 'R' },
-    '아스트라|자오': { f: 'R' }, '아스트라|클라렛': { f: 'R', b: 3 }, '아스트라|트리거': { f: 'R' }, '아스트라|포포': { f: 'R' },
-    '앨리스|귤복복': { f: 'R' }, '앨리스|남궁우': { b: 6 }, '앨리스|네코미야': { f: 'R' }, '앨리스|니콜': { f: 'R' },
-    '앨리스|록시': { f: 'R' }, '앨리스|루시아': { a: -4.5, b: 6 }, '앨리스|빛나': { f: 'R' }, '앨리스|수나': { f: 'R' },
-    '앨리스|자오': { f: 'R' }, '앨리스|클라렛': { b: 6 }, '앨리스|포포': { a: -6, b: 6 }, '유즈하|11호': { f: 'R' },
-    '유즈하|귤복복': { f: 'R' }, '유즈하|남궁우': { a: -6, b: 6 }, '유즈하|네코미야': { f: 'R' }, '유즈하|니콜': { f: 'R' },
-    '유즈하|다이아린': { f: 'R' }, '유즈하|레미엘': { a: -6, b: 6 }, '유즈하|록시': { f: 'R' }, '유즈하|루시아': { f: 'R', a: -6, b: 6 },
-    '유즈하|미야비': { f: 'R' }, '유즈하|반악': { a: -6, b: 6 }, '유즈하|버니스': { f: 'R', b: 1.5 }, '유즈하|벨리나': { f: 'R' },
-    '유즈하|빛나': { f: 'R' }, '유즈하|수나': { f: 'R' }, '유즈하|시드': { f: 'R' }, '유즈하|시시아': { f: 'R' },
-    '유즈하|아리아': { f: 'R' }, '유즈하|아스트라': { f: 'R', a: -6, b: 6 }, '유즈하|앨리스': { f: 'R' }, '유즈하|야나기': { f: 'R' },
-    '유즈하|의현': { a: -6, b: 6 }, '유즈하|이블린': { f: 'R' }, '유즈하|자오': { f: 'R' }, '유즈하|클라렛': { f: 'R', a: -1.5, b: 6 },
-    '유즈하|트리거': { f: 'R', a: -6, b: 6 }, '유즈하|포포': { a: -6, b: 6 }, '의현|11호': { f: 'R' }, '의현|귤복복': { f: 'R' },
-    '의현|남궁우': { a: -6, b: 6 }, '의현|네코미야': { f: 'R' }, '의현|니콜': { f: 'R' }, '의현|다이아린': { f: 'R' },
-    '의현|레미엘': { a: -1.5, b: 6 }, '의현|록시': { f: 'R' }, '의현|루시아': { a: -6, b: 6 }, '의현|미야비': { f: 'R' },
-    '의현|반악': { a: -6, b: 6 }, '의현|버니스': { f: 'R', b: 1.5 }, '의현|벨리나': { f: 'R' }, '의현|빛나': { f: 'R' },
-    '의현|수나': { f: 'R' }, '의현|시드': { f: 'R' }, '의현|시시아': { f: 'R' }, '의현|아리아': { f: 'R' },
-    '의현|아스트라': { a: -6, b: 6 }, '의현|앨리스': { f: 'R' }, '의현|유즈하': { f: 'R' }, '의현|이블린': { f: 'R' },
-    '의현|자오': { f: 'R' }, '의현|클라렛': { f: 'R', b: 4.5 }, '의현|포포': { f: 'R', b: 3 }, '이블린|11호': { f: 'R' },
-    '이블린|귤복복': { f: 'R' }, '이블린|남궁우': { b: 4.5 }, '이블린|네코미야': { f: 'R' }, '이블린|니콜': { f: 'R' },
-    '이블린|레미엘': { b: 4.5 }, '이블린|록시': { f: 'R' }, '이블린|루시아': { b: 4.5 }, '이블린|미야비': { f: 'R' },
-    '이블린|버니스': { f: 'R', b: 1.5 }, '이블린|빛나': { f: 'R' }, '이블린|수나': { f: 'R' }, '이블린|시시아': { f: 'R' },
-    '이블린|아리아': { f: 'R' }, '이블린|아스트라': { b: 1.5 }, '이블린|유즈하': { f: 'R' }, '이블린|의현': { b: 3 },
-    '이블린|자오': { f: 'R' }, '이블린|클라렛': { a: -1.5 }, '이블린|포포': { b: 6 }, '클라렛|귤복복': { f: 'R', b: 6 },
-    '클라렛|남궁우': { b: 6 }, '클라렛|네코미야': { f: 'R' }, '클라렛|니콜': { b: 3 }, '클라렛|록시': { f: 'R' },
-    '클라렛|루시아': { a: -1.5, b: 6 }, '클라렛|빛나': { f: 'R' }, '클라렛|수나': { f: 'R' }, '클라렛|자오': { f: 'R' },
-    '클라렛|포포': { a: -6, b: 6 }, '트리거|네코미야': { f: 'R' }, '트리거|니콜': { f: 'R' }, '트리거|빛나': { f: 'R' },
-    '트리거|의현': { b: 1.5 }, '트리거|자오': { f: 'R' }, '트리거|포포': { f: 'R' }, '포포|11호': { f: 'R' },
-    '포포|귤복복': { f: 'R', a: -4.5, b: 6 }, '포포|남궁우': { a: -6, b: 3 }, '포포|네코미야': { f: 'R' }, '포포|니콜': { f: 'R', b: 3 },
-    '포포|다이아린': { f: 'R', a: -3, b: 6 }, '포포|레미엘': { a: -6, b: 6 }, '포포|록시': { f: 'R', b: 1.5 }, '포포|루시아': { f: 'R', b: 4.5 },
-    '포포|미야비': { f: 'R', a: -4.5, b: 6 }, '포포|반악': { b: 3 }, '포포|버니스': { f: 'R', b: 6 }, '포포|벨리나': { b: 3 },
-    '포포|빛나': { f: 'R', a: -6, b: 6 }, '포포|수나': { f: 'R', b: 4.5 }, '포포|시드': { f: 'R' }, '포포|시시아': { f: 'R', a: -6, b: 6 },
-    '포포|아리아': { f: 'R', a: -6, b: 6 }, '포포|아스트라': { a: -1.5, b: 4.5 }, '포포|앨리스': { f: 'R', b: 4.5 }, '포포|야나기': { f: 'R', b: 4.5 },
-    '포포|유즈하': { a: -6, b: 4.5 }, '포포|의현': { a: -4.5, b: 6 }, '포포|이블린': { f: 'R', a: -6, b: 6 }, '포포|자오': { f: 'R' },
-    '포포|클라렛': { f: 'R', a: -6, b: 6 }
+    '남궁우|버니스': { a: -1.5 }, '남궁우|의현': { b: 3 }, '니콜|11호': { f: 'R' }, '니콜|귤복복': { f: 'R' },
+    '니콜|남궁우': { a: -6, b: 6 }, '니콜|네코미야': { f: 'R' }, '니콜|다이아린': { f: 'R' }, '니콜|레미엘': { a: -6, b: 6 },
+    '니콜|록시': { f: 'R' }, '니콜|루시아': { a: -6, b: 6 }, '니콜|미야비': { f: 'R' }, '니콜|반악': { b: 3 },
+    '니콜|버니스': { f: 'R', b: 3 }, '니콜|벨리나': { f: 'R' }, '니콜|빛나': { f: 'R' }, '니콜|수나': { f: 'R' },
+    '니콜|시드': { f: 'R' }, '니콜|시시아': { f: 'R', b: 3 }, '니콜|아리아': { f: 'R' }, '니콜|아스트라': { b: 6 },
+    '니콜|앨리스': { f: 'R' }, '니콜|야나기': { f: 'R' }, '니콜|유즈하': { a: -3, b: 6 }, '니콜|의현': { a: -1.5, b: 6 },
+    '니콜|이블린': { f: 'R', b: 1.5 }, '니콜|자오': { f: 'R' }, '니콜|클라렛': { f: 'R', a: -3, b: 6 }, '니콜|포포': { a: -3, b: 6 },
+    '다이아린|귤복복': { f: 'R' }, '다이아린|남궁우': { b: 1.5 }, '다이아린|네코미야': { f: 'R' }, '다이아린|니콜': { f: 'R' },
+    '다이아린|루시아': { b: 3 }, '다이아린|버니스': { f: 'R' }, '다이아린|빛나': { f: 'R' }, '다이아린|수나': { f: 'R' },
+    '다이아린|아리아': { f: 'R' }, '다이아린|자오': { f: 'R' }, '다이아린|포포': { a: -4.5, b: 6 }, '레미엘|11호': { f: 'R' },
+    '레미엘|귤복복': { f: 'R' }, '레미엘|남궁우': { f: 'R', a: -6, b: 1.5 }, '레미엘|네코미야': { f: 'R' }, '레미엘|니콜': { f: 'R' },
+    '레미엘|다이아린': { f: 'R' }, '레미엘|록시': { f: 'R' }, '레미엘|루시아': { f: 'R', a: -6, b: 6 }, '레미엘|미야비': { f: 'R' },
+    '레미엘|반악': { f: 'R', a: -6, b: 6 }, '레미엘|버니스': { f: 'R', b: 1.5 }, '레미엘|벨리나': { f: 'R' }, '레미엘|빛나': { f: 'R' },
+    '레미엘|수나': { f: 'R' }, '레미엘|시드': { f: 'R' }, '레미엘|시시아': { f: 'R' }, '레미엘|아리아': { f: 'R' },
+    '레미엘|아스트라': { f: 'R', a: -6, b: 6 }, '레미엘|앨리스': { f: 'R' }, '레미엘|야나기': { f: 'R' }, '레미엘|유즈하': { f: 'R' },
+    '레미엘|의현': { f: 'R', a: -6, b: 6 }, '레미엘|이블린': { f: 'R' }, '레미엘|자오': { f: 'R' }, '레미엘|클라렛': { f: 'R', a: -3, b: 6 },
+    '레미엘|트리거': { f: 'R' }, '레미엘|포포': { f: 'R', a: -3, b: 6 }, '록시|네코미야': { f: 'R' }, '록시|자오': { f: 'R' },
+    '루시아|11호': { f: 'R' }, '루시아|귤복복': { a: -3, b: 6 }, '루시아|남궁우': { a: -4.5, b: 6 }, '루시아|네코미야': { f: 'R' },
+    '루시아|니콜': { f: 'R', b: 4.5 }, '루시아|다이아린': { f: 'R' }, '루시아|록시': { f: 'R' }, '루시아|미야비': { f: 'R' },
+    '루시아|빛나': { f: 'R' }, '루시아|수나': { f: 'R' }, '루시아|시드': { f: 'R' }, '루시아|시시아': { a: -3, b: 6 },
+    '루시아|아리아': { f: 'R', a: -1.5, b: 6 }, '루시아|앨리스': { f: 'R' }, '루시아|유즈하': { a: -1.5, b: 6 }, '루시아|클라렛': { a: -1.5, b: 6 },
+    '루시아|포포': { b: 4.5 }, '미야비|네코미야': { f: 'R' }, '미야비|자오': { f: 'R' }, '미야비|포포': { a: -1.5, b: 3 },
+    '반악|11호': { f: 'R' }, '반악|귤복복': { f: 'R' }, '반악|남궁우': { f: 'R', a: -3, b: 6 }, '반악|네코미야': { f: 'R' },
+    '반악|니콜': { f: 'R' }, '반악|다이아린': { f: 'R' }, '반악|레미엘': { a: -6, b: 6 }, '반악|록시': { f: 'R' },
+    '반악|루시아': { f: 'R', a: -6, b: 6 }, '반악|미야비': { f: 'R' }, '반악|버니스': { f: 'R' }, '반악|벨리나': { f: 'R' },
+    '반악|빛나': { f: 'R' }, '반악|수나': { f: 'R' }, '반악|시드': { f: 'R' }, '반악|시시아': { f: 'R' },
+    '반악|아리아': { f: 'R' }, '반악|아스트라': { a: -6, b: 6 }, '반악|앨리스': { f: 'R' }, '반악|야나기': { f: 'R' },
+    '반악|유즈하': { f: 'R' }, '반악|의현': { a: -6, b: 6 }, '반악|이블린': { f: 'R' }, '반악|자오': { f: 'R' },
+    '반악|클라렛': { f: 'R', b: 1.5 }, '반악|트리거': { f: 'R' }, '반악|포포': { f: 'R' }, '버니스|네코미야': { f: 'R' },
+    '버니스|빛나': { f: 'R' }, '버니스|아스트라': { b: 1.5 }, '버니스|의현': { b: 3 }, '버니스|자오': { f: 'R' },
+    '벨리나|11호': { f: 'R' }, '벨리나|귤복복': { f: 'R' }, '벨리나|남궁우': { t: 1 }, '벨리나|네코미야': { f: 'R' },
+    '벨리나|니콜': { f: 'R' }, '벨리나|다이아린': { f: 'R' }, '벨리나|레미엘': { t: 1 }, '벨리나|록시': { f: 'R' },
+    '벨리나|루시아': { t: 1 }, '벨리나|미야비': { f: 'R' }, '벨리나|버니스': { f: 'R' }, '벨리나|빛나': { f: 'R' },
+    '벨리나|수나': { f: 'R' }, '벨리나|시드': { f: 'R' }, '벨리나|시시아': { f: 'R' }, '벨리나|아리아': { f: 'R' },
+    '벨리나|아스트라': { t: 1 }, '벨리나|앨리스': { f: 'R' }, '벨리나|야나기': { f: 'R' }, '벨리나|유즈하': { f: 'R' },
+    '벨리나|의현': { t: 1 }, '벨리나|이블린': { f: 'R' }, '벨리나|자오': { f: 'R' }, '벨리나|클라렛': { t: 1 },
+    '벨리나|포포': { f: 'R' }, '빛나|귤복복': { f: 'R' }, '빛나|네코미야': { f: 'R' }, '빛나|자오': { f: 'R' },
+    '빛나|포포': { a: -6, b: 6 }, '시시아|11호': { f: 'R' }, '시시아|귤복복': { f: 'R' }, '시시아|남궁우': { a: -1.5, b: 3 },
+    '시시아|네코미야': { f: 'R' }, '시시아|니콜': { f: 'R' }, '시시아|다이아린': { f: 'R' }, '시시아|레미엘': { b: 1.5 },
+    '시시아|록시': { f: 'R' }, '시시아|루시아': { a: -1.5, b: 6 }, '시시아|버니스': { f: 'R' }, '시시아|빛나': { f: 'R' },
+    '시시아|수나': { f: 'R' }, '시시아|아리아': { f: 'R' }, '시시아|자오': { f: 'R' }, '시시아|클라렛': { b: 4.5 },
+    '시시아|포포': { a: -1.5, b: 3 }, '아리아|귤복복': { f: 'R' }, '아리아|남궁우': { a: -6, b: 6 }, '아리아|네코미야': { f: 'R' },
+    '아리아|록시': { f: 'R' }, '아리아|루시아': { f: 'R', a: -4.5, b: 6 }, '아리아|수나': { f: 'R' }, '아리아|자오': { f: 'R' },
+    '아리아|클라렛': { f: 'R', b: 6 }, '아리아|포포': { a: -6, b: 6 }, '아스트라|11호': { f: 'R' }, '아스트라|귤복복': { f: 'R' },
+    '아스트라|남궁우': { a: -6, b: 6 }, '아스트라|네코미야': { f: 'R' }, '아스트라|니콜': { f: 'R' }, '아스트라|다이아린': { f: 'R' },
+    '아스트라|레미엘': { a: -6, b: 6 }, '아스트라|록시': { f: 'R' }, '아스트라|루시아': { f: 'R', a: -6, b: 6 }, '아스트라|미야비': { f: 'R' },
+    '아스트라|반악': { a: -6, b: 6 }, '아스트라|버니스': { f: 'R' }, '아스트라|벨리나': { f: 'R' }, '아스트라|빛나': { f: 'R' },
+    '아스트라|수나': { f: 'R' }, '아스트라|시드': { f: 'R' }, '아스트라|시시아': { f: 'R' }, '아스트라|아리아': { f: 'R' },
+    '아스트라|앨리스': { f: 'R' }, '아스트라|야나기': { f: 'R' }, '아스트라|유즈하': { f: 'R' }, '아스트라|의현': { a: -6, b: 6 },
+    '아스트라|이블린': { f: 'R' }, '아스트라|자오': { f: 'R' }, '아스트라|클라렛': { f: 'R', b: 3 }, '아스트라|트리거': { f: 'R' },
+    '아스트라|포포': { f: 'R' }, '앨리스|귤복복': { f: 'R' }, '앨리스|남궁우': { b: 6 }, '앨리스|네코미야': { f: 'R' },
+    '앨리스|니콜': { f: 'R' }, '앨리스|록시': { f: 'R' }, '앨리스|루시아': { a: -4.5, b: 6 }, '앨리스|빛나': { f: 'R' },
+    '앨리스|수나': { f: 'R' }, '앨리스|자오': { f: 'R' }, '앨리스|클라렛': { b: 6 }, '앨리스|포포': { a: -6, b: 6 },
+    '유즈하|11호': { f: 'R' }, '유즈하|귤복복': { f: 'R' }, '유즈하|남궁우': { a: -6, b: 6 }, '유즈하|네코미야': { f: 'R' },
+    '유즈하|니콜': { f: 'R' }, '유즈하|다이아린': { f: 'R' }, '유즈하|레미엘': { a: -6, b: 6 }, '유즈하|록시': { f: 'R' },
+    '유즈하|루시아': { f: 'R', a: -6, b: 6 }, '유즈하|미야비': { f: 'R' }, '유즈하|반악': { a: -6, b: 6 }, '유즈하|버니스': { f: 'R', b: 1.5 },
+    '유즈하|벨리나': { f: 'R' }, '유즈하|빛나': { f: 'R' }, '유즈하|수나': { f: 'R' }, '유즈하|시드': { f: 'R' },
+    '유즈하|시시아': { f: 'R' }, '유즈하|아리아': { f: 'R' }, '유즈하|아스트라': { f: 'R', a: -6, b: 6 }, '유즈하|앨리스': { f: 'R' },
+    '유즈하|야나기': { f: 'R' }, '유즈하|의현': { a: -6, b: 6 }, '유즈하|이블린': { f: 'R' }, '유즈하|자오': { f: 'R' },
+    '유즈하|클라렛': { f: 'R', a: -1.5, b: 6 }, '유즈하|트리거': { f: 'R', a: -6, b: 6 }, '유즈하|포포': { a: -6, b: 6 }, '의현|11호': { f: 'R' },
+    '의현|귤복복': { f: 'R' }, '의현|남궁우': { a: -6, b: 6 }, '의현|네코미야': { f: 'R' }, '의현|니콜': { f: 'R' },
+    '의현|다이아린': { f: 'R' }, '의현|레미엘': { a: -1.5, b: 6 }, '의현|록시': { f: 'R' }, '의현|루시아': { a: -6, b: 6 },
+    '의현|미야비': { f: 'R' }, '의현|반악': { a: -6, b: 6 }, '의현|버니스': { f: 'R', b: 1.5 }, '의현|벨리나': { f: 'R' },
+    '의현|빛나': { f: 'R' }, '의현|수나': { f: 'R' }, '의현|시드': { f: 'R' }, '의현|시시아': { f: 'R' },
+    '의현|아리아': { f: 'R' }, '의현|아스트라': { a: -6, b: 6 }, '의현|앨리스': { f: 'R' }, '의현|유즈하': { f: 'R' },
+    '의현|이블린': { f: 'R' }, '의현|자오': { f: 'R' }, '의현|클라렛': { f: 'R', b: 4.5 }, '의현|포포': { f: 'R', b: 3 },
+    '이블린|11호': { f: 'R' }, '이블린|귤복복': { f: 'R' }, '이블린|남궁우': { b: 4.5 }, '이블린|네코미야': { f: 'R' },
+    '이블린|니콜': { f: 'R' }, '이블린|레미엘': { b: 4.5 }, '이블린|록시': { f: 'R' }, '이블린|루시아': { b: 4.5 },
+    '이블린|미야비': { f: 'R' }, '이블린|버니스': { f: 'R', b: 1.5 }, '이블린|빛나': { f: 'R' }, '이블린|수나': { f: 'R' },
+    '이블린|시시아': { f: 'R' }, '이블린|아리아': { f: 'R' }, '이블린|아스트라': { b: 1.5 }, '이블린|유즈하': { f: 'R' },
+    '이블린|의현': { b: 3 }, '이블린|자오': { f: 'R' }, '이블린|클라렛': { a: -1.5 }, '이블린|포포': { b: 6 },
+    '클라렛|귤복복': { f: 'R', b: 6 }, '클라렛|남궁우': { b: 6 }, '클라렛|네코미야': { f: 'R' }, '클라렛|니콜': { b: 3 },
+    '클라렛|록시': { f: 'R' }, '클라렛|루시아': { a: -1.5, b: 6 }, '클라렛|빛나': { f: 'R' }, '클라렛|수나': { f: 'R' },
+    '클라렛|자오': { f: 'R' }, '클라렛|포포': { a: -6, b: 6 }, '트리거|네코미야': { f: 'R' }, '트리거|니콜': { f: 'R' },
+    '트리거|빛나': { f: 'R' }, '트리거|의현': { b: 1.5 }, '트리거|자오': { f: 'R' }, '트리거|포포': { f: 'R' },
+    '포포|11호': { f: 'R' }, '포포|귤복복': { f: 'R', a: -4.5, b: 6 }, '포포|남궁우': { a: -6, b: 3 }, '포포|네코미야': { f: 'R' },
+    '포포|니콜': { f: 'R', b: 3 }, '포포|다이아린': { f: 'R', a: -3, b: 6 }, '포포|레미엘': { a: -6, b: 6 }, '포포|록시': { f: 'R', b: 1.5 },
+    '포포|루시아': { f: 'R', b: 4.5 }, '포포|미야비': { f: 'R', a: -4.5, b: 6 }, '포포|반악': { b: 3 }, '포포|버니스': { f: 'R', b: 6 },
+    '포포|벨리나': { b: 3 }, '포포|빛나': { f: 'R', a: -6, b: 6 }, '포포|수나': { f: 'R', b: 4.5 }, '포포|시드': { f: 'R' },
+    '포포|시시아': { f: 'R', a: -6, b: 6 }, '포포|아리아': { f: 'R', a: -6, b: 6 }, '포포|아스트라': { a: -1.5, b: 4.5 }, '포포|앨리스': { f: 'R', b: 4.5 },
+    '포포|야나기': { f: 'R', b: 4.5 }, '포포|유즈하': { a: -6, b: 4.5 }, '포포|의현': { a: -4.5, b: 6 }, '포포|이블린': { f: 'R', a: -6, b: 6 },
+    '포포|자오': { f: 'R' }, '포포|클라렛': { f: 'R', a: -6, b: 6 }
   };
   /* ------------------------------------------------------ */
 
@@ -897,7 +957,7 @@ body.tt-on tw-passage { display: none; }
   var WAIT_MAX_MS = 4000;                 // 대사를 시작하기 전에 인물 그림을 기다려주는 최대 시간
   var LOOKAHEAD = 4;                      // 앞으로 몇 장면 뒤까지 나올 인물을 미리 받을지
 
-  var root, slotL, slotR, nameEl, textEl;
+  var root, slotL, slotR, nameEl, textEl, chEl;
   var stage = { L: null, R: null, last: null };   // last: 가장 최근에 말한 사람
   var lastPassage = null;
   var typing = null;                      // { timer, chars, i }
@@ -962,8 +1022,11 @@ body.tt-on tw-passage { display: none; }
     textEl = el('div', 'vn-text');
     box.appendChild(nameEl);
     box.appendChild(textEl);
+    chEl = el('div', 'vn-choices');
+    chEl.hidden = true;
     root.appendChild(slotL);
     root.appendChild(slotR);
+    root.appendChild(chEl);
     root.appendChild(box);
     document.body.appendChild(root);
     root.addEventListener('click', onTap);
@@ -976,19 +1039,29 @@ body.tt-on tw-passage { display: none; }
     });
   }
 
-  /* 패시지에서 대사 글자와 '다음' 링크를 뽑아냄. 대화 장면이 아니면 null */
-  function extract(p) {
+  /* 패시지에서 대사 글자와 '다음' 링크를 뽑아냄. 대화 장면이 아니면 null
+     multi 가 true 면(선택지 / 용의자 선택 화면) 링크가 여러 개여도 되고, 링크들은 choices 로 돌려줘.
+     링크가 아닌 <span data-lock="1">...</span> 는 '아직 못 고르는 선택지' 로 lock 에 글자만 돌려줘. */
+  function extract(p, multi) {
     var links = Array.prototype.filter.call(p.querySelectorAll('tw-link'), function (l) { return !l.closest('tw-include'); });
-    if (links.length !== 1) return null;
+    if (multi ? !links.length : links.length !== 1) return null;
+    var lockEl = multi ? p.querySelector('[data-lock]') : null;
     var clone = p.cloneNode(true);
     var junk = clone.querySelectorAll(
-      'tw-sidebar, tw-include, script, style, tw-link, tw-expression[name="link-goto"], tw-consecutive-br');
+      'tw-sidebar, tw-include, script, style, tw-link, tw-expression[name="link-goto"], tw-consecutive-br, [data-lock]');
     Array.prototype.forEach.call(junk, function (n) { n.parentNode && n.parentNode.removeChild(n); });
     Array.prototype.forEach.call(clone.querySelectorAll('br'), function (b) {
       b.parentNode.replaceChild(document.createTextNode('\n'), b);
     });
     var text = (clone.textContent || '').replace(/[ \t]+\n/g, '\n').replace(/\n{2,}/g, '\n').trim();
-    return { text: text, link: links[0] };
+    var res = { text: text, link: multi ? null : links[0] };
+    if (multi) {
+      res.choices = links.map(function (l) {
+        return { label: l.textContent.replace(/^\s+|\s+$/g, ''), el: l };
+      });
+      res.lock = lockEl ? lockEl.textContent.replace(/\s+/g, ' ').trim() : null;
+    }
+    return res;
   }
 
   /* '벨: 대사' 형식에서 화자와 대사를 분리 */
@@ -1025,11 +1098,18 @@ body.tt-on tw-passage { display: none; }
     else stage.L = s;
   }
 
+  /* 꼬리, 날개 때문에 왼쪽에 서면 옆 사람 얼굴을 가리는 인물은 항상 오른쪽 자리에 섬 (오른쪽에 서면 가려짐이 없음을 전부 검사해 둠) */
+  var RIGHT_ONLY = { '귤복복': true };
+  function keepSeats() {
+    if (stage.L && RIGHT_ONLY[stage.L] && !RIGHT_ONLY[stage.R]) { var t = stage.L; stage.L = stage.R; stage.R = t; }
+  }
+
   function placeSpeaker(name) {
     if (!name) return;
     var s = canon(name);
     if (!seatOf(s)) addToStage(s);
     stage.last = s;
+    keepSeats();
     saveStage();
   }
 
@@ -1039,6 +1119,7 @@ body.tt-on tw-passage { display: none; }
     if (!list.length) return;
     ['L', 'R'].forEach(function (k) { if (stage[k] && list.indexOf(stage[k]) < 0) stage[k] = null; });
     list.forEach(function (n) { if (!seatOf(n)) addToStage(n); });
+    keepSeats();
     saveStage();
   }
 
@@ -1429,6 +1510,48 @@ body.tt-on tw-passage { display: none; }
     if (!typing) return;
     textEl.textContent = typing.chars.join('');
     stopTyping();
+    typedEnd();
+  }
+
+  /* ===== 선택지 화면 =====
+     선택지가 있는 장면('vn-choice' 태그, 용의자 선택의 'hub' 태그)은 보통 장면처럼 인물과 대사창이 나오고,
+     대사가 다 나오면 대사창 위쪽 빈 공간에 반투명한 검은 띠가 위에서부터 차례로 나타나서 그 위에 글자로 선택지가 떠.
+     (띠는 위아래로 고르게 퍼짐 / 글자는 링크 글자 그대로 / 누르면 패시지 안의 링크를 대신 눌러줌)
+     - 링크가 아닌 <span data-lock="1">글자</span> 는 '아직 못 고르는 선택지' 로 흐리게 나옴 (누를 수 없음) */
+  var pendingChoice = null;               // 대사가 끝나면 띄울 선택지: { items, lock }
+  function hideChoices() {
+    pendingChoice = null;
+    if (chEl) { chEl.hidden = true; chEl.innerHTML = ''; }
+  }
+  function typedEnd() {
+    var c = pendingChoice;
+    if (!c || !chEl) return;
+    pendingChoice = null;
+    chEl.innerHTML = '';
+    chEl.style.setProperty('--n', c.items.length + (c.lock ? 1 : 0));
+    c.items.forEach(function (it, i) {
+      var b = el('button', 'vn-ch');
+      b.type = 'button';
+      b.style.setProperty('--i', i);
+      var s = el('span', 'vn-ch-t');
+      s.textContent = it.label;
+      b.appendChild(s);
+      b.addEventListener('click', function (e) {
+        e.stopPropagation();
+        if (Date.now() < lockUntil) return;
+        if (it.el && document.contains(it.el)) it.el.click();
+      });
+      chEl.appendChild(b);
+    });
+    if (c.lock) {
+      var d = el('div', 'vn-ch vn-ch-lock');
+      d.style.setProperty('--i', c.items.length);
+      var ds = el('span', 'vn-ch-t');
+      ds.textContent = c.lock;
+      d.appendChild(ds);
+      chEl.appendChild(d);
+    }
+    chEl.hidden = false;
   }
 
   /* 대사가 길어서 칸을 넘치면 글자 크기를 조금씩 줄임 */
@@ -1453,7 +1576,7 @@ body.tt-on tw-passage { display: none; }
       if (!typing) return;
       typing.i++;
       textEl.textContent = typing.chars.slice(0, typing.i).join('');
-      if (typing.i >= typing.chars.length) stopTyping();
+      if (typing.i >= typing.chars.length) { stopTyping(); typedEnd(); }
     }, TYPE_MS);
   }
 
@@ -1465,6 +1588,7 @@ body.tt-on tw-passage { display: none; }
 
   function leaveVN(keepStage) {
     stopTyping();
+    hideChoices();
     advanceLink = null;
     if (!keepStage) { stage.L = stage.R = stage.last = null; saveStage(); }
     document.body.classList.remove('vn-on');
@@ -1981,10 +2105,14 @@ body.tt-on tw-passage { display: none; }
     if (tags.indexOf('gallery') >= 0) { leaveVN(false); showGallery(p); finishNav(tags); return; }
     hideGallery();
     if (tags.indexOf('title') >= 0) { leaveVN(false); showTitle(p); finishNav(tags); return; }
-    var info = tags.indexOf('vn') >= 0 ? extract(p) : null;
+    hideChoices();
+    var isHub = tags.indexOf('hub') >= 0, isChoice = isHub || tags.indexOf('vn-choice') >= 0;
+    var info = (tags.indexOf('vn') >= 0 || isChoice) ? extract(p, isChoice) : null;
     if (!info) { leaveVN(tags.indexOf('vn-choice') >= 0); finishNav(tags); return; }
 
-    sceneExprs = Array.prototype.map.call(p.querySelectorAll('[data-bx]'), function (b) { return parseBx(b.getAttribute('data-bx')); });   // 이 장면에서 인물들이 지을 표정 (없으면 기본 표정)
+    // 이 장면에서 인물들이 지을 표정 (없으면 기본 표정). 선택지 장면은 표시가 없으면 바로 앞 장면의 표정을 그대로 이어감
+    var bxs = p.querySelectorAll('[data-bx]');
+    if (!isChoice || isHub || bxs.length) sceneExprs = Array.prototype.map.call(bxs, function (b) { return parseBx(b.getAttribute('data-bx')); });
     var parsed = parseSpeaker(info.text);
     placeSpeaker(parsed.speaker);
     var stEl = p.querySelector('[data-stage]');           // 정황상 같이 나와야 하는 사람을 장면 글에서 지정했으면 그대로 보여줌
@@ -2018,8 +2146,10 @@ body.tt-on tw-passage { display: none; }
       textEl.classList.remove('vn-loading');
       layoutStage(keyL, keyR);
       advanceLink = info.link;
+      if (info.choices) pendingChoice = { items: info.choices, lock: info.lock };
       startTyping(parsed.body);
-      prefetchAhead(info.link);
+      if (!typing) typedEnd();
+      if (info.link) prefetchAhead(info.link);
     }
     function unhold() {
       if (!counted) return;
@@ -2187,7 +2317,7 @@ Other properties and any right, title, and interest thereof and therein (intelle
 [[제목 없는 구절 109]]</tw-passagedata><tw-passagedata pid="46" name="제목 없는 구절 109" tags="vn-choice" position="1000,900" size="100,100">벨: ...
 
 [[범인으로 몬다-&gt;제목 없는 구절 112]]
-[[제목 없는 구절 117-&gt;제목 없는 구절 117]]</tw-passagedata><tw-passagedata pid="47" name="제목 없는 구절 11" tags="confirm vn" position="1300,200" size="100,100">&lt;span data-bx=&quot;벨:노말&quot;&gt;&lt;/span&gt;
+[[추궁한다-&gt;제목 없는 구절 117]]</tw-passagedata><tw-passagedata pid="47" name="제목 없는 구절 11" tags="confirm vn" position="1300,200" size="100,100">&lt;span data-bx=&quot;벨:노말&quot;&gt;&lt;/span&gt;
 야나기: 무슨 일이죠?
 
 [[제목 없는 구절 12]]</tw-passagedata><tw-passagedata pid="48" name="제목 없는 구절 110" tags="vn" position="1400,850" size="100,100">벨: 아니 저는 장사할 생각이 없는...
@@ -2254,8 +2384,8 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 [[제목 없는 구절 237]]</tw-passagedata><tw-passagedata pid="71" name="제목 없는 구절 131" tags="vn-choice" position="900,1100" size="100,100">트리거: 한 방만 맞으면, 두 번은 못 일어나게 된다는 거야. 전장에서는 에테리얼의 털끝만 맞춰도 섬멸할 수 있지. 하지만 귤복복처럼 작은 표적을 정확히 암살하는 건 어려운 일이야.
 
-[[제목 없는 구절 127]]
-[[제목 없는 구절 241]]</tw-passagedata><tw-passagedata pid="72" name="제목 없는 구절 132" tags="vn" position="800,1100" size="100,100">벨: 줄... 이요? 무슨... 말인데요?
+[[수긍한다-&gt;제목 없는 구절 127]]
+[[범인으로 몬다-&gt;제목 없는 구절 241]]</tw-passagedata><tw-passagedata pid="72" name="제목 없는 구절 132" tags="vn" position="800,1100" size="100,100">벨: 줄... 이요? 무슨... 말인데요?
 
 [[제목 없는 구절 131]]</tw-passagedata><tw-passagedata pid="73" name="제목 없는 구절 133" tags="vn" position="1100,1050" size="100,100">&lt;span data-stage=&quot;벨,시드&quot;&gt;&lt;/span&gt;
 벨: 그러면 시드 씨를 추궁해야겠어요. 시드 씨, 사람을 죽이는 것을 어떻게 생각하죠?
@@ -2312,17 +2442,18 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 [[제목 없는 구절 149]]</tw-passagedata><tw-passagedata pid="90" name="제목 없는 구절 149" tags="vn" position="600,1800" size="100,100">귤복복: 벨 씨... 당신이 제일 나빠요...
 
-[[제목 없는 구절 176]]</tw-passagedata><tw-passagedata pid="91" name="제목 없는 구절 15" tags="confirm hub" position="1600,200" size="100,100">야나기: 그럼 벨 씨, 심문을 시작하시죠.
+[[제목 없는 구절 176]]</tw-passagedata><tw-passagedata pid="91" name="제목 없는 구절 15" tags="confirm hub" position="1600,200" size="100,100">&lt;span data-stage=&quot;벨,야나기&quot;&gt;&lt;/span&gt;
+야나기: 그럼 벨 씨, 심문을 시작하시죠.
 
-[[제목 없는 구절 19]]
-[[심문_아스트라]] 
-[[제목 없는 구절 100]] 
-[[제목 없는 구절 120]] 
-[[제목 없는 구절 135]]
-[[제목 없는 구절 151]]
-(if: $seen&#39;s length - (cond: $seen contains 17, 1, 0) is 16)[ [[제목 없는 구절 144]] ](else:)[ ??? (print: $seen&#39;s length - (cond: $seen contains 17, 1, 0))/16 ]
-[[제목 없는 구절 186]]
-[[제목 없는 구절 205]]</tw-passagedata><tw-passagedata pid="92" name="제목 없는 구절 150" tags="vn" position="1200,1400" size="100,100">&lt;span data-bx=&quot;네코미야:노말&quot;&gt;&lt;/span&gt;
+[[레미엘을 심문한다-&gt;제목 없는 구절 19]]
+[[아스트라를 심문한다-&gt;심문_아스트라]]
+[[루시아를 심문한다-&gt;제목 없는 구절 100]]
+[[시드를 심문한다-&gt;제목 없는 구절 120]]
+[[자오를 심문한다-&gt;제목 없는 구절 135]]
+[[빛나를 심문한다-&gt;제목 없는 구절 151]]
+[[앨리스를 심문한다-&gt;제목 없는 구절 186]]
+[[클라렛을 심문한다-&gt;제목 없는 구절 205]]
+(if: $seen&#39;s length - (cond: $seen contains 17, 1, 0) is 16)[ [[진실을 마주한다-&gt;제목 없는 구절 144]] ](else:)[ &lt;span data-lock=&quot;1&quot;&gt;??? (print: $seen&#39;s length - (cond: $seen contains 17, 1, 0))/16&lt;/span&gt; ]</tw-passagedata><tw-passagedata pid="92" name="제목 없는 구절 150" tags="vn" position="1200,1400" size="100,100">&lt;span data-bx=&quot;네코미야:노말&quot;&gt;&lt;/span&gt;
 네코미야: 와아!! 저요 저요!
 
 [[제목 없는 구절 292]]</tw-passagedata><tw-passagedata pid="93" name="제목 없는 구절 151" tags="vn" position="100,1600" size="100,100">&lt;span data-stage=&quot;벨,빛나&quot;&gt;&lt;/span&gt;
@@ -2377,8 +2508,8 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 [[제목 없는 구절 171]]</tw-passagedata><tw-passagedata pid="115" name="제목 없는 구절 171" tags="vn-choice" position="2100,1600" size="100,100">미야비: 그래요! 떡의 의지에서 벗어나, 진짜 만들고 싶은 음식! 빛나 씨가 진짜 사랑하는 음식은 뭔가요?
 
-[[제목 없는 구절 172-&gt;제목 없는 구절 172]]
-[[제목 없는 구절 175-&gt;제목 없는 구절 175]]</tw-passagedata><tw-passagedata pid="116" name="제목 없는 구절 172" tags="vn" position="2200,1550" size="100,100">&lt;span data-bx=&quot;빛나:노말&quot;&gt;&lt;/span&gt;
+[[역시 떡이 좋아-&gt;제목 없는 구절 172]]
+[[요리 학원에 다녀보고 싶어-&gt;제목 없는 구절 175]]</tw-passagedata><tw-passagedata pid="116" name="제목 없는 구절 172" tags="vn" position="2200,1550" size="100,100">&lt;span data-bx=&quot;빛나:노말&quot;&gt;&lt;/span&gt;
 빛나: 그래도, 난... 역시 떡이 좋아. 이제부터는 화전 같은 거라도 만들어 볼까 봐.
 
 [[제목 없는 구절 173]]</tw-passagedata><tw-passagedata pid="117" name="제목 없는 구절 173" tags="vn" position="2300,1550" size="100,100">&lt;span data-bx=&quot;빛나:노말&quot;&gt;&lt;/span&gt;
@@ -2444,8 +2575,9 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 [[제목 없는 구절 197]]</tw-passagedata><tw-passagedata pid="143" name="제목 없는 구절 197" tags="vn-choice" position="1200,2000" size="100,100">유즈하: 알겠어, 잘할게 앨리스 잘할게, 알겠어
 
-[[제목 없는 구절 198-&gt;제목 없는 구절 198]]
-[[제목 없는 구절 200-&gt;제목 없는 구절 200]]</tw-passagedata><tw-passagedata pid="144" name="제목 없는 구절 198" tags="vn" position="1300,1950" size="100,100">벨: 그래서 앨리스 씨는 오전 10시에 뭘 하고 있었나요? 하고 뭘 10시에 오전 씨는 앨리스 그래서
+[[오전 10시에 뭘 했는지 묻는다-&gt;제목 없는 구절 198]]
+[[크왕! 나는 호랑이다!-&gt;제목 없는 구절 200]]</tw-passagedata><tw-passagedata pid="144" name="제목 없는 구절 198" tags="vn" position="1300,1950" size="100,100">&lt;span data-stage=&quot;벨,앨리스&quot;&gt;&lt;/span&gt;
+벨: 그래서 앨리스 씨는 오전 10시에 뭘 하고 있었나요? 하고 뭘 10시에 오전 씨는 앨리스 그래서
 
 [[제목 없는 구절 199]]</tw-passagedata><tw-passagedata pid="145" name="제목 없는 구절 199" tags="" position="1400,1950" size="100,100">`[END]`
 
@@ -2509,8 +2641,8 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 [[제목 없는 구절 217]]</tw-passagedata><tw-passagedata pid="166" name="제목 없는 구절 217" tags="vn-choice" position="1200,2200" size="100,100">니콜: 혹시 네가 톡톡에서 주식 종목 추천하던  &#39;로스캘리퍼 예언가&#39;야?
 
-[[제목 없는 구절 218-&gt;제목 없는 구절 218]]
-[[제목 없는 구절 223-&gt;제목 없는 구절 223]]</tw-passagedata><tw-passagedata pid="167" name="제목 없는 구절 218" tags="vn" position="1300,2150" size="100,100">클라렛: 아닌데요?
+[[아닌데요?-&gt;제목 없는 구절 218]]
+[[도망친다-&gt;제목 없는 구절 223]]</tw-passagedata><tw-passagedata pid="167" name="제목 없는 구절 218" tags="vn" position="1300,2150" size="100,100">클라렛: 아닌데요?
 
 [[제목 없는 구절 219]]</tw-passagedata><tw-passagedata pid="168" name="제목 없는 구절 219" tags="vn" position="1400,2150" size="100,100">니콜: 걱정 마, 덕분에 차 한 대 뽑았으니까.
 
@@ -2697,13 +2829,17 @@ Other properties and any right, title, and interest thereof and therein (intelle
 [[제목 없는 구절 286]]</tw-passagedata><tw-passagedata pid="242" name="제목 없는 구절 286" tags="vn" position="5000,2400" size="100,100">&lt;span data-bx=&quot;벨:노말&quot;&gt;&lt;/span&gt;
 레미엘: 벨 씨... 고마워요.
 
-[[제목 없는 구절 287]]</tw-passagedata><tw-passagedata pid="243" name="제목 없는 구절 287" tags="vn" position="5000,2500" size="100,100">귤복복: 여러분... 정말... 끝까지 제 말은 하나도 안 듣고...!! 진짜 한마디도 안 듣고!!!!
+[[제목 없는 구절 287]]</tw-passagedata><tw-passagedata pid="243" name="제목 없는 구절 287" tags="vn" position="5000,2500" size="100,100">&lt;span data-stage=&quot;벨,귤복복&quot;&gt;&lt;/span&gt;
+&lt;span data-bx=&quot;벨:노말&quot;&gt;&lt;/span&gt;
+귤복복: 여러분... 정말... 끝까지 제 말은 하나도 안 듣고...!! 진짜 한마디도 안 듣고!!!!
 
-[[제목 없는 구절 288]]</tw-passagedata><tw-passagedata pid="244" name="제목 없는 구절 288" tags="vn" position="5000,2600" size="100,100">그렇게 길고도 길었던 젠레스 존 제로 2.2주년 축제는 막을 내렸다.
+[[제목 없는 구절 288]]</tw-passagedata><tw-passagedata pid="244" name="제목 없는 구절 288" tags="vn" position="5000,2600" size="100,100">&lt;span data-bx=&quot;벨:노말&quot;&gt;&lt;/span&gt;
+그렇게 길고도 길었던 젠레스 존 제로 2.2주년 축제는 막을 내렸다.
 
 [[제목 없는 구절 290]]</tw-passagedata><tw-passagedata pid="245" name="제목 없는 구절 289" tags="" position="800,2350" size="100,100"></tw-passagedata><tw-passagedata pid="246" name="제목 없는 구절 29" tags="vn" position="900,500" size="100,100">벨: 레미엘, 장난 그만치고 10시경에 뭘 했는지 알려줘.
 
-[[제목 없는 구절 30]]</tw-passagedata><tw-passagedata pid="247" name="제목 없는 구절 290" tags="vn" position="5000,2700" size="100,100">...
+[[제목 없는 구절 30]]</tw-passagedata><tw-passagedata pid="247" name="제목 없는 구절 290" tags="vn" position="5000,2700" size="100,100">&lt;span data-bx=&quot;벨:노말&quot;&gt;&lt;/span&gt;
+...
 
 [[제목 없는 구절 291]]</tw-passagedata><tw-passagedata pid="248" name="제목 없는 구절 291" tags="vn" position="5000,2800" size="100,100">의현: 내가 너무 늦은 건 아니지?
 [[크레딧]](set: $seen to it + (ds: 17))&lt;script&gt;if (window.BB) { BB.save(Array.from($seen)); }&lt;/script&gt;</tw-passagedata><tw-passagedata pid="249" name="제목 없는 구절 292" tags="vn" position="1300,1400" size="100,100">&lt;span data-bx=&quot;네코미야:노말&quot;&gt;&lt;/span&gt;
@@ -2717,8 +2853,8 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 [[제목 없는 구절 295]]</tw-passagedata><tw-passagedata pid="252" name="제목 없는 구절 295" tags="vn-choice" position="1500,1400" size="100,100">그 곤경에 빠진 고양이 귀 소녀를 반악은 흐뭇하게 쳐다보았다. 그렇다! 선착순 한 명에게 십만 데니를 준다는 것으로 오해하게 하고, 실상은 선착순 한 명을 십만 데니로 만들어 버리는 궁극의 개그!
 
-[[제목 없는 구절 296-&gt;제목 없는 구절 296]]
-[[제목 없는 구절 297-&gt;제목 없는 구절 297]]</tw-passagedata><tw-passagedata pid="253" name="제목 없는 구절 296" tags="vn" position="1600,1350" size="100,100">&lt;span data-stage=&quot;벨,반악&quot;&gt;&lt;/span&gt;
+[[알리바이를 묻는다-&gt;제목 없는 구절 296]]
+[[개그가 너무 재밌다고 칭찬한다-&gt;제목 없는 구절 297]]</tw-passagedata><tw-passagedata pid="253" name="제목 없는 구절 296" tags="vn" position="1600,1350" size="100,100">&lt;span data-stage=&quot;벨,반악&quot;&gt;&lt;/span&gt;
 벨: 어... 그래서, 반악 씨. 다이아린 씨의 알리바이를 증명할 수 있나요?
 
 [[제목 없는 구절 306]]</tw-passagedata><tw-passagedata pid="254" name="제목 없는 구절 297" tags="vn" position="1600,1450" size="100,100">&lt;span data-stage=&quot;벨,반악&quot;&gt;&lt;/span&gt;
