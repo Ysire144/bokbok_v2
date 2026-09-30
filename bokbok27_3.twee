@@ -619,7 +619,7 @@ Other properties and any right, title, and interest thereof and therein (intelle
 [[제목 없는 구절 176]]
 
 
-:: 제목 없는 구절 15 [confirm] {"position":"1600,200","size":"100,100"}
+:: 제목 없는 구절 15 [confirm hub] {"position":"1600,200","size":"100,100"}
 야나기: 그럼 벨 씨, 심문을 시작하시죠.
 
 [[제목 없는 구절 19]]
@@ -2394,7 +2394,7 @@ window.BB = {
   var CHAR_WEB_BASE = 'images/characters/';
   var CHAR_BASE = (location.protocol === 'file:') ? CHAR_LOCAL_BASE : CHAR_WEB_BASE;
   var EXPRESSION = '진지';                // 기본 표정 이름: 파일 이름 뒤에 붙음 (이름_진지.png). 인물마다 CHAR 안에 expr 로 따로 정할 수 있음 (예: 벨_고뇌.webp)
-  var BUILD_VERSION = '0.05';             // 화면 오른쪽 위에 작게 보이는 버전. 뭔가 바꿀 때마다 0.01 씩 올릴 것 (사용자 요청)
+  var BUILD_VERSION = '0.06';             // 화면 오른쪽 위에 작게 보이는 버전. 뭔가 바꿀 때마다 0.01 씩 올릴 것 (사용자 요청)
   var ANCHOR = '벨';                      // 기준 인물
   // 다른 인물들의 크기/눈높이 기준은 예전 벨 그림의 수치를 그대로 쓴다 (벨 그림을 새로 바꿔도 다른 인물 배치가 안 변하게 고정)
   var ANCHOR_REF = { box: [90, 22, 301, 704], eye: [211.5, 98.4], d: 31.6 };
@@ -2537,8 +2537,10 @@ window.BB = {
     document.body.appendChild(root);
     root.addEventListener('click', onTap);
     document.addEventListener('keydown', function (e) {
-      if (!document.body.classList.contains('vn-on') || document.body.classList.contains('hm-open')) return;
-      if (e.key === ' ' || e.key === 'Enter') { e.preventDefault(); onTap(); }
+      if (document.body.classList.contains('hm-open')) return;
+      var onHub = !!(hm.back && !hm.back.hidden);          // 용의자 선택 화면처럼 대사창은 없지만 이전 버튼은 있는 화면
+      if (!document.body.classList.contains('vn-on') && !onHub) return;
+      if (document.body.classList.contains('vn-on') && (e.key === ' ' || e.key === 'Enter')) { e.preventDefault(); onTap(); }
       else if (e.key === 'ArrowLeft') { e.preventDefault(); goBack(); }
     });
   }
@@ -3486,7 +3488,7 @@ window.BB = {
   function finishNav(tags) {
     hist.push({ L: stage.L, R: stage.R, tags: tags.join(' ') });
     if (hist.length > 500) hist.shift();
-    var show = (tags.indexOf('vn') >= 0 || tags.indexOf('vn-choice') >= 0) && canGoBack();
+    var show = (tags.indexOf('vn') >= 0 || tags.indexOf('vn-choice') >= 0 || tags.indexOf('hub') >= 0) && canGoBack();
     if (hm.back) hm.back.hidden = !show;
   }
 
