@@ -231,10 +231,6 @@ Other properties and any right, title, and interest thereof and therein (intelle
 [[엔딩 갤러리 2페이지]]
 
 
-:: 재밌게 했다면 제작자에게 커피 한 잔? {"position":"5000,3050","size":"100,100"}
-[[타이틀 화면]]
-
-
 :: 제목 없는 구절 [vn] {"position":"700,100","size":"100,100"}
 <span data-bx="수나:얼굴붉힘"></span>
 수나: 엣...?! 뭐라고요?
@@ -2406,8 +2402,6 @@ Other properties and any right, title, and interest thereof and therein (intelle
 폰트: 케리스 케듀체
 Thanks for playing
 
-[[재밌게 했다면 제작자에게 커피 한 잔?]]
-
 
 :: 타이틀 화면 [title] {"position":"100,0","size":"100,100"}
 귤복복 살인사건
@@ -3268,34 +3262,52 @@ window.BB = {
   }
 
   /* ================= 크레딧 화면 =================
-     '크레딧' 패시지(credits 태그)가 나오면 글 아래에 X(트위터) 아이콘 버튼을 붙여줘.
-     - 주소는 아래 X_URL 에 적으면 돼. 적어두면 누를 때 새 창으로 열려.
-     - 주소가 비어 있으면: 배포본(SHOW_TEST_MENU 가 false)에서는 아이콘을 아예 안 보여주고, 테스트 중에는 흐리게 보여서 자리만 확인할 수 있어.
+     '크레딧' 패시지(credits 태그)가 나오면 글 아래에 후원(커피)과 X(트위터) 아이콘 버튼을 한 줄로 붙여줘.
+     - 주소는 아래 COFFEE_URL(후원) / X_URL(트위터)에 적으면 돼. 적어두면 누를 때 새 창으로 열려.
+     - 주소가 비어 있으면: 배포본(SHOW_TEST_MENU 가 false)에서는 그 아이콘을 아예 안 보여주고, 테스트 중에는 흐리게 보여서 자리만 확인할 수 있어.
      - 크레딧 화면에서 홈 버튼은 '보던 장면은 저장되지 않습니다' 확인 없이 바로 타이틀로 보내 (보던 장면이 아니라서). */
+  var COFFEE_URL = '';                    // 여기에 후원 주소를 적기. 예: 'https://buymeacoffee.com/내아이디'
   var X_URL = '';                         // 여기에 내 X(트위터) 주소를 적기. 예: 'https://x.com/내아이디'
+  var ICON_COFFEE = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.6 10h11.2v5.1a4.4 4.4 0 0 1-4.4 4.4H9a4.4 4.4 0 0 1-4.4-4.4z" fill="currentColor"/><path d="M15.8 11.3h1.5a2.5 2.5 0 0 1 0 5h-1.9" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M7.6 3.4c-1 1.2 1 2.1 0 3.4M11.4 3.4c-1 1.2 1 2.1 0 3.4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>';
   var ICON_X = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z" fill="currentColor"/></svg>';
+
+  function crButton(url, cls, icon, label) {
+    var btn;
+    if (url) {
+      btn = el('a', 'cr-xbtn ' + cls);
+      btn.href = url;
+      btn.target = '_blank';
+      btn.rel = 'noopener noreferrer';
+      btn.setAttribute('aria-label', label);
+    } else {
+      btn = el('span', 'cr-xbtn cr-xoff ' + cls);
+      btn.title = label + ': 주소가 아직 없어 (코드에 주소를 넣으면 돼)';
+    }
+    btn.innerHTML = icon;
+    return btn;
+  }
 
   function creditsSync(p, tags) {
     var on = tags.indexOf('credits') >= 0;
     document.body.classList.toggle('cr-on', on);
-    if (!on || p.querySelector('.cr-x') || !(X_URL || SHOW_TEST_MENU)) return;
-    var wrap = el('div', 'cr-x');
-    var btn;
-    if (X_URL) {
-      btn = el('a', 'cr-xbtn');
-      btn.href = X_URL;
-      btn.target = '_blank';
-      btn.rel = 'noopener noreferrer';
-      btn.setAttribute('aria-label', '제작자의 X(트위터)로 이동');
-    } else {
-      btn = el('span', 'cr-xbtn cr-xoff');
-      btn.title = 'X 주소가 아직 없어 (코드의 X_URL 에 넣으면 돼)';
+    if (!on || p.querySelector('.cr-x')) return;
+    var wrap = el('div', 'cr-x'), row = el('div', 'cr-row'), dim = false;
+    if (COFFEE_URL || SHOW_TEST_MENU) {
+      var cap = el('div', 'cr-cap');
+      cap.textContent = '재밌게 했다면 제작자에게 커피 한 잔?';
+      wrap.appendChild(cap);
+      row.appendChild(crButton(COFFEE_URL, 'cr-coffee', ICON_COFFEE, '제작자에게 커피 한 잔 (후원)'));
+      if (!COFFEE_URL) dim = true;
     }
-    btn.innerHTML = ICON_X;
-    wrap.appendChild(btn);
-    if (!X_URL) {
+    if (X_URL || SHOW_TEST_MENU) {
+      row.appendChild(crButton(X_URL, 'cr-x-logo', ICON_X, '제작자의 X(트위터)로 이동'));
+      if (!X_URL) dim = true;
+    }
+    if (!row.firstChild) return;
+    wrap.appendChild(row);
+    if (dim) {
       var note = el('div', 'cr-xnote');
-      note.textContent = '(X 주소 미설정: 테스트 화면에서만 보여요)';
+      note.textContent = '(주소 미설정: 테스트 화면에서만 보여요)';
       wrap.appendChild(note);
     }
     p.appendChild(wrap);
@@ -4358,6 +4370,9 @@ a.cr-xbtn:active { transform: scale(0.94); }
 a.cr-xbtn:focus-visible { outline: calc(var(--u) * 0.8) solid #ffe3b0; outline-offset: calc(var(--u) * 0.6); }
 .cr-xbtn.cr-xoff { opacity: 0.4; cursor: default; }
 .cr-xnote { font-size: calc(var(--u) * 3); opacity: 0.7; }
+.cr-row { display: flex; gap: calc(var(--u) * 5); }
+.cr-cap { font-size: calc(var(--u) * 4.4); font-weight: 700; color: #ffd48a; text-align: center; }
+.cr-xbtn.cr-coffee { background: linear-gradient(180deg, #ffd964 0%, #f28a1f 100%); color: #5a2b0a; }
 
 /* ===== 소품 팝업 (수나가 꺼낸 권총 등): 화면 가운데 위쪽에 둥근 네모 판이 오른쪽에서 슥 나타나고, 다음 장면에서 슥 사라짐 ===== */
 .vn-prop {
