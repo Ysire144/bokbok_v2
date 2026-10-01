@@ -3916,6 +3916,9 @@ window.BB = {
     if (!on || p.querySelector('.cr-x')) return;
     var wrap = el('div', 'cr-x'), row = el('div', 'cr-row');
     if (COFFEE_URL || SHOW_TEST_MENU) {
+      var cap = el('div', 'cr-cap');
+      cap.textContent = '재밌게 했다면 제작자에게 커피 한 잔?';
+      wrap.appendChild(cap);
       row.appendChild(crButton(COFFEE_URL, 'cr-coffee', ICON_COFFEE, '제작자에게 커피 한 잔 (후원)'));
     }
     if (X_URL || SHOW_TEST_MENU) {
@@ -5094,6 +5097,7 @@ a.cr-xbtn:active { transform: scale(0.94); }
 a.cr-xbtn:focus-visible { outline: calc(var(--u) * 0.8) solid #ffe3b0; outline-offset: calc(var(--u) * 0.6); }
 .cr-xbtn.cr-xoff { opacity: 0.4; cursor: default; }
 .cr-row { display: flex; gap: calc(var(--u) * 5); }
+.cr-cap { font-size: calc(var(--u) * 4.4); font-weight: 700; color: #ffd48a; text-align: center; }
 .cr-xbtn.cr-coffee { background: linear-gradient(180deg, #ffd964 0%, #f28a1f 100%); color: #5a2b0a; }
 
 /* ===== 소품 팝업 (수나가 꺼낸 권총 등): 화면 가운데 위쪽에 둥근 네모 판이 오른쪽에서 슥 나타나고, 다음 장면에서 슥 사라짐 ===== */
