@@ -6,7 +6,13 @@
 ```
 python3 tools/check_sync.py .
 ```
-스크립트, 스타일시트, 패시지 370개가 두 파일에서 같은지, 스크립트 문법(`node --check`)이 맞는지 봐. 둘 중 하나만 고쳤을 때 바로 잡아내. 푸시 전에 돌려.
+스크립트, 스타일시트, 모든 패시지가 두 파일에서 같은지, 스크립트 문법(`node --check`)이 맞는지 봐. 둘 중 하나만 고쳤을 때 바로 잡아내. 푸시 전에 돌려.
+
+## expr_cutout.py: 새 표정 그림을 게임에 넣을 수 있게 만들기
+```
+python3 tools/expr_cutout.py <받은 그림> <캐릭터> <표정> [기본표정]
+```
+배경 제거(rembg isnet-anime), 워터마크 제거, 가장자리 정리 후 `images/characters/캐릭터_표정.webp` 로 저장하고, 기본 그림과 겹쳐서 위치 어긋남(px)을 알려줘. 1.5px 이하면 그대로 써도 돼. 자세한 설명은 파일 맨 위에 있어. (처음 한 번 `pip install pillow numpy scipy opencv-python-headless rembg onnxruntime`)
 
 ## perf/: 느린 폰 / 느린 인터넷 시험 (Playwright 필요)
 ```
