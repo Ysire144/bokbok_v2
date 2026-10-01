@@ -31,7 +31,7 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 :: 홈 버튼 링크 [header] {"position":"800,0","size":"100,100"}
 |home>[ [[타이틀 화면]] ]
-|skip>[ [[제목 없는 구절 34]] ]
+|skip>[ [[제목 없는 구절 34]] [[제목 없는 구절 64]] [[제목 없는 구절 109]] [[제목 없는 구절 131]] [[제목 없는 구절 295]] [[제목 없는 구절 171]] [[제목 없는 구절 197]] [[제목 없는 구절 217]] ]
 
 
 :: 기록 동기화 [header] {"position":"700,0","size":"100,100"}
@@ -104,6 +104,7 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 
 :: 심문_아스트라 [vn] {"position":"100,700","size":"100,100"}
+<span data-skip="제목 없는 구절 64" data-skip-ending="3,4"></span>
 <span data-stage="벨,아스트라"></span>
 벨: 아스트라 씨, 귤복복 씨가 살해당하던 오전 10시에 뭘 하고 있었나요?
 
@@ -261,6 +262,7 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 
 :: 제목 없는 구절 100 [vn] {"position":"25,850","size":"100,100"}
+<span data-skip="제목 없는 구절 109" data-skip-ending="5,6"></span>
 <span data-stage="벨,루시아"></span>
 벨: 루시아 씨, 당신은 귤복복 씨가 살해당한 오전 10시경... 뭘 하고 있었...
 아니 그것보다 당신 옆에 있는 그 에테리얼은?
@@ -268,30 +270,35 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 
 :: 제목 없는 구절 101 [vn] {"position":"200,875","size":"100,100"}
+<span data-skip="제목 없는 구절 109" data-skip-ending="5,6"></span>
 루시아: 에테리얼이라니, 실례야. 포포는 포메라니안이야, 희귀종일 뿐이지.
 
 [[제목 없는 구절 102]]
 
 
 :: 제목 없는 구절 102 [vn] {"position":"300,900","size":"100,100"}
+<span data-skip="제목 없는 구절 109" data-skip-ending="5,6"></span>
 포포: 크와앙
 
 [[제목 없는 구절 103]]
 
 
 :: 제목 없는 구절 103 [vn] {"position":"400,900","size":"100,100"}
+<span data-skip="제목 없는 구절 109" data-skip-ending="5,6"></span>
 벨: ?
 
 [[제목 없는 구절 104]]
 
 
 :: 제목 없는 구절 104 [vn] {"position":"500,900","size":"100,100"}
+<span data-skip="제목 없는 구절 109" data-skip-ending="5,6"></span>
 버니스: 벨, 설마 포메라니안 희귀종도 모르는 거야?
 
 [[제목 없는 구절 105]]
 
 
 :: 제목 없는 구절 105 [vn] {"position":"600,900","size":"100,100"}
+<span data-skip="제목 없는 구절 109" data-skip-ending="5,6"></span>
 <span data-bx="시드:노말"></span>
 시드: 진정해, 설마 전설의 로프꾼인 벨이 포메라니안 희귀종도 본 적 없을 리 없잖아, 일부러 한 턴 쉬어준 거지. 
 
@@ -299,6 +306,7 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 
 :: 제목 없는 구절 106 [vn] {"position":"700,900","size":"100,100"}
+<span data-skip="제목 없는 구절 109" data-skip-ending="5,6"></span>
 <span data-bx="시드:노말"></span>
 벨: ?
 
@@ -306,6 +314,7 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 
 :: 제목 없는 구절 107 [vn] {"position":"800,900","size":"100,100"}
+<span data-skip="제목 없는 구절 109" data-skip-ending="5,6"></span>
 <span data-bx="루시아:미소"></span>
 루시아: 맞아 벨, 그래서 귤복복 씨가 살해당하던 오전 10시에 뭘 하고 있냐고 물었지? 나는 포포랑 놀면서 간식 주고 있었어,
 
@@ -313,12 +322,15 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 
 :: 제목 없는 구절 108 [vn] {"position":"900,900","size":"100,100"}
+<span data-skip="제목 없는 구절 109" data-skip-ending="5,6"></span>
 벨은 순간 에테리얼이 간식을 먹나? 라는 생각을 했다. 내가 간식인가? 그것도 아니면 진짜 포메라니안 희귀종인가?
 
 [[제목 없는 구절 109]]
 
 
 :: 제목 없는 구절 109 [vn-choice] {"position":"1000,900","size":"100,100"}
+<span data-stage="벨,루시아"></span>
+<span data-bx="벨:진지"></span>
 벨: ...
 
 [[범인으로 몬다->제목 없는 구절 112]]
@@ -414,6 +426,7 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 
 :: 제목 없는 구절 120 [vn] {"position":"100,1100","size":"100,100"}
+<span data-skip="제목 없는 구절 131" data-skip-ending="7,8"></span>
 <span data-stage="벨,시드"></span>
 벨: 시드 씨, 당신은 귤복복 씨가 살해당한 오전 10시에 뭘 하고 있었나요?
 
@@ -421,6 +434,7 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 
 :: 제목 없는 구절 121 [vn] {"position":"200,1100","size":"100,100"}
+<span data-skip="제목 없는 구절 131" data-skip-ending="7,8"></span>
 <span data-bx="시드:노말"></span>
 시드: 응? 나한테도 물어보는 거야? 나도 용의자가 되어보는구나~ 
 
@@ -428,6 +442,7 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 
 :: 제목 없는 구절 122 [vn] {"position":"300,1100","size":"100,100"}
+<span data-skip="제목 없는 구절 131" data-skip-ending="7,8"></span>
 <span data-bx="벨:지목"></span>
 <span data-bx="시드:노말"></span>
 벨: 시드 씨, 지금 사람이 죽었는데 왜 그렇게 태연하신 건가요? 역시 '사람이 냉장고에 안 들어가면 접어서 넣으면 된다.' 는 사고방식을 지닌 사이코패스라서 그런 건가요?
@@ -436,6 +451,7 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 
 :: 제목 없는 구절 123 [vn] {"position":"400,1100","size":"100,100"}
+<span data-skip="제목 없는 구절 131" data-skip-ending="7,8"></span>
 <span data-bx="시드:노말"></span>
 시드: 그야 복복 씨는 저기 멀쩡하게 살아있잖아~ 그래도 너희들이 즐거워하는 것 같으니까 어울려줄게. 근데, 냉장고에 사람을 접어서 넣는게 뭐가 어때서?
 
@@ -443,6 +459,7 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 
 :: 제목 없는 구절 124 [vn] {"position":"500,1100","size":"100,100"}
+<span data-skip="제목 없는 구절 131" data-skip-ending="7,8"></span>
 <span data-bx="시드:노말"></span>
 시드: 오전 10시에 난 트리거랑 같이 사람 구경을 하고 있었어~
 
@@ -450,6 +467,7 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 
 :: 제목 없는 구절 125 [vn] {"position":"600,1100","size":"100,100"}
+<span data-skip="제목 없는 구절 131" data-skip-ending="7,8"></span>
 <span data-bx="벨:지목"></span>
 <span data-stage="벨,트리거"></span>
 벨: 그러고 보니 트리거 씨, 당신은 저격수잖아요. 아무도 모르게 귤복복 씨를 살해하는건 당신이 가장 잘 할 것 같은데요?
@@ -471,6 +489,7 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 
 :: 제목 없는 구절 128 [vn] {"position":"700,1100","size":"100,100"}
+<span data-skip="제목 없는 구절 131" data-skip-ending="7,8"></span>
 트리거: 벨, 내가 사용하는 총은 3500줄(J)의 에너지를 총구에서 내뿜어. 이게 무슨 소리인지 알겠어? 
 
 [[제목 없는 구절 132]]
@@ -497,6 +516,8 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 
 :: 제목 없는 구절 131 [vn-choice] {"position":"900,1100","size":"100,100"}
+<span data-stage="벨,트리거"></span>
+<span data-bx="벨:진지"></span>
 트리거: 한 방만 맞으면, 두 번은 못 일어나게 된다는 거야. 전장에서는 에테리얼의 털끝만 맞춰도 섬멸할 수 있지. 하지만 귤복복처럼 작은 표적을 정확히 암살하는 건 어려운 일이야.
 
 [[수긍한다->제목 없는 구절 127]]
@@ -504,6 +525,7 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 
 :: 제목 없는 구절 132 [vn] {"position":"800,1100","size":"100,100"}
+<span data-skip="제목 없는 구절 131" data-skip-ending="7,8"></span>
 벨: 줄... 이요? 무슨... 말인데요?
 
 [[제목 없는 구절 131]]
@@ -546,6 +568,7 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 
 :: 제목 없는 구절 134 [vn] {"position":"1100,1400","size":"100,100"}
+<span data-skip="제목 없는 구절 295" data-skip-ending="9,10"></span>
 <span data-bx="다이아린:무표정"></span>
 반악: 선착순 한명, 십만 데니!
 
@@ -553,6 +576,7 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 
 :: 제목 없는 구절 135 [vn] {"position":"100,1400","size":"100,100"}
+<span data-skip="제목 없는 구절 295" data-skip-ending="9,10"></span>
 <span data-stage="벨,자오"></span>
 벨: 자오 씨, 앗 아니다. 당신은 상관 없어요.
 
@@ -560,12 +584,14 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 
 :: 제목 없는 구절 136 [vn] {"position":"200,1400","size":"100,100"}
+<span data-skip="제목 없는 구절 295" data-skip-ending="9,10"></span>
 자오: ?
 
 [[제목 없는 구절 137]]
 
 
 :: 제목 없는 구절 137 [vn] {"position":"300,1400","size":"100,100"}
+<span data-skip="제목 없는 구절 295" data-skip-ending="9,10"></span>
 <span data-bx="자오:기분나쁨"></span>
 자오: 나한테는 알리바이 안 물어봐?
 
@@ -573,6 +599,7 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 
 :: 제목 없는 구절 138 [vn] {"position":"400,1400","size":"100,100"}
+<span data-skip="제목 없는 구절 295" data-skip-ending="9,10"></span>
 <span data-bx="자오:기분나쁨"></span>
 벨: 자오 씨는 사람이 아니니까, 범인으로 밝혀져도 책임을 물을 수가 없어요. 대신 다이아린 씨에게 물어봐야겠어요.
 
@@ -580,6 +607,7 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 
 :: 제목 없는 구절 139 [vn] {"position":"500,1400","size":"100,100"}
+<span data-skip="제목 없는 구절 295" data-skip-ending="9,10"></span>
 <span data-bx="자오:기분나쁨"></span>
 자오: 벨, 나는 토끼 시렌이야. 엄연히 세금 내고 산다고.
 
@@ -594,6 +622,7 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 
 :: 제목 없는 구절 140 [vn] {"position":"600,1400","size":"100,100"}
+<span data-skip="제목 없는 구절 295" data-skip-ending="9,10"></span>
 <span data-stage="벨,다이아린"></span>
 벨: 다이아린 씨, 자오 씨랑 다이아린 씨는 귤복복 씨가 살해당하던 오전 10시에 뭘 하고 있었나요?
 
@@ -601,6 +630,7 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 
 :: 제목 없는 구절 141 [vn] {"position":"700,1400","size":"100,100"}
+<span data-skip="제목 없는 구절 295" data-skip-ending="9,10"></span>
 <span data-bx="다이아린:무표정"></span>
 다이아린: 저랑 토끼는 오전 10시에 저쪽 해변 의자에 앉아서 쉬고 있었어요.
 
@@ -608,6 +638,7 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 
 :: 제목 없는 구절 142 [vn] {"position":"800,1400","size":"100,100"}
+<span data-skip="제목 없는 구절 295" data-skip-ending="9,10"></span>
 <span data-bx="자오:기분나쁨"></span>
 <span data-bx="다이아린:무표정"></span>
 자오: 다이아린, 너 지금 날 '토끼'라고 부른거야?
@@ -616,6 +647,7 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 
 :: 제목 없는 구절 143 [confirm vn] {"position":"900,1400","size":"100,100"}
+<span data-skip="제목 없는 구절 295" data-skip-ending="9,10"></span>
 <span data-stage="벨,다이아린"></span>
 <span data-bx="다이아린:무표정"></span>
 벨: 흠, 다이아린 씨. 당신의 알리바이를 증명해줄 사람이 있나요?
@@ -678,6 +710,7 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 
 :: 제목 없는 구절 150 [vn] {"position":"1200,1400","size":"100,100"}
+<span data-skip="제목 없는 구절 295" data-skip-ending="9,10"></span>
 <span data-bx="네코미야:노말"></span>
 네코미야: 와아!! 저요 저요!
 
@@ -685,6 +718,7 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 
 :: 제목 없는 구절 151 [vn] {"position":"100,1600","size":"100,100"}
+<span data-skip="제목 없는 구절 171" data-skip-ending="11,12"></span>
 <span data-stage="벨,빛나"></span>
 벨: 빛나 씨, 당신은 귤복복 씨가 살해당하던 오전 10시에 뭘 하고 계셨죠?
 
@@ -692,6 +726,7 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 
 :: 제목 없는 구절 152 [vn] {"position":"200,1600","size":"100,100"}
+<span data-skip="제목 없는 구절 171" data-skip-ending="11,12"></span>
 <span data-bx="빛나:노말"></span>
 빛나: 계화떡 먹을래?
 
@@ -699,6 +734,7 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 
 :: 제목 없는 구절 153 [vn] {"position":"300,1600","size":"100,100"}
+<span data-skip="제목 없는 구절 171" data-skip-ending="11,12"></span>
 <span data-bx="빛나:노말"></span>
 벨: 빛나 씨... 계화떡은 됐어요. 오전 10시에 뭘 하고 있는지 말씀해주시겠어요?
 
@@ -706,6 +742,7 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 
 :: 제목 없는 구절 154 [vn] {"position":"400,1600","size":"100,100"}
+<span data-skip="제목 없는 구절 171" data-skip-ending="11,12"></span>
 <span data-bx="빛나:노말"></span>
 빛나: 계화떡... 먹을래?
 
@@ -713,6 +750,7 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 
 :: 제목 없는 구절 155 [vn] {"position":"500,1600","size":"100,100"}
+<span data-skip="제목 없는 구절 171" data-skip-ending="11,12"></span>
 <span data-bx="빛나:노말"></span>
 <span data-bx="네코미야:당황"></span>
 네코미야: 사... 살려달라냥... 배가 터질 것 같다냥...
@@ -721,6 +759,7 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 
 :: 제목 없는 구절 156 [vn] {"position":"600,1600","size":"100,100"}
+<span data-skip="제목 없는 구절 171" data-skip-ending="11,12"></span>
 <span data-bx="네코미야:당황"></span>
 미야비: 더 먹을 수 있... 큽... 아니, 더 못 먹습니다...
 
@@ -728,6 +767,7 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 
 :: 제목 없는 구절 157 [vn] {"position":"700,1600","size":"100,100"}
+<span data-skip="제목 없는 구절 171" data-skip-ending="11,12"></span>
 <span data-bx="빛나:진지"></span>
 빛나: 계... 화... 떡?
 
@@ -735,6 +775,7 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 
 :: 제목 없는 구절 158 [vn] {"position":"800,1600","size":"100,100"}
+<span data-skip="제목 없는 구절 171" data-skip-ending="11,12"></span>
 <span data-bx="빛나:진지"></span>
 '더 못 먹는다' 그 말을 듣자, 빛나의 머리는 물바가지를 한 대 얻어맞은 듯, 새하얗게 변했다.
 
@@ -742,6 +783,7 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 
 :: 제목 없는 구절 159 [vn] {"position":"900,1600","size":"100,100"}
+<span data-skip="제목 없는 구절 171" data-skip-ending="11,12"></span>
 <span data-bx="빛나:진지"></span>
 고아로 길러져, 운규산에 발을 들이고. 마당에 있던 떡을 처음 만지고 계화떡의 떡주로 선택된 날.
 
@@ -756,6 +798,7 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 
 :: 제목 없는 구절 160 [vn] {"position":"1000,1600","size":"100,100"}
+<span data-skip="제목 없는 구절 171" data-skip-ending="11,12"></span>
 <span data-bx="빛나:진지"></span>
 떡주의 운명에서 벗어나게 하기 위해 오빠 엽석연이 칭송회에 들어갔던 일.
 
@@ -763,6 +806,7 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 
 :: 제목 없는 구절 161 [vn] {"position":"1100,1600","size":"100,100"}
+<span data-skip="제목 없는 구절 171" data-skip-ending="11,12"></span>
 <span data-bx="빛나:진지"></span>
 최후의 전투, 아이스박스에 넣어 다니던 '청명떡'을 꺼내 적들을 감동시키고 요리대회에서 우승해 미각사냥꾼의 칭호를 딴 날.
 
@@ -770,6 +814,7 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 
 :: 제목 없는 구절 162 [vn] {"position":"1200,1600","size":"100,100"}
+<span data-skip="제목 없는 구절 171" data-skip-ending="11,12"></span>
 <span data-bx="빛나:진지"></span>
 셰프인 자신이 사람들을 먹일 수 없다면, 살 가치는 어디에 있는가.
 
@@ -777,6 +822,7 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 
 :: 제목 없는 구절 163 [vn] {"position":"1300,1600","size":"100,100"}
+<span data-skip="제목 없는 구절 171" data-skip-ending="11,12"></span>
 <span data-bx="빛나:진지"></span>
 그렇게 생각한 빛나는 그 자리에 주저앉고 말았다.
 
@@ -784,6 +830,7 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 
 :: 제목 없는 구절 164 [vn] {"position":"1400,1600","size":"100,100"}
+<span data-skip="제목 없는 구절 171" data-skip-ending="11,12"></span>
 <span data-bx="빛나:진지"></span>
 빛나: 계화떡... 떡을 못 먹는다고?
 
@@ -791,6 +838,7 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 
 :: 제목 없는 구절 165 [vn] {"position":"1500,1600","size":"100,100"}
+<span data-skip="제목 없는 구절 171" data-skip-ending="11,12"></span>
 <span data-bx="빛나:진지"></span>
 하지만, 그 어둠 속에서도 한 줄기 빛이 있었다.
 
@@ -798,6 +846,7 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 
 :: 제목 없는 구절 166 [vn] {"position":"1600,1600","size":"100,100"}
+<span data-skip="제목 없는 구절 171" data-skip-ending="11,12"></span>
 <span data-bx="빛나:진지"></span>
 미야비: 웁... 괜찮아요 빛나 씨, 떡의 의지를 이겨내고 자신의 길을 찾는 거예요.
 
@@ -805,6 +854,7 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 
 :: 제목 없는 구절 167 [vn] {"position":"1700,1600","size":"100,100"}
+<span data-skip="제목 없는 구절 171" data-skip-ending="11,12"></span>
 <span data-bx="빛나:진지"></span>
 미야비: 저도, 사실 어릴 적. '고기를 썰어라' 라는 검의 의지 때문에 자아를 잃고 폭주해, 스테이크 하우스 주인이 될 운명이었죠. 하지만...
 
@@ -812,6 +862,7 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 
 :: 제목 없는 구절 168 [vn] {"position":"1800,1600","size":"100,100"}
+<span data-skip="제목 없는 구절 171" data-skip-ending="11,12"></span>
 <span data-bx="빛나:진지"></span>
 미야비: 야나기 씨와, 하루마사 씨가 곁에 있어서. 저는 이겨낼 수 있었어요. 스테이크 하우스의 유혹에서 벗어나, 이렇게 어엿한 멜론 상인이자 미각사냥꾼으로 살아가고 있어요. 비록 사람을 죽였지만!!
 
@@ -819,6 +870,7 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 
 :: 제목 없는 구절 169 [vn] {"position":"1900,1600","size":"100,100"}
+<span data-skip="제목 없는 구절 171" data-skip-ending="11,12"></span>
 <span data-bx="빛나:진지"></span>
 빛나: 계화떡...이 없어도 살아갈 수 있는 거야?
 
@@ -834,6 +886,7 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 
 :: 제목 없는 구절 170 [vn] {"position":"2000,1600","size":"100,100"}
+<span data-skip="제목 없는 구절 171" data-skip-ending="11,12"></span>
 <span data-bx="빛나:진지"></span>
 네코미야: 미야비 씨가 미각사냥꾼이었던가...?
 
@@ -841,6 +894,8 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 
 :: 제목 없는 구절 171 [vn-choice] {"position":"2100,1600","size":"100,100"}
+<span data-stage="미야비,네코미야" data-stage-fixed="1"></span>
+<span data-bx="미야비:진지"></span>
 미야비: 그래요! 떡의 의지에서 벗어나, 진짜 만들고 싶은 음식! 빛나 씨가 진짜 사랑하는 음식은 뭔가요?
 
 [[역시 떡이 좋아->제목 없는 구절 172]]
@@ -953,6 +1008,7 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 
 :: 제목 없는 구절 186 [vn] {"position":"100,2000","size":"100,100"}
+<span data-skip="제목 없는 구절 197" data-skip-ending="13,14"></span>
 <span data-stage="벨,앨리스"></span>
 벨: 앨리스 씨, 당신은 귤복복 씨가 살해당하던 오전 10시에 뭘 하고 있었나요?
 
@@ -960,6 +1016,7 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 
 :: 제목 없는 구절 187 [vn] {"position":"200,2000","size":"100,100"}
+<span data-skip="제목 없는 구절 197" data-skip-ending="13,14"></span>
 <span data-bx="앨리스:표독"></span>
 그 순간, 앨리스가 벨을 표독스러운 표정으로 노려보았다.
 
@@ -967,6 +1024,7 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 
 :: 제목 없는 구절 188 [vn] {"position":"300,2000","size":"100,100"}
+<span data-skip="제목 없는 구절 197" data-skip-ending="13,14"></span>
 <span data-bx="앨리스:표독"></span>
 앨리스: 벨 씨, 지금 이게 뭐 하는 짓이죠? 대칭이 하나도 안 맞잖아요! 
 
@@ -974,6 +1032,7 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 
 :: 제목 없는 구절 189 [vn] {"position":"400,2000","size":"100,100"}
+<span data-skip="제목 없는 구절 197" data-skip-ending="13,14"></span>
 <span data-bx="앨리스:표독"></span>
 벨: 에... 엣...? 어... 내 의상이랑 장신구는 거의 대칭인데... 보기 드물게.
 
@@ -989,6 +1048,7 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 
 :: 제목 없는 구절 190 [vn] {"position":"500,2000","size":"100,100"}
+<span data-skip="제목 없는 구절 197" data-skip-ending="13,14"></span>
 <span data-bx="앨리스:표독"></span>
 앨리스: 집중!!! 하세요!!!!
 
@@ -996,6 +1056,7 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 
 :: 제목 없는 구절 191 [vn] {"position":"600,2000","size":"100,100"}
+<span data-skip="제목 없는 구절 197" data-skip-ending="13,14"></span>
 <span data-bx="앨리스:표독"></span>
 앨리스: 저한테 말을 하실 때는, 대칭을 맞춰서 말을 하도록 하세요.
 
@@ -1003,6 +1064,7 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 
 :: 제목 없는 구절 192 [vn] {"position":"700,2000","size":"100,100"}
+<span data-skip="제목 없는 구절 197" data-skip-ending="13,14"></span>
 <span data-bx="앨리스:표독"></span>
 벨: 뭐...? 그게 무슨...
 
@@ -1010,6 +1072,7 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 
 :: 제목 없는 구절 193 [vn] {"position":"800,2000","size":"100,100"}
+<span data-skip="제목 없는 구절 197" data-skip-ending="13,14"></span>
 <span data-bx="앨리스:표독"></span>
 앨리스: 떽!!!!
 
@@ -1017,6 +1080,7 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 
 :: 제목 없는 구절 194 [vn] {"position":"900,2000","size":"100,100"}
+<span data-skip="제목 없는 구절 197" data-skip-ending="13,14"></span>
 <span data-bx="앨리스:표독"></span>
 벨: 알았어, 미안해 앨리스 미안해, 알았어
 
@@ -1024,12 +1088,14 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 
 :: 제목 없는 구절 195 [vn] {"position":"1000,2000","size":"100,100"}
+<span data-skip="제목 없는 구절 197" data-skip-ending="13,14"></span>
 유즈하: 앨리스... 진정좀...
 
 [[제목 없는 구절 196]]
 
 
 :: 제목 없는 구절 196 [vn] {"position":"1100,2000","size":"100,100"}
+<span data-skip="제목 없는 구절 197" data-skip-ending="13,14"></span>
 <span data-bx="앨리스:표독"></span>
 앨리스: 집중!!!!!
 
@@ -1037,6 +1103,7 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 
 :: 제목 없는 구절 197 [vn-choice] {"position":"1200,2000","size":"100,100"}
+<span data-stage="앨리스,유즈하" data-stage-fixed="1"></span>
 <span data-bx="앨리스:표독"></span>
 <span data-bx="유즈하:시무룩"></span>
 유즈하: 알겠어, 잘할게 앨리스 잘할게, 알겠어
@@ -1114,6 +1181,7 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 
 :: 제목 없는 구절 205 [vn] {"position":"100,2200","size":"100,100"}
+<span data-skip="제목 없는 구절 217" data-skip-ending="15,16"></span>
 <span data-stage="벨,클라렛"></span>
 벨: 클라렛 씨, 당신은 귤복복 씨가 살해당하던 오전 10시에 뭘 하고 있었나요?
 
@@ -1121,12 +1189,14 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 
 :: 제목 없는 구절 206 [vn] {"position":"200,2200","size":"100,100"}
+<span data-skip="제목 없는 구절 217" data-skip-ending="15,16"></span>
 클라렛: 경고합니다. 그만 떨어지십시오.
 
 [[제목 없는 구절 207]]
 
 
 :: 제목 없는 구절 207 [vn] {"position":"300,2200","size":"100,100"}
+<span data-skip="제목 없는 구절 217" data-skip-ending="15,16"></span>
 <span data-bx="벨:놀람"></span>
 벨: 무슨 일이죠?!
 
@@ -1134,6 +1204,7 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 
 :: 제목 없는 구절 208 [vn] {"position":"400,2200","size":"100,100"}
+<span data-skip="제목 없는 구절 217" data-skip-ending="15,16"></span>
 <span data-bx="벨:놀람"></span>
 <span data-bx="클라렛:절규"></span>
 클라렛: 내 주식 말이야! 그만 떨어지라고!! 사람이 죽는다고...!!!! 
@@ -1142,6 +1213,7 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 
 :: 제목 없는 구절 209 [vn] {"position":"500,2200","size":"100,100"}
+<span data-skip="제목 없는 구절 217" data-skip-ending="15,16"></span>
 <span data-bx="록시:노말"></span>
 <span data-bx="클라렛:절규"></span>
 록시: 괜찮아요. 그냥 물리신 것뿐이에요. 지난주에 포르셀로이 얼티밋이라는 주식에 전 재산을 꼴아박았는데, 반토막났거든요. 
@@ -1150,6 +1222,7 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 
 :: 제목 없는 구절 21 [vn] {"position":"1000,1400","size":"100,100"}
+<span data-skip="제목 없는 구절 295" data-skip-ending="9,10"></span>
 <span data-bx="다이아린:무표정"></span>
 다이아린: 반악 씨가 있어요. 반악 씨, 같이 있었죠?
 
@@ -1163,6 +1236,7 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 
 :: 제목 없는 구절 211 [vn] {"position":"600,2200","size":"100,100"}
+<span data-skip="제목 없는 구절 217" data-skip-ending="15,16"></span>
 <span data-bx="록시:노말"></span>
 <span data-bx="클라렛:절규"></span>
 록시: 걱정마세요. 가격이 너무 내려가면 강제로 매매되는데, 그러면 더이상 클라렛 씨가 고통받을 일이 없을 거예요. 그리고 클라렛 씨는 잘 들으세요.
@@ -1171,6 +1245,7 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 
 :: 제목 없는 구절 212 [vn] {"position":"700,2200","size":"100,100"}
+<span data-skip="제목 없는 구절 217" data-skip-ending="15,16"></span>
 <span data-bx="록시:노말"></span>
 클라렛: 잘... 들으라고? 이 상황을 벗어날 묘수라도?
 
@@ -1178,6 +1253,7 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 
 :: 제목 없는 구절 213 [vn] {"position":"800,2200","size":"100,100"}
+<span data-skip="제목 없는 구절 217" data-skip-ending="15,16"></span>
 <span data-bx="록시:노말"></span>
 록시: 아뇨, 그 무기 잘 들고 가시라고요. 나중에 급하면 그거라도 팔아야죠.
 
@@ -1185,6 +1261,7 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 
 :: 제목 없는 구절 214 [vn] {"position":"900,2200","size":"100,100"}
+<span data-skip="제목 없는 구절 217" data-skip-ending="15,16"></span>
 <span data-bx="록시:노말"></span>
 <span data-bx="클라렛:절규"></span>
 클라렛: 야아아아아악...!
@@ -1193,6 +1270,7 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 
 :: 제목 없는 구절 215 [vn] {"position":"1000,2200","size":"100,100"}
+<span data-skip="제목 없는 구절 217" data-skip-ending="15,16"></span>
 <span data-stage="클라렛,니콜"></span>
 그 순간, 오랜만에 보는 분홍색 머리카락이 다가왔다.
 
@@ -1200,12 +1278,15 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 
 :: 제목 없는 구절 216 [vn] {"position":"1100,2200","size":"100,100"}
+<span data-skip="제목 없는 구절 217" data-skip-ending="15,16"></span>
 클라렛: 혹시... 누구...
 
 [[제목 없는 구절 217]]
 
 
 :: 제목 없는 구절 217 [vn-choice] {"position":"1200,2200","size":"100,100"}
+<span data-stage="니콜,클라렛" data-stage-fixed="1"></span>
+<span data-bx="니콜:진지"></span>
 니콜: 혹시 네가 톡톡에서 주식 종목 추천하던  '로스캘리퍼 예언가'야?
 
 [[아닌데요?->제목 없는 구절 218]]
@@ -1808,6 +1889,7 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 
 :: 제목 없는 구절 292 [vn] {"position":"1300,1400","size":"100,100"}
+<span data-skip="제목 없는 구절 295" data-skip-ending="9,10"></span>
 <span data-bx="네코미야:노말"></span>
 반악: 축하한다네, 자네는 이제 십만 데니야.
 
@@ -1824,6 +1906,7 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 
 :: 제목 없는 구절 294 [vn] {"position":"1400,1400","size":"100,100"}
+<span data-skip="제목 없는 구절 295" data-skip-ending="9,10"></span>
 <span data-bx="네코미야:당황"></span>
 네코미야: 네...?
 
@@ -1831,6 +1914,7 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 
 :: 제목 없는 구절 295 [vn-choice] {"position":"1500,1400","size":"100,100"}
+<span data-stage="반악,네코미야" data-stage-fixed="1"></span>
 <span data-bx="네코미야:당황"></span>
 그 곤경에 빠진 고양이 귀 소녀를 반악은 흐뭇하게 쳐다보았다. 그렇다! 선착순 한 명에게 십만 데니를 준다는 것으로 오해하게 하고, 실상은 선착순 한 명을 십만 데니로 만들어 버리는 궁극의 개그!
 
@@ -2127,6 +2211,7 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 
 :: 제목 없는 구절 47 [vn] {"position":"200,700","size":"100,100"}
+<span data-skip="제목 없는 구절 64" data-skip-ending="3,4"></span>
 <span data-bx="아스트라:노말"></span>
 아스트라: 축제 공연에서 노래를 해야 하니까... 목을 풀고 있었어, 물도 많이 마시고.
 
@@ -2134,6 +2219,7 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 
 :: 제목 없는 구절 48 [vn] {"position":"300,700","size":"100,100"}
+<span data-skip="제목 없는 구절 64" data-skip-ending="3,4"></span>
 <span data-bx="아스트라:노말"></span>
 아스트라: 증인도 있어, 내 말 맞지 이브?
 
@@ -2141,6 +2227,7 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 
 :: 제목 없는 구절 49 [vn] {"position":"400,700","size":"100,100"}
+<span data-skip="제목 없는 구절 64" data-skip-ending="3,4"></span>
 <span data-bx="아스트라:노말"></span>
 이블린: 맞습니다. 이 국가의 최고 초절정 SSS급 미녀 디바 아스트라 씨는 제 앞에서 목을 풀고 계셨습니다.
 
@@ -2155,6 +2242,7 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 
 :: 제목 없는 구절 50 [vn] {"position":"500,700","size":"100,100"}
+<span data-skip="제목 없는 구절 64" data-skip-ending="3,4"></span>
 <span data-bx="아스트라:노말"></span>
 아스트라: 이브... 그런 말은 안 붙여도 돼... 너같은 국가 최고 미인, 아이돌보다 예쁘고 거의 무슨 필라테스 강사라고 해도 믿을 것 같은 쿨뷰티 SSSS급 미녀경호원인 너에게 그런 말을 들으면 부끄럽잖아.
 
@@ -2162,6 +2250,7 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 
 :: 제목 없는 구절 51 [vn] {"position":"600,700","size":"100,100"}
+<span data-skip="제목 없는 구절 64" data-skip-ending="3,4"></span>
 <span data-bx="아스트라:노말"></span>
 벨: ...?
 
@@ -2169,24 +2258,28 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 
 :: 제목 없는 구절 52 [vn] {"position":"700,700","size":"100,100"}
+<span data-skip="제목 없는 구절 64" data-skip-ending="3,4"></span>
 이블린: 그렇게 칭찬하셔도 드릴 게 없습니다. 가히 천년돌이라고 해도 틀림이 없는 우주 은하계 최강의 미소녀, 엔트로피 법칙도 무시하는 초월적인 미모의 아스트라님께서 칭찬해도 전혀 와닿지 않으니까요.
 
 [[제목 없는 구절 53]]
 
 
 :: 제목 없는 구절 53 [vn] {"position":"800,700","size":"100,100"}
+<span data-skip="제목 없는 구절 64" data-skip-ending="3,4"></span>
 야나기: 알겠으니까 좀 더 자세히 말해주시겠어요? 혹시 뭔가 목격한 건 없나요? 귤복복 씨가 살해당한 해변 근처에서 사람을 봤다든지.
 
 [[제목 없는 구절 54]]
 
 
 :: 제목 없는 구절 54 [vn] {"position":"900,700","size":"100,100"}
+<span data-skip="제목 없는 구절 64" data-skip-ending="3,4"></span>
 벨: 야나기 씨, 안경 벗어주시겠어요?
 
 [[제목 없는 구절 55]]
 
 
 :: 제목 없는 구절 55 [vn] {"position":"1000,700","size":"100,100"}
+<span data-skip="제목 없는 구절 64" data-skip-ending="3,4"></span>
 <span data-bx="야나기:안경없음당황"></span>
 야나기: 네...? 그치만 이미 벗었는데... 
 
@@ -2194,6 +2287,7 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 
 :: 제목 없는 구절 56 [vn] {"position":"1100,700","size":"100,100"}
+<span data-skip="제목 없는 구절 64" data-skip-ending="3,4"></span>
 <span data-bx="야나기:안경없음당황"></span>
 벨: 알겠으니까 빨리 안경 벗으세요.
 
@@ -2201,6 +2295,7 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 
 :: 제목 없는 구절 57 [vn] {"position":"1200,700","size":"100,100"}
+<span data-skip="제목 없는 구절 64" data-skip-ending="3,4"></span>
 <span data-bx="야나기:안경없음당황"></span>
 야나기: 알겠습니다...
 
@@ -2208,12 +2303,14 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 
 :: 제목 없는 구절 58 [vn] {"position":"1300,700","size":"100,100"}
+<span data-skip="제목 없는 구절 64" data-skip-ending="3,4"></span>
 야나기: 그래서 아스트라 씨, 뭔가 목격한 것이나 들은 건 없나요? 
 
 [[제목 없는 구절 59]]
 
 
 :: 제목 없는 구절 59 [vn] {"position":"1400,700","size":"100,100"}
+<span data-skip="제목 없는 구절 64" data-skip-ending="3,4"></span>
 아스트라: 으음... 없는 것 같은데...
 
 [[제목 없는 구절 60]]
@@ -2228,12 +2325,14 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 
 :: 제목 없는 구절 60 [vn] {"position":"1500,700","size":"100,100"}
+<span data-skip="제목 없는 구절 64" data-skip-ending="3,4"></span>
 이블린: 저는 있습니다. 너무나도 눈부셔서 태양이 두개 뜬 줄 알고 깜짝 놀랐던... 아스트라 씨의 미모... 말이죠.
 
 [[제목 없는 구절 61]]
 
 
 :: 제목 없는 구절 61 [vn] {"position":"1600,700","size":"100,100"}
+<span data-skip="제목 없는 구절 64" data-skip-ending="3,4"></span>
 <span data-bx="야나기:안경없음당황"></span>
 야나기: ...
 
@@ -2241,6 +2340,7 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 
 :: 제목 없는 구절 62 [vn] {"position":"1700,700","size":"100,100"}
+<span data-skip="제목 없는 구절 64" data-skip-ending="3,4"></span>
 <span data-bx="야나기:안경없음당황"></span>
 벨: 야나기 씨, 안경 벗으라고 했잖아요.
 
@@ -2248,6 +2348,7 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 
 :: 제목 없는 구절 63 [vn] {"position":"1800,700","size":"100,100"}
+<span data-skip="제목 없는 구절 64" data-skip-ending="3,4"></span>
 <span data-bx="야나기:안경없음당황"></span>
 야나기: 이미 안경을 벗었는데... 어떻게 더...
 
@@ -2255,6 +2356,8 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 
 :: 제목 없는 구절 64 [vn-choice] {"position":"1900,700","size":"100,100"}
+<span data-stage="벨,야나기"></span>
+<span data-bx="야나기:안경없음당황"></span>
 벨: 야나기가... 말대꾸?
 
 [[범인으로 몬다->제목 없는 구절 65]]
@@ -2503,6 +2606,7 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 
 :: 제목 없는 구절 95 [vn] {"position":"75,925","size":"100,100"}
+<span data-skip="제목 없는 구절 109" data-skip-ending="5,6"></span>
 <span data-stage="루시아,포포"></span>
 그렇다. 루시아의 옆에 서 있는 커다란 에테리얼. 날카로운 이빨을 내보이며 거대한 그림자를 만들고 있었다.
 [[제목 없는 구절 101]]
@@ -2897,7 +3001,9 @@ window.BB = {
      - 기본은 '가장 최근에 말한 사람 + 지금 말하는 사람'. 화면에는 최대 두 명이고, 벨은 나오면 항상 왼쪽이야.
      - 이미 나와 있는 사람은 자리를 지키고, 새로 오는 사람은 '최근에 말하지 않은 쪽'이 빠진 자리에 들어가.
        (벨이 빠지면 벨의 왼쪽 자리에 새 사람이 와)
-     - 정황상 이 사람이 같이 나와야 할 때는 장면 글에 <span data-stage="벨,수나"></span> 를 넣으면 그 장면은 지정한 사람들로 보여줘. */
+     - 정황상 이 사람이 같이 나와야 할 때는 장면 글에 <span data-stage="벨,수나"></span> 를 넣으면 그 장면은 지정한 사람들로 보여줘.
+     - 좌우 자리까지 똑같이 맞춰야 할 때는 <span data-stage="미야비,네코미야" data-stage-fixed="1"></span> 처럼 data-stage-fixed 를 더하면 앞 이름이 왼쪽, 뒤 이름이 오른쪽에 서.
+       (스킵 버튼으로 건너뛴 도착 장면이 어디서 건너뛰어도 정상 플레이와 같은 자리가 되게 하려고 만든 옵션. 벨이 나오는 장면은 벨이 항상 왼쪽이라 필요 없어) */
   function seatOf(name) { return stage.L === name ? 'L' : (stage.R === name ? 'R' : null); }
 
   function addToStage(s) {
@@ -2930,11 +3036,12 @@ window.BB = {
   }
 
   /* 이 장면은 지정한 사람들(최대 두 명)로 보여줌 */
-  function applyCast(list) {
+  function applyCast(list, fixed) {
     list = list.filter(function (n) { return n && CHAR[n]; }).slice(0, 2);
     if (!list.length) return;
     ['L', 'R'].forEach(function (k) { if (stage[k] && list.indexOf(stage[k]) < 0) stage[k] = null; });
     list.forEach(function (n) { if (!seatOf(n)) addToStage(n); });
+    if (fixed && list.length === 2) { stage.L = list[0]; stage.R = list[1]; }      // data-stage-fixed: 앞 이름이 왼쪽, 뒤 이름이 오른쪽에 딱 맞춤
     keepSeats();
     saveStage();
   }
@@ -4729,7 +4836,7 @@ window.BB = {
     var parsed = parseSpeaker(info.text);
     placeSpeaker(parsed.speaker);
     var stEl = p.querySelector('[data-stage]');           // 정황상 같이 나와야 하는 사람을 장면 글에서 지정했으면 그대로 보여줌
-    if (stEl) applyCast(String(stEl.getAttribute('data-stage')).split(',').map(function (s) { return canon(s.trim()); }));
+    if (stEl) applyCast(String(stEl.getAttribute('data-stage')).split(',').map(function (s) { return canon(s.trim()); }), stEl.hasAttribute('data-stage-fixed'));
     var fxEl = p.querySelector('[data-fx]');              // 장면 시작 연출 (hit:때리는사람,맞는사람)
     var fx = fxEl ? parseFx(fxEl.getAttribute('data-fx')) : null;
     finishNav(tags);
