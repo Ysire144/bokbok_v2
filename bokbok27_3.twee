@@ -312,7 +312,7 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 
 :: 제목 없는 구절 108 [vn] {"position":"900,900","size":"100,100"}
-육포...? 벨은 순간 에테리얼이 간식을 먹나? 라는 생각을 했다. 내가 간식인가? 그것도 아니면 진짜 포메라니안 희귀종인가?
+벨은 순간 에테리얼이 간식을 먹나? 라는 생각을 했다. 내가 간식인가? 그것도 아니면 진짜 포메라니안 희귀종인가?
 
 [[제목 없는 구절 109]]
 
@@ -510,7 +510,7 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 :: 제목 없는 구절 133 [vn] {"position":"1100,1050","size":"100,100"}
 <span data-stage="벨,시드"></span>
-벨: 그러면 시드 씨를 추궁해야겠어요. 시드 씨, 사람을 죽이는 것을 어떻게 생각하죠?
+벨: 시드 씨, 사람을 죽이는 것을 어떻게 생각하죠?
 
 [[시드 추가1]]
 
@@ -540,7 +540,6 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 
 :: 시드 추가5 [vn] {"position":"1400,1050","size":"100,100"}
-<span data-bx="시드:고민"></span>
 벨: 그냥 혹시나 해서 물어보는 건데요, 시드 씨는 트롤리 딜레마 아시나요? 레버를 놔두면 5명이 죽고, 레버를 당기면 1명이 죽는 그 문제요. 시드 씨라면 뭐라고 답할지 궁금해서.
 [[제목 없는 구절 130]]
 
@@ -1118,6 +1117,7 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 
 :: 제목 없는 구절 208 [vn] {"position":"400,2200","size":"100,100"}
+<span data-bx="벨:놀람"></span>
 클라렛: 내 주식 말이야! 그만 떨어지라고!! 사람이 죽는다고...!!!! 
 
 [[제목 없는 구절 209]]
@@ -1951,7 +1951,7 @@ Other properties and any right, title, and interest thereof and therein (intelle
 :: 제목 없는 구절 313 [ending] {"position":"2400,1350","size":"100,100"}
 <span data-ending="9"></span>
 `[END]`
-그렇게 다이아린은 체포되었다. 범행 시각 다이아린의 위치를 증명해줄 사람이 없었기 때문이었다.
+그렇게 다이아린은 체포되었다.
 
 [[타이틀 화면으로 돌아가기->타이틀 화면]](set: $seen to it + (ds: 9))<script>if (window.BB) { BB.save(Array.from($seen)); }</script>
 
@@ -3741,7 +3741,7 @@ window.BB = {
      - 주소는 아래 COFFEE_URL(후원) / X_URL(트위터)에 적으면 돼. 적어두면 누를 때 새 창으로 열려.
      - 주소가 비어 있으면: 배포본(SHOW_TEST_MENU 가 false)에서는 그 아이콘을 아예 안 보여주고, 테스트 중에는 흐리게 보여서 자리만 확인할 수 있어.
      - 크레딧 화면에서 홈 버튼은 '보던 장면은 저장되지 않습니다' 확인 없이 바로 타이틀로 보내 (보던 장면이 아니라서). */
-  var COFFEE_URL = '';                    // 여기에 후원 주소를 적기. 예: 'https://buymeacoffee.com/내아이디'
+  var COFFEE_URL = 'https://qr.kakaopay.com/FIljKVYeG';   // 여기에 후원 주소를 적기. 예: 'https://buymeacoffee.com/내아이디'
   var X_URL = 'https://x.com/buildsenna/status/2105591793454911742?s=20';   // 여기에 내 X(트위터) 주소를 적기. 예: 'https://x.com/내아이디'
   var ICON_COFFEE = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.6 10h11.2v5.1a4.4 4.4 0 0 1-4.4 4.4H9a4.4 4.4 0 0 1-4.4-4.4z" fill="currentColor"/><path d="M15.8 11.3h1.5a2.5 2.5 0 0 1 0 5h-1.9" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M7.6 3.4c-1 1.2 1 2.1 0 3.4M11.4 3.4c-1 1.2 1 2.1 0 3.4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>';
   var ICON_X = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z" fill="currentColor"/></svg>';
