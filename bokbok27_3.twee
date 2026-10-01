@@ -2472,7 +2472,7 @@ window.BB = {
   var CHAR_LOCAL_BASE = 'file:///C:/Users/pumha/Desktop/귤복복 살인사건제작/완성본/실제 제작/캐릭터 이미지/';
   var CHAR_WEB_BASE = 'images/characters/';
   var CHAR_BASE = (location.protocol === 'file:') ? CHAR_LOCAL_BASE : CHAR_WEB_BASE;
-  var BUILD_VERSION = '0.15';             // 화면 오른쪽 위에 작게 보이는 버전. 뭔가 바꿀 때마다 0.01 씩 올릴 것 (사용자 요청)
+  var BUILD_VERSION = '0.16';             // 화면 오른쪽 위에 작게 보이는 버전. 뭔가 바꿀 때마다 0.01 씩 올릴 것 (사용자 요청)
 
   /* ---------- 인물 배치 ----------
      제작자가 직접 만든 배치 예시 29장(벨 + 상대)을 읽어서 정리한 값이야. 단위는 전부 '화면 폭의 %' (폰 화면 폭 = 100).
