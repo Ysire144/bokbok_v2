@@ -67,24 +67,28 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 
 :: 시작3 [vn] {"position":"300,100","size":"100,100"}
+<span data-bx="벨:놀람"></span>
 그러나... 모두가 기다리고 있는 판타지 리조트 해변, 하나같이 창백한 표정의 모두와... 그 가운데의 믿을 수 없는 광경.
 
 [[시작4]]
 
 
 :: 시작4 [vn] {"position":"400,100","size":"100,100"}
+<span data-bx="벨:놀람"></span>
 벨: 꺄아아아악!! 복복 씨가...!! 복복 씨가 죽었어요!
 
 [[시작5]]
 
 
 :: 시작5 [vn] {"position":"500,100","size":"100,100"}
+<span data-bx="벨:놀람"></span>
 그렇다... 귤복복이 죽어 있었던 것이다. 판타지 리조트 해변의 까슬까슬한 모래를 깔고 누워서 미동도 하지 않는 귤복복...
 
 [[시작6]]
 
 
 :: 시작6 [vn] {"position":"600,100","size":"100,100"}
+<span data-bx="벨:놀람"></span>
 벨: 이럴수가... 수나 양이 작곡을 너무 못해서 복복 씨가 죽어버렸어요...
 
 [[제목 없는 구절]]
@@ -240,6 +244,7 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 :: 제목 없는 구절 1 [vn] {"position":"900,100","size":"100,100"}
 <span data-stage="벨,야나기"></span>
+<span data-bx="야나기:진지"></span>
 야나기: 잠시만요, 이런 상황일수록 침착해야 합니다. 우선 벨 씨, 벨 씨가 이 사건의 수사를 맡아주시는 게 좋겠어요. 
 
 [[제목 없는 구절 2]]
@@ -248,6 +253,7 @@ Other properties and any right, title, and interest thereof and therein (intelle
 :: 제목 없는 구절 10 [confirm vn] {"position":"1200,200","size":"100,100"}
 <span data-stage="벨,야나기"></span>
 <span data-bx="벨:노말"></span>
+<span data-bx="야나기:진지"></span>
 벨: 저어... 근데 신경쓰이는 게 있어서 그런데...
 
 [[제목 없는 구절 11]]
@@ -299,13 +305,14 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 
 :: 제목 없는 구절 107 [vn] {"position":"800,900","size":"100,100"}
+<span data-bx="루시아:미소"></span>
 루시아: 맞아 벨, 그래서 귤복복 씨가 살해당하던 오전 10시에 뭘 하고 있냐고 물었지? 나는 포포랑 놀면서 간식 주고 있었어,
 
 [[제목 없는 구절 108]]
 
 
 :: 제목 없는 구절 108 [vn] {"position":"900,900","size":"100,100"}
-육포...? 벨은 순간 에테리얼이 간식을 먹나? 라는 생각을 했다. 내가 간식인가? 그것도 아니면 진짜 포메라니안 희귀종인가?
+벨은 순간 에테리얼이 간식을 먹나? 라는 생각을 했다. 내가 간식인가? 그것도 아니면 진짜 포메라니안 희귀종인가?
 
 [[제목 없는 구절 109]]
 
@@ -319,6 +326,7 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 :: 제목 없는 구절 11 [confirm vn] {"position":"1300,200","size":"100,100"}
 <span data-bx="벨:노말"></span>
+<span data-bx="야나기:진지"></span>
 야나기: 무슨 일이죠?
 
 [[제목 없는 구절 12]]
@@ -337,6 +345,7 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 
 :: 제목 없는 구절 112 [vn] {"position":"1100,850","size":"100,100"}
+<span data-bx="벨:지목"></span>
 벨: 루시아, 포메라니안이라니! 누가 봐도 에테리얼이잖아! 당장 포포 데리고 집에 가!
 
 [[제목 없는 구절 111]]
@@ -349,7 +358,7 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 
 :: 제목 없는 구절 114 [vn] {"position":"1500,850","size":"100,100"}
-<span data-bx="네코미야:노말"></span>
+<span data-bx="네코미야:당황"></span>
 네코미야: 반려묘는 되냥...?
 
 [[제목 없는 구절 115]]
@@ -378,6 +387,7 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 
 :: 제목 없는 구절 118 [vn] {"position":"1200,950","size":"100,100"}
+<span data-bx="벨:놀람"></span>
 <span data-stage="벨,포포"></span>
 그렇게 질문한 순간, 포포가 벨의 머리를 향해 입을 쩍 벌렸고, 잠시 뒤. 벨은 로프꾼에서 로프/꾼으로 분리되고 말았다.
 
@@ -396,6 +406,7 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 :: 제목 없는 구절 12 [confirm vn] {"position":"1400,200","size":"100,100"}
 <span data-bx="벨:노말"></span>
+<span data-bx="야나기:진지"></span>
 벨: 야나기 씨는 안경을 좀 벗어 주시면 안 될까요? 마음에 안 들어서요...
 
 [[제목 없는 구절 13]]
@@ -416,6 +427,7 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 
 :: 제목 없는 구절 122 [vn] {"position":"300,1100","size":"100,100"}
+<span data-bx="벨:지목"></span>
 <span data-bx="시드:노말"></span>
 벨: 시드 씨, 지금 사람이 죽었는데 왜 그렇게 태연하신 건가요? 역시 '사람이 냉장고에 안 들어가면 접어서 넣으면 된다.' 는 사고방식을 지닌 사이코패스라서 그런 건가요?
 
@@ -437,6 +449,7 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 
 :: 제목 없는 구절 125 [vn] {"position":"600,1100","size":"100,100"}
+<span data-bx="벨:지목"></span>
 <span data-stage="벨,트리거"></span>
 벨: 그러고 보니 트리거 씨, 당신은 저격수잖아요. 아무도 모르게 귤복복 씨를 살해하는건 당신이 가장 잘 할 것 같은데요?
 
@@ -444,11 +457,13 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 
 :: 제목 없는 구절 126 [vn] {"position":"1400,1150","size":"100,100"}
+<span data-bx="벨:놀람"></span>
 벨: 비장의 수?!
 [[제목 없는 구절 129]]
 
 
 :: 제목 없는 구절 127 [vn] {"position":"1000,1050","size":"100,100"}
+<span data-bx="벨:고뇌"></span>
 벨: 생각해보니 그렇네요... 아무래도 앞이 안 보이는 사람이 범인일 리 없죠. 그럼 시드 씨, 당신을 테스트하겠어요. 
 
 [[제목 없는 구절 133]]
@@ -474,6 +489,7 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 
 :: 제목 없는 구절 130 [vn] {"position":"1400,1050","size":"100,100"}
+<span data-bx="시드:고민"></span>
 시드: 으음... 어려운 질문이네, 근데 벨, 선로전환기까지는 어떻게 접근한 거야?
 
 [[제목 없는 구절 237]]
@@ -494,7 +510,7 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 :: 제목 없는 구절 133 [vn] {"position":"1100,1050","size":"100,100"}
 <span data-stage="벨,시드"></span>
-벨: 그러면 시드 씨를 추궁해야겠어요. 시드 씨, 사람을 죽이는 것을 어떻게 생각하죠?
+벨: 시드 씨, 사람을 죽이는 것을 어떻게 생각하죠?
 
 [[시드 추가1]]
 
@@ -524,7 +540,6 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 
 :: 시드 추가5 [vn] {"position":"1400,1050","size":"100,100"}
-<span data-bx="시드:노말"></span>
 벨: 그냥 혹시나 해서 물어보는 건데요, 시드 씨는 트롤리 딜레마 아시나요? 레버를 놔두면 5명이 죽고, 레버를 당기면 1명이 죽는 그 문제요. 시드 씨라면 뭐라고 답할지 궁금해서.
 [[제목 없는 구절 130]]
 
@@ -550,24 +565,28 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 
 :: 제목 없는 구절 137 [vn] {"position":"300,1400","size":"100,100"}
+<span data-bx="자오:기분나쁨"></span>
 자오: 나한테는 알리바이 안 물어봐?
 
 [[제목 없는 구절 138]]
 
 
 :: 제목 없는 구절 138 [vn] {"position":"400,1400","size":"100,100"}
+<span data-bx="자오:기분나쁨"></span>
 벨: 자오 씨는 사람이 아니니까, 범인으로 밝혀져도 책임을 물을 수가 없어요. 대신 다이아린 씨에게 물어봐야겠어요.
 
 [[제목 없는 구절 139]]
 
 
 :: 제목 없는 구절 139 [vn] {"position":"500,1400","size":"100,100"}
+<span data-bx="자오:기분나쁨"></span>
 자오: 벨, 나는 토끼 시렌이야. 엄연히 세금 내고 산다고.
 
 [[제목 없는 구절 140]]
 
 
 :: 제목 없는 구절 14 [vn] {"position":"800,200","size":"100,100"}
+<span data-bx="야나기:진지"></span>
 야나기: 그렇습니다만...?
 
 [[제목 없는 구절 17]]
@@ -588,6 +607,7 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 
 :: 제목 없는 구절 142 [vn] {"position":"800,1400","size":"100,100"}
+<span data-bx="자오:기분나쁨"></span>
 <span data-bx="다이아린:무표정"></span>
 자오: 다이아린, 너 지금 날 '토끼'라고 부른거야?
 
@@ -603,6 +623,7 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 
 :: 제목 없는 구절 144 [vn] {"position":"100,1800","size":"100,100"}
+<span data-bx="벨:고뇌"></span>
 <span data-stage="벨"></span>
 그렇게 모두를 심문하고, 한참을 고뇌하던 벨은 무언가에 머리를 얻어맞기라도 한 듯, 창백한 표정으로 정면을 응시했다.
 
@@ -628,6 +649,7 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 
 :: 제목 없는 구절 148 [vn] {"position":"500,1800","size":"100,100"}
+<span data-bx="벨:지목"></span>
 벨: 제가 지금부터, 귤복복 씨를 죽인 진짜 범인을 밝혀내겠어요.
 
 [[제목 없는 구절 149]]
@@ -691,12 +713,14 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 :: 제목 없는 구절 155 [vn] {"position":"500,1600","size":"100,100"}
 <span data-bx="빛나:노말"></span>
+<span data-bx="네코미야:당황"></span>
 네코미야: 사... 살려달라냥... 배가 터질 것 같다냥...
 
 [[제목 없는 구절 156]]
 
 
 :: 제목 없는 구절 156 [vn] {"position":"600,1600","size":"100,100"}
+<span data-bx="네코미야:당황"></span>
 미야비: 더 먹을 수 있... 큽... 아니, 더 못 먹습니다...
 
 [[제목 없는 구절 157]]
@@ -721,6 +745,7 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 
 :: 제목 없는 구절 16 [vn] {"position":"700,200","size":"100,100"}
+<span data-bx="야나기:진지"></span>
 아스트라: 잠시만, 지금 심각하고 위험한 상황인 거 맞지...?
 
 [[제목 없는 구절 14]]
@@ -788,6 +813,7 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 :: 제목 없는 구절 17 [vn] {"position":"900,200","size":"100,100"}
 <span data-bx="아스트라:노말"></span>
+<span data-bx="야나기:진지"></span>
 아스트라: 그럼 내가 노래를 부를게, 내 노래에는 에테르 물질을 공명시키는 힘이 있거든
 
 [[제목 없는 구절 18]]
@@ -835,6 +861,7 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 
 :: 제목 없는 구절 176 [vn] {"position":"700,1800","size":"100,100"}
+<span data-bx="벨:지목"></span>
 <span data-stage="벨,루시아"></span>
 벨: 우선 루시아 씨, 당신은 거짓말을 하고 있어요, 그 포포. 포메라니안이 아니라... 스피츠예요.
 
@@ -848,6 +875,7 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 
 :: 제목 없는 구절 178 [vn] {"position":"900,1800","size":"100,100"}
+<span data-bx="벨:지목"></span>
 <span data-stage="벨,빛나"></span>
 벨: 그리고 빛나 씨, 당신은 아침부터 계화떡 100개를 나눠줬지만, 사실 그건 블러핑이에요.
 
@@ -868,6 +896,7 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 
 :: 제목 없는 구절 180 [vn] {"position":"1100,1800","size":"100,100"}
+<span data-bx="벨:지목"></span>
 벨: 사실은, 아이스박스 안에 있는 것까지 총 200개 준비해왔죠.
 
 [[제목 없는 구절 181]]
@@ -880,6 +909,7 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 
 :: 제목 없는 구절 182 [vn] {"position":"1250,1800","size":"100,100"}
+<span data-bx="벨:지목"></span>
 <span data-stage="벨,다이아린"></span>
 벨: 그뿐만 아니에요. 다이아린 씨 당신은 오늘 휴가를 내서 여기 왔다고 했지만, 그건 거짓말이에요.
 
@@ -893,12 +923,14 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 
 :: 제목 없는 구절 184 [vn] {"position":"1375,1775","size":"100,100"}
+<span data-bx="벨:지목"></span>
 벨: 당신은 그냥 째고 온 겁니다. 아마 '잘라봐~ 나 없어도 회사 돌아가나 한 번 봐~'가 가능할 정도의 우수 사원이니까요.
 
 [[제목 없는 구절 185]]
 
 
 :: 제목 없는 구절 185 [vn] {"position":"1450,1725","size":"100,100"}
+<span data-bx="벨:지목"></span>
 <span data-stage="벨,트리거"></span>
 벨: 트리거 씨, 당신은 사실 저격수가 아니라 지정사수예요. 그리고 앨리스 씨는, 대칭에 집착하지만 본인은 오드아이죠.
 
@@ -913,18 +945,21 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 
 :: 제목 없는 구절 187 [vn] {"position":"200,2000","size":"100,100"}
+<span data-bx="앨리스:표독"></span>
 그 순간, 앨리스가 벨을 표독스러운 표정으로 노려보았다.
 
 [[제목 없는 구절 188]]
 
 
 :: 제목 없는 구절 188 [vn] {"position":"300,2000","size":"100,100"}
+<span data-bx="앨리스:표독"></span>
 앨리스: 벨 씨, 지금 이게 뭐 하는 짓이죠? 대칭이 하나도 안 맞잖아요! 
 
 [[제목 없는 구절 189]]
 
 
 :: 제목 없는 구절 189 [vn] {"position":"400,2000","size":"100,100"}
+<span data-bx="앨리스:표독"></span>
 벨: 에... 엣...? 어... 내 의상이랑 장신구는 거의 대칭인데... 보기 드물게.
 
 [[제목 없는 구절 190]]
@@ -938,30 +973,35 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 
 :: 제목 없는 구절 190 [vn] {"position":"500,2000","size":"100,100"}
+<span data-bx="앨리스:표독"></span>
 앨리스: 집중!!! 하세요!!!!
 
 [[제목 없는 구절 191]]
 
 
 :: 제목 없는 구절 191 [vn] {"position":"600,2000","size":"100,100"}
+<span data-bx="앨리스:표독"></span>
 앨리스: 저한테 말을 하실 때는, 대칭을 맞춰서 말을 하도록 하세요.
 
 [[제목 없는 구절 192]]
 
 
 :: 제목 없는 구절 192 [vn] {"position":"700,2000","size":"100,100"}
+<span data-bx="앨리스:표독"></span>
 벨: 뭐...? 그게 무슨...
 
 [[제목 없는 구절 193]]
 
 
 :: 제목 없는 구절 193 [vn] {"position":"800,2000","size":"100,100"}
+<span data-bx="앨리스:표독"></span>
 앨리스: 떽!!!!
 
 [[제목 없는 구절 194]]
 
 
 :: 제목 없는 구절 194 [vn] {"position":"900,2000","size":"100,100"}
+<span data-bx="앨리스:표독"></span>
 벨: 알았어, 미안해 앨리스 미안해, 알았어
 
 [[제목 없는 구절 195]]
@@ -974,12 +1014,14 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 
 :: 제목 없는 구절 196 [vn] {"position":"1100,2000","size":"100,100"}
+<span data-bx="앨리스:표독"></span>
 앨리스: 집중!!!!!
 
 [[제목 없는 구절 197]]
 
 
 :: 제목 없는 구절 197 [vn-choice] {"position":"1200,2000","size":"100,100"}
+<span data-bx="앨리스:표독"></span>
 유즈하: 알겠어, 잘할게 앨리스 잘할게, 알겠어
 
 [[오전 10시에 뭘 했는지 묻는다->제목 없는 구절 198]]
@@ -988,6 +1030,7 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 :: 제목 없는 구절 198 [vn] {"position":"1300,1950","size":"100,100"}
 <span data-stage="벨,앨리스"></span>
+<span data-bx="앨리스:표독"></span>
 벨: 그래서 앨리스 씨는 오전 10시에 뭘 하고 있었나요? 하고 뭘 10시에 오전 씨는 앨리스 그래서
 
 [[제목 없는 구절 199]]
@@ -1031,6 +1074,7 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 :: 제목 없는 구절 202 [vn] {"position":"1500,2050","size":"100,100"}
 <span data-bx="벨:노말"></span>
+<span data-bx="앨리스:표독"></span>
 앨리스: 벨 씨, 지금 제가 겁이 많으니까 그렇게 놀래키면 상황을 벗어날 수 있을 거라고 생각하셨나요? 당신은 절 뭐라고 생각하시는거죠?
 
 [[제목 없는 구절 203]]
@@ -1066,12 +1110,14 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 
 :: 제목 없는 구절 207 [vn] {"position":"300,2200","size":"100,100"}
+<span data-bx="벨:놀람"></span>
 벨: 무슨 일이죠?!
 
 [[제목 없는 구절 208]]
 
 
 :: 제목 없는 구절 208 [vn] {"position":"400,2200","size":"100,100"}
+<span data-bx="벨:놀람"></span>
 클라렛: 내 주식 말이야! 그만 떨어지라고!! 사람이 죽는다고...!!!! 
 
 [[제목 없는 구절 209]]
@@ -1170,6 +1216,7 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 
 :: 제목 없는 구절 221 [vn] {"position":"1600,2150","size":"100,100"}
+<span data-bx="니콜:당황"></span>
 니콜: 차 한 대 값이 없어졌다고!! 차를 산거나 마찬가지라고!!!!
 
 [[제목 없는 구절 222]]
@@ -1248,6 +1295,7 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 
 :: 제목 없는 구절 231 [vn] {"position":"2300,1650","size":"100,100"}
+<span data-bx="네코미야:당황"></span>
 네코미야: 인터넷으로 레시피도 찾아본 적이 없는거냥? 그래놓고 맛있어질 때까지 사람들한테 먹인거냥?!
 
 [[제목 없는 구절 232]]
@@ -1284,6 +1332,7 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 
 :: 제목 없는 구절 236 [vn] {"position":"1775,1775","size":"100,100"}
+<span data-bx="벨:지목"></span>
 <span data-stage="벨,아스트라"></span>
 벨: 그리고 아스트라 씨, 당신은 이미 동물을 죽인 적이 있는데, 거짓말을 했죠. 바로 북극곰 말입니다!
 
@@ -1324,6 +1373,7 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 
 :: 제목 없는 구절 241 [vn] {"position":"1000,1150","size":"100,100"}
+<span data-bx="벨:지목"></span>
 벨: 웃기지 마세요! 당신의 총은 위험한 물건이에요! 그 총으로 귤복복 씨를 살해한 거 아닙니까!
 
 [[제목 없는 구절 242]]
@@ -1341,12 +1391,14 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 
 :: 제목 없는 구절 244 [vn] {"position":"1925,1775","size":"100,100"}
+<span data-bx="벨:고뇌"></span>
 벨: 왜 모두 저에게 거짓말을 하는지, 대체 왜 이렇게 증거가 많은지!
 
 [[제목 없는 구절 245]]
 
 
 :: 제목 없는 구절 245 [vn] {"position":"1975,1725","size":"100,100"}
+<span data-bx="벨:지목"></span>
 <span data-stage="벨,레미엘"></span>
 벨: 그걸 설명할 수 있는 방법은... 오직 하나뿐입니다. 레미엘 씨.
 
@@ -1354,6 +1406,7 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 
 :: 제목 없는 구절 246 [vn] {"position":"2050,1775","size":"100,100"}
+<span data-bx="레미엘:시무룩"></span>
 레미엘: 그만... 내가 전부 설명할게.
 
 [[제목 없는 구절 247]]
@@ -1396,6 +1449,8 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 
 :: 제목 없는 구절 252 [vn] {"position":"1500,1775","size":"100,100"}
+<span data-bx="자오:기분나쁨"></span>
+<span data-bx="벨:지목"></span>
 <span data-stage="벨,자오"></span>
 벨: 자오 씨, 당신은 시렌이 아닙니다. 
 
@@ -1428,6 +1483,7 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 
 :: 트리거 추가5 [vn] {"position":"1725,1200","size":"100,100"}
+<span data-bx="루시아:미소"></span>
 루시아: 예삐 왔어? 야옹~ 에옹~
 [[제목 없는 구절 321]]
 
@@ -1445,18 +1501,22 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 
 :: 제목 없는 구절 254 [vn] {"position":"1575,1725","size":"100,100"}
+<span data-bx="자오:기분나쁨"></span>
 자오: 그렇다는 건...?!
 
 [[제목 없는 구절 255]]
 
 
 :: 제목 없는 구절 255 [vn] {"position":"1625,1775","size":"100,100"}
+<span data-bx="자오:기분나쁨"></span>
+<span data-bx="벨:지목"></span>
 벨: 그냥 아니라고요. 이게 어딜 봐서 시렌이야.
 
 [[제목 없는 구절 256]]
 
 
 :: 제목 없는 구절 256 [confirm vn] {"position":"1700,1725","size":"100,100"}
+<span data-bx="자오:기분나쁨"></span>
 자오: 야
 
 [[제목 없는 구절 236]]
@@ -1517,6 +1577,7 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 
 :: 제목 없는 구절 265 [vn] {"position":"3400,1800","size":"100,100"}
+<span data-bx="벨:고뇌"></span>
 벨: 그건 맞는 말 아닌가요...?
 
 [[제목 없는 구절 266]]
@@ -1529,6 +1590,7 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 
 :: 제목 없는 구절 267 [vn] {"position":"3600,1800","size":"100,100"}
+<span data-bx="벨:고뇌"></span>
 벨: 끔찍한 무기라면....
 
 [[제목 없는 구절 268]]
@@ -1541,6 +1603,7 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 
 :: 제목 없는 구절 269 [vn] {"position":"3800,1800","size":"100,100"}
+<span data-bx="벨:놀람"></span>
 벨: 그런 잔인한!!
 
 [[제목 없는 구절 270]]
@@ -1561,6 +1624,7 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 :: 제목 없는 구절 271 [vn] {"position":"4000,1800","size":"100,100"}
 <span data-bx="시드:노말"></span>
+<span data-bx="레미엘:시무룩"></span>
 레미엘: 복복 씨를... 죽이고 만 거야. 내 손으로, 이 죄는 평생 씻을 수 없겠지. 차라리 날 죽여! 이 모든 일의 책임은 내가 지겠어!
 
 [[제목 없는 구절 272]]
@@ -1573,7 +1637,7 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 
 :: 제목 없는 구절 273 [vn] {"position":"4300,1800","size":"100,100"}
-<span data-bx="시드:노말"></span>
+<span data-bx="시드:고민"></span>
 시드: 근데 레미엘 씨한테는 동기가 없는 거야?
 
 [[제목 없는 구절 274]]
@@ -1581,6 +1645,7 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 :: 제목 없는 구절 274 [vn] {"position":"4400,1800","size":"100,100"}
 <span data-bx="시드:노말"></span>
+<span data-bx="레미엘:시무룩"></span>
 레미엘: 할...
 
 [[제목 없는 구절 275]]
@@ -1593,18 +1658,21 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 
 :: 제목 없는 구절 276 [vn] {"position":"4600,1800","size":"100,100"}
+<span data-bx="레미엘:시무룩"></span>
 레미엘: 나한테는 '100살 이상이면 할머니네요~' 라고 했어!! 용서할 수 없는게 당연하잖아!! 완전 청초한 미소녀인데!!!!
 
 [[제목 없는 구절 277]]
 
 
 :: 제목 없는 구절 277 [vn] {"position":"4700,1800","size":"100,100"}
+<span data-bx="시드:고민"></span>
 시드: 확실히 그건 너무할지도...
 
 [[제목 없는 구절 278]]
 
 
 :: 제목 없는 구절 278 [vn] {"position":"4700,1900","size":"100,100"}
+<span data-bx="벨:고뇌"></span>
 <span data-stage="벨"></span>
 그렇게, 한차례 폭풍이 휩쓸고 지나간 뒤, 해가 완전히 져 버린 판타지 리조트 한가운데를 걸어가는 벨이 있었다.
 
@@ -1612,6 +1680,7 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 
 :: 제목 없는 구절 279 [vn] {"position":"4700,2000","size":"100,100"}
+<span data-bx="벨:고뇌"></span>
 벨: 신이시여, 탐정으로 살아온 지난 135년간, 이런 결정을 내린 적이 없습니다. 세상에는 흑과 백, 두가지만 있다고 생각했죠.
 
 [[제목 없는 구절 280]]
@@ -1624,12 +1693,14 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 
 :: 제목 없는 구절 280 [vn] {"position":"4700,2100","size":"100,100"}
+<span data-bx="벨:고뇌"></span>
 벨: 하지만 저는, 인간의 영혼에 난 균열을 봤습니다.
 
 [[제목 없는 구절 281]]
 
 
 :: 제목 없는 구절 281 [vn] {"position":"4700,2200","size":"100,100"}
+<span data-bx="벨:고뇌"></span>
 벨: 많은 이들의 무너진 삶, 고통과 분노
 
 [[제목 없는 구절 282]]
@@ -1723,12 +1794,14 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 
 :: 제목 없는 구절 294 [vn] {"position":"1400,1400","size":"100,100"}
+<span data-bx="네코미야:당황"></span>
 네코미야: 네...?
 
 [[제목 없는 구절 295]]
 
 
 :: 제목 없는 구절 295 [vn-choice] {"position":"1500,1400","size":"100,100"}
+<span data-bx="네코미야:당황"></span>
 그 곤경에 빠진 고양이 귀 소녀를 반악은 흐뭇하게 쳐다보았다. 그렇다! 선착순 한 명에게 십만 데니를 준다는 것으로 오해하게 하고, 실상은 선착순 한 명을 십만 데니로 만들어 버리는 궁극의 개그!
 
 [[알리바이를 묻는다->제목 없는 구절 296]]
@@ -1785,6 +1858,7 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 
 :: 제목 없는 구절 301 [vn] {"position":"2000,1450","size":"100,100"}
+<span data-bx="벨:놀람"></span>
 벨: 그럴수가...! 그 조언이 뭐였길래.
 
 [[제목 없는 구절 302]]
@@ -1826,6 +1900,7 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 
 :: 제목 없는 구절 307 [vn] {"position":"1800,1350","size":"100,100"}
+<span data-bx="자오:기분나쁨"></span>
 자오: 반악 씨까지...
 
 [[제목 없는 구절 308]]
@@ -1846,6 +1921,7 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 :: 제목 없는 구절 31 [vn] {"position":"1100,500","size":"100,100"}
 <span data-stage="벨,아리아"></span>
+<span data-bx="아리아:미소"></span>
 아리아: 벨 씨, 제 전자 두뇌가 분석한 결과 10시경에는 혼자 복숭아 케이크를 만들고 있었다고 하네요.
 
 [[제목 없는 구절 32]]
@@ -1858,12 +1934,14 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 
 :: 제목 없는 구절 311 [vn] {"position":"2200,1350","size":"100,100"}
+<span data-bx="자오:기분나쁨"></span>
 자오: ?!
 
 [[제목 없는 구절 312]]
 
 
 :: 제목 없는 구절 312 [vn] {"position":"2300,1350","size":"100,100"}
+<span data-bx="벨:지목"></span>
 <span data-stage="벨,다이아린"></span>
 벨: 토끼와 로봇... 다이아린 씨, 당신의 알리바이를 증명할 사람은 아무도 없습니다! 당신을 체포하겠습니다.
 
@@ -1873,7 +1951,7 @@ Other properties and any right, title, and interest thereof and therein (intelle
 :: 제목 없는 구절 313 [ending] {"position":"2400,1350","size":"100,100"}
 <span data-ending="9"></span>
 `[END]`
-그렇게 다이아린은 체포되었다. 범행 시각 다이아린의 위치를 증명해줄 사람이 없었기 때문이었다.
+그렇게 다이아린은 체포되었다.
 
 [[타이틀 화면으로 돌아가기->타이틀 화면]](set: $seen to it + (ds: 9))<script>if (window.BB) { BB.save(Array.from($seen)); }</script>
 
@@ -1883,18 +1961,21 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 
 :: 제목 없는 구절 32 [vn] {"position":"1200,500","size":"100,100"}
+<span data-bx="아리아:미소"></span>
 벨: 아리아?
 
 [[제목 없는 구절 33]]
 
 
 :: 제목 없는 구절 33 [vn] {"position":"1300,500","size":"100,100"}
+<span data-bx="아리아:미소"></span>
 아리아: 프루누스 페르시카는 복숭아의 학명이라고 해요.
 
 [[제목 없는 구절 34]]
 
 
 :: 제목 없는 구절 34 [vn-choice] {"position":"1400,500","size":"100,100"}
+<span data-bx="벨:고뇌"></span>
 벨: 그렇구나... 혼자서 케이크를 만들고 있었다라...
 
 [[범인으로 몬다->제목 없는 구절 35]]
@@ -1902,6 +1983,7 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 
 :: 제목 없는 구절 35 [vn] {"position":"1500,450","size":"100,100"}
+<span data-bx="벨:지목"></span>
 <span data-stage="벨,레미엘"></span>
 벨: 레미엘, 내 생각에는 네가 범인이야! 이미 데이트폭력 전과도 있고, 시간정지 능력도 있으니 가장 의심스러운 건 당연히 너잖아!
 
@@ -1909,6 +1991,7 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 
 :: 제목 없는 구절 36 [vn] {"position":"1500,550","size":"100,100"}
+<span data-bx="아리아:미소"></span>
 벨: 왜 복숭아 케이크였던 거야? 
 
 [[제목 없는 구절 37]]
@@ -1948,6 +2031,7 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 
 :: 제목 없는 구절 41 [vn] {"position":"1600,450","size":"100,100"}
+<span data-bx="레미엘:시무룩"></span>
 레미엘: 어머 벨 씨... 너무해요, 그런 식으로 낙인 효과를 준다면 이 세상에서 갱생할 수 있는 범죄자가 얼마나 되겠어요! 게다가 저는 예쁘잖아요!
 
 [[제목 없는 구절 42]]
@@ -1993,6 +2077,7 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 
 :: 제목 없는 구절 317 [vn] {"position":"2400,450","size":"100,100"}
+<span data-bx="루시아:미소"></span>
 루시아: 예삐 왔어? 오로로로로
 [[제목 없는 구절 46]]
 
@@ -2065,18 +2150,21 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 
 :: 제목 없는 구절 55 [vn] {"position":"1000,700","size":"100,100"}
+<span data-bx="야나기:안경없음당황"></span>
 야나기: 네...? 그치만 이미 벗었는데... 
 
 [[제목 없는 구절 56]]
 
 
 :: 제목 없는 구절 56 [vn] {"position":"1100,700","size":"100,100"}
+<span data-bx="야나기:안경없음당황"></span>
 벨: 알겠으니까 빨리 안경 벗으세요.
 
 [[제목 없는 구절 57]]
 
 
 :: 제목 없는 구절 57 [vn] {"position":"1200,700","size":"100,100"}
+<span data-bx="야나기:안경없음당황"></span>
 야나기: 알겠습니다...
 
 [[제목 없는 구절 58]]
@@ -2096,6 +2184,7 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 :: 제목 없는 구절 6 [vn] {"position":"500,200","size":"100,100"}
 <span data-stage="벨,야나기"></span>
+<span data-bx="야나기:진지"></span>
 야나기: 하아... 아무튼 벨 씨, 벨 씨는 모두와 안면식이 있고, 모든 사람들의 특성을 알고 있는 유일한 사람이에요. 지금 이곳에는 오늘 처음 본 사람도 있으니까요.
 
 [[제목 없는 구절 7]]
@@ -2108,18 +2197,21 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 
 :: 제목 없는 구절 61 [vn] {"position":"1600,700","size":"100,100"}
+<span data-bx="야나기:안경없음당황"></span>
 야나기: ...
 
 [[제목 없는 구절 62]]
 
 
 :: 제목 없는 구절 62 [vn] {"position":"1700,700","size":"100,100"}
+<span data-bx="야나기:안경없음당황"></span>
 벨: 야나기 씨, 안경 벗으라고 했잖아요.
 
 [[제목 없는 구절 63]]
 
 
 :: 제목 없는 구절 63 [vn] {"position":"1800,700","size":"100,100"}
+<span data-bx="야나기:안경없음당황"></span>
 야나기: 이미 안경을 벗었는데... 어떻게 더...
 
 [[제목 없는 구절 64]]
@@ -2133,6 +2225,7 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 
 :: 제목 없는 구절 65 [vn] {"position":"2000,650","size":"100,100"}
+<span data-bx="벨:지목"></span>
 <span data-stage="벨,아스트라"></span>
 벨: 아스트라 씨, 당신이 범인이에요, 당신은 스타 가수... 스트레스도 상당하고 안티팬도 많을 거예요. 게다가 에테르 에너지를 조종하는, 사람만한 금속 마이크를 상시 들고 다니는 위험한 사람이죠. 당신이 귤복복을 죽인 거 아닙니까?!
 
@@ -2146,6 +2239,7 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 
 :: 제목 없는 구절 67 [vn] {"position":"2200,650","size":"100,100"}
+<span data-bx="벨:지목"></span>
 벨: 아스트라 씨, 당신은 아주 큰 말실수를 했습니다...
 
 [[제목 없는 구절 68]]
@@ -2158,12 +2252,14 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 
 :: 제목 없는 구절 69 [vn] {"position":"2400,650","size":"100,100"}
+<span data-bx="벨:지목"></span>
 벨: 사람의 생명은 소중하다고요...? 맞는 말이죠... 하지만 귤복복 씨는 사람이 아닌 호랑이! 그것도 귤과 혼혈입니다! 공동에서 생존한 전적이 있는 아스트라씨는 호랑이 고기라도 맛있게 드실 수 있겠죠.
 
 [[제목 없는 구절 70]]
 
 
 :: 제목 없는 구절 7 [vn] {"position":"600,200","size":"100,100"}
+<span data-bx="야나기:진지"></span>
 야나기: 그러니 이 사건의 진범을 밝혀낼 수 있는 사람은 바로 벨 씨 당신 뿐이에요. 제가 용의자들을 추려놨으니, 한 명씩 대화를 나눠 정보를 모은 후, 진범을 밝혀내도록 하죠.
 
 [[제목 없는 구절 16]]
@@ -2176,6 +2272,7 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 
 :: 제목 없는 구절 71 [vn] {"position":"2600,650","size":"100,100"}
+<span data-bx="벨:지목"></span>
 벨: 인간의 생명을 소중히 여긴다는 것... 달리 말하면 인간을 위해 호랑이를 사냥해서 스테이크로 만드는 것도 두렵지 않다는 겁니다...! 아스트라 씨! 
 
 [[제목 없는 구절 72]]
@@ -2200,12 +2297,14 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 
 :: 제목 없는 구절 75 [vn] {"position":"3000,650","size":"100,100"}
+<span data-bx="이블린:씨익"></span>
 이블린: 맞습니다... 귤복복 씨를 죽인 건 다름 아닌 저의 아가씨... 이 죄를 용서받을 수는 없겠죠. 아마 평생을 감옥에서 썩어야 할 겁니다...
 
 [[제목 없는 구절 76]]
 
 
 :: 제목 없는 구절 76 [vn] {"position":"3100,650","size":"100,100"}
+<span data-bx="이블린:씨익"></span>
 아스트라: 잠깐...! 잠깐, 대체 무슨 소리야!! 이브! 혼자서 무슨 소리를 하는 거야! 벨! 얘 좀 말려봐!!
 
 [[제목 없는 구절 77]]
@@ -2227,6 +2326,7 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 :: 제목 없는 구절 79 [vn] {"position":"3400,650","size":"100,100"}
 <span data-bx="네코미야:노말"></span>
+<span data-bx="이블린:씨익"></span>
 이블린: 아무래도, 저와 아스트라 아가씨는 영원히 도피해야 할 것 같습니다... 스위스가 좋겠네요. 아무도 우릴 찾지 않는 곳에서 단둘이... 쓸쓸히 여생을...
 
 [[제목 없는 구절 80]]
@@ -2240,6 +2340,7 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 
 :: 제목 없는 구절 80 [vn] {"position":"3500,650","size":"100,100"}
+<span data-bx="이블린:씨익"></span>
 아스트라: 잠깐...! 벨...! 벨...! 오해야!! 나 진짜 아무것도 안했어!!! 이블린 좀 말려봐! 그리고 스위스가 뭔데!!
 
 [[제목 없는 구절 81]]
@@ -2292,6 +2393,7 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 :: 제목 없는 구절 87 [vn] {"position":"2500,750","size":"100,100"}
 <span data-bx="수나:얼굴붉힘"></span>
+<span data-bx="아리아:미소"></span>
 아리아: 맞아요. 분명 아스트라 씨가 저희한테 전화해서 긴장 푸는 법을 알려주셨어요.
 
 [[제목 없는 구절 88]]
@@ -2299,6 +2401,7 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 :: 제목 없는 구절 88 [vn] {"position":"2600,750","size":"100,100"}
 <span data-bx="남궁우:노말"></span>
+<span data-bx="아리아:미소"></span>
 남궁우: 맞아, 비록 이마가 너무 넓은 초록머리 소녀가 팀에 있어도 물로 입을 헹구고 귀여운 동물 영상을 보는게 때론 도움이 된다고 했지.
 
 [[제목 없는 구절 89]]
@@ -2306,6 +2409,7 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 :: 제목 없는 구절 89 [vn] {"position":"2700,750","size":"100,100"}
 <span data-bx="남궁우:노말"></span>
+<span data-bx="수나:얼굴붉힘"></span>
 수나: 아, 맞아요... 분명...
 
 [[제목 없는 구절 90]]
@@ -2319,18 +2423,21 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 
 :: 제목 없는 구절 90 [vn] {"position":"2800,750","size":"100,100"}
+<span data-bx="아리아:미소"></span>
 아리아: 조용히 하세요 수나 씨, 
 
 [[제목 없는 구절 91]]
 
 
 :: 제목 없는 구절 91 [vn] {"position":"2900,750","size":"100,100"}
+<span data-bx="아리아:미소"></span>
 수나: 네...?
 
 [[제목 없는 구절 92]]
 
 
 :: 제목 없는 구절 92 [vn] {"position":"3000,750","size":"100,100"}
+<span data-bx="수나:경멸"></span>
 그 순간, 수나의 분위기가 급변했다. 한순간에 귀엽던 목소리는 마치 미녀 이중첩자처럼 내리깔았고, 주머니에서 검은 무언가를 꺼냈다.
 
 [[제목 없는 구절 93]]
@@ -2338,12 +2445,14 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 :: 제목 없는 구절 93 [vn] {"position":"3100,750","size":"100,100"}
 <span data-prop="권총"></span>
+<span data-bx="수나:경멸"></span>
 그것은 바로 권총이라고도 불리는 권총! 단 한발만으로도 사람을 죽일 수 있는 막강한 무기! 
 
 [[제목 없는 구절 94]]
 
 
 :: 제목 없는 구절 94 [vn] {"position":"3200,750","size":"100,100"}
+<span data-bx="수나:경멸"></span>
 수나: 보자 보자 하니까... 하꼬 아이돌 좀 벗어났다고 눈에 뵈는 게 없나 봐?
 
 [[제목 없는 구절 99]]
@@ -2356,12 +2465,14 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 
 :: 제목 없는 구절 96 [vn] {"position":"3400,750","size":"100,100"}
+<span data-bx="수나:경멸"></span>
 반악: 정답은 투탕카멘이라네... 투는 둘, 탕은 총 소리, 투탕카멘은 파라오니까. 반 학학학학하~
 
 [[제목 없는 구절 97]]
 
 
 :: 제목 없는 구절 97 [vn] {"position":"3500,750","size":"100,100"}
+<span data-bx="수나:경멸"></span>
 수나: 너도 죽어.
 
 [[제목 없는 구절 98]]
@@ -2377,6 +2488,7 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 
 :: 제목 없는 구절 99 [vn] {"position":"3300,750","size":"100,100"}
+<span data-bx="수나:경멸"></span>
 반악: 자네들, 혹시 총을 두 발 맞고 사망한 파라오가 누군지 아는가?
 
 [[제목 없는 구절 96]]
@@ -2470,35 +2582,35 @@ window.BB = {
      - adj: 표정 그림이 기본 그림과 구도가 조금 다를 때 맞추는 값 { 표정: [크기 배율, 가로 이동, 세로 이동] } (이동은 그림 높이에 대한 비율) */
   var SEAT_L = 25.1;                      // 왼쪽 자리 얼굴 가로 위치 (벨이 서 있던 자리). 벨 말고 다른 인물이 왼쪽에 설 때도 여기에 얼굴을 맞춤
   var CHAR = {
-    '벨': { imgs: ['노말'], base: '노말', ar: 0.5583, h: 250.2, ex: 0.5261, ey: 0.1369, fx: 25.1, fy: -63.1 },
-    '레미엘': { imgs: ['진지'], base: '진지', ar: 0.558, h: 286.2, ex: 0.4873, ey: 0.1094, fx: 73.9, fy: -83.0 },
-    '수나': { imgs: ['얼굴붉힘'], base: '얼굴붉힘', ar: 0.5583, h: 185.7, ex: 0.5348, ey: 0.1902, fx: 77.2, fy: -54.2 },
-    '시드': { imgs: ['노말'], base: '노말', ar: 0.5583, h: 257.7, ex: 0.5042, ey: 0.1354, fx: 79.6, fy: -64.7 },
-    '아스트라': { imgs: ['노말'], base: '노말', ar: 0.5583, h: 245.0, ex: 0.508, ey: 0.1611, fx: 71.4, fy: -86.8 },
-    '야나기': { imgs: ['진지'], base: '진지', ar: 0.558, h: 272.2, ex: 0.506, ey: 0.1242, fx: 77.0, fy: -78.8 },
+    '벨': { imgs: ['진지', '노말', '지목', '고뇌', '놀람'], base: '진지', ar: 0.5583, h: 250.2, ex: 0.5261, ey: 0.1369, fx: 25.1, fy: -63.1 },
+    '레미엘': { imgs: ['진지', '시무룩'], base: '진지', ar: 0.558, h: 286.2, ex: 0.4873, ey: 0.1094, fx: 73.9, fy: -83.0, adj: { '시무룩': [0.9881, 0.0028, 0.0] } },
+    '수나': { imgs: ['침착', '경멸', '얼굴붉힘'], base: '침착', ar: 0.5583, h: 185.7, ex: 0.5348, ey: 0.1902, fx: 77.2, fy: -54.2 },
+    '시드': { imgs: ['노말', '고민'], base: '노말', ar: 0.5583, h: 257.7, ex: 0.5042, ey: 0.1354, fx: 79.6, fy: -64.7 },
+    '아스트라': { imgs: ['진지', '노말'], base: '진지', ar: 0.5583, h: 245.0, ex: 0.508, ey: 0.1611, fx: 71.4, fy: -86.8 },
+    '야나기': { imgs: ['안경없음', '안경없음당황', '진지'], base: '안경없음', ar: 0.558, h: 272.2, ex: 0.506, ey: 0.1242, fx: 77.0, fy: -78.8, adj: { '안경없음': [0.9885, 0.0028, 0], '안경없음당황': [0.9883, 0.0028, 0] } },
     '빛나': { imgs: ['노말'], base: '노말', ar: 0.5583, h: 263.5, ex: 0.4983, ey: 0.1424, fx: 75.4, fy: -67.2 },
-    '자오': { imgs: ['노말'], base: '노말', ar: 0.5585, h: 196.5, ex: 0.5007, ey: 0.2324, fx: 76.8, fy: -18.8 },
+    '자오': { imgs: ['노말', '기분나쁨'], base: '노말', ar: 0.5585, h: 196.5, ex: 0.5007, ey: 0.2324, fx: 76.8, fy: -18.8 },
     '클라렛': { imgs: ['진지'], base: '진지', ar: 0.558, h: 280.5, ex: 0.5468, ey: 0.1479, fx: 80.6, fy: -62.5 },
     '반악': { imgs: ['진지'], base: '진지', ar: 0.558, h: 268.1, ex: 0.4993, ey: 0.1293, fx: 74.4, fy: -87.7 },
-    '루시아': { imgs: ['무표정'], base: '무표정', ar: 0.5583, h: 222.0, ex: 0.502, ey: 0.1982, fx: 76.6, fy: -62.0 },
-    '네코미야': { imgs: ['노말'], base: '노말', ar: 0.5583, h: 255.7, ex: 0.5037, ey: 0.1771, fx: 77.8, fy: -44.8 },
+    '루시아': { imgs: ['무표정', '미소'], base: '무표정', ar: 0.5583, h: 222.0, ex: 0.502, ey: 0.1982, fx: 76.6, fy: -62.0 },
+    '네코미야': { imgs: ['노말', '당황'], base: '노말', ar: 0.5583, h: 255.7, ex: 0.5037, ey: 0.1771, fx: 77.8, fy: -44.8 },
     '트리거': { imgs: ['진지'], base: '진지', ar: 0.558, h: 269.5, ex: 0.505, ey: 0.1444, fx: 75.0, fy: -79.2 },
     '귤복복': { imgs: ['진지'], base: '진지', ar: 0.5585, h: 211.5, ex: 0.4036, ey: 0.1945, fx: 77.0, fy: -49.1 },
     '다이아린': { imgs: ['무표정'], base: '무표정', ar: 0.5583, h: 263.6, ex: 0.4958, ey: 0.2101, fx: 80.2, fy: -63.3 },
-    '이블린': { imgs: ['진지'], base: '진지', ar: 0.558, h: 280.0, ex: 0.5211, ey: 0.1327, fx: 77.5, fy: -77.8 },
+    '이블린': { imgs: ['진지', '씨익'], base: '진지', ar: 0.558, h: 280.0, ex: 0.5211, ey: 0.1327, fx: 77.5, fy: -77.8, adj: { '씨익': [0.9881, 0.0029, 0.0001] } },
     '미야비': { imgs: ['진지'], base: '진지', ar: 0.558, h: 268.9, ex: 0.5025, ey: 0.1742, fx: 78.0, fy: -71.8 },
     '남궁우': { imgs: ['노말'], base: '노말', ar: 0.5583, h: 238.7, ex: 0.6549, ey: 0.1919, fx: 77.2, fy: -60.3 },
-    '아리아': { imgs: ['진지'], base: '진지', ar: 0.558, h: 256.7, ex: 0.4771, ey: 0.1558, fx: 73.4, fy: -63.8 },
+    '아리아': { imgs: ['진지', '미소'], base: '진지', ar: 0.558, h: 256.7, ex: 0.4771, ey: 0.1558, fx: 73.4, fy: -63.8, adj: { '미소': [0.988, 0.0031, 0] } },
     '록시': { imgs: ['노말'], base: '노말', ar: 0.5583, h: 245.0, ex: 0.5087, ey: 0.1878, fx: 74.8, fy: -55.8 },
     '벨리나': { imgs: ['노말'], base: '노말', ar: 0.5583, h: 276.1, ex: 0.5157, ey: 0.1306, fx: 73.3, fy: -86.0, flip: true },
     '버니스': { imgs: ['진지'], base: '진지', ar: 0.5585, h: 246.0, ex: 0.5256, ey: 0.1638, fx: 73.7, fy: -74.2 },
-    '니콜': { imgs: ['진지'], base: '진지', ar: 0.5585, h: 211.4, ex: 0.4968, ey: 0.1991, fx: 76.4, fy: -64.5 },
+    '니콜': { imgs: ['진지', '당황'], base: '진지', ar: 0.5585, h: 211.4, ex: 0.4968, ey: 0.1991, fx: 76.4, fy: -64.5 },
     '포포': { imgs: ['진지'], base: '진지', ar: 1.0, h: 179.1, ex: 0.5069, ey: 0.4764, fx: 82.1, fy: -25.3 },
-    '시시아': { imgs: ['노말'], base: '노말', ar: 0.5583, h: 242.5, ex: 0.5082, ey: 0.1385, fx: 74.9, fy: -67.4 },
+    '시시아': { imgs: ['울상', '노말'], base: '울상', ar: 0.5583, h: 242.5, ex: 0.5082, ey: 0.1385, fx: 74.9, fy: -67.4 },
     '11호': { imgs: ['진지'], base: '진지', ar: 0.5585, h: 250.0, ex: 0.492, ey: 0.1739, fx: 73.8, fy: -68.8 },
     '유즈하': { imgs: ['진지'], base: '진지', ar: 0.5585, h: 205.0, ex: 0.5201, ey: 0.2043, fx: 78.5, fy: -64.4 },
     '의현': { imgs: ['무표정'], base: '무표정', ar: 0.5585, h: 269.5, ex: 0.5017, ey: 0.1546, fx: 72.1, fy: -83.3 },
-    '앨리스': { imgs: ['노말'], base: '노말', ar: 0.5583, h: 239.0, ex: 0.4975, ey: 0.1872, fx: 76.0, fy: -61.9 }
+    '앨리스': { imgs: ['노말', '표독'], base: '노말', ar: 0.5583, h: 239.0, ex: 0.4975, ey: 0.1872, fx: 76.0, fy: -61.9 }
   };
   var FLIP_OK = { '벨리나': true };       // 겹침을 풀려고 좌우 반전을 바꿔도 되는 인물 (벨리나는 반전해도 똑같아 보임)
 
@@ -3626,8 +3738,8 @@ window.BB = {
      - 주소는 아래 COFFEE_URL(후원) / X_URL(트위터)에 적으면 돼. 적어두면 누를 때 새 창으로 열려.
      - 주소가 비어 있으면: 배포본(SHOW_TEST_MENU 가 false)에서는 그 아이콘을 아예 안 보여주고, 테스트 중에는 흐리게 보여서 자리만 확인할 수 있어.
      - 크레딧 화면에서 홈 버튼은 '보던 장면은 저장되지 않습니다' 확인 없이 바로 타이틀로 보내 (보던 장면이 아니라서). */
-  var COFFEE_URL = '';                    // 여기에 후원 주소를 적기. 예: 'https://buymeacoffee.com/내아이디'
-  var X_URL = '';                         // 여기에 내 X(트위터) 주소를 적기. 예: 'https://x.com/내아이디'
+  var COFFEE_URL = 'https://qr.kakaopay.com/FIljKVYeG';   // 여기에 후원 주소를 적기. 예: 'https://buymeacoffee.com/내아이디'
+  var X_URL = 'https://x.com/buildsenna/status/2105591793454911742?s=20';   // 여기에 내 X(트위터) 주소를 적기. 예: 'https://x.com/내아이디'
   var ICON_COFFEE = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.6 10h11.2v5.1a4.4 4.4 0 0 1-4.4 4.4H9a4.4 4.4 0 0 1-4.4-4.4z" fill="currentColor"/><path d="M15.8 11.3h1.5a2.5 2.5 0 0 1 0 5h-1.9" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M7.6 3.4c-1 1.2 1 2.1 0 3.4M11.4 3.4c-1 1.2 1 2.1 0 3.4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>';
   var ICON_X = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z" fill="currentColor"/></svg>';
 
