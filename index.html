@@ -197,6 +197,60 @@ body.vn-on tw-passage { display: none; }
   font-weight: 400;
 }
 
+/* ===== 크레딧 화면: 글 아래 X(트위터) 아이콘 ===== */
+.cr-x { margin-top: calc(var(--u) * 6); display: flex; flex-direction: column; align-items: center; gap: calc(var(--u) * 2); }
+.cr-xbtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: calc(var(--u) * 13);
+  height: calc(var(--u) * 13);
+  box-sizing: border-box;
+  border-radius: 50%;
+  background: #000;
+  color: #fff;
+  border: calc(var(--u) * 0.6) solid rgba(255, 255, 255, 0.85);
+  text-decoration: none;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+.cr-xbtn svg { width: 50%; height: 50%; display: block; }
+a.cr-xbtn:active { transform: scale(0.94); }
+a.cr-xbtn:focus-visible { outline: calc(var(--u) * 0.8) solid #ffe3b0; outline-offset: calc(var(--u) * 0.6); }
+.cr-xbtn.cr-xoff { opacity: 0.4; cursor: default; }
+.cr-xnote { font-size: calc(var(--u) * 3); opacity: 0.7; }
+
+/* ===== 소품 팝업 (수나가 꺼낸 권총 등): 화면 가운데 위쪽에 둥근 네모 판이 오른쪽에서 슥 나타나고, 다음 장면에서 슥 사라짐 ===== */
+.vn-prop {
+  position: absolute;
+  z-index: 5;                             /* 인물 그림(1~2)과 연출(4) 위, 선택지(6)와 대사창(10) 아래 */
+  left: 50%;
+  top: calc((100% - var(--box-h)) / 2);   /* 대사창 위쪽 빈 화면의 세로 가운데 */
+  width: calc(var(--u) * 78);
+  box-sizing: border-box;
+  padding: calc(var(--u) * 5);
+  border-radius: calc(var(--u) * 8);
+  border: calc(var(--u) * 0.7) solid rgba(255, 255, 255, 0.75);
+  background: rgba(12, 24, 48, 0.9);
+  box-shadow: 0 calc(var(--u) * 1.6) calc(var(--u) * 5) rgba(0, 0, 0, 0.55), inset 0 0 calc(var(--u) * 6) rgba(255, 255, 255, 0.06);
+  pointer-events: none;
+  visibility: hidden;
+  opacity: 0;
+  transform: translate(calc(-50% + var(--u) * 70), -50%) rotate(7deg);   /* 사라질 때 / 나타나기 전 자리: 오른쪽 바깥 */
+  transition: transform 0.22s cubic-bezier(0.5, 0, 0.9, 0.6), opacity 0.2s ease-in, visibility 0s linear 0.22s;
+}
+.vn-prop.pr-on {
+  visibility: visible;
+  opacity: 1;
+  transform: translate(-50%, -50%);
+  transition: transform 0.32s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.15s ease-out, visibility 0s;
+}
+.vn-prop img { display: block; width: 100%; height: auto; }
+@media (prefers-reduced-motion: reduce) {
+  .vn-prop { transform: translate(-50%, -50%); transition: opacity 0.15s ease-in, visibility 0s linear 0.15s; }
+  .vn-prop.pr-on { transition: opacity 0.15s ease-out, visibility 0s; }
+}
+
 /* 대사창 */
 .vn-box {
   position: absolute;
@@ -815,6 +869,15 @@ body.tt-on tw-passage { display: none; }
 .tt-b1 { left: 53.5%; top: 74.6%; }
 .tt-b2 { left: 5.5%;  top: 86.8%; }
 .tt-b3 { left: 53.5%; top: 86.8%; }
+.tt-b4 {                                /* 크레딧: 게임 방법 버튼 바로 위, 오른쪽 끝을 맞춘 작은 버튼 */
+  left: 69%; top: 67.4%; width: 25.5%; height: 6.2%;
+  font-size: calc(var(--au) * 3.4);
+  gap: calc(var(--au) * 1.1);
+  border-width: calc(var(--au) * 0.7);
+  border-radius: calc(var(--au) * 3.4);
+}
+.tt-b4 .tt-ico { width: calc(var(--au) * 4); height: calc(var(--au) * 4); }
+
 .tt-legal {                             /* 약관: 왼쪽 위 작은 칩 (누르면 약관 화면) */
   position: absolute;
   left: calc(var(--u) * 1.5);
@@ -980,11 +1043,11 @@ body.tt-on tw-passage { display: none; }
     '수나': { imgs: ['얼굴붉힘'], base: '얼굴붉힘', ar: 0.5583, h: 185.7, ex: 0.5348, ey: 0.1902, fx: 77.2, fy: -54.2 },
     '시드': { imgs: ['노말'], base: '노말', ar: 0.5583, h: 257.7, ex: 0.5042, ey: 0.1354, fx: 79.6, fy: -64.7 },
     '아스트라': { imgs: ['노말'], base: '노말', ar: 0.5583, h: 245.0, ex: 0.508, ey: 0.1611, fx: 71.4, fy: -86.8 },
-    '야나기': { imgs: ['진지'], base: '진지', ar: 0.5581, h: 275.0, ex: 0.5052, ey: 0.1228, fx: 77.0, fy: -78.8 },
+    '야나기': { imgs: ['진지'], base: '진지', ar: 0.558, h: 272.2, ex: 0.506, ey: 0.1242, fx: 77.0, fy: -78.8 },
     '빛나': { imgs: ['노말'], base: '노말', ar: 0.5583, h: 263.5, ex: 0.4983, ey: 0.1424, fx: 75.4, fy: -67.2 },
     '자오': { imgs: ['노말'], base: '노말', ar: 0.5585, h: 196.5, ex: 0.5007, ey: 0.2324, fx: 76.8, fy: -18.8 },
     '클라렛': { imgs: ['진지'], base: '진지', ar: 0.558, h: 280.5, ex: 0.5468, ey: 0.1479, fx: 80.6, fy: -62.5 },
-    '반악': { imgs: ['진지'], base: '진지', ar: 0.5581, h: 268.1, ex: 0.4993, ey: 0.1293, fx: 74.4, fy: -87.7 },
+    '반악': { imgs: ['진지'], base: '진지', ar: 0.558, h: 268.1, ex: 0.4993, ey: 0.1293, fx: 74.4, fy: -87.7 },
     '루시아': { imgs: ['무표정'], base: '무표정', ar: 0.5583, h: 222.0, ex: 0.502, ey: 0.1982, fx: 76.6, fy: -62.0 },
     '네코미야': { imgs: ['노말'], base: '노말', ar: 0.5583, h: 255.7, ex: 0.5037, ey: 0.1771, fx: 77.8, fy: -44.8 },
     '트리거': { imgs: ['진지'], base: '진지', ar: 0.558, h: 269.5, ex: 0.505, ey: 0.1444, fx: 75.0, fy: -79.2 },
@@ -2125,6 +2188,104 @@ body.tt-on tw-passage { display: none; }
     if (root) root.hidden = true;
   }
 
+  /* ================= 크레딧 화면 =================
+     '크레딧' 패시지(credits 태그)가 나오면 글 아래에 X(트위터) 아이콘 버튼을 붙여줘.
+     - 주소는 아래 X_URL 에 적으면 돼. 적어두면 누를 때 새 창으로 열려.
+     - 주소가 비어 있으면: 배포본(SHOW_TEST_MENU 가 false)에서는 아이콘을 아예 안 보여주고, 테스트 중에는 흐리게 보여서 자리만 확인할 수 있어.
+     - 크레딧 화면에서 홈 버튼은 '보던 장면은 저장되지 않습니다' 확인 없이 바로 타이틀로 보내 (보던 장면이 아니라서). */
+  var X_URL = '';                         // 여기에 내 X(트위터) 주소를 적기. 예: 'https://x.com/내아이디'
+  var ICON_X = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z" fill="currentColor"/></svg>';
+
+  function creditsSync(p, tags) {
+    var on = tags.indexOf('credits') >= 0;
+    document.body.classList.toggle('cr-on', on);
+    if (!on || p.querySelector('.cr-x') || !(X_URL || SHOW_TEST_MENU)) return;
+    var wrap = el('div', 'cr-x');
+    var btn;
+    if (X_URL) {
+      btn = el('a', 'cr-xbtn');
+      btn.href = X_URL;
+      btn.target = '_blank';
+      btn.rel = 'noopener noreferrer';
+      btn.setAttribute('aria-label', '제작자의 X(트위터)로 이동');
+    } else {
+      btn = el('span', 'cr-xbtn cr-xoff');
+      btn.title = 'X 주소가 아직 없어 (코드의 X_URL 에 넣으면 돼)';
+    }
+    btn.innerHTML = ICON_X;
+    wrap.appendChild(btn);
+    if (!X_URL) {
+      var note = el('div', 'cr-xnote');
+      note.textContent = '(X 주소 미설정: 테스트 화면에서만 보여요)';
+      wrap.appendChild(note);
+    }
+    p.appendChild(wrap);
+  }
+
+  /* ================= 소품 팝업 (예: 수나가 꺼낸 권총) =================
+     장면 글 맨 위에 <span data-prop="권총"></span> 를 넣으면, 그 장면에서 화면 가운데 위쪽에 둥근 네모 판이 슥 나타나고 그 안에 소품 그림이 보여.
+     표시가 없는 다음 장면으로 넘어가면 슥 하고 사라져. (이전 대사 버튼으로 돌아가도 그 장면의 표시대로 다시 나타나거나 사라져)
+     - 소품 그림은 아래 PROPS 표에 적어. 파일은 images/props/ 폴더 (배경이 투명한 webp).
+     - 그림을 못 받으면 판을 띄우지 않고 대사만 그대로 진행돼. */
+  var PROP_LOCAL_BASE = 'file:///C:/Users/pumha/Desktop/귤복복 살인사건제작/완성본/실제 제작/소품 이미지/';
+  var PROP_WEB_BASE = 'images/props/';
+  var PROP_BASE = (location.protocol === 'file:') ? PROP_LOCAL_BASE : PROP_WEB_BASE;
+  var PROPS = { '권총': '권총.webp' };    // 소품 이름 -> 그림 파일 이름
+  var pr = { box: null, img: null, shown: null, loads: {}, warmed: false, seq: 0 };
+
+  function propUrl(name) { return encodeURI(PROP_BASE + PROPS[name]); }
+
+  /* 소품 그림 하나를 받아둠 (이미 받았거나 받는 중이면 그 결과를 기다렸다가 cb(성공 여부)를 부름) */
+  function propLoad(name, cb) {
+    var e = pr.loads[name];
+    if (e && e.state !== 'loading') { cb(e.state === 'ok'); return; }
+    if (e) { e.cbs.push(cb); return; }
+    e = pr.loads[name] = { state: 'loading', cbs: [cb], img: new Image() };
+    function fin(s) {
+      e.state = s;
+      var list = e.cbs;
+      e.cbs = [];
+      for (var i = 0; i < list.length; i++) list[i](s === 'ok');
+    }
+    e.img.onload = function () { fin('ok'); };
+    e.img.onerror = function () { fin('missing'); };
+    e.img.src = propUrl(name);
+  }
+
+  function propBuild() {
+    if (pr.box) return;
+    pr.box = el('div', 'vn-prop');
+    pr.img = el('img');
+    pr.img.alt = '';
+    pr.box.appendChild(pr.img);
+    root.appendChild(pr.box);
+  }
+
+  function propHide() {
+    pr.seq++;                             // 그림을 기다리던 중이었다면 취소
+    if (pr.box) pr.box.classList.remove('pr-on');
+  }
+
+  /* 장면이 바뀔 때마다 부름: 이 장면에 소품 표시가 있으면 띄우고, 없으면 치움 */
+  function propSync(p) {
+    if (!pr.warmed) {                     // 게임 시작 직후 로딩과 겹치지 않게 조금 뒤에 소품 그림을 미리 받아둠
+      pr.warmed = true;
+      setTimeout(function () { Object.keys(PROPS).forEach(function (n) { propLoad(n, function () {}); }); }, 4000);
+    }
+    var tags = (p.getAttribute('tags') || '').split(/\s+/);
+    var mark = tags.indexOf('vn') >= 0 ? p.querySelector('[data-prop]') : null;
+    var name = mark ? String(mark.getAttribute('data-prop')).trim() : '';
+    if (!name || !PROPS[name]) { propHide(); return; }
+    propBuild();
+    var my = ++pr.seq;
+    propLoad(name, function (ok) {
+      if (my !== pr.seq || !ok) return;   // 그 사이 다른 장면으로 넘어갔거나 그림이 없으면 안 띄움
+      if (pr.shown !== name) { pr.img.src = propUrl(name); pr.shown = name; }
+      void pr.box.offsetWidth;            // 처음 만들자마자 띄울 때도 '슥' 움직임이 나오도록 위치를 한 번 확정
+      pr.box.classList.add('pr-on');
+    });
+  }
+
   /* ================= 엔딩 갤러리 =================
      'gallery' 태그가 붙은 패시지에서 동작해. (지금은 '엔딩 갤러리' 패시지 하나)
      - 한 페이지에 엔딩 6개, 총 3페이지 (1~6 / 7~12 / 13~16 + 진엔딩)
@@ -2499,7 +2660,8 @@ body.tt-on tw-passage { display: none; }
     { label: '게임 시작',   target: '시작1',             text: '시작1',           cls: 'tt-p', icon: 'play' },
     { label: '게임 방법',   target: '게임 방법',         text: '게임 방법',       cls: 'tt-s', icon: 'help' },
     { label: '엔딩 갤러리', target: '엔딩 갤러리',       text: '엔딩 갤러리',     cls: 'tt-s', icon: 'image' },
-    { label: '용의자 선택', target: '제목 없는 구절 15', text: '용의자 선택으로', cls: 'tt-s', icon: 'search', needsRecord: true }
+    { label: '용의자 선택', target: '제목 없는 구절 15', text: '용의자 선택으로', cls: 'tt-s', icon: 'search', needsRecord: true },
+    { label: '크레딧',     target: '크레딧',            text: '크레딧 다시 보기', cls: 'tt-s', icon: 'credit', needsRecord: true, lockTip: '진엔딩을 보면 열려요' }   // 작은 버튼 (게임 방법 위)
   ];
   var TT_LEGAL = { label: '약관', target: '약관', text: '약관' };   // 타이틀 왼쪽 위 작은 칩 (팬 게임 안내 / 저작권 문구 화면으로 감)
   var TT_TESTS = [
@@ -2511,6 +2673,7 @@ body.tt-on tw-passage { display: none; }
     help:   '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.6" fill="none" stroke="currentColor" stroke-width="2.4"/><path d="M9.3 9.6a2.8 2.8 0 1 1 4.3 2.3c-.9.6-1.6 1.1-1.6 2.2" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/><circle cx="12" cy="16.9" r="1.35" fill="currentColor"/></svg>',
     image:  '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.4" y="4.6" width="17.2" height="14.8" rx="2.6" fill="none" stroke="currentColor" stroke-width="2.4"/><circle cx="9" cy="10" r="1.8" fill="currentColor"/><path d="m4.6 17 4.6-4.4 3.2 3 3.2-3.6 4.2 4.6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/></svg>',
     search: '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.4" cy="10.4" r="6" fill="none" stroke="currentColor" stroke-width="2.6"/><path d="m15 15 5 5" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg>',
+    credit: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.5 6.8h11M6.5 12h11M6.5 17.2h7" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round"/></svg>',
     lock:   '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5.4" y="10.6" width="13.2" height="9.6" rx="2.2" fill="currentColor"/><path d="M8.4 10.6V8.2a3.6 3.6 0 0 1 7.2 0v2.4" fill="none" stroke="currentColor" stroke-width="2.4"/></svg>'
   };
   var tt = { root: null, art: null, btns: [], tests: [], panel: null, p: null };
@@ -2601,7 +2764,7 @@ body.tt-on tw-passage { display: none; }
       b.classList.toggle('tt-off', off);
       b.setAttribute('aria-disabled', off ? 'true' : 'false');
       b.firstChild.innerHTML = TT_ICONS[off ? 'lock' : def.icon];
-      b.title = off ? '엔딩을 한 번이라도 보면 열려요' : '';
+      b.title = off ? (def.lockTip || '엔딩을 한 번이라도 보면 열려요') : '';
     });
     if (tt.panel) tt.panel.hidden = true;
     document.body.classList.add('tt-on');
@@ -2707,7 +2870,7 @@ body.tt-on tw-passage { display: none; }
 
     hm.btn.addEventListener('click', function () {
       hm.btn.blur();
-      if (!HOME_CONFIRM) { goTitle(); return; }
+      if (!HOME_CONFIRM || document.body.classList.contains('cr-on')) { goTitle(); return; }
       hm.dlg.hidden = false;
       document.body.classList.add('hm-open');
     });
@@ -2826,9 +2989,11 @@ body.tt-on tw-passage { display: none; }
     build();
     var seq = ++sceneSeq;
     fxCancel();                           // 앞 장면의 연출이 남아 있으면 정리
+    propSync(p);                          // 소품 팝업: 이 장면에 표시가 있으면 띄우고 없으면 치움
     textEl.classList.remove('vn-loading');
     var tags = (p.getAttribute('tags') || '').split(/\s+/);
     updateHome(tags);
+    creditsSync(p, tags);                 // 크레딧 화면이면 X 아이콘을 붙이고, 홈 버튼의 확인 질문을 건너뛰게 표시
     lockUntil = Date.now() + LOCK_MS;
     if (backPending) {                    // 이전 대사 버튼으로 돌아온 화면: 그때의 인물 배치를 복원
       backPending = false;
@@ -3104,14 +3269,13 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 [[제목 없는 구절 128]]</tw-passagedata><tw-passagedata pid="65" name="제목 없는 구절 126" tags="vn" position="1400,1150" size="100,100">벨: 비장의 수?!
 [[제목 없는 구절 129]]</tw-passagedata><tw-passagedata pid="66" name="제목 없는 구절 127" tags="vn" position="1000,1050" size="100,100">벨: 생각해보니 그렇네요... 아무래도 앞이 안 보이는 사람이 범인일 리 없죠. 그럼 시드 씨, 당신을 테스트하겠어요. 
-(수긍한다)
 
 [[제목 없는 구절 133]]</tw-passagedata><tw-passagedata pid="67" name="제목 없는 구절 128" tags="vn" position="700,1100" size="100,100">트리거: 벨, 내가 사용하는 총은 3500줄(J)의 에너지를 총구에서 내뿜어. 이게 무슨 소리인지 알겠어? 
 
 [[제목 없는 구절 132]]</tw-passagedata><tw-passagedata pid="68" name="제목 없는 구절 129" tags="vn" position="1500,1150" size="100,100">&lt;span data-bx=&quot;시드:노말&quot;&gt;&lt;/span&gt;
 시드: 뭔가 숨겨놓은 게 있는 거야?
 [[제목 없는 구절 210]]</tw-passagedata><tw-passagedata pid="69" name="제목 없는 구절 13" tags="confirm vn" position="1500,200" size="100,100">&lt;span data-bx=&quot;벨:노말&quot;&gt;&lt;/span&gt;
-야나기: 알겠습니다. (안경을 벗는다)
+야나기: 알겠습니다.
 
 [[제목 없는 구절 15]]</tw-passagedata><tw-passagedata pid="70" name="제목 없는 구절 130" tags="vn" position="1400,1050" size="100,100">시드: 으음... 어려운 질문이네, 근데 벨, 선로전환기까지는 어떻게 접근한 거야?
 
@@ -3319,7 +3483,6 @@ Other properties and any right, title, and interest thereof and therein (intelle
 그 순간, 앨리스의 레이피어가 하늘을 날았다. 아니 앨리스가 하늘을 날았다. 물음표를 대칭으로 사용하지 않았다는 것이 문제였다. 그렇게 벨은 사망하고 말았다.
 
 [[타이틀 화면으로 돌아가기-&gt;타이틀 화면]](set: $seen to it + (ds: 13))&lt;script&gt;if (window.BB) { BB.save(Array.from($seen)); }&lt;/script&gt;</tw-passagedata><tw-passagedata pid="146" name="제목 없는 구절 2" tags="vn" position="1000,100" size="100,100">&lt;span data-stage=&quot;벨,귤복복&quot;&gt;&lt;/span&gt;
-(귤복복이 일어난다)
 귤복복: 저어... 죄송하지만... 저는 아직 죽지 않았는데...
 
 [[제목 없는 구절 3]]</tw-passagedata><tw-passagedata pid="147" name="제목 없는 구절 20" tags="vn" position="1100,200" size="100,100">아스트라: 윽 미안해...
@@ -3501,7 +3664,7 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 [[제목 없는 구절 259]]</tw-passagedata><tw-passagedata pid="212" name="제목 없는 구절 259" tags="vn" position="2800,1800" size="100,100">레미엘: 트리거 씨에게는 &#39;앞이 안 보이면 휴대폰은 어떻게 쓰세요?&#39; 라는 잔인한 말을!!!
 
-[[제목 없는 구절 260]]</tw-passagedata><tw-passagedata pid="213" name="제목 없는 구절 26" tags="vn" position="600,500" size="100,100">벨이라는 존재를 만나기 전까지, 저주에 걸려 성에 유폐된 왕자님과 같은 상태였답니다. 저는 장미과의 벚나무속의 식물로 모두를 홀리기 위해 준비를 하고 있었죠.
+[[제목 없는 구절 260]]</tw-passagedata><tw-passagedata pid="213" name="제목 없는 구절 26" tags="vn" position="600,500" size="100,100">레미엘: 벨이라는 존재를 만나기 전까지, 저주에 걸려 성에 유폐된 왕자님과 같은 상태였답니다. 저는 장미과의 벚나무속의 식물로 모두를 홀리기 위해 준비를 하고 있었죠.
 
 [[제목 없는 구절 27]]</tw-passagedata><tw-passagedata pid="214" name="제목 없는 구절 260" tags="vn" position="2900,1800" size="100,100">레미엘: 빛나 씨에게는 &#39;요리 말고 다른 건 안 해보고 싶나요? 검술 같은...&#39; 이라는 말도 안 되는 말을 했어요! 평생을 요리에 바쳐온 빛나 씨한테!
 
@@ -3561,7 +3724,7 @@ Other properties and any right, title, and interest thereof and therein (intelle
 [[제목 없는 구절 283]]</tw-passagedata><tw-passagedata pid="239" name="제목 없는 구절 283" tags="vn" position="4800,2300" size="100,100">벨: 이 자리에 범인은 없습니다. 치안국은 &#39;귤복복을 죽인 범인이 헤엄쳐 바다로 도망갔다&#39;는 제 추리를 받아들였습니다.
 
 [[제목 없는 구절 284]]</tw-passagedata><tw-passagedata pid="240" name="제목 없는 구절 284" tags="vn" position="4900,2300" size="100,100">&lt;span data-bx=&quot;벨:노말&quot;&gt;&lt;/span&gt;
-여러분 모두 가셔도 좋습니다.
+벨: 여러분 모두 가셔도 좋습니다.
 
 [[제목 없는 구절 285]]</tw-passagedata><tw-passagedata pid="241" name="제목 없는 구절 285" tags="vn" position="5000,2300" size="100,100">&lt;span data-bx=&quot;벨:노말&quot;&gt;&lt;/span&gt;
 그 한마디 말과 함께, 냉동실에서 딱딱하게 얼어붙은 돼지고기 같던 분위기가 녹았다. 한순간에 흘러나온 온기가 서늘한 저녁공기를 전부 메우는 듯했다.
@@ -3610,7 +3773,6 @@ Other properties and any right, title, and interest thereof and therein (intelle
 벨: 살면서 가장 후회하는 것이 뭔가요?
 
 [[제목 없는 구절 300]]</tw-passagedata><tw-passagedata pid="257" name="제목 없는 구절 3" tags="confirm vn" position="1100,100" size="100,100">&lt;span data-fx=&quot;hit:시시아,귤복복&quot;&gt;&lt;/span&gt;
-(시시아가 귤복복을 치고 지나감)
 시시아: 저저저저저저저기... 저 늦은 거 아니죠? 저 진짜 제시간에 출발했는데 케이블카가 늦게 와서!!
 
 [[제목 없는 구절 4]]</tw-passagedata><tw-passagedata pid="258" name="제목 없는 구절 30" tags="vn" position="1000,500" size="100,100">레미엘: 후후후, 어쩌면 벨 씨를 만나기를 기다리고 있었을지도? 
@@ -3666,8 +3828,7 @@ Other properties and any right, title, and interest thereof and therein (intelle
 [[추궁한다-&gt;제목 없는 구절 36]]</tw-passagedata><tw-passagedata pid="278" name="제목 없는 구절 35" tags="vn" position="1500,450" size="100,100">&lt;span data-stage=&quot;벨,레미엘&quot;&gt;&lt;/span&gt;
 벨: 레미엘, 내 생각에는 네가 범인이야! 이미 데이트폭력 전과도 있고, 시간정지 능력도 있으니 가장 의심스러운 건 당연히 너잖아!
 
-[[제목 없는 구절 41]]</tw-passagedata><tw-passagedata pid="279" name="제목 없는 구절 36" tags="vn" position="1500,550" size="100,100">(추궁한다)
-벨: 왜 복숭아 케이크였던 거야? 
+[[제목 없는 구절 41]]</tw-passagedata><tw-passagedata pid="279" name="제목 없는 구절 36" tags="vn" position="1500,550" size="100,100">벨: 왜 복숭아 케이크였던 거야? 
 
 [[제목 없는 구절 37]]</tw-passagedata><tw-passagedata pid="280" name="제목 없는 구절 37" tags="vn" position="1600,550" size="100,100">레미엘: 벨 씨... 혹시 곰 세 마리와 늑대 이야기를 들어보신 적 있나요?
 
@@ -3729,8 +3890,7 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 [[제목 없는 구절 57]]</tw-passagedata><tw-passagedata pid="302" name="제목 없는 구절 57" tags="vn" position="1200,700" size="100,100">야나기: 알겠습니다...
 
-[[제목 없는 구절 58]]</tw-passagedata><tw-passagedata pid="303" name="제목 없는 구절 58" tags="vn" position="1300,700" size="100,100">(안경을 벗는다)
-야나기: 그래서 아스트라 씨, 뭔가 목격한 것이나 들은 건 없나요? 
+[[제목 없는 구절 58]]</tw-passagedata><tw-passagedata pid="303" name="제목 없는 구절 58" tags="vn" position="1300,700" size="100,100">야나기: 그래서 아스트라 씨, 뭔가 목격한 것이나 들은 건 없나요? 
 
 [[제목 없는 구절 59]]</tw-passagedata><tw-passagedata pid="304" name="제목 없는 구절 59" tags="vn" position="1400,700" size="100,100">아스트라: 으음... 없는 것 같은데...
 
@@ -3796,7 +3956,6 @@ Other properties and any right, title, and interest thereof and therein (intelle
 아무런 증거도 없었지만, 이블린의 적극적인 증언 덕에 아스트라는 귤복복 살인사건의 진범이 되었고. 둘은 멀리 도주해 행복한 여생을 보내게 되었다고 한다. 아마도...
 
 [[타이틀 화면으로 돌아가기-&gt;타이틀 화면]](set: $seen to it + (ds: 3))&lt;script&gt;if (window.BB) { BB.save(Array.from($seen)); }&lt;/script&gt;</tw-passagedata><tw-passagedata pid="330" name="제목 없는 구절 82" tags="vn" position="2000,750" size="100,100">&lt;span data-stage=&quot;벨,아스트라&quot;&gt;&lt;/span&gt;
-(추궁한다)
 벨: 사실 아스트라 씨와 이블린 씨가 서로 알리바이를 증명해주는 건 둘이 공범일때도 가능해요. 두 사람의 결백을 증명할 다른 증거는 없나요?
 
 [[제목 없는 구절 83]]</tw-passagedata><tw-passagedata pid="331" name="제목 없는 구절 83" tags="vn" position="2100,750" size="100,100">&lt;span data-bx=&quot;아스트라:노말&quot;&gt;&lt;/span&gt;
@@ -3829,7 +3988,8 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 [[제목 없는 구절 92]]</tw-passagedata><tw-passagedata pid="341" name="제목 없는 구절 92" tags="vn" position="3000,750" size="100,100">그 순간, 수나의 분위기가 급변했다. 한순간에 귀엽던 목소리는 마치 미녀 이중첩자처럼 내리깔았고, 주머니에서 검은 무언가를 꺼냈다.
 
-[[제목 없는 구절 93]]</tw-passagedata><tw-passagedata pid="342" name="제목 없는 구절 93" tags="vn" position="3100,750" size="100,100">그것은 바로 권총이라고도 불리는 권총! 단 한발만으로도 사람을 죽일 수 있는 막강한 무기! 
+[[제목 없는 구절 93]]</tw-passagedata><tw-passagedata pid="342" name="제목 없는 구절 93" tags="vn" position="3100,750" size="100,100">&lt;span data-prop=&quot;권총&quot;&gt;&lt;/span&gt;
+그것은 바로 권총이라고도 불리는 권총! 단 한발만으로도 사람을 죽일 수 있는 막강한 무기! 
 
 [[제목 없는 구절 94]]</tw-passagedata><tw-passagedata pid="343" name="제목 없는 구절 94" tags="vn" position="3200,750" size="100,100">수나: 보자 보자 하니까... 하꼬 아이돌 좀 벗어났다고 눈에 뵈는 게 없나 봐?
 
@@ -3846,14 +4006,13 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 [[타이틀 화면으로 돌아가기-&gt;타이틀 화면]](set: $seen to it + (ds: 4))&lt;script&gt;if (window.BB) { BB.save(Array.from($seen)); }&lt;/script&gt;</tw-passagedata><tw-passagedata pid="348" name="제목 없는 구절 99" tags="vn" position="3300,750" size="100,100">반악: 자네들, 혹시 총을 두 발 맞고 사망한 파라오가 누군지 아는가?
 
-[[제목 없는 구절 96]]</tw-passagedata><tw-passagedata pid="349" name="크레딧" tags="" position="5000,2925" size="100,100">이미지 제작: 제작자세나&amp;제미나이
+[[제목 없는 구절 96]]</tw-passagedata><tw-passagedata pid="349" name="크레딧" tags="credits" position="5000,2925" size="100,100">이미지 제작: 제작자세나&amp;제미나이
 게임 제작: 제작자세나&amp;클로드
 귤복복 실물 명함 디자인: 제작자세나
 폰트: 케리스 케듀체
 Thanks for playing
 
-[[재밌게 했다면 제작자에게 커피 한 잔?]]
-[[타이틀 화면]]</tw-passagedata><tw-passagedata pid="350" name="타이틀 화면" tags="title" position="100,0" size="100,100">귤복복 살인사건
+[[재밌게 했다면 제작자에게 커피 한 잔?]]</tw-passagedata><tw-passagedata pid="350" name="타이틀 화면" tags="title" position="100,0" size="100,100">귤복복 살인사건
 게임 시작
 
 [[시작1]]
@@ -3861,6 +4020,7 @@ Thanks for playing
 [[엔딩 갤러리]]
 [[약관]]
 (if: $seen&#39;s length &gt; 0)[ [[용의자 선택으로-&gt;제목 없는 구절 15]] ]
+(if: $seen contains 17)[ [[크레딧 다시 보기-&gt;크레딧]] ]
 [[테스트용 기록 초기화-&gt;기록 초기화]]
 [[테스트용 모든 엔딩 열기-&gt;모든 엔딩 열기]]</tw-passagedata><tw-passagedata pid="351" name="트루 엔딩" tags="" position="1500,2700" size="100,100">트루 엔딩 (이미지 자리)
 (click: ?page)[(go-to: &quot;엔딩 갤러리 3페이지&quot;)]
