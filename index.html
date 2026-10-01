@@ -1011,24 +1011,21 @@ body.tt-on tw-passage { display: none; }
   'use strict';
 
   /* ---------- 이미지 위치 설정 (여기만 고치면 돼) ---------- */
-  // 내 컴퓨터에서 index.html 을 열 때 이미지를 찾을 폴더 (슬래시는 / 로 쓰기)
-  var LOCAL_BASE = 'file:///C:/Users/pumha/Desktop/귤복복 살인사건제작/완성본/실제 제작/완성본 모음/';
-  // 웹(GitHub Pages)에 올렸을 때 이미지를 찾을 폴더 (index.html 옆의 images 폴더)
+  // 이미지는 index.html 옆의 images 폴더에서 찾아. (웹에 올렸을 때도, 저장소 폴더째 내려받아 index.html 을 파일로 열 때도 똑같이 동작해)
   var WEB_BASE = 'images/';
-  var IMAGE_BASE = (location.protocol === 'file:') ? LOCAL_BASE : WEB_BASE;
-  // 웹에서는 용량을 줄인 .webp 를 먼저 찾고, 없으면 .png 를 씀. (내 컴퓨터에서 파일로 열 때는 원본 .png 만 씀)
+  var IMAGE_BASE = WEB_BASE;
+  // 웹으로 열었는지(true) 파일로 열었는지(false). 웹일 때만 미리 받기 캐시(서비스 워커) 같은 기능을 켬. 그림은 둘 다 .webp 를 씀
   var WEB_MODE = (location.protocol !== 'file:');
 
-  var BG_FILE = WEB_MODE ? '해변.webp' : '해변.png';   // 배경 이미지 파일 이름
-  var TITLE_FILE = WEB_MODE ? '타이틀.webp' : '타이틀.png';   // 타이틀 화면 그림 (제목 글자까지 들어 있는 그림). 내 컴퓨터에서 열 때는 '완성본 모음' 폴더에 타이틀.png 를 넣어줘
+  var BG_FILE = '해변.webp';   // 배경 이미지 파일 이름
+  var TITLE_FILE = '타이틀.webp';   // 타이틀 화면 그림 (제목 글자까지 들어 있는 그림)
   var SHOW_TEST_MENU = true;              // 타이틀 오른쪽 위 'TEST' 버튼 (기록 초기화 / 모든 엔딩 열기). 배포할 때는 false 로
 
   /* 인물 이미지 파일 이름은 '이름_표정.webp' (예: 시드_노말.webp). 화면에 쓰는 이름표와 파일 이름이 다른 경우만 아래에 적어줘. */
   var ALIAS = { '엽빛나': '빛나' };        // 같은 인물로 취급할 이름 -> 대표 이름
 
-  var CHAR_LOCAL_BASE = 'file:///C:/Users/pumha/Desktop/귤복복 살인사건제작/완성본/실제 제작/캐릭터 이미지/';
   var CHAR_WEB_BASE = 'images/characters/';
-  var CHAR_BASE = (location.protocol === 'file:') ? CHAR_LOCAL_BASE : CHAR_WEB_BASE;
+  var CHAR_BASE = CHAR_WEB_BASE;
 
   /* ---------- 인물 배치 ----------
      제작자가 직접 만든 배치 예시 29장(벨 + 상대)을 읽어서 정리한 값이야. 단위는 전부 '화면 폭의 %' (폰 화면 폭 = 100).
@@ -2249,9 +2246,8 @@ body.tt-on tw-passage { display: none; }
      표시가 없는 다음 장면으로 넘어가면 슥 하고 사라져. (이전 대사 버튼으로 돌아가도 그 장면의 표시대로 다시 나타나거나 사라져)
      - 소품 그림은 아래 PROPS 표에 적어. 파일은 images/props/ 폴더 (배경이 투명한 webp).
      - 그림을 못 받으면 판을 띄우지 않고 대사만 그대로 진행돼. */
-  var PROP_LOCAL_BASE = 'file:///C:/Users/pumha/Desktop/귤복복 살인사건제작/완성본/실제 제작/소품 이미지/';
   var PROP_WEB_BASE = 'images/props/';
-  var PROP_BASE = (location.protocol === 'file:') ? PROP_LOCAL_BASE : PROP_WEB_BASE;
+  var PROP_BASE = PROP_WEB_BASE;
   var PROPS = { '권총': '권총.webp' };    // 소품 이름 -> 그림 파일 이름
   var pr = { box: null, img: null, shown: null, loads: {}, warmed: false, seq: 0 };
 
@@ -2315,10 +2311,9 @@ body.tt-on tw-passage { display: none; }
      - 그림을 누르면 거의 꽉 찬 크기로 보이고, 화면 아무 데나 누르면 닫힘
      - 오른쪽 위 집 모양 버튼: 타이틀 화면으로 (패시지 안의 링크를 대신 눌러줌) */
 
-  // 엔딩 이미지가 들어 있는 폴더 (내 컴퓨터에서 열 때 / 웹에 올렸을 때)
-  var ENDING_LOCAL_BASE = 'file:///C:/Users/pumha/Desktop/귤복복 살인사건제작/완성본/실제 제작/엔딩 이미지/';
+  // 엔딩 이미지가 들어 있는 폴더
   var ENDING_WEB_BASE = 'images/endings/';
-  var ENDING_BASE = (location.protocol === 'file:') ? ENDING_LOCAL_BASE : ENDING_WEB_BASE;
+  var ENDING_BASE = ENDING_WEB_BASE;
 
   // 엔딩 번호 -> 이미지 파일 이름. 1~16은 일반 엔딩, 17은 진엔딩.
   // 그림이 없는 엔딩은 적지 않으면 돼. (해금되면 '이미지 준비 중' 칸으로 나와)
