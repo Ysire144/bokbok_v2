@@ -566,18 +566,21 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 
 :: 제목 없는 구절 137 [vn] {"position":"300,1400","size":"100,100"}
+<span data-bx="자오:기분나쁨"></span>
 자오: 나한테는 알리바이 안 물어봐?
 
 [[제목 없는 구절 138]]
 
 
 :: 제목 없는 구절 138 [vn] {"position":"400,1400","size":"100,100"}
+<span data-bx="자오:기분나쁨"></span>
 벨: 자오 씨는 사람이 아니니까, 범인으로 밝혀져도 책임을 물을 수가 없어요. 대신 다이아린 씨에게 물어봐야겠어요.
 
 [[제목 없는 구절 139]]
 
 
 :: 제목 없는 구절 139 [vn] {"position":"500,1400","size":"100,100"}
+<span data-bx="자오:기분나쁨"></span>
 자오: 벨, 나는 토끼 시렌이야. 엄연히 세금 내고 산다고.
 
 [[제목 없는 구절 140]]
@@ -605,6 +608,7 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 
 :: 제목 없는 구절 142 [vn] {"position":"800,1400","size":"100,100"}
+<span data-bx="자오:기분나쁨"></span>
 <span data-bx="다이아린:무표정"></span>
 자오: 다이아린, 너 지금 날 '토끼'라고 부른거야?
 
@@ -1445,6 +1449,7 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 
 :: 제목 없는 구절 252 [vn] {"position":"1500,1775","size":"100,100"}
+<span data-bx="자오:기분나쁨"></span>
 <span data-bx="벨:지목"></span>
 <span data-stage="벨,자오"></span>
 벨: 자오 씨, 당신은 시렌이 아닙니다. 
@@ -1496,12 +1501,14 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 
 :: 제목 없는 구절 254 [vn] {"position":"1575,1725","size":"100,100"}
+<span data-bx="자오:기분나쁨"></span>
 자오: 그렇다는 건...?!
 
 [[제목 없는 구절 255]]
 
 
 :: 제목 없는 구절 255 [vn] {"position":"1625,1775","size":"100,100"}
+<span data-bx="자오:기분나쁨"></span>
 <span data-bx="벨:지목"></span>
 벨: 그냥 아니라고요. 이게 어딜 봐서 시렌이야.
 
@@ -1509,6 +1516,7 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 
 :: 제목 없는 구절 256 [confirm vn] {"position":"1700,1725","size":"100,100"}
+<span data-bx="자오:기분나쁨"></span>
 자오: 야
 
 [[제목 없는 구절 236]]
@@ -1892,6 +1900,7 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 
 :: 제목 없는 구절 307 [vn] {"position":"1800,1350","size":"100,100"}
+<span data-bx="자오:기분나쁨"></span>
 자오: 반악 씨까지...
 
 [[제목 없는 구절 308]]
@@ -1925,6 +1934,7 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 
 :: 제목 없는 구절 311 [vn] {"position":"2200,1350","size":"100,100"}
+<span data-bx="자오:기분나쁨"></span>
 자오: ?!
 
 [[제목 없는 구절 312]]
@@ -2582,7 +2592,7 @@ window.BB = {
     '아스트라': { imgs: ['진지', '노말'], base: '진지', ar: 0.5583, h: 245.0, ex: 0.508, ey: 0.1611, fx: 71.4, fy: -86.8 },
     '야나기': { imgs: ['안경없음', '안경없음당황', '진지'], base: '안경없음', ar: 0.558, h: 272.2, ex: 0.506, ey: 0.1242, fx: 77.0, fy: -78.8, adj: { '안경없음': [0.9885, 0.0028, 0], '안경없음당황': [0.9883, 0.0028, 0] } },
     '빛나': { imgs: ['노말'], base: '노말', ar: 0.5583, h: 263.5, ex: 0.4983, ey: 0.1424, fx: 75.4, fy: -67.2 },
-    '자오': { imgs: ['노말'], base: '노말', ar: 0.5585, h: 196.5, ex: 0.5007, ey: 0.2324, fx: 76.8, fy: -18.8 },
+    '자오': { imgs: ['노말', '기분나쁨'], base: '노말', ar: 0.5585, h: 196.5, ex: 0.5007, ey: 0.2324, fx: 76.8, fy: -18.8 },
     '클라렛': { imgs: ['진지'], base: '진지', ar: 0.558, h: 280.5, ex: 0.5468, ey: 0.1479, fx: 80.6, fy: -62.5 },
     '반악': { imgs: ['진지'], base: '진지', ar: 0.558, h: 268.1, ex: 0.4993, ey: 0.1293, fx: 74.4, fy: -87.7 },
     '루시아': { imgs: ['무표정', '미소'], base: '무표정', ar: 0.5583, h: 222.0, ex: 0.502, ey: 0.1982, fx: 76.6, fy: -62.0 },
