@@ -1853,6 +1853,7 @@ body.tt-on tw-passage { display: none; }
       var c = endingCandidates(id);
       if (c.length) out.push(endingUrl(c[0]));
     }
+    if (typeof PROPS === 'object') Object.keys(PROPS).forEach(function (n) { out.push(propUrl(n)); });   // 소품 그림 (PROPS 표)
     return out;
   }
 
