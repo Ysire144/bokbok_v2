@@ -31,6 +31,7 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 :: 홈 버튼 링크 [header] {"position":"800,0","size":"100,100"}
 |home>[ [[타이틀 화면]] ]
+|skip>[ [[제목 없는 구절 34]] ]
 
 
 :: 기록 동기화 [header] {"position":"700,0","size":"100,100"}
@@ -980,6 +981,7 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 
 :: 제목 없는 구절 19 [vn] {"position":"100,500","size":"100,100"}
+<span data-skip="제목 없는 구절 34" data-skip-ending="1,2"></span>
 <span data-stage="벨,레미엘"></span>
 벨: 레미엘 씨... 귤복복 씨가 살해당한 오전 10시경에 뭘 하고 있었나요?
 
@@ -1223,6 +1225,7 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 
 :: 제목 없는 구절 22 [vn] {"position":"200,500","size":"100,100"}
+<span data-skip="제목 없는 구절 34" data-skip-ending="1,2"></span>
 레미엘: 벨 씨, 저랑 문답 게임 하나 하실래요?
 
 [[제목 없는 구절 23]]
@@ -1300,6 +1303,7 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 
 :: 제목 없는 구절 23 [vn] {"position":"300,500","size":"100,100"}
+<span data-skip="제목 없는 구절 34" data-skip-ending="1,2"></span>
 벨: 어...? 갑자기?
 
 [[제목 없는 구절 24]]
@@ -1377,6 +1381,7 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 
 :: 제목 없는 구절 24 [vn] {"position":"400,500","size":"100,100"}
+<span data-skip="제목 없는 구절 34" data-skip-ending="1,2"></span>
 레미엘: 혹시, 미녀와 야수 이야기 들어보셨나요?
 
 [[제목 없는 구절 25]]
@@ -1450,6 +1455,7 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 
 :: 제목 없는 구절 25 [vn] {"position":"500,500","size":"100,100"}
+<span data-skip="제목 없는 구절 34" data-skip-ending="1,2"></span>
 벨: 어... 그럴지도?
 
 [[제목 없는 구절 26]]
@@ -1561,6 +1567,7 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 
 :: 제목 없는 구절 26 [vn] {"position":"600,500","size":"100,100"}
+<span data-skip="제목 없는 구절 34" data-skip-ending="1,2"></span>
 레미엘: 벨이라는 존재를 만나기 전까지, 저주에 걸려 성에 유폐된 왕자님과 같은 상태였답니다. 저는 장미과의 벚나무속의 식물로 모두를 홀리기 위해 준비를 하고 있었죠.
 
 [[제목 없는 구절 27]]
@@ -1630,6 +1637,7 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 
 :: 제목 없는 구절 27 [vn] {"position":"700,500","size":"100,100"}
+<span data-skip="제목 없는 구절 34" data-skip-ending="1,2"></span>
 벨: ...?
 
 [[제목 없는 구절 28]]
@@ -1707,6 +1715,7 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 
 :: 제목 없는 구절 28 [vn] {"position":"800,500","size":"100,100"}
+<span data-skip="제목 없는 구절 34" data-skip-ending="1,2"></span>
 레미엘: 후후, 혹시 프루누스 페르시카라는 말을 들어보셨나요? 정말 마법같은 단어에요.
 
 [[제목 없는 구절 29]]
@@ -1779,6 +1788,7 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 
 :: 제목 없는 구절 29 [vn] {"position":"900,500","size":"100,100"}
+<span data-skip="제목 없는 구절 34" data-skip-ending="1,2"></span>
 벨: 레미엘, 장난 그만치고 10시경에 뭘 했는지 알려줘.
 
 [[제목 없는 구절 30]]
@@ -1865,6 +1875,7 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 
 :: 제목 없는 구절 30 [vn] {"position":"1000,500","size":"100,100"}
+<span data-skip="제목 없는 구절 34" data-skip-ending="1,2"></span>
 레미엘: 후후후, 어쩌면 벨 씨를 만나기를 기다리고 있었을지도? 
 
 [[제목 없는 구절 31]]
@@ -1940,6 +1951,7 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 
 :: 제목 없는 구절 31 [vn] {"position":"1100,500","size":"100,100"}
+<span data-skip="제목 없는 구절 34" data-skip-ending="1,2"></span>
 <span data-stage="벨,아리아"></span>
 <span data-bx="아리아:미소"></span>
 아리아: 벨 씨, 제 전자 두뇌가 분석한 결과 10시경에는 혼자 복숭아 케이크를 만들고 있었다고 하네요.
@@ -1981,6 +1993,7 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 
 :: 제목 없는 구절 32 [vn] {"position":"1200,500","size":"100,100"}
+<span data-skip="제목 없는 구절 34" data-skip-ending="1,2"></span>
 <span data-bx="아리아:미소"></span>
 벨: 아리아?
 
@@ -1988,6 +2001,7 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 
 :: 제목 없는 구절 33 [vn] {"position":"1300,500","size":"100,100"}
+<span data-skip="제목 없는 구절 34" data-skip-ending="1,2"></span>
 <span data-bx="아리아:미소"></span>
 아리아: 프루누스 페르시카는 복숭아의 학명이라고 해요.
 
@@ -1995,6 +2009,8 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 
 :: 제목 없는 구절 34 [vn-choice] {"position":"1400,500","size":"100,100"}
+<span data-stage="벨,아리아"></span>
+<span data-bx="아리아:미소"></span>
 <span data-bx="벨:고뇌"></span>
 벨: 그렇구나... 혼자서 케이크를 만들고 있었다라...
 
@@ -2132,6 +2148,7 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 
 :: 제목 없는 구절 5 [vn] {"position":"200,200","size":"100,100"}
+<span data-bx="시시아:울상"></span>
 시시아: 아아아... 아아아앗...제... 제성합니다아...
 
 [[제목 없는 구절 8]]
@@ -2358,6 +2375,7 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 
 :: 제목 없는 구절 8 [vn] {"position":"300,200","size":"100,100"}
+<span data-bx="시시아:울상"></span>
 <span data-bx="빛나:노말"></span>
 엽빛나: 계화떡 먹을래?
 
@@ -2581,24 +2599,21 @@ window.BB = {
   'use strict';
 
   /* ---------- 이미지 위치 설정 (여기만 고치면 돼) ---------- */
-  // 내 컴퓨터에서 index.html 을 열 때 이미지를 찾을 폴더 (슬래시는 / 로 쓰기)
-  var LOCAL_BASE = 'file:///C:/Users/pumha/Desktop/귤복복 살인사건제작/완성본/실제 제작/완성본 모음/';
-  // 웹(GitHub Pages)에 올렸을 때 이미지를 찾을 폴더 (index.html 옆의 images 폴더)
+  // 이미지는 index.html 옆의 images 폴더에서 찾아. (웹에 올렸을 때도, 저장소 폴더째 내려받아 index.html 을 파일로 열 때도 똑같이 동작해)
   var WEB_BASE = 'images/';
-  var IMAGE_BASE = (location.protocol === 'file:') ? LOCAL_BASE : WEB_BASE;
-  // 웹에서는 용량을 줄인 .webp 를 먼저 찾고, 없으면 .png 를 씀. (내 컴퓨터에서 파일로 열 때는 원본 .png 만 씀)
+  var IMAGE_BASE = WEB_BASE;
+  // 웹으로 열었는지(true) 파일로 열었는지(false). 웹일 때만 미리 받기 캐시(서비스 워커) 같은 기능을 켬. 그림은 둘 다 .webp 를 씀
   var WEB_MODE = (location.protocol !== 'file:');
 
-  var BG_FILE = WEB_MODE ? '해변.webp' : '해변.png';   // 배경 이미지 파일 이름
-  var TITLE_FILE = WEB_MODE ? '타이틀.webp' : '타이틀.png';   // 타이틀 화면 그림 (제목 글자까지 들어 있는 그림). 내 컴퓨터에서 열 때는 '완성본 모음' 폴더에 타이틀.png 를 넣어줘
+  var BG_FILE = '해변.webp';   // 배경 이미지 파일 이름
+  var TITLE_FILE = '타이틀.webp';   // 타이틀 화면 그림 (제목 글자까지 들어 있는 그림)
   var SHOW_TEST_MENU = true;              // 타이틀 오른쪽 위 'TEST' 버튼 (기록 초기화 / 모든 엔딩 열기). 배포할 때는 false 로
 
   /* 인물 이미지 파일 이름은 '이름_표정.webp' (예: 시드_노말.webp). 화면에 쓰는 이름표와 파일 이름이 다른 경우만 아래에 적어줘. */
   var ALIAS = { '엽빛나': '빛나' };        // 같은 인물로 취급할 이름 -> 대표 이름
 
-  var CHAR_LOCAL_BASE = 'file:///C:/Users/pumha/Desktop/귤복복 살인사건제작/완성본/실제 제작/캐릭터 이미지/';
   var CHAR_WEB_BASE = 'images/characters/';
-  var CHAR_BASE = (location.protocol === 'file:') ? CHAR_LOCAL_BASE : CHAR_WEB_BASE;
+  var CHAR_BASE = CHAR_WEB_BASE;
 
   /* ---------- 인물 배치 ----------
      제작자가 직접 만든 배치 예시 29장(벨 + 상대)을 읽어서 정리한 값이야. 단위는 전부 '화면 폭의 %' (폰 화면 폭 = 100).
@@ -2635,7 +2650,7 @@ window.BB = {
     '버니스': { imgs: ['진지'], base: '진지', ar: 0.5585, h: 246.0, ex: 0.5256, ey: 0.1638, fx: 73.7, fy: -74.2 },
     '니콜': { imgs: ['진지', '당황'], base: '진지', ar: 0.5585, h: 211.4, ex: 0.4968, ey: 0.1991, fx: 76.4, fy: -64.5 },
     '포포': { imgs: ['진지'], base: '진지', ar: 1.0, h: 179.1, ex: 0.5069, ey: 0.4764, fx: 82.1, fy: -25.3 },
-    '시시아': { imgs: ['울상', '노말'], base: '울상', ar: 0.5583, h: 242.5, ex: 0.5082, ey: 0.1385, fx: 74.9, fy: -67.4 },
+    '시시아': { imgs: ['노말', '울상'], base: '노말', ar: 0.5583, h: 242.5, ex: 0.5082, ey: 0.1385, fx: 74.9, fy: -67.4 },
     '11호': { imgs: ['진지'], base: '진지', ar: 0.5585, h: 250.0, ex: 0.492, ey: 0.1739, fx: 73.8, fy: -68.8 },
     '유즈하': { imgs: ['진지', '시무룩'], base: '진지', ar: 0.5585, h: 205.0, ex: 0.5201, ey: 0.2043, fx: 78.5, fy: -64.4 },
     '의현': { imgs: ['무표정'], base: '무표정', ar: 0.5585, h: 269.5, ex: 0.5017, ey: 0.1546, fx: 72.1, fy: -83.3 },
@@ -3819,9 +3834,8 @@ window.BB = {
      표시가 없는 다음 장면으로 넘어가면 슥 하고 사라져. (이전 대사 버튼으로 돌아가도 그 장면의 표시대로 다시 나타나거나 사라져)
      - 소품 그림은 아래 PROPS 표에 적어. 파일은 images/props/ 폴더 (배경이 투명한 webp).
      - 그림을 못 받으면 판을 띄우지 않고 대사만 그대로 진행돼. */
-  var PROP_LOCAL_BASE = 'file:///C:/Users/pumha/Desktop/귤복복 살인사건제작/완성본/실제 제작/소품 이미지/';
   var PROP_WEB_BASE = 'images/props/';
-  var PROP_BASE = (location.protocol === 'file:') ? PROP_LOCAL_BASE : PROP_WEB_BASE;
+  var PROP_BASE = PROP_WEB_BASE;
   var PROPS = { '권총': '권총.webp' };    // 소품 이름 -> 그림 파일 이름
   var pr = { box: null, img: null, shown: null, loads: {}, warmed: false, seq: 0 };
 
@@ -3885,10 +3899,9 @@ window.BB = {
      - 그림을 누르면 거의 꽉 찬 크기로 보이고, 화면 아무 데나 누르면 닫힘
      - 오른쪽 위 집 모양 버튼: 타이틀 화면으로 (패시지 안의 링크를 대신 눌러줌) */
 
-  // 엔딩 이미지가 들어 있는 폴더 (내 컴퓨터에서 열 때 / 웹에 올렸을 때)
-  var ENDING_LOCAL_BASE = 'file:///C:/Users/pumha/Desktop/귤복복 살인사건제작/완성본/실제 제작/엔딩 이미지/';
+  // 엔딩 이미지가 들어 있는 폴더
   var ENDING_WEB_BASE = 'images/endings/';
-  var ENDING_BASE = (location.protocol === 'file:') ? ENDING_LOCAL_BASE : ENDING_WEB_BASE;
+  var ENDING_BASE = ENDING_WEB_BASE;
 
   // 엔딩 번호 -> 이미지 파일 이름. 1~16은 일반 엔딩, 17은 진엔딩.
   // 그림이 없는 엔딩은 적지 않으면 돼. (해금되면 '이미지 준비 중' 칸으로 나와)
@@ -3917,6 +3930,28 @@ window.BB = {
   // 얼굴이 위쪽에 있는 그림이 대부분이라 기본을 위쪽으로 했고, 묘비처럼 가운데가 중요한 그림만 따로 적어.
   var ENDING_FOCUS = { 13: '50%', 14: '60%' };
 
+  // 못 본 엔딩(???) 칸을 누르면 뜨는 힌트. 엔딩 번호 -> [첫 줄(어느 용의자 루트인지), 둘째 줄(마지막에 무엇을 고르는지)]
+  // 글자는 실제 선택지 글자와 같게 적어둬. 고치고 싶으면 여기만 고치면 돼.
+  var ENDING_HINTS = {
+     1: ['레미엘을 심문하다가', '"범인으로 몬다"를 골라본다'],
+     2: ['레미엘을 심문하다가', '"추궁한다"를 골라본다'],
+     3: ['아스트라를 심문하다가', '"범인으로 몬다"를 골라본다'],
+     4: ['아스트라를 심문하다가', '"추궁한다"를 골라본다'],
+     5: ['루시아를 심문하다가', '"범인으로 몬다"를 골라본다'],
+     6: ['루시아를 심문하다가', '"추궁한다"를 골라본다'],
+     7: ['시드를 심문하다가', '트리거의 말에 "수긍한다"를 골라본다'],
+     8: ['시드를 심문하다가', '트리거 앞에서 "범인으로 몬다"를 골라본다'],
+     9: ['자오를 심문하다가', '"알리바이를 묻는다"를 골라본다'],
+    10: ['자오를 심문하다가', '"개그가 너무 재밌다고 칭찬한다"를 골라본다'],
+    11: ['빛나를 심문하다가', '"역시 떡이 좋아"를 골라본다'],
+    12: ['빛나를 심문하다가', '"요리 학원에 다녀보고 싶어"를 골라본다'],
+    13: ['앨리스를 심문하다가', '"오전 10시에 뭘 했는지 묻는다"를 골라본다'],
+    14: ['앨리스를 심문하다가', '"크왕! 나는 호랑이다!"를 골라본다'],
+    15: ['클라렛을 심문하다가', '"아닌데요?"를 골라본다'],
+    16: ['클라렛을 심문하다가', '"도망친다"를 골라본다'],
+    17: ['엔딩 16개를 모두 본 뒤', '용의자 선택에서 "진실을 마주한다"를 골라본다']
+  };
+
   var G_NORMAL = 16;      // 일반 엔딩 개수
   var G_TRUE = 17;        // 진엔딩 번호
   var G_TOTAL = 17;       // 전체 칸 수
@@ -3930,7 +3965,8 @@ window.BB = {
   var gl = {
     root: null, grid: null, count: null, label: null,
     prev: null, next: null, viewer: null, viewerImg: null,
-    page: 1, homeLink: null, urls: {}
+    page: 1, homeLink: null, urls: {},
+    hint: null, hintTitle: null, hintLead: null, hintDo: null
   };
 
   function endingUrl(file) { return encodeURI(ENDING_BASE + file); }
@@ -3992,15 +4028,37 @@ window.BB = {
     gl.viewer.appendChild(gl.viewerImg);
     gl.viewer.addEventListener('click', function (e) { e.stopPropagation(); closeViewer(); });
 
+    gl.hint = el('div', 'gl-hint');                   // 못 본 엔딩 칸을 눌렀을 때 뜨는 힌트 팝업 (화면 아무 데나 누르면 닫힘)
+    gl.hint.hidden = true;
+    gl.hint.setAttribute('role', 'dialog');
+    gl.hint.setAttribute('aria-modal', 'true');
+    var hp = el('div', 'gl-hint-panel');
+    gl.hintTitle = el('div', 'gl-hint-title');
+    gl.hintLead = el('div', 'gl-hint-lead');
+    gl.hintDo = el('div', 'gl-hint-do');
+    var hc = el('div', 'gl-hint-close');
+    hc.textContent = '화면을 누르면 닫혀요';
+    hp.appendChild(gl.hintTitle);
+    hp.appendChild(gl.hintLead);
+    hp.appendChild(gl.hintDo);
+    hp.appendChild(hc);
+    gl.hint.appendChild(hp);
+    gl.hint.addEventListener('click', function (e) { e.stopPropagation(); closeHint(); });
+
     root.appendChild(head);
     root.appendChild(gl.grid);
     root.appendChild(foot);
     root.appendChild(gl.viewer);
+    root.appendChild(gl.hint);
     document.body.appendChild(root);
     gl.root = root;
 
     document.addEventListener('keydown', function (e) {
       if (!document.body.classList.contains('gl-on')) return;
+      if (!gl.hint.hidden) {
+        if (e.key === 'Escape' || e.key === 'Enter' || e.key === ' ') { e.preventDefault(); closeHint(); }
+        return;
+      }
       if (!gl.viewer.hidden) {
         if (e.key === 'Escape') { e.preventDefault(); closeViewer(); }
         return;
@@ -4015,7 +4073,7 @@ window.BB = {
   }
 
   function flip(d) {
-    if (!gl.viewer.hidden) return;
+    if (!gl.viewer.hidden || (gl.hint && !gl.hint.hidden)) return;
     var np = gl.page + d;
     if (np < 1 || np > G_PAGES) return;
     gl.page = np;
@@ -4035,6 +4093,21 @@ window.BB = {
     gl.viewerImg.removeAttribute('src');
   }
 
+  /* 못 본 엔딩(???) 칸을 누르면 그 엔딩을 보는 방법을 팝업으로 알려줌 */
+  function openHint(id) {
+    var h = ENDING_HINTS[id];
+    if (!h || !gl.hint) return;
+    if (document.activeElement && document.activeElement.blur) document.activeElement.blur();
+    gl.hintTitle.textContent = endingName(id) + ' 힌트';
+    gl.hintLead.textContent = h[0];
+    gl.hintDo.textContent = h[1];
+    gl.hint.hidden = false;
+  }
+
+  function closeHint() {
+    if (gl.hint) gl.hint.hidden = true;
+  }
+
   function endingName(id) { return id === G_TRUE ? '진엔딩' : '엔딩 ' + id; }
 
   function galleryPlaceholder(id, missing) {
@@ -4049,8 +4122,18 @@ window.BB = {
   function makeCell(id, seen) {
     if (id > G_TOTAL) return el('div', 'gl-cell gl-empty');
     if (!seen[id]) {
-      var lk = el('div', 'gl-cell gl-locked');
-      lk.textContent = '???';
+      var lk = el('button', 'gl-cell gl-locked');
+      lk.type = 'button';
+      lk.setAttribute('aria-label', endingName(id) + ' (아직 못 봤어요, 누르면 힌트가 나와요)');
+      var q = el('span', 'gl-lk-q');
+      q.textContent = '???';
+      lk.appendChild(q);
+      if (ENDING_HINTS[id]) {
+        var tip = el('span', 'gl-lk-tip');
+        tip.textContent = '눌러서 힌트 보기';
+        lk.appendChild(tip);
+        lk.addEventListener('click', function () { if (glGuard()) openHint(id); });
+      }
       return lk;
     }
     var btn = el('button', 'gl-cell gl-open');
@@ -4115,6 +4198,7 @@ window.BB = {
     gl.homeLink = p.querySelector('tw-link');
     gl.page = 1;
     closeViewer();
+    closeHint();
     renderGallery();
     document.body.classList.add('gl-on');
     gl.root.hidden = false;
@@ -4123,6 +4207,7 @@ window.BB = {
   function hideGallery() {
     if (!gl.root) return;
     closeViewer();
+    closeHint();
     document.body.classList.remove('gl-on');
     gl.root.hidden = true;
   }
@@ -4486,6 +4571,49 @@ window.BB = {
     document.body.classList.toggle('hm-on', show);
   }
 
+  /* ================= 스킵 버튼 =================
+     장면 글 맨 위에 <span data-skip="도착할 패시지 이름" data-skip-ending="1,2"></span> 를 넣으면
+     그 장면의 오른쪽 위(홈 버튼 왼쪽)에 작은 '스킵' 버튼이 생기고, 누르면 그 패시지로 바로 이동해.
+     - data-skip-ending: 엔딩 번호들. 그중 하나라도 본 적이 있을 때만 버튼이 보여 (이 속성을 안 쓰면 항상 보임).
+     - 이동에 쓰는 링크는 헤더 패시지 '홈 버튼 링크'의 |skip> 안에 [[패시지 이름]] 으로 적어 둠. 새 도착지를 쓰려면 거기에 한 줄 더 적으면 돼. */
+  var sk = { btn: null, target: null };
+  var ICON_SKIP = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5 11 12l-7 6.5M12 5.5 19 12l-7 6.5" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+
+  function skipSeenAny(list) {            // 적어 둔 엔딩 중 하나라도 본 적이 있으면 true (적어 둔 게 없으면 항상 true)
+    var want = String(list || '').split(',').map(function (s) { return Number(s); }).filter(function (n) { return n > 0; });
+    if (!want.length) return true;
+    var seen = {};
+    (window.BB ? BB.load() : []).forEach(function (v) { seen[Number(v)] = true; });
+    return want.some(function (n) { return seen[n]; });
+  }
+
+  function buildSkip() {
+    if (sk.btn) return;
+    sk.btn = el('button', 'gl-btn hm-btn hm-skip');
+    sk.btn.type = 'button';
+    sk.btn.setAttribute('aria-label', '스킵: 선택지로 바로 이동');
+    sk.btn.innerHTML = ICON_SKIP + '<span>스킵</span>';
+    sk.btn.hidden = true;
+    sk.btn.addEventListener('click', function () {
+      sk.btn.blur();
+      var name = sk.target, links = document.querySelectorAll('tw-hook[name="skip"] tw-link'), i;
+      if (!name) return;
+      for (i = 0; i < links.length; i++) {
+        if (links[i].textContent.replace(/^\s+|\s+$/g, '') === name) { links[i].click(); return; }
+      }
+    });
+    document.body.appendChild(sk.btn);
+  }
+
+  function skipSync(p) {                  // 이 장면에 스킵 표시가 있고 조건이 맞으면 버튼을 보이고, 아니면 숨김
+    buildSkip();
+    var m = p.querySelector('[data-skip]');
+    var name = m ? String(m.getAttribute('data-skip')).replace(/^\s+|\s+$/g, '') : '';
+    var show = !!name && skipSeenAny(m.getAttribute('data-skip-ending'));
+    sk.target = show ? name : null;
+    sk.btn.hidden = !show;
+  }
+
   /* ================= 장면 효과 (연출) =================
      장면 글 맨 위에 <span data-fx="hit:때리는사람,맞는사람"></span> 를 넣으면 그 장면이 시작될 때 연출이 나와.
      - hit: 때리는 사람이 화면 밖에서 달려와 맞는 사람을 '퍽!' 치고, 맞는 사람은 빙글 돌며 옆으로 날아가 화면 밖으로 사라짐.
@@ -4585,6 +4713,7 @@ window.BB = {
     textEl.classList.remove('vn-loading');
     var tags = (p.getAttribute('tags') || '').split(/\s+/);
     updateHome(tags);
+    skipSync(p);                          // 스킵 표시가 있는 장면이면 오른쪽 위 스킵 버튼을 보임
     creditsSync(p, tags);                 // 크레딧 화면이면 X 아이콘을 붙이고, 홈 버튼의 확인 질문을 건너뛰게 표시
     lockUntil = Date.now() + LOCK_MS;
     if (backPending) {                    // 이전 대사 버튼으로 돌아온 화면: 그때의 인물 배치를 복원
@@ -5329,6 +5458,69 @@ body.gl-on tw-passage { display: none; }
   .gl-btn:active, .gl-cell.gl-open:active { transform: none; }
 }
 
+/* 못 본 엔딩(???) 칸: 누르면 보는 방법을 알려주는 힌트 팝업이 떠 */
+.gl-cell.gl-locked {
+  flex-direction: column;
+  gap: calc(var(--u) * 1.6);
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+.gl-cell.gl-locked:active { transform: scale(0.97); }
+.gl-cell.gl-locked:focus-visible { outline: calc(var(--u) * 0.8) solid #ffe3b0; outline-offset: calc(var(--u) * 0.6); }
+.gl-lk-q { line-height: 1; }
+.gl-lk-tip { font-size: calc(var(--u) * 3.2); font-weight: 400; letter-spacing: 0; color: rgba(255, 255, 255, 0.7); }
+.gl-hint {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 3;                             /* 그림 크게 보기(2) 위 */
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: calc(var(--u) * 7);
+  background: rgba(0, 0, 0, 0.55);
+  cursor: pointer;
+  animation: gl-fade 0.15s ease-out;
+}
+.gl-hint[hidden] { display: none; }
+.gl-hint-panel {
+  box-sizing: border-box;
+  width: 100%;
+  padding: calc(var(--u) * 6) calc(var(--u) * 5) calc(var(--u) * 5);
+  border-radius: calc(var(--u) * 3);
+  border: calc(var(--u) * 0.6) solid rgba(255, 255, 255, 0.6);
+  background: rgba(8, 16, 34, 0.96);
+  box-shadow: 0 calc(var(--u) * 1.6) calc(var(--u) * 6) rgba(0, 0, 0, 0.6);
+  text-align: center;
+  animation: gl-hint-pop 0.26s cubic-bezier(0.2, 1.2, 0.35, 1);
+}
+.gl-hint-title {
+  display: inline-block;
+  padding: calc(var(--u) * 1) calc(var(--u) * 3.6);
+  border-radius: calc(var(--u) * 5);
+  font-size: calc(var(--u) * 3.8);
+  font-weight: 700;
+  background:
+    radial-gradient(rgba(255, 255, 255, 0.16) 1px, transparent 1.4px) 0 0 / 4px 4px,
+    linear-gradient(90deg, var(--name-color-a), var(--name-color-b));
+  text-shadow: 0 calc(var(--u) * 0.3) 0 var(--name-shadow);
+}
+.gl-hint-lead { margin-top: calc(var(--u) * 5); font-size: calc(var(--u) * 4.4); line-height: 1.6; opacity: 0.9; word-break: keep-all; }
+.gl-hint-do { margin-top: calc(var(--u) * 1); font-size: calc(var(--u) * 5); font-weight: 700; line-height: 1.5; color: #ffd48a; word-break: keep-all; }
+.gl-hint-close { margin-top: calc(var(--u) * 5.5); font-size: calc(var(--u) * 3.2); opacity: 0.6; }
+@keyframes gl-hint-pop {
+  from { opacity: 0; transform: translateY(calc(var(--u) * 3)) scale(0.86); }
+  to   { opacity: 1; transform: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .gl-hint, .gl-hint-panel { animation: none; }
+  .gl-cell.gl-locked:active { transform: none; }
+}
+
 /* ===== 타이틀로 돌아가기 (홈 버튼) ===== */
 tw-hook[name="home"] { display: none; }
 .hm-btn {
@@ -5342,6 +5534,17 @@ tw-hook[name="home"] { display: none; }
 .hm-btn[hidden] { display: none; }
 /* 이전 대사 버튼: 홈 버튼과 같은 모양, 왼쪽 위 */
 .hm-back { left: calc(50% - var(--stage-w) / 2 + var(--u) * 3.5); }
+/* ===== 스킵 버튼: 홈 버튼 왼쪽, 같은 높이 ===== */
+tw-hook[name="skip"] { display: none; }
+.hm-skip {
+  left: calc(50% + var(--stage-w) / 2 - var(--u) * 13.5 - var(--u) * 2 - var(--u) * 20);
+  width: calc(var(--u) * 20);
+  gap: calc(var(--u) * 0.8);
+  font-size: calc(var(--u) * 3.8);
+  font-weight: 800;
+  white-space: nowrap;
+}
+.hm-skip svg { width: calc(var(--u) * 5.4); height: calc(var(--u) * 5.4); flex: none; }
 /* 홈 / 이전 대사 버튼이 있을 때는 일반 화면(선택지, 엔딩 글 등)의 글판을 버튼 아래로 내려서 글자를 가리지 않게 함 */
 body.hm-on tw-passage { margin-top: calc(var(--u) * 17); }
 /* 홈 버튼이 있을 때는 Harlowe 되돌리기 아이콘을 왼쪽으로 비켜줌 */
