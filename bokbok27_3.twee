@@ -2393,7 +2393,7 @@ Other properties and any right, title, and interest thereof and therein (intelle
 [[크레딧 보기->크레딧]](set: $seen to it + (ds: 17))<script>if (window.BB) { BB.save(Array.from($seen)); }</script>
 
 
-:: 크레딧 {"position":"5000,2925","size":"100,100"}
+:: 크레딧 [credits] {"position":"5000,2925","size":"100,100"}
 이미지 제작: 제작자세나&제미나이
 게임 제작: 제작자세나&클로드
 귤복복 실물 명함 디자인: 제작자세나
@@ -2401,7 +2401,6 @@ Other properties and any right, title, and interest thereof and therein (intelle
 Thanks for playing
 
 [[재밌게 했다면 제작자에게 커피 한 잔?]]
-[[타이틀 화면]]
 
 
 :: 타이틀 화면 [title] {"position":"100,0","size":"100,100"}
@@ -2413,6 +2412,7 @@ Thanks for playing
 [[엔딩 갤러리]]
 [[약관]]
 (if: $seen's length > 0)[ [[용의자 선택으로->제목 없는 구절 15]] ]
+(if: $seen contains 17)[ [[크레딧 다시 보기->크레딧]] ]
 [[테스트용 기록 초기화->기록 초기화]]
 [[테스트용 모든 엔딩 열기->모든 엔딩 열기]]
 
@@ -3261,6 +3261,40 @@ window.BB = {
     if (root) root.hidden = true;
   }
 
+  /* ================= 크레딧 화면 =================
+     '크레딧' 패시지(credits 태그)가 나오면 글 아래에 X(트위터) 아이콘 버튼을 붙여줘.
+     - 주소는 아래 X_URL 에 적으면 돼. 적어두면 누를 때 새 창으로 열려.
+     - 주소가 비어 있으면: 배포본(SHOW_TEST_MENU 가 false)에서는 아이콘을 아예 안 보여주고, 테스트 중에는 흐리게 보여서 자리만 확인할 수 있어.
+     - 크레딧 화면에서 홈 버튼은 '보던 장면은 저장되지 않습니다' 확인 없이 바로 타이틀로 보내 (보던 장면이 아니라서). */
+  var X_URL = '';                         // 여기에 내 X(트위터) 주소를 적기. 예: 'https://x.com/내아이디'
+  var ICON_X = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z" fill="currentColor"/></svg>';
+
+  function creditsSync(p, tags) {
+    var on = tags.indexOf('credits') >= 0;
+    document.body.classList.toggle('cr-on', on);
+    if (!on || p.querySelector('.cr-x') || !(X_URL || SHOW_TEST_MENU)) return;
+    var wrap = el('div', 'cr-x');
+    var btn;
+    if (X_URL) {
+      btn = el('a', 'cr-xbtn');
+      btn.href = X_URL;
+      btn.target = '_blank';
+      btn.rel = 'noopener noreferrer';
+      btn.setAttribute('aria-label', '제작자의 X(트위터)로 이동');
+    } else {
+      btn = el('span', 'cr-xbtn cr-xoff');
+      btn.title = 'X 주소가 아직 없어 (코드의 X_URL 에 넣으면 돼)';
+    }
+    btn.innerHTML = ICON_X;
+    wrap.appendChild(btn);
+    if (!X_URL) {
+      var note = el('div', 'cr-xnote');
+      note.textContent = '(X 주소 미설정: 테스트 화면에서만 보여요)';
+      wrap.appendChild(note);
+    }
+    p.appendChild(wrap);
+  }
+
   /* ================= 소품 팝업 (예: 수나가 꺼낸 권총) =================
      장면 글 맨 위에 <span data-prop="권총"></span> 를 넣으면, 그 장면에서 화면 가운데 위쪽에 둥근 네모 판이 슥 나타나고 그 안에 소품 그림이 보여.
      표시가 없는 다음 장면으로 넘어가면 슥 하고 사라져. (이전 대사 버튼으로 돌아가도 그 장면의 표시대로 다시 나타나거나 사라져)
@@ -3700,7 +3734,8 @@ window.BB = {
     { label: '게임 시작',   target: '시작1',             text: '시작1',           cls: 'tt-p', icon: 'play' },
     { label: '게임 방법',   target: '게임 방법',         text: '게임 방법',       cls: 'tt-s', icon: 'help' },
     { label: '엔딩 갤러리', target: '엔딩 갤러리',       text: '엔딩 갤러리',     cls: 'tt-s', icon: 'image' },
-    { label: '용의자 선택', target: '제목 없는 구절 15', text: '용의자 선택으로', cls: 'tt-s', icon: 'search', needsRecord: true }
+    { label: '용의자 선택', target: '제목 없는 구절 15', text: '용의자 선택으로', cls: 'tt-s', icon: 'search', needsRecord: true },
+    { label: '크레딧',     target: '크레딧',            text: '크레딧 다시 보기', cls: 'tt-s', icon: 'credit', needsRecord: true, lockTip: '진엔딩을 보면 열려요' }   // 작은 버튼 (게임 방법 위)
   ];
   var TT_LEGAL = { label: '약관', target: '약관', text: '약관' };   // 타이틀 왼쪽 위 작은 칩 (팬 게임 안내 / 저작권 문구 화면으로 감)
   var TT_TESTS = [
@@ -3712,6 +3747,7 @@ window.BB = {
     help:   '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.6" fill="none" stroke="currentColor" stroke-width="2.4"/><path d="M9.3 9.6a2.8 2.8 0 1 1 4.3 2.3c-.9.6-1.6 1.1-1.6 2.2" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/><circle cx="12" cy="16.9" r="1.35" fill="currentColor"/></svg>',
     image:  '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.4" y="4.6" width="17.2" height="14.8" rx="2.6" fill="none" stroke="currentColor" stroke-width="2.4"/><circle cx="9" cy="10" r="1.8" fill="currentColor"/><path d="m4.6 17 4.6-4.4 3.2 3 3.2-3.6 4.2 4.6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/></svg>',
     search: '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.4" cy="10.4" r="6" fill="none" stroke="currentColor" stroke-width="2.6"/><path d="m15 15 5 5" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg>',
+    credit: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.5 6.8h11M6.5 12h11M6.5 17.2h7" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round"/></svg>',
     lock:   '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5.4" y="10.6" width="13.2" height="9.6" rx="2.2" fill="currentColor"/><path d="M8.4 10.6V8.2a3.6 3.6 0 0 1 7.2 0v2.4" fill="none" stroke="currentColor" stroke-width="2.4"/></svg>'
   };
   var tt = { root: null, art: null, btns: [], tests: [], panel: null, p: null };
@@ -3802,7 +3838,7 @@ window.BB = {
       b.classList.toggle('tt-off', off);
       b.setAttribute('aria-disabled', off ? 'true' : 'false');
       b.firstChild.innerHTML = TT_ICONS[off ? 'lock' : def.icon];
-      b.title = off ? '엔딩을 한 번이라도 보면 열려요' : '';
+      b.title = off ? (def.lockTip || '엔딩을 한 번이라도 보면 열려요') : '';
     });
     if (tt.panel) tt.panel.hidden = true;
     document.body.classList.add('tt-on');
@@ -3908,7 +3944,7 @@ window.BB = {
 
     hm.btn.addEventListener('click', function () {
       hm.btn.blur();
-      if (!HOME_CONFIRM) { goTitle(); return; }
+      if (!HOME_CONFIRM || document.body.classList.contains('cr-on')) { goTitle(); return; }
       hm.dlg.hidden = false;
       document.body.classList.add('hm-open');
     });
@@ -4031,6 +4067,7 @@ window.BB = {
     textEl.classList.remove('vn-loading');
     var tags = (p.getAttribute('tags') || '').split(/\s+/);
     updateHome(tags);
+    creditsSync(p, tags);                 // 크레딧 화면이면 X 아이콘을 붙이고, 홈 버튼의 확인 질문을 건너뛰게 표시
     lockUntil = Date.now() + LOCK_MS;
     if (backPending) {                    // 이전 대사 버튼으로 돌아온 화면: 그때의 인물 배치를 복원
       backPending = false;
@@ -4292,6 +4329,29 @@ body.vn-on tw-passage { display: none; }
   font-size: calc(var(--u) * 3.4);
   font-weight: 400;
 }
+
+/* ===== 크레딧 화면: 글 아래 X(트위터) 아이콘 ===== */
+.cr-x { margin-top: calc(var(--u) * 6); display: flex; flex-direction: column; align-items: center; gap: calc(var(--u) * 2); }
+.cr-xbtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: calc(var(--u) * 13);
+  height: calc(var(--u) * 13);
+  box-sizing: border-box;
+  border-radius: 50%;
+  background: #000;
+  color: #fff;
+  border: calc(var(--u) * 0.6) solid rgba(255, 255, 255, 0.85);
+  text-decoration: none;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+.cr-xbtn svg { width: 50%; height: 50%; display: block; }
+a.cr-xbtn:active { transform: scale(0.94); }
+a.cr-xbtn:focus-visible { outline: calc(var(--u) * 0.8) solid #ffe3b0; outline-offset: calc(var(--u) * 0.6); }
+.cr-xbtn.cr-xoff { opacity: 0.4; cursor: default; }
+.cr-xnote { font-size: calc(var(--u) * 3); opacity: 0.7; }
 
 /* ===== 소품 팝업 (수나가 꺼낸 권총 등): 화면 가운데 위쪽에 둥근 네모 판이 오른쪽에서 슥 나타나고, 다음 장면에서 슥 사라짐 ===== */
 .vn-prop {
@@ -4942,6 +5002,15 @@ body.tt-on tw-passage { display: none; }
 .tt-b1 { left: 53.5%; top: 74.6%; }
 .tt-b2 { left: 5.5%;  top: 86.8%; }
 .tt-b3 { left: 53.5%; top: 86.8%; }
+.tt-b4 {                                /* 크레딧: 게임 방법 버튼 바로 위, 오른쪽 끝을 맞춘 작은 버튼 */
+  left: 69%; top: 67.4%; width: 25.5%; height: 6.2%;
+  font-size: calc(var(--au) * 3.4);
+  gap: calc(var(--au) * 1.1);
+  border-width: calc(var(--au) * 0.7);
+  border-radius: calc(var(--au) * 3.4);
+}
+.tt-b4 .tt-ico { width: calc(var(--au) * 4); height: calc(var(--au) * 4); }
+
 .tt-legal {                             /* 약관: 왼쪽 위 작은 칩 (누르면 약관 화면) */
   position: absolute;
   left: calc(var(--u) * 1.5);
