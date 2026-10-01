@@ -31,6 +31,7 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 :: 홈 버튼 링크 [header] {"position":"800,0","size":"100,100"}
 |home>[ [[타이틀 화면]] ]
+|skip>[ [[제목 없는 구절 34]] ]
 
 
 :: 기록 동기화 [header] {"position":"700,0","size":"100,100"}
@@ -967,6 +968,7 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 
 :: 제목 없는 구절 19 [vn] {"position":"100,500","size":"100,100"}
+<span data-skip="제목 없는 구절 34" data-skip-ending="1,2"></span>
 <span data-stage="벨,레미엘"></span>
 벨: 레미엘 씨... 귤복복 씨가 살해당한 오전 10시경에 뭘 하고 있었나요?
 
@@ -1204,6 +1206,7 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 
 :: 제목 없는 구절 22 [vn] {"position":"200,500","size":"100,100"}
+<span data-skip="제목 없는 구절 34" data-skip-ending="1,2"></span>
 레미엘: 벨 씨, 저랑 문답 게임 하나 하실래요?
 
 [[제목 없는 구절 23]]
@@ -1281,6 +1284,7 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 
 :: 제목 없는 구절 23 [vn] {"position":"300,500","size":"100,100"}
+<span data-skip="제목 없는 구절 34" data-skip-ending="1,2"></span>
 벨: 어...? 갑자기?
 
 [[제목 없는 구절 24]]
@@ -1358,6 +1362,7 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 
 :: 제목 없는 구절 24 [vn] {"position":"400,500","size":"100,100"}
+<span data-skip="제목 없는 구절 34" data-skip-ending="1,2"></span>
 레미엘: 혹시, 미녀와 야수 이야기 들어보셨나요?
 
 [[제목 없는 구절 25]]
@@ -1431,6 +1436,7 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 
 :: 제목 없는 구절 25 [vn] {"position":"500,500","size":"100,100"}
+<span data-skip="제목 없는 구절 34" data-skip-ending="1,2"></span>
 벨: 어... 그럴지도?
 
 [[제목 없는 구절 26]]
@@ -1541,6 +1547,7 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 
 :: 제목 없는 구절 26 [vn] {"position":"600,500","size":"100,100"}
+<span data-skip="제목 없는 구절 34" data-skip-ending="1,2"></span>
 레미엘: 벨이라는 존재를 만나기 전까지, 저주에 걸려 성에 유폐된 왕자님과 같은 상태였답니다. 저는 장미과의 벚나무속의 식물로 모두를 홀리기 위해 준비를 하고 있었죠.
 
 [[제목 없는 구절 27]]
@@ -1610,6 +1617,7 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 
 :: 제목 없는 구절 27 [vn] {"position":"700,500","size":"100,100"}
+<span data-skip="제목 없는 구절 34" data-skip-ending="1,2"></span>
 벨: ...?
 
 [[제목 없는 구절 28]]
@@ -1687,6 +1695,7 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 
 :: 제목 없는 구절 28 [vn] {"position":"800,500","size":"100,100"}
+<span data-skip="제목 없는 구절 34" data-skip-ending="1,2"></span>
 레미엘: 후후, 혹시 프루누스 페르시카라는 말을 들어보셨나요? 정말 마법같은 단어에요.
 
 [[제목 없는 구절 29]]
@@ -1759,6 +1768,7 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 
 :: 제목 없는 구절 29 [vn] {"position":"900,500","size":"100,100"}
+<span data-skip="제목 없는 구절 34" data-skip-ending="1,2"></span>
 벨: 레미엘, 장난 그만치고 10시경에 뭘 했는지 알려줘.
 
 [[제목 없는 구절 30]]
@@ -1845,6 +1855,7 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 
 :: 제목 없는 구절 30 [vn] {"position":"1000,500","size":"100,100"}
+<span data-skip="제목 없는 구절 34" data-skip-ending="1,2"></span>
 레미엘: 후후후, 어쩌면 벨 씨를 만나기를 기다리고 있었을지도? 
 
 [[제목 없는 구절 31]]
@@ -1920,6 +1931,7 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 
 :: 제목 없는 구절 31 [vn] {"position":"1100,500","size":"100,100"}
+<span data-skip="제목 없는 구절 34" data-skip-ending="1,2"></span>
 <span data-stage="벨,아리아"></span>
 <span data-bx="아리아:미소"></span>
 아리아: 벨 씨, 제 전자 두뇌가 분석한 결과 10시경에는 혼자 복숭아 케이크를 만들고 있었다고 하네요.
@@ -1961,6 +1973,7 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 
 :: 제목 없는 구절 32 [vn] {"position":"1200,500","size":"100,100"}
+<span data-skip="제목 없는 구절 34" data-skip-ending="1,2"></span>
 <span data-bx="아리아:미소"></span>
 벨: 아리아?
 
@@ -1968,6 +1981,7 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 
 :: 제목 없는 구절 33 [vn] {"position":"1300,500","size":"100,100"}
+<span data-skip="제목 없는 구절 34" data-skip-ending="1,2"></span>
 <span data-bx="아리아:미소"></span>
 아리아: 프루누스 페르시카는 복숭아의 학명이라고 해요.
 
@@ -1975,6 +1989,8 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 
 :: 제목 없는 구절 34 [vn-choice] {"position":"1400,500","size":"100,100"}
+<span data-stage="벨,아리아"></span>
+<span data-bx="아리아:미소"></span>
 <span data-bx="벨:고뇌"></span>
 벨: 그렇구나... 혼자서 케이크를 만들고 있었다라...
 
@@ -2112,6 +2128,7 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 
 :: 제목 없는 구절 5 [vn] {"position":"200,200","size":"100,100"}
+<span data-bx="시시아:울상"></span>
 시시아: 아아아... 아아아앗...제... 제성합니다아...
 
 [[제목 없는 구절 8]]
@@ -2333,6 +2350,7 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 
 :: 제목 없는 구절 8 [vn] {"position":"300,200","size":"100,100"}
+<span data-bx="시시아:울상"></span>
 <span data-bx="빛나:노말"></span>
 엽빛나: 계화떡 먹을래?
 
@@ -2609,7 +2627,7 @@ window.BB = {
     '버니스': { imgs: ['진지'], base: '진지', ar: 0.5585, h: 246.0, ex: 0.5256, ey: 0.1638, fx: 73.7, fy: -74.2 },
     '니콜': { imgs: ['진지', '당황'], base: '진지', ar: 0.5585, h: 211.4, ex: 0.4968, ey: 0.1991, fx: 76.4, fy: -64.5 },
     '포포': { imgs: ['진지'], base: '진지', ar: 1.0, h: 179.1, ex: 0.5069, ey: 0.4764, fx: 82.1, fy: -25.3 },
-    '시시아': { imgs: ['울상', '노말'], base: '울상', ar: 0.5583, h: 242.5, ex: 0.5082, ey: 0.1385, fx: 74.9, fy: -67.4 },
+    '시시아': { imgs: ['노말', '울상'], base: '노말', ar: 0.5583, h: 242.5, ex: 0.5082, ey: 0.1385, fx: 74.9, fy: -67.4 },
     '11호': { imgs: ['진지'], base: '진지', ar: 0.5585, h: 250.0, ex: 0.492, ey: 0.1739, fx: 73.8, fy: -68.8 },
     '유즈하': { imgs: ['진지'], base: '진지', ar: 0.5585, h: 205.0, ex: 0.5201, ey: 0.2043, fx: 78.5, fy: -64.4 },
     '의현': { imgs: ['무표정'], base: '무표정', ar: 0.5585, h: 269.5, ex: 0.5017, ey: 0.1546, fx: 72.1, fy: -83.3 },
@@ -4460,6 +4478,49 @@ window.BB = {
     document.body.classList.toggle('hm-on', show);
   }
 
+  /* ================= 스킵 버튼 =================
+     장면 글 맨 위에 <span data-skip="도착할 패시지 이름" data-skip-ending="1,2"></span> 를 넣으면
+     그 장면의 오른쪽 위(홈 버튼 왼쪽)에 작은 '스킵' 버튼이 생기고, 누르면 그 패시지로 바로 이동해.
+     - data-skip-ending: 엔딩 번호들. 그중 하나라도 본 적이 있을 때만 버튼이 보여 (이 속성을 안 쓰면 항상 보임).
+     - 이동에 쓰는 링크는 헤더 패시지 '홈 버튼 링크'의 |skip> 안에 [[패시지 이름]] 으로 적어 둠. 새 도착지를 쓰려면 거기에 한 줄 더 적으면 돼. */
+  var sk = { btn: null, target: null };
+  var ICON_SKIP = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5 11 12l-7 6.5M12 5.5 19 12l-7 6.5" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+
+  function skipSeenAny(list) {            // 적어 둔 엔딩 중 하나라도 본 적이 있으면 true (적어 둔 게 없으면 항상 true)
+    var want = String(list || '').split(',').map(function (s) { return Number(s); }).filter(function (n) { return n > 0; });
+    if (!want.length) return true;
+    var seen = {};
+    (window.BB ? BB.load() : []).forEach(function (v) { seen[Number(v)] = true; });
+    return want.some(function (n) { return seen[n]; });
+  }
+
+  function buildSkip() {
+    if (sk.btn) return;
+    sk.btn = el('button', 'gl-btn hm-btn hm-skip');
+    sk.btn.type = 'button';
+    sk.btn.setAttribute('aria-label', '스킵: 선택지로 바로 이동');
+    sk.btn.innerHTML = ICON_SKIP + '<span>스킵</span>';
+    sk.btn.hidden = true;
+    sk.btn.addEventListener('click', function () {
+      sk.btn.blur();
+      var name = sk.target, links = document.querySelectorAll('tw-hook[name="skip"] tw-link'), i;
+      if (!name) return;
+      for (i = 0; i < links.length; i++) {
+        if (links[i].textContent.replace(/^\s+|\s+$/g, '') === name) { links[i].click(); return; }
+      }
+    });
+    document.body.appendChild(sk.btn);
+  }
+
+  function skipSync(p) {                  // 이 장면에 스킵 표시가 있고 조건이 맞으면 버튼을 보이고, 아니면 숨김
+    buildSkip();
+    var m = p.querySelector('[data-skip]');
+    var name = m ? String(m.getAttribute('data-skip')).replace(/^\s+|\s+$/g, '') : '';
+    var show = !!name && skipSeenAny(m.getAttribute('data-skip-ending'));
+    sk.target = show ? name : null;
+    sk.btn.hidden = !show;
+  }
+
   /* ================= 장면 효과 (연출) =================
      장면 글 맨 위에 <span data-fx="hit:때리는사람,맞는사람"></span> 를 넣으면 그 장면이 시작될 때 연출이 나와.
      - hit: 때리는 사람이 화면 밖에서 달려와 맞는 사람을 '퍽!' 치고, 맞는 사람은 빙글 돌며 옆으로 날아가 화면 밖으로 사라짐.
@@ -4559,6 +4620,7 @@ window.BB = {
     textEl.classList.remove('vn-loading');
     var tags = (p.getAttribute('tags') || '').split(/\s+/);
     updateHome(tags);
+    skipSync(p);                          // 스킵 표시가 있는 장면이면 오른쪽 위 스킵 버튼을 보임
     creditsSync(p, tags);                 // 크레딧 화면이면 X 아이콘을 붙이고, 홈 버튼의 확인 질문을 건너뛰게 표시
     lockUntil = Date.now() + LOCK_MS;
     if (backPending) {                    // 이전 대사 버튼으로 돌아온 화면: 그때의 인물 배치를 복원
@@ -5316,6 +5378,17 @@ tw-hook[name="home"] { display: none; }
 .hm-btn[hidden] { display: none; }
 /* 이전 대사 버튼: 홈 버튼과 같은 모양, 왼쪽 위 */
 .hm-back { left: calc(50% - var(--stage-w) / 2 + var(--u) * 3.5); }
+/* ===== 스킵 버튼: 홈 버튼 왼쪽, 같은 높이 ===== */
+tw-hook[name="skip"] { display: none; }
+.hm-skip {
+  left: calc(50% + var(--stage-w) / 2 - var(--u) * 13.5 - var(--u) * 2 - var(--u) * 20);
+  width: calc(var(--u) * 20);
+  gap: calc(var(--u) * 0.8);
+  font-size: calc(var(--u) * 3.8);
+  font-weight: 800;
+  white-space: nowrap;
+}
+.hm-skip svg { width: calc(var(--u) * 5.4); height: calc(var(--u) * 5.4); flex: none; }
 /* 홈 / 이전 대사 버튼이 있을 때는 일반 화면(선택지, 엔딩 글 등)의 글판을 버튼 아래로 내려서 글자를 가리지 않게 함 */
 body.hm-on tw-passage { margin-top: calc(var(--u) * 17); }
 /* 홈 버튼이 있을 때는 Harlowe 되돌리기 아이콘을 왼쪽으로 비켜줌 */
