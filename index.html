@@ -680,6 +680,69 @@ body.gl-on tw-passage { display: none; }
   .gl-btn:active, .gl-cell.gl-open:active { transform: none; }
 }
 
+/* 못 본 엔딩(???) 칸: 누르면 보는 방법을 알려주는 힌트 팝업이 떠 */
+.gl-cell.gl-locked {
+  flex-direction: column;
+  gap: calc(var(--u) * 1.6);
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+.gl-cell.gl-locked:active { transform: scale(0.97); }
+.gl-cell.gl-locked:focus-visible { outline: calc(var(--u) * 0.8) solid #ffe3b0; outline-offset: calc(var(--u) * 0.6); }
+.gl-lk-q { line-height: 1; }
+.gl-lk-tip { font-size: calc(var(--u) * 3.2); font-weight: 400; letter-spacing: 0; color: rgba(255, 255, 255, 0.7); }
+.gl-hint {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 3;                             /* 그림 크게 보기(2) 위 */
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: calc(var(--u) * 7);
+  background: rgba(0, 0, 0, 0.55);
+  cursor: pointer;
+  animation: gl-fade 0.15s ease-out;
+}
+.gl-hint[hidden] { display: none; }
+.gl-hint-panel {
+  box-sizing: border-box;
+  width: 100%;
+  padding: calc(var(--u) * 6) calc(var(--u) * 5) calc(var(--u) * 5);
+  border-radius: calc(var(--u) * 3);
+  border: calc(var(--u) * 0.6) solid rgba(255, 255, 255, 0.6);
+  background: rgba(8, 16, 34, 0.96);
+  box-shadow: 0 calc(var(--u) * 1.6) calc(var(--u) * 6) rgba(0, 0, 0, 0.6);
+  text-align: center;
+  animation: gl-hint-pop 0.26s cubic-bezier(0.2, 1.2, 0.35, 1);
+}
+.gl-hint-title {
+  display: inline-block;
+  padding: calc(var(--u) * 1) calc(var(--u) * 3.6);
+  border-radius: calc(var(--u) * 5);
+  font-size: calc(var(--u) * 3.8);
+  font-weight: 700;
+  background:
+    radial-gradient(rgba(255, 255, 255, 0.16) 1px, transparent 1.4px) 0 0 / 4px 4px,
+    linear-gradient(90deg, var(--name-color-a), var(--name-color-b));
+  text-shadow: 0 calc(var(--u) * 0.3) 0 var(--name-shadow);
+}
+.gl-hint-lead { margin-top: calc(var(--u) * 5); font-size: calc(var(--u) * 4.4); line-height: 1.6; opacity: 0.9; word-break: keep-all; }
+.gl-hint-do { margin-top: calc(var(--u) * 1); font-size: calc(var(--u) * 5); font-weight: 700; line-height: 1.5; color: #ffd48a; word-break: keep-all; }
+.gl-hint-close { margin-top: calc(var(--u) * 5.5); font-size: calc(var(--u) * 3.2); opacity: 0.6; }
+@keyframes gl-hint-pop {
+  from { opacity: 0; transform: translateY(calc(var(--u) * 3)) scale(0.86); }
+  to   { opacity: 1; transform: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .gl-hint, .gl-hint-panel { animation: none; }
+  .gl-cell.gl-locked:active { transform: none; }
+}
+
 /* ===== 타이틀로 돌아가기 (홈 버튼) ===== */
 tw-hook[name="home"] { display: none; }
 .hm-btn {
@@ -2347,6 +2410,28 @@ body.tt-on tw-passage { display: none; }
   // 얼굴이 위쪽에 있는 그림이 대부분이라 기본을 위쪽으로 했고, 묘비처럼 가운데가 중요한 그림만 따로 적어.
   var ENDING_FOCUS = { 13: '50%', 14: '60%' };
 
+  // 못 본 엔딩(???) 칸을 누르면 뜨는 힌트. 엔딩 번호 -> [첫 줄(어느 용의자 루트인지), 둘째 줄(마지막에 무엇을 고르는지)]
+  // 글자는 실제 선택지 글자와 같게 적어둬. 고치고 싶으면 여기만 고치면 돼.
+  var ENDING_HINTS = {
+     1: ['레미엘을 심문하다가', '"범인으로 몬다"를 골라본다'],
+     2: ['레미엘을 심문하다가', '"추궁한다"를 골라본다'],
+     3: ['아스트라를 심문하다가', '"범인으로 몬다"를 골라본다'],
+     4: ['아스트라를 심문하다가', '"추궁한다"를 골라본다'],
+     5: ['루시아를 심문하다가', '"범인으로 몬다"를 골라본다'],
+     6: ['루시아를 심문하다가', '"추궁한다"를 골라본다'],
+     7: ['시드를 심문하다가', '트리거의 말에 "수긍한다"를 골라본다'],
+     8: ['시드를 심문하다가', '트리거 앞에서 "범인으로 몬다"를 골라본다'],
+     9: ['자오를 심문하다가', '"알리바이를 묻는다"를 골라본다'],
+    10: ['자오를 심문하다가', '"개그가 너무 재밌다고 칭찬한다"를 골라본다'],
+    11: ['빛나를 심문하다가', '"역시 떡이 좋아"를 골라본다'],
+    12: ['빛나를 심문하다가', '"요리 학원에 다녀보고 싶어"를 골라본다'],
+    13: ['앨리스를 심문하다가', '"오전 10시에 뭘 했는지 묻는다"를 골라본다'],
+    14: ['앨리스를 심문하다가', '"크왕! 나는 호랑이다!"를 골라본다'],
+    15: ['클라렛을 심문하다가', '"아닌데요?"를 골라본다'],
+    16: ['클라렛을 심문하다가', '"도망친다"를 골라본다'],
+    17: ['엔딩 16개를 모두 본 뒤', '용의자 선택에서 "진실을 마주한다"를 골라본다']
+  };
+
   var G_NORMAL = 16;      // 일반 엔딩 개수
   var G_TRUE = 17;        // 진엔딩 번호
   var G_TOTAL = 17;       // 전체 칸 수
@@ -2360,7 +2445,8 @@ body.tt-on tw-passage { display: none; }
   var gl = {
     root: null, grid: null, count: null, label: null,
     prev: null, next: null, viewer: null, viewerImg: null,
-    page: 1, homeLink: null, urls: {}
+    page: 1, homeLink: null, urls: {},
+    hint: null, hintTitle: null, hintLead: null, hintDo: null
   };
 
   function endingUrl(file) { return encodeURI(ENDING_BASE + file); }
@@ -2422,15 +2508,37 @@ body.tt-on tw-passage { display: none; }
     gl.viewer.appendChild(gl.viewerImg);
     gl.viewer.addEventListener('click', function (e) { e.stopPropagation(); closeViewer(); });
 
+    gl.hint = el('div', 'gl-hint');                   // 못 본 엔딩 칸을 눌렀을 때 뜨는 힌트 팝업 (화면 아무 데나 누르면 닫힘)
+    gl.hint.hidden = true;
+    gl.hint.setAttribute('role', 'dialog');
+    gl.hint.setAttribute('aria-modal', 'true');
+    var hp = el('div', 'gl-hint-panel');
+    gl.hintTitle = el('div', 'gl-hint-title');
+    gl.hintLead = el('div', 'gl-hint-lead');
+    gl.hintDo = el('div', 'gl-hint-do');
+    var hc = el('div', 'gl-hint-close');
+    hc.textContent = '화면을 누르면 닫혀요';
+    hp.appendChild(gl.hintTitle);
+    hp.appendChild(gl.hintLead);
+    hp.appendChild(gl.hintDo);
+    hp.appendChild(hc);
+    gl.hint.appendChild(hp);
+    gl.hint.addEventListener('click', function (e) { e.stopPropagation(); closeHint(); });
+
     root.appendChild(head);
     root.appendChild(gl.grid);
     root.appendChild(foot);
     root.appendChild(gl.viewer);
+    root.appendChild(gl.hint);
     document.body.appendChild(root);
     gl.root = root;
 
     document.addEventListener('keydown', function (e) {
       if (!document.body.classList.contains('gl-on')) return;
+      if (!gl.hint.hidden) {
+        if (e.key === 'Escape' || e.key === 'Enter' || e.key === ' ') { e.preventDefault(); closeHint(); }
+        return;
+      }
       if (!gl.viewer.hidden) {
         if (e.key === 'Escape') { e.preventDefault(); closeViewer(); }
         return;
@@ -2445,7 +2553,7 @@ body.tt-on tw-passage { display: none; }
   }
 
   function flip(d) {
-    if (!gl.viewer.hidden) return;
+    if (!gl.viewer.hidden || (gl.hint && !gl.hint.hidden)) return;
     var np = gl.page + d;
     if (np < 1 || np > G_PAGES) return;
     gl.page = np;
@@ -2465,6 +2573,21 @@ body.tt-on tw-passage { display: none; }
     gl.viewerImg.removeAttribute('src');
   }
 
+  /* 못 본 엔딩(???) 칸을 누르면 그 엔딩을 보는 방법을 팝업으로 알려줌 */
+  function openHint(id) {
+    var h = ENDING_HINTS[id];
+    if (!h || !gl.hint) return;
+    if (document.activeElement && document.activeElement.blur) document.activeElement.blur();
+    gl.hintTitle.textContent = endingName(id) + ' 힌트';
+    gl.hintLead.textContent = h[0];
+    gl.hintDo.textContent = h[1];
+    gl.hint.hidden = false;
+  }
+
+  function closeHint() {
+    if (gl.hint) gl.hint.hidden = true;
+  }
+
   function endingName(id) { return id === G_TRUE ? '진엔딩' : '엔딩 ' + id; }
 
   function galleryPlaceholder(id, missing) {
@@ -2479,8 +2602,18 @@ body.tt-on tw-passage { display: none; }
   function makeCell(id, seen) {
     if (id > G_TOTAL) return el('div', 'gl-cell gl-empty');
     if (!seen[id]) {
-      var lk = el('div', 'gl-cell gl-locked');
-      lk.textContent = '???';
+      var lk = el('button', 'gl-cell gl-locked');
+      lk.type = 'button';
+      lk.setAttribute('aria-label', endingName(id) + ' (아직 못 봤어요, 누르면 힌트가 나와요)');
+      var q = el('span', 'gl-lk-q');
+      q.textContent = '???';
+      lk.appendChild(q);
+      if (ENDING_HINTS[id]) {
+        var tip = el('span', 'gl-lk-tip');
+        tip.textContent = '눌러서 힌트 보기';
+        lk.appendChild(tip);
+        lk.addEventListener('click', function () { if (glGuard()) openHint(id); });
+      }
       return lk;
     }
     var btn = el('button', 'gl-cell gl-open');
@@ -2545,6 +2678,7 @@ body.tt-on tw-passage { display: none; }
     gl.homeLink = p.querySelector('tw-link');
     gl.page = 1;
     closeViewer();
+    closeHint();
     renderGallery();
     document.body.classList.add('gl-on');
     gl.root.hidden = false;
@@ -2553,6 +2687,7 @@ body.tt-on tw-passage { display: none; }
   function hideGallery() {
     if (!gl.root) return;
     closeViewer();
+    closeHint();
     document.body.classList.remove('gl-on');
     gl.root.hidden = true;
   }
