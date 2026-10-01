@@ -2472,7 +2472,6 @@ window.BB = {
   var CHAR_LOCAL_BASE = 'file:///C:/Users/pumha/Desktop/귤복복 살인사건제작/완성본/실제 제작/캐릭터 이미지/';
   var CHAR_WEB_BASE = 'images/characters/';
   var CHAR_BASE = (location.protocol === 'file:') ? CHAR_LOCAL_BASE : CHAR_WEB_BASE;
-  var BUILD_VERSION = '0.17';             // 화면 오른쪽 위에 작게 보이는 버전. 뭔가 바꿀 때마다 0.01 씩 올릴 것 (사용자 요청)
 
   /* ---------- 인물 배치 ----------
      제작자가 직접 만든 배치 예시 29장(벨 + 상대)을 읽어서 정리한 값이야. 단위는 전부 '화면 폭의 %' (폰 화면 폭 = 100).
@@ -4068,22 +4067,12 @@ window.BB = {
     setTimeout(function () { onPassage(p); }, 0);
   }
 
-  /* 화면 오른쪽 위에 작게 버전을 보여줌 (어떤 화면에서든 보이고, 누르는 데는 방해 안 됨) */
-  function mountVersionTag() {
-    if (document.getElementById('ver-tag')) return;
-    var v = document.createElement('div');
-    v.id = 'ver-tag';
-    v.textContent = 'v' + BUILD_VERSION;
-    document.body.appendChild(v);
-  }
-
   function start() {
     if (!document.body) { setTimeout(start, 20); return; }
     document.documentElement.style.setProperty('--bg-url', 'url("' + imgUrl(BG_FILE) + '")');
     document.documentElement.style.setProperty('--tt-url', 'url("' + imgUrl(TITLE_FILE) + '")');
     loadStage();
     build();
-    mountVersionTag();
     startPreload();
     new MutationObserver(check).observe(document.body, { childList: true, subtree: true });
     check();
@@ -4681,20 +4670,6 @@ tw-hook[name="home"] { display: none; }
   z-index: 8;
 }
 .hm-btn[hidden] { display: none; }
-/* 버전 표시: 오른쪽 위 구석에 아주 작게 */
-#ver-tag {
-  position: fixed;
-  top: calc(var(--u) * 0.8);
-  left: calc(50% + var(--stage-w) / 2 - var(--u) * 1.5);
-  transform: translateX(-100%);
-  z-index: 100000;
-  font: 600 calc(var(--u) * 2.6) / 1 var(--font);
-  color: rgba(255, 255, 255, 0.85);
-  text-shadow: 0 0 calc(var(--u) * 0.6) rgba(0, 0, 0, 0.75), 0 0 calc(var(--u) * 0.3) rgba(0, 0, 0, 0.9);
-  pointer-events: none;
-  user-select: none;
-  -webkit-user-select: none;
-}
 /* 이전 대사 버튼: 홈 버튼과 같은 모양, 왼쪽 위 */
 .hm-back { left: calc(50% - var(--stage-w) / 2 + var(--u) * 3.5); }
 /* 홈 / 이전 대사 버튼이 있을 때는 일반 화면(선택지, 엔딩 글 등)의 글판을 버튼 아래로 내려서 글자를 가리지 않게 함 */
