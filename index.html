@@ -1042,21 +1042,21 @@ body.tt-on tw-passage { display: none; }
   var SEAT_L = 25.1;                      // 왼쪽 자리 얼굴 가로 위치 (벨이 서 있던 자리). 벨 말고 다른 인물이 왼쪽에 설 때도 여기에 얼굴을 맞춤
   var CHAR = {
     '벨': { imgs: ['진지', '노말', '지목', '고뇌', '놀람'], base: '진지', ar: 0.5583, h: 250.2, ex: 0.5261, ey: 0.1369, fx: 25.1, fy: -63.1 },
-    '레미엘': { imgs: ['진지'], base: '진지', ar: 0.558, h: 286.2, ex: 0.4873, ey: 0.1094, fx: 73.9, fy: -83.0 },
+    '레미엘': { imgs: ['진지', '시무룩'], base: '진지', ar: 0.558, h: 286.2, ex: 0.4873, ey: 0.1094, fx: 73.9, fy: -83.0, adj: { '시무룩': [0.9881, 0.0028, 0.0] } },
     '수나': { imgs: ['얼굴붉힘'], base: '얼굴붉힘', ar: 0.5583, h: 185.7, ex: 0.5348, ey: 0.1902, fx: 77.2, fy: -54.2 },
-    '시드': { imgs: ['노말'], base: '노말', ar: 0.5583, h: 257.7, ex: 0.5042, ey: 0.1354, fx: 79.6, fy: -64.7 },
+    '시드': { imgs: ['노말', '고민'], base: '노말', ar: 0.5583, h: 257.7, ex: 0.5042, ey: 0.1354, fx: 79.6, fy: -64.7 },
     '아스트라': { imgs: ['노말'], base: '노말', ar: 0.5583, h: 245.0, ex: 0.508, ey: 0.1611, fx: 71.4, fy: -86.8 },
     '야나기': { imgs: ['진지'], base: '진지', ar: 0.558, h: 272.2, ex: 0.506, ey: 0.1242, fx: 77.0, fy: -78.8 },
     '빛나': { imgs: ['노말'], base: '노말', ar: 0.5583, h: 263.5, ex: 0.4983, ey: 0.1424, fx: 75.4, fy: -67.2 },
     '자오': { imgs: ['노말'], base: '노말', ar: 0.5585, h: 196.5, ex: 0.5007, ey: 0.2324, fx: 76.8, fy: -18.8 },
     '클라렛': { imgs: ['진지'], base: '진지', ar: 0.558, h: 280.5, ex: 0.5468, ey: 0.1479, fx: 80.6, fy: -62.5 },
     '반악': { imgs: ['진지'], base: '진지', ar: 0.558, h: 268.1, ex: 0.4993, ey: 0.1293, fx: 74.4, fy: -87.7 },
-    '루시아': { imgs: ['무표정'], base: '무표정', ar: 0.5583, h: 222.0, ex: 0.502, ey: 0.1982, fx: 76.6, fy: -62.0 },
+    '루시아': { imgs: ['무표정', '미소'], base: '무표정', ar: 0.5583, h: 222.0, ex: 0.502, ey: 0.1982, fx: 76.6, fy: -62.0 },
     '네코미야': { imgs: ['노말'], base: '노말', ar: 0.5583, h: 255.7, ex: 0.5037, ey: 0.1771, fx: 77.8, fy: -44.8 },
     '트리거': { imgs: ['진지'], base: '진지', ar: 0.558, h: 269.5, ex: 0.505, ey: 0.1444, fx: 75.0, fy: -79.2 },
     '귤복복': { imgs: ['진지'], base: '진지', ar: 0.5585, h: 211.5, ex: 0.4036, ey: 0.1945, fx: 77.0, fy: -49.1 },
     '다이아린': { imgs: ['무표정'], base: '무표정', ar: 0.5583, h: 263.6, ex: 0.4958, ey: 0.2101, fx: 80.2, fy: -63.3 },
-    '이블린': { imgs: ['진지'], base: '진지', ar: 0.558, h: 280.0, ex: 0.5211, ey: 0.1327, fx: 77.5, fy: -77.8 },
+    '이블린': { imgs: ['진지', '씨익'], base: '진지', ar: 0.558, h: 280.0, ex: 0.5211, ey: 0.1327, fx: 77.5, fy: -77.8, adj: { '씨익': [0.9881, 0.0029, 0.0001] } },
     '미야비': { imgs: ['진지'], base: '진지', ar: 0.558, h: 268.9, ex: 0.5025, ey: 0.1742, fx: 78.0, fy: -71.8 },
     '남궁우': { imgs: ['노말'], base: '노말', ar: 0.5583, h: 238.7, ex: 0.6549, ey: 0.1919, fx: 77.2, fy: -60.3 },
     '아리아': { imgs: ['진지'], base: '진지', ar: 0.558, h: 256.7, ex: 0.4771, ey: 0.1558, fx: 73.4, fy: -63.8 },
@@ -3232,7 +3232,8 @@ Other properties and any right, title, and interest thereof and therein (intelle
 [[제목 없는 구절 106]]</tw-passagedata><tw-passagedata pid="43" name="제목 없는 구절 106" tags="vn" position="700,900" size="100,100">&lt;span data-bx=&quot;시드:노말&quot;&gt;&lt;/span&gt;
 벨: ?
 
-[[제목 없는 구절 107]]</tw-passagedata><tw-passagedata pid="44" name="제목 없는 구절 107" tags="vn" position="800,900" size="100,100">루시아: 맞아 벨, 그래서 귤복복 씨가 살해당하던 오전 10시에 뭘 하고 있냐고 물었지? 나는 포포랑 놀면서 간식 주고 있었어,
+[[제목 없는 구절 107]]</tw-passagedata><tw-passagedata pid="44" name="제목 없는 구절 107" tags="vn" position="800,900" size="100,100">&lt;span data-bx=&quot;루시아:미소&quot;&gt;&lt;/span&gt;
+루시아: 맞아 벨, 그래서 귤복복 씨가 살해당하던 오전 10시에 뭘 하고 있냐고 물었지? 나는 포포랑 놀면서 간식 주고 있었어,
 
 [[제목 없는 구절 108]]</tw-passagedata><tw-passagedata pid="45" name="제목 없는 구절 108" tags="vn" position="900,900" size="100,100">육포...? 벨은 순간 에테리얼이 간식을 먹나? 라는 생각을 했다. 내가 간식인가? 그것도 아니면 진짜 포메라니안 희귀종인가?
 
@@ -3309,7 +3310,8 @@ Other properties and any right, title, and interest thereof and therein (intelle
 [[제목 없는 구절 210]]</tw-passagedata><tw-passagedata pid="69" name="제목 없는 구절 13" tags="confirm vn" position="1500,200" size="100,100">&lt;span data-bx=&quot;벨:노말&quot;&gt;&lt;/span&gt;
 야나기: 알겠습니다.
 
-[[제목 없는 구절 15]]</tw-passagedata><tw-passagedata pid="70" name="제목 없는 구절 130" tags="vn" position="1400,1050" size="100,100">시드: 으음... 어려운 질문이네, 근데 벨, 선로전환기까지는 어떻게 접근한 거야?
+[[제목 없는 구절 15]]</tw-passagedata><tw-passagedata pid="70" name="제목 없는 구절 130" tags="vn" position="1400,1050" size="100,100">&lt;span data-bx=&quot;시드:고민&quot;&gt;&lt;/span&gt;
+시드: 으음... 어려운 질문이네, 근데 벨, 선로전환기까지는 어떻게 접근한 거야?
 
 [[제목 없는 구절 237]]</tw-passagedata><tw-passagedata pid="71" name="제목 없는 구절 131" tags="vn-choice" position="900,1100" size="100,100">트리거: 한 방만 맞으면, 두 번은 못 일어나게 된다는 거야. 전장에서는 에테리얼의 털끝만 맞춰도 섬멸할 수 있지. 하지만 귤복복처럼 작은 표적을 정확히 암살하는 건 어려운 일이야.
 
@@ -3327,7 +3329,7 @@ Other properties and any right, title, and interest thereof and therein (intelle
 시드: 계화떡 두개가 있는데, 하나를 쓰레기통에 갖다 버리면 아깝잖아~ 당연한거지.
 [[시드 추가4]]</tw-passagedata><tw-passagedata pid="356" name="시드 추가4" tags="vn" position="1350,1050" size="100,100">&lt;span data-bx=&quot;시드:노말&quot;&gt;&lt;/span&gt;
 벨: ...
-[[시드 추가5]]</tw-passagedata><tw-passagedata pid="357" name="시드 추가5" tags="vn" position="1400,1050" size="100,100">&lt;span data-bx=&quot;시드:노말&quot;&gt;&lt;/span&gt;
+[[시드 추가5]]</tw-passagedata><tw-passagedata pid="357" name="시드 추가5" tags="vn" position="1400,1050" size="100,100">&lt;span data-bx=&quot;시드:고민&quot;&gt;&lt;/span&gt;
 벨: 그냥 혹시나 해서 물어보는 건데요, 시드 씨는 트롤리 딜레마 아시나요? 레버를 놔두면 5명이 죽고, 레버를 당기면 1명이 죽는 그 문제요. 시드 씨라면 뭐라고 답할지 궁금해서.
 [[제목 없는 구절 130]]</tw-passagedata><tw-passagedata pid="74" name="제목 없는 구절 134" tags="vn" position="1100,1400" size="100,100">&lt;span data-bx=&quot;다이아린:무표정&quot;&gt;&lt;/span&gt;
 반악: 선착순 한명, 십만 데니!
@@ -3671,7 +3673,8 @@ Other properties and any right, title, and interest thereof and therein (intelle
 &lt;span data-stage=&quot;벨,레미엘&quot;&gt;&lt;/span&gt;
 벨: 그걸 설명할 수 있는 방법은... 오직 하나뿐입니다. 레미엘 씨.
 
-[[제목 없는 구절 246]]</tw-passagedata><tw-passagedata pid="198" name="제목 없는 구절 246" tags="vn" position="2050,1775" size="100,100">레미엘: 그만... 내가 전부 설명할게.
+[[제목 없는 구절 246]]</tw-passagedata><tw-passagedata pid="198" name="제목 없는 구절 246" tags="vn" position="2050,1775" size="100,100">&lt;span data-bx=&quot;레미엘:시무룩&quot;&gt;&lt;/span&gt;
+레미엘: 그만... 내가 전부 설명할게.
 
 [[제목 없는 구절 247]]</tw-passagedata><tw-passagedata pid="199" name="제목 없는 구절 247" tags="vn" position="2125,1725" size="100,100">야나기: 레미엘 씨...
 
@@ -3694,7 +3697,8 @@ Other properties and any right, title, and interest thereof and therein (intelle
 [[트리거 추가2]]</tw-passagedata><tw-passagedata pid="363" name="트리거 추가2" tags="vn" position="1600,1150" size="100,100">미야비: 큰일이에요, 사람이 쓰러졌어요. 어디 예쁜 사람 안 계십니까?
 [[트리거 추가3]]</tw-passagedata><tw-passagedata pid="364" name="트리거 추가3" tags="vn" position="1600,1200" size="100,100">레미엘: 저요! 제가 예쁩니다!! 환자는 어딨죠?
 [[트리거 추가4]]</tw-passagedata><tw-passagedata pid="365" name="트리거 추가4" tags="vn" position="1650,1200" size="100,100">이블린: 거기까지입니다! 대 황 아스트라님이 더 예쁩니다!!
-[[트리거 추가5]]</tw-passagedata><tw-passagedata pid="366" name="트리거 추가5" tags="vn" position="1725,1200" size="100,100">루시아: 예삐 왔어? 야옹~ 에옹~
+[[트리거 추가5]]</tw-passagedata><tw-passagedata pid="366" name="트리거 추가5" tags="vn" position="1725,1200" size="100,100">&lt;span data-bx=&quot;루시아:미소&quot;&gt;&lt;/span&gt;
+루시아: 예삐 왔어? 야옹~ 에옹~
 [[제목 없는 구절 321]]</tw-passagedata><tw-passagedata pid="367" name="제목 없는 구절 321" tags="vn" position="1825,1200" size="100,100">&lt;span data-bx=&quot;네코미야:노말&quot;&gt;&lt;/span&gt;
 네코미야: 야옹~
 [[제목 없는 구절 322]]</tw-passagedata><tw-passagedata pid="368" name="제목 없는 구절 322" tags="vn" position="1925,1200" size="100,100">&lt;span data-bx=&quot;네코미야:노말&quot;&gt;&lt;/span&gt;
@@ -3743,21 +3747,25 @@ Other properties and any right, title, and interest thereof and therein (intelle
 시드: 타우미엘로 120번 베어지고 살아남은 것도 대단하네~
 
 [[제목 없는 구절 271]]</tw-passagedata><tw-passagedata pid="226" name="제목 없는 구절 271" tags="vn" position="4000,1800" size="100,100">&lt;span data-bx=&quot;시드:노말&quot;&gt;&lt;/span&gt;
+&lt;span data-bx=&quot;레미엘:시무룩&quot;&gt;&lt;/span&gt;
 레미엘: 복복 씨를... 죽이고 만 거야. 내 손으로, 이 죄는 평생 씻을 수 없겠지. 차라리 날 죽여! 이 모든 일의 책임은 내가 지겠어!
 
 [[제목 없는 구절 272]]</tw-passagedata><tw-passagedata pid="227" name="제목 없는 구절 272" tags="vn" position="4200,1800" size="100,100">벨: 레미엘 씨...!
 
-[[제목 없는 구절 273]]</tw-passagedata><tw-passagedata pid="228" name="제목 없는 구절 273" tags="vn" position="4300,1800" size="100,100">&lt;span data-bx=&quot;시드:노말&quot;&gt;&lt;/span&gt;
+[[제목 없는 구절 273]]</tw-passagedata><tw-passagedata pid="228" name="제목 없는 구절 273" tags="vn" position="4300,1800" size="100,100">&lt;span data-bx=&quot;시드:고민&quot;&gt;&lt;/span&gt;
 시드: 근데 레미엘 씨한테는 동기가 없는 거야?
 
 [[제목 없는 구절 274]]</tw-passagedata><tw-passagedata pid="229" name="제목 없는 구절 274" tags="vn" position="4400,1800" size="100,100">&lt;span data-bx=&quot;시드:노말&quot;&gt;&lt;/span&gt;
+&lt;span data-bx=&quot;레미엘:시무룩&quot;&gt;&lt;/span&gt;
 레미엘: 할...
 
 [[제목 없는 구절 275]]</tw-passagedata><tw-passagedata pid="230" name="제목 없는 구절 275" tags="vn" position="4500,1800" size="100,100">시드: 할?
 
-[[제목 없는 구절 276]]</tw-passagedata><tw-passagedata pid="231" name="제목 없는 구절 276" tags="vn" position="4600,1800" size="100,100">레미엘: 나한테는 &#39;100살 이상이면 할머니네요~&#39; 라고 했어!! 용서할 수 없는게 당연하잖아!! 완전 청초한 미소녀인데!!!!
+[[제목 없는 구절 276]]</tw-passagedata><tw-passagedata pid="231" name="제목 없는 구절 276" tags="vn" position="4600,1800" size="100,100">&lt;span data-bx=&quot;레미엘:시무룩&quot;&gt;&lt;/span&gt;
+레미엘: 나한테는 &#39;100살 이상이면 할머니네요~&#39; 라고 했어!! 용서할 수 없는게 당연하잖아!! 완전 청초한 미소녀인데!!!!
 
-[[제목 없는 구절 277]]</tw-passagedata><tw-passagedata pid="232" name="제목 없는 구절 277" tags="vn" position="4700,1800" size="100,100">시드: 확실히 그건 너무할지도...
+[[제목 없는 구절 277]]</tw-passagedata><tw-passagedata pid="232" name="제목 없는 구절 277" tags="vn" position="4700,1800" size="100,100">&lt;span data-bx=&quot;시드:고민&quot;&gt;&lt;/span&gt;
+시드: 확실히 그건 너무할지도...
 
 [[제목 없는 구절 278]]</tw-passagedata><tw-passagedata pid="233" name="제목 없는 구절 278" tags="vn" position="4700,1900" size="100,100">&lt;span data-bx=&quot;벨:고뇌&quot;&gt;&lt;/span&gt;
 &lt;span data-stage=&quot;벨&quot;&gt;&lt;/span&gt;
@@ -3902,7 +3910,8 @@ Other properties and any right, title, and interest thereof and therein (intelle
 레미엘의 끝없는 문답 게임에 어울려주게 된 벨은, 결국 날이 저물 때까지 범인을 잡지 못했다.
 레미엘이 설명을 한 줄 할 때마다 &#39;그래서 그게 무슨 뜻이라고?&#39;라고 묻는 시드 덕분에, 마치 우로보로스 같은 끝없는 문답을 반복했고, 결국 화를 참지 못한 벨이 레미엘의 머리를 가격하고 치안관에게 잡혀가고 말았다.
 
-[[타이틀 화면으로 돌아가기-&gt;타이틀 화면]](set: $seen to it + (ds: 2))&lt;script&gt;if (window.BB) { BB.save(Array.from($seen)); }&lt;/script&gt;</tw-passagedata><tw-passagedata pid="285" name="제목 없는 구절 41" tags="vn" position="1600,450" size="100,100">레미엘: 어머 벨 씨... 너무해요, 그런 식으로 낙인 효과를 준다면 이 세상에서 갱생할 수 있는 범죄자가 얼마나 되겠어요! 게다가 저는 예쁘잖아요!
+[[타이틀 화면으로 돌아가기-&gt;타이틀 화면]](set: $seen to it + (ds: 2))&lt;script&gt;if (window.BB) { BB.save(Array.from($seen)); }&lt;/script&gt;</tw-passagedata><tw-passagedata pid="285" name="제목 없는 구절 41" tags="vn" position="1600,450" size="100,100">&lt;span data-bx=&quot;레미엘:시무룩&quot;&gt;&lt;/span&gt;
+레미엘: 어머 벨 씨... 너무해요, 그런 식으로 낙인 효과를 준다면 이 세상에서 갱생할 수 있는 범죄자가 얼마나 되겠어요! 게다가 저는 예쁘잖아요!
 
 [[제목 없는 구절 42]]</tw-passagedata><tw-passagedata pid="286" name="제목 없는 구절 42" tags="vn" position="1700,450" size="100,100">야나기: 잠시만요. 여자친구를 팼다고요? 데이트 폭력인가요?
 
@@ -3915,7 +3924,8 @@ Other properties and any right, title, and interest thereof and therein (intelle
 [[야나기의 억까]]</tw-passagedata><tw-passagedata pid="358" name="야나기의 억까" tags="vn" position="2100,450" size="100,100">레미엘: 왜죠?!
 [[제목 없는 구절 315]]</tw-passagedata><tw-passagedata pid="359" name="제목 없는 구절 315" tags="vn" position="2200,450" size="100,100">야나기: 공연음란죄입니다. 전투중에 갑자기 드러눕는 사람은 당신밖에 없어요.
 [[제목 없는 구절 316]]</tw-passagedata><tw-passagedata pid="360" name="제목 없는 구절 316" tags="vn" position="2300,450" size="100,100">레미엘: 난 예쁘잖아!!
-[[제목 없는 구절 317]]</tw-passagedata><tw-passagedata pid="361" name="제목 없는 구절 317" tags="vn" position="2400,450" size="100,100">루시아: 예삐 왔어? 오로로로로
+[[제목 없는 구절 317]]</tw-passagedata><tw-passagedata pid="361" name="제목 없는 구절 317" tags="vn" position="2400,450" size="100,100">&lt;span data-bx=&quot;루시아:미소&quot;&gt;&lt;/span&gt;
+루시아: 예삐 왔어? 오로로로로
 [[제목 없는 구절 46]]</tw-passagedata><tw-passagedata pid="290" name="제목 없는 구절 46" tags="ending" position="2100,450" size="100,100">&lt;span data-ending=&quot;1&quot;&gt;&lt;/span&gt;
 `[END]`
 공연음란죄로 레미엘은 체포당하고 만다. 공허사냥꾼이요? 왜요? 무슨 일 났대요?
@@ -3994,9 +4004,11 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 [[제목 없는 구절 74]]</tw-passagedata><tw-passagedata pid="321" name="제목 없는 구절 74" tags="vn" position="2900,650" size="100,100">아스트라: 이브...? 잠깐, 무슨 말을 하는 거야?
 
-[[제목 없는 구절 75]]</tw-passagedata><tw-passagedata pid="322" name="제목 없는 구절 75" tags="vn" position="3000,650" size="100,100">이블린: 맞습니다... 귤복복 씨를 죽인 건 다름 아닌 저의 아가씨... 이 죄를 용서받을 수는 없겠죠. 아마 평생을 감옥에서 썩어야 할 겁니다...
+[[제목 없는 구절 75]]</tw-passagedata><tw-passagedata pid="322" name="제목 없는 구절 75" tags="vn" position="3000,650" size="100,100">&lt;span data-bx=&quot;이블린:씨익&quot;&gt;&lt;/span&gt;
+이블린: 맞습니다... 귤복복 씨를 죽인 건 다름 아닌 저의 아가씨... 이 죄를 용서받을 수는 없겠죠. 아마 평생을 감옥에서 썩어야 할 겁니다...
 
-[[제목 없는 구절 76]]</tw-passagedata><tw-passagedata pid="323" name="제목 없는 구절 76" tags="vn" position="3100,650" size="100,100">아스트라: 잠깐...! 잠깐, 대체 무슨 소리야!! 이브! 혼자서 무슨 소리를 하는 거야! 벨! 얘 좀 말려봐!!
+[[제목 없는 구절 76]]</tw-passagedata><tw-passagedata pid="323" name="제목 없는 구절 76" tags="vn" position="3100,650" size="100,100">&lt;span data-bx=&quot;이블린:씨익&quot;&gt;&lt;/span&gt;
+아스트라: 잠깐...! 잠깐, 대체 무슨 소리야!! 이브! 혼자서 무슨 소리를 하는 거야! 벨! 얘 좀 말려봐!!
 
 [[제목 없는 구절 77]]</tw-passagedata><tw-passagedata pid="324" name="제목 없는 구절 77" tags="vn" position="3200,650" size="100,100">&lt;span data-bx=&quot;빛나:노말&quot;&gt;&lt;/span&gt;
 엽빛나: 계화떡 먹을래?
@@ -4005,12 +4017,14 @@ Other properties and any right, title, and interest thereof and therein (intelle
 &lt;span data-bx=&quot;빛나:노말&quot;&gt;&lt;/span&gt;
 네코미야: 먹을래!
 [[제목 없는 구절 79]]</tw-passagedata><tw-passagedata pid="326" name="제목 없는 구절 79" tags="vn" position="3400,650" size="100,100">&lt;span data-bx=&quot;네코미야:노말&quot;&gt;&lt;/span&gt;
+&lt;span data-bx=&quot;이블린:씨익&quot;&gt;&lt;/span&gt;
 이블린: 아무래도, 저와 아스트라 아가씨는 영원히 도피해야 할 것 같습니다... 스위스가 좋겠네요. 아무도 우릴 찾지 않는 곳에서 단둘이... 쓸쓸히 여생을...
 
 [[제목 없는 구절 80]]</tw-passagedata><tw-passagedata pid="327" name="제목 없는 구절 8" tags="vn" position="300,200" size="100,100">&lt;span data-bx=&quot;빛나:노말&quot;&gt;&lt;/span&gt;
 엽빛나: 계화떡 먹을래?
 
-[[제목 없는 구절 9]]</tw-passagedata><tw-passagedata pid="328" name="제목 없는 구절 80" tags="vn" position="3500,650" size="100,100">아스트라: 잠깐...! 벨...! 벨...! 오해야!! 나 진짜 아무것도 안했어!!! 이블린 좀 말려봐! 그리고 스위스가 뭔데!!
+[[제목 없는 구절 9]]</tw-passagedata><tw-passagedata pid="328" name="제목 없는 구절 80" tags="vn" position="3500,650" size="100,100">&lt;span data-bx=&quot;이블린:씨익&quot;&gt;&lt;/span&gt;
+아스트라: 잠깐...! 벨...! 벨...! 오해야!! 나 진짜 아무것도 안했어!!! 이블린 좀 말려봐! 그리고 스위스가 뭔데!!
 
 [[제목 없는 구절 81]]</tw-passagedata><tw-passagedata pid="329" name="제목 없는 구절 81" tags="ending" position="3600,650" size="100,100">&lt;span data-ending=&quot;3&quot;&gt;&lt;/span&gt;
 `[END]`
