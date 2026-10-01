@@ -1041,7 +1041,7 @@ body.tt-on tw-passage { display: none; }
      - adj: 표정 그림이 기본 그림과 구도가 조금 다를 때 맞추는 값 { 표정: [크기 배율, 가로 이동, 세로 이동] } (이동은 그림 높이에 대한 비율) */
   var SEAT_L = 25.1;                      // 왼쪽 자리 얼굴 가로 위치 (벨이 서 있던 자리). 벨 말고 다른 인물이 왼쪽에 설 때도 여기에 얼굴을 맞춤
   var CHAR = {
-    '벨': { imgs: ['노말'], base: '노말', ar: 0.5583, h: 250.2, ex: 0.5261, ey: 0.1369, fx: 25.1, fy: -63.1 },
+    '벨': { imgs: ['진지', '노말', '지목', '고뇌', '놀람'], base: '진지', ar: 0.5583, h: 250.2, ex: 0.5261, ey: 0.1369, fx: 25.1, fy: -63.1 },
     '레미엘': { imgs: ['진지'], base: '진지', ar: 0.558, h: 286.2, ex: 0.4873, ey: 0.1094, fx: 73.9, fy: -83.0 },
     '수나': { imgs: ['얼굴붉힘'], base: '얼굴붉힘', ar: 0.5583, h: 185.7, ex: 0.5348, ey: 0.1902, fx: 77.2, fy: -54.2 },
     '시드': { imgs: ['노말'], base: '노말', ar: 0.5583, h: 257.7, ex: 0.5042, ey: 0.1354, fx: 79.6, fy: -64.7 },
@@ -1063,7 +1063,7 @@ body.tt-on tw-passage { display: none; }
     '록시': { imgs: ['노말'], base: '노말', ar: 0.5583, h: 245.0, ex: 0.5087, ey: 0.1878, fx: 74.8, fy: -55.8 },
     '벨리나': { imgs: ['노말'], base: '노말', ar: 0.5583, h: 276.1, ex: 0.5157, ey: 0.1306, fx: 73.3, fy: -86.0, flip: true },
     '버니스': { imgs: ['진지'], base: '진지', ar: 0.5585, h: 246.0, ex: 0.5256, ey: 0.1638, fx: 73.7, fy: -74.2 },
-    '니콜': { imgs: ['진지'], base: '진지', ar: 0.5585, h: 211.4, ex: 0.4968, ey: 0.1991, fx: 76.4, fy: -64.5 },
+    '니콜': { imgs: ['진지', '당황'], base: '진지', ar: 0.5585, h: 211.4, ex: 0.4968, ey: 0.1991, fx: 76.4, fy: -64.5 },
     '포포': { imgs: ['진지'], base: '진지', ar: 1.0, h: 179.1, ex: 0.5069, ey: 0.4764, fx: 82.1, fy: -25.3 },
     '시시아': { imgs: ['울상', '노말'], base: '울상', ar: 0.5583, h: 242.5, ex: 0.5082, ey: 0.1385, fx: 74.9, fy: -67.4 },
     '11호': { imgs: ['진지'], base: '진지', ar: 0.5585, h: 250.0, ex: 0.492, ey: 0.1739, fx: 73.8, fy: -68.8 },
@@ -3136,13 +3136,17 @@ Other properties and any right, title, and interest thereof and therein (intelle
 [[시작2]]</tw-passagedata><tw-passagedata pid="7" name="시작2" tags="vn" position="200,100" size="100,100">&lt;span data-bx=&quot;벨:노말&quot;&gt;&lt;/span&gt;
 벨: 휴우... 정말 많은 일이 있었지만, 모두들 무사하고 행복해져서 다행이야.
 그나저나 다들 판타지 리조트까지 잘 찾아왔으려나? 내가 너무 늦은 건 아니겠지?
-[[시작3]]</tw-passagedata><tw-passagedata pid="8" name="시작3" tags="vn" position="300,100" size="100,100">그러나... 모두가 기다리고 있는 판타지 리조트 해변, 하나같이 창백한 표정의 모두와... 그 가운데의 믿을 수 없는 광경.
+[[시작3]]</tw-passagedata><tw-passagedata pid="8" name="시작3" tags="vn" position="300,100" size="100,100">&lt;span data-bx=&quot;벨:놀람&quot;&gt;&lt;/span&gt;
+그러나... 모두가 기다리고 있는 판타지 리조트 해변, 하나같이 창백한 표정의 모두와... 그 가운데의 믿을 수 없는 광경.
 
-[[시작4]]</tw-passagedata><tw-passagedata pid="9" name="시작4" tags="vn" position="400,100" size="100,100">벨: 꺄아아아악!! 복복 씨가...!! 복복 씨가 죽었어요!
+[[시작4]]</tw-passagedata><tw-passagedata pid="9" name="시작4" tags="vn" position="400,100" size="100,100">&lt;span data-bx=&quot;벨:놀람&quot;&gt;&lt;/span&gt;
+벨: 꺄아아아악!! 복복 씨가...!! 복복 씨가 죽었어요!
 
-[[시작5]]</tw-passagedata><tw-passagedata pid="10" name="시작5" tags="vn" position="500,100" size="100,100">그렇다... 귤복복이 죽어 있었던 것이다. 판타지 리조트 해변의 까슬까슬한 모래를 깔고 누워서 미동도 하지 않는 귤복복...
+[[시작5]]</tw-passagedata><tw-passagedata pid="10" name="시작5" tags="vn" position="500,100" size="100,100">&lt;span data-bx=&quot;벨:놀람&quot;&gt;&lt;/span&gt;
+그렇다... 귤복복이 죽어 있었던 것이다. 판타지 리조트 해변의 까슬까슬한 모래를 깔고 누워서 미동도 하지 않는 귤복복...
 
-[[시작6]]</tw-passagedata><tw-passagedata pid="11" name="시작6" tags="vn" position="600,100" size="100,100">벨: 이럴수가... 수나 양이 작곡을 너무 못해서 복복 씨가 죽어버렸어요...
+[[시작6]]</tw-passagedata><tw-passagedata pid="11" name="시작6" tags="vn" position="600,100" size="100,100">&lt;span data-bx=&quot;벨:놀람&quot;&gt;&lt;/span&gt;
+벨: 이럴수가... 수나 양이 작곡을 너무 못해서 복복 씨가 죽어버렸어요...
 
 [[제목 없는 구절]]</tw-passagedata><tw-passagedata pid="12" name="시작7" tags="vn" position="800,100" size="100,100">&lt;span data-bx=&quot;남궁우:노말&quot;&gt;&lt;/span&gt;
 &lt;span data-bx=&quot;수나:얼굴붉힘&quot;&gt;&lt;/span&gt;
@@ -3245,7 +3249,8 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 [[제목 없는 구절 114]]</tw-passagedata><tw-passagedata pid="49" name="제목 없는 구절 111" tags="vn" position="1200,850" size="100,100">그러나, 벨의 목소리가 떨어지자마자, 모두의 표정에 경멸이 덧씌워졌다.
 
-[[제목 없는 구절 113]]</tw-passagedata><tw-passagedata pid="50" name="제목 없는 구절 112" tags="vn" position="1100,850" size="100,100">벨: 루시아, 포메라니안이라니! 누가 봐도 에테리얼이잖아! 당장 포포 데리고 집에 가!
+[[제목 없는 구절 113]]</tw-passagedata><tw-passagedata pid="50" name="제목 없는 구절 112" tags="vn" position="1100,850" size="100,100">&lt;span data-bx=&quot;벨:지목&quot;&gt;&lt;/span&gt;
+벨: 루시아, 포메라니안이라니! 누가 봐도 에테리얼이잖아! 당장 포포 데리고 집에 가!
 
 [[제목 없는 구절 111]]</tw-passagedata><tw-passagedata pid="51" name="제목 없는 구절 113" tags="vn" position="1300,850" size="100,100">야나기: 세상에... 요즘 같은 시대에 &#39;반려견 출입금지&#39; 라는 말을 하고 싶은 건가요? 벨 씨, 그러다가 장사 망해요.
 
@@ -3262,7 +3267,8 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 [[타이틀 화면으로 돌아가기-&gt;타이틀 화면]](set: $seen to it + (ds: 5))&lt;script&gt;if (window.BB) { BB.save(Array.from($seen)); }&lt;/script&gt;</tw-passagedata><tw-passagedata pid="55" name="제목 없는 구절 117" tags="vn" position="1100,950" size="100,100">벨: 그래, 포포랑 같이 놀고 있었다고? 주변에 목격자는?
 
-[[제목 없는 구절 118]]</tw-passagedata><tw-passagedata pid="56" name="제목 없는 구절 118" tags="vn" position="1200,950" size="100,100">&lt;span data-stage=&quot;벨,포포&quot;&gt;&lt;/span&gt;
+[[제목 없는 구절 118]]</tw-passagedata><tw-passagedata pid="56" name="제목 없는 구절 118" tags="vn" position="1200,950" size="100,100">&lt;span data-bx=&quot;벨:놀람&quot;&gt;&lt;/span&gt;
+&lt;span data-stage=&quot;벨,포포&quot;&gt;&lt;/span&gt;
 그렇게 질문한 순간, 포포가 벨의 머리를 향해 입을 쩍 벌렸고, 잠시 뒤. 벨은 로프꾼에서 로프/꾼으로 분리되고 말았다.
 
 [[제목 없는 구절 119]]</tw-passagedata><tw-passagedata pid="57" name="제목 없는 구절 119" tags="ending" position="1300,950" size="100,100">&lt;span data-ending=&quot;6&quot;&gt;&lt;/span&gt;
@@ -3281,7 +3287,8 @@ Other properties and any right, title, and interest thereof and therein (intelle
 [[제목 없는 구절 121]]</tw-passagedata><tw-passagedata pid="60" name="제목 없는 구절 121" tags="vn" position="200,1100" size="100,100">&lt;span data-bx=&quot;시드:노말&quot;&gt;&lt;/span&gt;
 시드: 응? 나한테도 물어보는 거야? 나도 용의자가 되어보는구나~ 
 
-[[제목 없는 구절 122]]</tw-passagedata><tw-passagedata pid="61" name="제목 없는 구절 122" tags="vn" position="300,1100" size="100,100">&lt;span data-bx=&quot;시드:노말&quot;&gt;&lt;/span&gt;
+[[제목 없는 구절 122]]</tw-passagedata><tw-passagedata pid="61" name="제목 없는 구절 122" tags="vn" position="300,1100" size="100,100">&lt;span data-bx=&quot;벨:지목&quot;&gt;&lt;/span&gt;
+&lt;span data-bx=&quot;시드:노말&quot;&gt;&lt;/span&gt;
 벨: 시드 씨, 지금 사람이 죽었는데 왜 그렇게 태연하신 건가요? 역시 &#39;사람이 냉장고에 안 들어가면 접어서 넣으면 된다.&#39; 는 사고방식을 지닌 사이코패스라서 그런 건가요?
 
 [[제목 없는 구절 123]]</tw-passagedata><tw-passagedata pid="62" name="제목 없는 구절 123" tags="vn" position="400,1100" size="100,100">&lt;span data-bx=&quot;시드:노말&quot;&gt;&lt;/span&gt;
@@ -3290,11 +3297,14 @@ Other properties and any right, title, and interest thereof and therein (intelle
 [[제목 없는 구절 124]]</tw-passagedata><tw-passagedata pid="63" name="제목 없는 구절 124" tags="vn" position="500,1100" size="100,100">&lt;span data-bx=&quot;시드:노말&quot;&gt;&lt;/span&gt;
 시드: 오전 10시에 난 트리거랑 같이 사람 구경을 하고 있었어~
 
-[[제목 없는 구절 125]]</tw-passagedata><tw-passagedata pid="64" name="제목 없는 구절 125" tags="vn" position="600,1100" size="100,100">&lt;span data-stage=&quot;벨,트리거&quot;&gt;&lt;/span&gt;
+[[제목 없는 구절 125]]</tw-passagedata><tw-passagedata pid="64" name="제목 없는 구절 125" tags="vn" position="600,1100" size="100,100">&lt;span data-bx=&quot;벨:지목&quot;&gt;&lt;/span&gt;
+&lt;span data-stage=&quot;벨,트리거&quot;&gt;&lt;/span&gt;
 벨: 그러고 보니 트리거 씨, 당신은 저격수잖아요. 아무도 모르게 귤복복 씨를 살해하는건 당신이 가장 잘 할 것 같은데요?
 
-[[제목 없는 구절 128]]</tw-passagedata><tw-passagedata pid="65" name="제목 없는 구절 126" tags="vn" position="1400,1150" size="100,100">벨: 비장의 수?!
-[[제목 없는 구절 129]]</tw-passagedata><tw-passagedata pid="66" name="제목 없는 구절 127" tags="vn" position="1000,1050" size="100,100">벨: 생각해보니 그렇네요... 아무래도 앞이 안 보이는 사람이 범인일 리 없죠. 그럼 시드 씨, 당신을 테스트하겠어요. 
+[[제목 없는 구절 128]]</tw-passagedata><tw-passagedata pid="65" name="제목 없는 구절 126" tags="vn" position="1400,1150" size="100,100">&lt;span data-bx=&quot;벨:놀람&quot;&gt;&lt;/span&gt;
+벨: 비장의 수?!
+[[제목 없는 구절 129]]</tw-passagedata><tw-passagedata pid="66" name="제목 없는 구절 127" tags="vn" position="1000,1050" size="100,100">&lt;span data-bx=&quot;벨:고뇌&quot;&gt;&lt;/span&gt;
+벨: 생각해보니 그렇네요... 아무래도 앞이 안 보이는 사람이 범인일 리 없죠. 그럼 시드 씨, 당신을 테스트하겠어요. 
 
 [[제목 없는 구절 133]]</tw-passagedata><tw-passagedata pid="67" name="제목 없는 구절 128" tags="vn" position="700,1100" size="100,100">트리거: 벨, 내가 사용하는 총은 3500줄(J)의 에너지를 총구에서 내뿜어. 이게 무슨 소리인지 알겠어? 
 
@@ -3353,7 +3363,8 @@ Other properties and any right, title, and interest thereof and therein (intelle
 &lt;span data-bx=&quot;다이아린:무표정&quot;&gt;&lt;/span&gt;
 벨: 흠, 다이아린 씨. 당신의 알리바이를 증명해줄 사람이 있나요?
 
-[[제목 없는 구절 21]]</tw-passagedata><tw-passagedata pid="85" name="제목 없는 구절 144" tags="vn" position="100,1800" size="100,100">&lt;span data-stage=&quot;벨&quot;&gt;&lt;/span&gt;
+[[제목 없는 구절 21]]</tw-passagedata><tw-passagedata pid="85" name="제목 없는 구절 144" tags="vn" position="100,1800" size="100,100">&lt;span data-bx=&quot;벨:고뇌&quot;&gt;&lt;/span&gt;
+&lt;span data-stage=&quot;벨&quot;&gt;&lt;/span&gt;
 그렇게 모두를 심문하고, 한참을 고뇌하던 벨은 무언가에 머리를 얻어맞기라도 한 듯, 창백한 표정으로 정면을 응시했다.
 
 [[제목 없는 구절 145]]</tw-passagedata><tw-passagedata pid="86" name="제목 없는 구절 145" tags="vn" position="200,1800" size="100,100">벨: 거짓말을 하고... 아무도 모를 거라 생각했겠지만... 단 두 명은 진실을 알게 될 거야.
@@ -3362,7 +3373,8 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 [[제목 없는 구절 147]]</tw-passagedata><tw-passagedata pid="88" name="제목 없는 구절 147" tags="vn" position="400,1800" size="100,100">천천히 해가 바다를 향해 하강하고 있는 판타지 리조트 해변, 벨은 모두 앞에 섰다.
 
-[[제목 없는 구절 148]]</tw-passagedata><tw-passagedata pid="89" name="제목 없는 구절 148" tags="vn" position="500,1800" size="100,100">벨: 제가 지금부터, 귤복복 씨를 죽인 진짜 범인을 밝혀내겠어요.
+[[제목 없는 구절 148]]</tw-passagedata><tw-passagedata pid="89" name="제목 없는 구절 148" tags="vn" position="500,1800" size="100,100">&lt;span data-bx=&quot;벨:지목&quot;&gt;&lt;/span&gt;
+벨: 제가 지금부터, 귤복복 씨를 죽인 진짜 범인을 밝혀내겠어요.
 
 [[제목 없는 구절 149]]</tw-passagedata><tw-passagedata pid="90" name="제목 없는 구절 149" tags="vn" position="600,1800" size="100,100">귤복복: 벨 씨... 당신이 제일 나빠요...
 
@@ -3447,12 +3459,14 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 [[타이틀 화면으로 돌아가기-&gt;타이틀 화면]](set: $seen to it + (ds: 11))&lt;script&gt;if (window.BB) { BB.save(Array.from($seen)); }&lt;/script&gt;</tw-passagedata><tw-passagedata pid="119" name="제목 없는 구절 175" tags="vn" position="2200,1650" size="100,100">빛나: 미야비 씨, 사실은 요리 학원에 다녀보고 싶어, 사실은 인터넷으로는 레시피를 찾아본 적도 없고.
 
-[[제목 없는 구절 231]]</tw-passagedata><tw-passagedata pid="120" name="제목 없는 구절 176" tags="vn" position="700,1800" size="100,100">&lt;span data-stage=&quot;벨,루시아&quot;&gt;&lt;/span&gt;
+[[제목 없는 구절 231]]</tw-passagedata><tw-passagedata pid="120" name="제목 없는 구절 176" tags="vn" position="700,1800" size="100,100">&lt;span data-bx=&quot;벨:지목&quot;&gt;&lt;/span&gt;
+&lt;span data-stage=&quot;벨,루시아&quot;&gt;&lt;/span&gt;
 벨: 우선 루시아 씨, 당신은 거짓말을 하고 있어요, 그 포포. 포메라니안이 아니라... 스피츠예요.
 
 [[제목 없는 구절 177]]</tw-passagedata><tw-passagedata pid="121" name="제목 없는 구절 177" tags="vn" position="800,1800" size="100,100">그 순간, 루시아의 얼굴이 굳어졌다. 용의자들 사이에서 불안한 눈빛이 오갔다.
 
-[[제목 없는 구절 178]]</tw-passagedata><tw-passagedata pid="122" name="제목 없는 구절 178" tags="vn" position="900,1800" size="100,100">&lt;span data-stage=&quot;벨,빛나&quot;&gt;&lt;/span&gt;
+[[제목 없는 구절 178]]</tw-passagedata><tw-passagedata pid="122" name="제목 없는 구절 178" tags="vn" position="900,1800" size="100,100">&lt;span data-bx=&quot;벨:지목&quot;&gt;&lt;/span&gt;
+&lt;span data-stage=&quot;벨,빛나&quot;&gt;&lt;/span&gt;
 벨: 그리고 빛나 씨, 당신은 아침부터 계화떡 100개를 나눠줬지만, 사실 그건 블러핑이에요.
 
 [[제목 없는 구절 179]]</tw-passagedata><tw-passagedata pid="123" name="제목 없는 구절 179" tags="vn" position="1000,1800" size="100,100">빛나: 뭐라고?
@@ -3460,18 +3474,22 @@ Other properties and any right, title, and interest thereof and therein (intelle
 [[제목 없는 구절 180]]</tw-passagedata><tw-passagedata pid="124" name="제목 없는 구절 18" tags="confirm vn" position="1000,200" size="100,100">&lt;span data-bx=&quot;아스트라:노말&quot;&gt;&lt;/span&gt;
 11호: 아스트라 씨, 정신 차리세요 정신, 당신의 노래에는 비록 떨어지는 콘서트장의 로켓 추진기를 고치는 기능은 있어도, 죽은 사람을 되살리는 기능은 없단 말입니다! 그리고 수나 양을 바보라고 부르는 건 그만두시죠! 수나 양은 바보가 맞지만!
 
-[[제목 없는 구절 20]]</tw-passagedata><tw-passagedata pid="125" name="제목 없는 구절 180" tags="vn" position="1100,1800" size="100,100">벨: 사실은, 아이스박스 안에 있는 것까지 총 200개 준비해왔죠.
+[[제목 없는 구절 20]]</tw-passagedata><tw-passagedata pid="125" name="제목 없는 구절 180" tags="vn" position="1100,1800" size="100,100">&lt;span data-bx=&quot;벨:지목&quot;&gt;&lt;/span&gt;
+벨: 사실은, 아이스박스 안에 있는 것까지 총 200개 준비해왔죠.
 
 [[제목 없는 구절 181]]</tw-passagedata><tw-passagedata pid="126" name="제목 없는 구절 181" tags="vn" position="1175,1725" size="100,100">버니스: 혹시 빛나 씨는 가연성인 계화떡을 사용해 방화를 시도하려고 한 거야?
 
-[[제목 없는 구절 182]]</tw-passagedata><tw-passagedata pid="127" name="제목 없는 구절 182" tags="vn" position="1250,1800" size="100,100">&lt;span data-stage=&quot;벨,다이아린&quot;&gt;&lt;/span&gt;
+[[제목 없는 구절 182]]</tw-passagedata><tw-passagedata pid="127" name="제목 없는 구절 182" tags="vn" position="1250,1800" size="100,100">&lt;span data-bx=&quot;벨:지목&quot;&gt;&lt;/span&gt;
+&lt;span data-stage=&quot;벨,다이아린&quot;&gt;&lt;/span&gt;
 벨: 그뿐만 아니에요. 다이아린 씨 당신은 오늘 휴가를 내서 여기 왔다고 했지만, 그건 거짓말이에요.
 
 [[제목 없는 구절 183]]</tw-passagedata><tw-passagedata pid="128" name="제목 없는 구절 183" tags="vn" position="1325,1725" size="100,100">다이아린: 그건...!
 
-[[제목 없는 구절 184]]</tw-passagedata><tw-passagedata pid="129" name="제목 없는 구절 184" tags="vn" position="1375,1775" size="100,100">벨: 당신은 그냥 째고 온 겁니다. 아마 &#39;잘라봐~ 나 없어도 회사 돌아가나 한 번 봐~&#39;가 가능할 정도의 우수 사원이니까요.
+[[제목 없는 구절 184]]</tw-passagedata><tw-passagedata pid="129" name="제목 없는 구절 184" tags="vn" position="1375,1775" size="100,100">&lt;span data-bx=&quot;벨:지목&quot;&gt;&lt;/span&gt;
+벨: 당신은 그냥 째고 온 겁니다. 아마 &#39;잘라봐~ 나 없어도 회사 돌아가나 한 번 봐~&#39;가 가능할 정도의 우수 사원이니까요.
 
-[[제목 없는 구절 185]]</tw-passagedata><tw-passagedata pid="130" name="제목 없는 구절 185" tags="vn" position="1450,1725" size="100,100">&lt;span data-stage=&quot;벨,트리거&quot;&gt;&lt;/span&gt;
+[[제목 없는 구절 185]]</tw-passagedata><tw-passagedata pid="130" name="제목 없는 구절 185" tags="vn" position="1450,1725" size="100,100">&lt;span data-bx=&quot;벨:지목&quot;&gt;&lt;/span&gt;
+&lt;span data-stage=&quot;벨,트리거&quot;&gt;&lt;/span&gt;
 벨: 트리거 씨, 당신은 사실 저격수가 아니라 지정사수예요. 그리고 앨리스 씨는, 대칭에 집착하지만 본인은 오드아이죠.
 
 [[제목 없는 구절 252]]</tw-passagedata><tw-passagedata pid="131" name="제목 없는 구절 186" tags="vn" position="100,2000" size="100,100">&lt;span data-stage=&quot;벨,앨리스&quot;&gt;&lt;/span&gt;
@@ -3538,7 +3556,8 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 [[제목 없는 구절 206]]</tw-passagedata><tw-passagedata pid="154" name="제목 없는 구절 206" tags="vn" position="200,2200" size="100,100">클라렛: 경고합니다. 그만 떨어지십시오.
 
-[[제목 없는 구절 207]]</tw-passagedata><tw-passagedata pid="155" name="제목 없는 구절 207" tags="vn" position="300,2200" size="100,100">벨: 무슨 일이죠?!
+[[제목 없는 구절 207]]</tw-passagedata><tw-passagedata pid="155" name="제목 없는 구절 207" tags="vn" position="300,2200" size="100,100">&lt;span data-bx=&quot;벨:놀람&quot;&gt;&lt;/span&gt;
+벨: 무슨 일이죠?!
 
 [[제목 없는 구절 208]]</tw-passagedata><tw-passagedata pid="156" name="제목 없는 구절 208" tags="vn" position="400,2200" size="100,100">클라렛: 내 주식 말이야! 그만 떨어지라고!! 사람이 죽는다고...!!!! 
 
@@ -3578,7 +3597,8 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 [[제목 없는 구절 23]]</tw-passagedata><tw-passagedata pid="170" name="제목 없는 구절 220" tags="vn" position="1500,2150" size="100,100">클라렛: 앗?! 그렇다면 혹시 반대로 사셨나요? 다행...
 
-[[제목 없는 구절 221]]</tw-passagedata><tw-passagedata pid="171" name="제목 없는 구절 221" tags="vn" position="1600,2150" size="100,100">니콜: 차 한 대 값이 없어졌다고!! 차를 산거나 마찬가지라고!!!!
+[[제목 없는 구절 221]]</tw-passagedata><tw-passagedata pid="171" name="제목 없는 구절 221" tags="vn" position="1600,2150" size="100,100">&lt;span data-bx=&quot;니콜:당황&quot;&gt;&lt;/span&gt;
+니콜: 차 한 대 값이 없어졌다고!! 차를 산거나 마찬가지라고!!!!
 
 [[제목 없는 구절 222]]</tw-passagedata><tw-passagedata pid="172" name="제목 없는 구절 222" tags="ending" position="1700,2150" size="100,100">&lt;span data-ending=&quot;15&quot;&gt;&lt;/span&gt;
 `[END]`
@@ -3628,7 +3648,8 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 미야비와 빛나는 석양 쪽으로 천천히 걸어 사라졌다. 앞으로는 얼마나 더 많은 계화떡을 만들게 될까. 그 아무도 모르는 미래를 향해. 
 
-[[타이틀 화면으로 돌아가기-&gt;타이틀 화면]](set: $seen to it + (ds: 12))&lt;script&gt;if (window.BB) { BB.save(Array.from($seen)); }&lt;/script&gt;</tw-passagedata><tw-passagedata pid="187" name="제목 없는 구절 236" tags="vn" position="1775,1775" size="100,100">&lt;span data-stage=&quot;벨,아스트라&quot;&gt;&lt;/span&gt;
+[[타이틀 화면으로 돌아가기-&gt;타이틀 화면]](set: $seen to it + (ds: 12))&lt;script&gt;if (window.BB) { BB.save(Array.from($seen)); }&lt;/script&gt;</tw-passagedata><tw-passagedata pid="187" name="제목 없는 구절 236" tags="vn" position="1775,1775" size="100,100">&lt;span data-bx=&quot;벨:지목&quot;&gt;&lt;/span&gt;
+&lt;span data-stage=&quot;벨,아스트라&quot;&gt;&lt;/span&gt;
 벨: 그리고 아스트라 씨, 당신은 이미 동물을 죽인 적이 있는데, 거짓말을 했죠. 바로 북극곰 말입니다!
 
 [[제목 없는 구절 243]]</tw-passagedata><tw-passagedata pid="188" name="제목 없는 구절 237" tags="vn" position="1500,1050" size="100,100">벨: 네...?
@@ -3644,14 +3665,17 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 그렇게 벨은 철도안전법에 따라 1천만 데니의 과태료를 받게 되었다.
 
-[[타이틀 화면으로 돌아가기-&gt;타이틀 화면]](set: $seen to it + (ds: 7))&lt;script&gt;if (window.BB) { BB.save(Array.from($seen)); }&lt;/script&gt;</tw-passagedata><tw-passagedata pid="193" name="제목 없는 구절 241" tags="vn" position="1000,1150" size="100,100">벨: 웃기지 마세요! 당신의 총은 위험한 물건이에요! 그 총으로 귤복복 씨를 살해한 거 아닙니까!
+[[타이틀 화면으로 돌아가기-&gt;타이틀 화면]](set: $seen to it + (ds: 7))&lt;script&gt;if (window.BB) { BB.save(Array.from($seen)); }&lt;/script&gt;</tw-passagedata><tw-passagedata pid="193" name="제목 없는 구절 241" tags="vn" position="1000,1150" size="100,100">&lt;span data-bx=&quot;벨:지목&quot;&gt;&lt;/span&gt;
+벨: 웃기지 마세요! 당신의 총은 위험한 물건이에요! 그 총으로 귤복복 씨를 살해한 거 아닙니까!
 
 [[제목 없는 구절 242]]</tw-passagedata><tw-passagedata pid="194" name="제목 없는 구절 242" tags="confirm vn" position="1100,1150" size="100,100">트리거: 어쩔 수 없네, 비장의 수를 두도록 해야겠어. 누구도 반박할 수 없는 최고의 수를...
 [[제목 없는 구절 126]]</tw-passagedata><tw-passagedata pid="195" name="제목 없는 구절 243" tags="vn" position="1825,1725" size="100,100">아스트라: 그런...!
 
-[[제목 없는 구절 244]]</tw-passagedata><tw-passagedata pid="196" name="제목 없는 구절 244" tags="vn" position="1925,1775" size="100,100">벨: 왜 모두 저에게 거짓말을 하는지, 대체 왜 이렇게 증거가 많은지!
+[[제목 없는 구절 244]]</tw-passagedata><tw-passagedata pid="196" name="제목 없는 구절 244" tags="vn" position="1925,1775" size="100,100">&lt;span data-bx=&quot;벨:고뇌&quot;&gt;&lt;/span&gt;
+벨: 왜 모두 저에게 거짓말을 하는지, 대체 왜 이렇게 증거가 많은지!
 
-[[제목 없는 구절 245]]</tw-passagedata><tw-passagedata pid="197" name="제목 없는 구절 245" tags="vn" position="1975,1725" size="100,100">&lt;span data-stage=&quot;벨,레미엘&quot;&gt;&lt;/span&gt;
+[[제목 없는 구절 245]]</tw-passagedata><tw-passagedata pid="197" name="제목 없는 구절 245" tags="vn" position="1975,1725" size="100,100">&lt;span data-bx=&quot;벨:지목&quot;&gt;&lt;/span&gt;
+&lt;span data-stage=&quot;벨,레미엘&quot;&gt;&lt;/span&gt;
 벨: 그걸 설명할 수 있는 방법은... 오직 하나뿐입니다. 레미엘 씨.
 
 [[제목 없는 구절 246]]</tw-passagedata><tw-passagedata pid="198" name="제목 없는 구절 246" tags="vn" position="2050,1775" size="100,100">레미엘: 그만... 내가 전부 설명할게.
@@ -3668,7 +3692,8 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 [[제목 없는 구절 251]]</tw-passagedata><tw-passagedata pid="204" name="제목 없는 구절 251" tags="vn" position="2500,1800" size="100,100">레미엘: 다음은 자오 씨한테 &#39;자오 씨는 증명서 발급할 때 지문 찍히나요?&#39; 라고 물어봤어요! 정말 피도 눈물도 없는 사람!!
 
-[[제목 없는 구절 257]]</tw-passagedata><tw-passagedata pid="205" name="제목 없는 구절 252" tags="vn" position="1500,1775" size="100,100">&lt;span data-stage=&quot;벨,자오&quot;&gt;&lt;/span&gt;
+[[제목 없는 구절 257]]</tw-passagedata><tw-passagedata pid="205" name="제목 없는 구절 252" tags="vn" position="1500,1775" size="100,100">&lt;span data-bx=&quot;벨:지목&quot;&gt;&lt;/span&gt;
+&lt;span data-stage=&quot;벨,자오&quot;&gt;&lt;/span&gt;
 벨: 자오 씨, 당신은 시렌이 아닙니다. 
 
 [[제목 없는 구절 254]]</tw-passagedata><tw-passagedata pid="206" name="제목 없는 구절 253" tags="vn" position="1700,1150" size="100,100">벨: 어?
@@ -3683,7 +3708,8 @@ Other properties and any right, title, and interest thereof and therein (intelle
 벨: 이 게임을 왜 하고 계신거죠...?
 [[제목 없는 구절 293]]</tw-passagedata><tw-passagedata pid="207" name="제목 없는 구절 254" tags="vn" position="1575,1725" size="100,100">자오: 그렇다는 건...?!
 
-[[제목 없는 구절 255]]</tw-passagedata><tw-passagedata pid="208" name="제목 없는 구절 255" tags="vn" position="1625,1775" size="100,100">벨: 그냥 아니라고요. 이게 어딜 봐서 시렌이야.
+[[제목 없는 구절 255]]</tw-passagedata><tw-passagedata pid="208" name="제목 없는 구절 255" tags="vn" position="1625,1775" size="100,100">&lt;span data-bx=&quot;벨:지목&quot;&gt;&lt;/span&gt;
+벨: 그냥 아니라고요. 이게 어딜 봐서 시렌이야.
 
 [[제목 없는 구절 256]]</tw-passagedata><tw-passagedata pid="209" name="제목 없는 구절 256" tags="confirm vn" position="1700,1725" size="100,100">자오: 야
 
@@ -3705,15 +3731,18 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 [[제목 없는 구절 264]]</tw-passagedata><tw-passagedata pid="218" name="제목 없는 구절 264" tags="vn" position="3300,1800" size="100,100">루시아: 나한테는 &#39;으악! 에테리얼이다!&#39; 라는 소리를 했어, 내 가족같은 포포한테!!!
 
-[[제목 없는 구절 265]]</tw-passagedata><tw-passagedata pid="219" name="제목 없는 구절 265" tags="vn" position="3400,1800" size="100,100">벨: 그건 맞는 말 아닌가요...?
+[[제목 없는 구절 265]]</tw-passagedata><tw-passagedata pid="219" name="제목 없는 구절 265" tags="vn" position="3400,1800" size="100,100">&lt;span data-bx=&quot;벨:고뇌&quot;&gt;&lt;/span&gt;
+벨: 그건 맞는 말 아닌가요...?
 
 [[제목 없는 구절 266]]</tw-passagedata><tw-passagedata pid="220" name="제목 없는 구절 266" tags="vn" position="3500,1800" size="100,100">레미엘: 그래서, 어쩔 수 없었어! 우리 다 같이 합심해서 귤복복 씨를 죽인 거야... 빛나 씨가 계화떡의 혈당 스파이크로 복복 씨를 재우고, 다른 모두도 도왔지. 마지막으로 나는 복복 씨를 제압하기 위해 타우미엘로 120번 정도 벤 후에. 완전히 끝내기 위해, 사용했지. 가장 끔찍한 무기를...
 
-[[제목 없는 구절 267]]</tw-passagedata><tw-passagedata pid="221" name="제목 없는 구절 267" tags="vn" position="3600,1800" size="100,100">벨: 끔찍한 무기라면....
+[[제목 없는 구절 267]]</tw-passagedata><tw-passagedata pid="221" name="제목 없는 구절 267" tags="vn" position="3600,1800" size="100,100">&lt;span data-bx=&quot;벨:고뇌&quot;&gt;&lt;/span&gt;
+벨: 끔찍한 무기라면....
 
 [[제목 없는 구절 268]]</tw-passagedata><tw-passagedata pid="222" name="제목 없는 구절 268" tags="vn" position="3700,1800" size="100,100">레미엘: 선풍기... 선풍기야, 알다시피 선풍기를 틀고 자면 선풍기의 날이 산소 분자를 반으로 쪼개서 우릴 질식사하게 만들지!
 
-[[제목 없는 구절 269]]</tw-passagedata><tw-passagedata pid="223" name="제목 없는 구절 269" tags="vn" position="3800,1800" size="100,100">벨: 그런 잔인한!!
+[[제목 없는 구절 269]]</tw-passagedata><tw-passagedata pid="223" name="제목 없는 구절 269" tags="vn" position="3800,1800" size="100,100">&lt;span data-bx=&quot;벨:놀람&quot;&gt;&lt;/span&gt;
+벨: 그런 잔인한!!
 
 [[제목 없는 구절 270]]</tw-passagedata><tw-passagedata pid="224" name="제목 없는 구절 27" tags="vn" position="700,500" size="100,100">벨: ...?
 
@@ -3737,16 +3766,20 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 [[제목 없는 구절 277]]</tw-passagedata><tw-passagedata pid="232" name="제목 없는 구절 277" tags="vn" position="4700,1800" size="100,100">시드: 확실히 그건 너무할지도...
 
-[[제목 없는 구절 278]]</tw-passagedata><tw-passagedata pid="233" name="제목 없는 구절 278" tags="vn" position="4700,1900" size="100,100">&lt;span data-stage=&quot;벨&quot;&gt;&lt;/span&gt;
+[[제목 없는 구절 278]]</tw-passagedata><tw-passagedata pid="233" name="제목 없는 구절 278" tags="vn" position="4700,1900" size="100,100">&lt;span data-bx=&quot;벨:고뇌&quot;&gt;&lt;/span&gt;
+&lt;span data-stage=&quot;벨&quot;&gt;&lt;/span&gt;
 그렇게, 한차례 폭풍이 휩쓸고 지나간 뒤, 해가 완전히 져 버린 판타지 리조트 한가운데를 걸어가는 벨이 있었다.
 
-[[제목 없는 구절 279]]</tw-passagedata><tw-passagedata pid="234" name="제목 없는 구절 279" tags="vn" position="4700,2000" size="100,100">벨: 신이시여, 탐정으로 살아온 지난 135년간, 이런 결정을 내린 적이 없습니다. 세상에는 흑과 백, 두가지만 있다고 생각했죠.
+[[제목 없는 구절 279]]</tw-passagedata><tw-passagedata pid="234" name="제목 없는 구절 279" tags="vn" position="4700,2000" size="100,100">&lt;span data-bx=&quot;벨:고뇌&quot;&gt;&lt;/span&gt;
+벨: 신이시여, 탐정으로 살아온 지난 135년간, 이런 결정을 내린 적이 없습니다. 세상에는 흑과 백, 두가지만 있다고 생각했죠.
 
 [[제목 없는 구절 280]]</tw-passagedata><tw-passagedata pid="235" name="제목 없는 구절 28" tags="vn" position="800,500" size="100,100">레미엘: 후후, 혹시 프루누스 페르시카라는 말을 들어보셨나요? 정말 마법같은 단어에요.
 
-[[제목 없는 구절 29]]</tw-passagedata><tw-passagedata pid="236" name="제목 없는 구절 280" tags="vn" position="4700,2100" size="100,100">벨: 하지만 저는, 인간의 영혼에 난 균열을 봤습니다.
+[[제목 없는 구절 29]]</tw-passagedata><tw-passagedata pid="236" name="제목 없는 구절 280" tags="vn" position="4700,2100" size="100,100">&lt;span data-bx=&quot;벨:고뇌&quot;&gt;&lt;/span&gt;
+벨: 하지만 저는, 인간의 영혼에 난 균열을 봤습니다.
 
-[[제목 없는 구절 281]]</tw-passagedata><tw-passagedata pid="237" name="제목 없는 구절 281" tags="vn" position="4700,2200" size="100,100">벨: 많은 이들의 무너진 삶, 고통과 분노
+[[제목 없는 구절 281]]</tw-passagedata><tw-passagedata pid="237" name="제목 없는 구절 281" tags="vn" position="4700,2200" size="100,100">&lt;span data-bx=&quot;벨:고뇌&quot;&gt;&lt;/span&gt;
+벨: 많은 이들의 무너진 삶, 고통과 분노
 
 [[제목 없는 구절 282]]</tw-passagedata><tw-passagedata pid="238" name="제목 없는 구절 282" tags="vn" position="4700,2300" size="100,100">그 순간, 벨이 모두를 향해 뒤를 돌았다.
 
@@ -3809,7 +3842,8 @@ Other properties and any right, title, and interest thereof and therein (intelle
 [[제목 없는 구절 31]]</tw-passagedata><tw-passagedata pid="259" name="제목 없는 구절 300" tags="vn" position="1900,1450" size="100,100">&lt;span data-bx=&quot;벨:노말&quot;&gt;&lt;/span&gt;
 반악: 떠나간 제자의 조언을 듣지 않은 것이지...
 
-[[제목 없는 구절 301]]</tw-passagedata><tw-passagedata pid="260" name="제목 없는 구절 301" tags="vn" position="2000,1450" size="100,100">벨: 그럴수가...! 그 조언이 뭐였길래.
+[[제목 없는 구절 301]]</tw-passagedata><tw-passagedata pid="260" name="제목 없는 구절 301" tags="vn" position="2000,1450" size="100,100">&lt;span data-bx=&quot;벨:놀람&quot;&gt;&lt;/span&gt;
+벨: 그럴수가...! 그 조언이 뭐였길래.
 
 [[제목 없는 구절 302]]</tw-passagedata><tw-passagedata pid="261" name="제목 없는 구절 302" tags="vn" position="2100,1450" size="100,100">반악: 모르지, 안 들었거든.
 
@@ -3841,7 +3875,8 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 [[제목 없는 구절 311]]</tw-passagedata><tw-passagedata pid="271" name="제목 없는 구절 311" tags="vn" position="2200,1350" size="100,100">자오: ?!
 
-[[제목 없는 구절 312]]</tw-passagedata><tw-passagedata pid="272" name="제목 없는 구절 312" tags="vn" position="2300,1350" size="100,100">&lt;span data-stage=&quot;벨,다이아린&quot;&gt;&lt;/span&gt;
+[[제목 없는 구절 312]]</tw-passagedata><tw-passagedata pid="272" name="제목 없는 구절 312" tags="vn" position="2300,1350" size="100,100">&lt;span data-bx=&quot;벨:지목&quot;&gt;&lt;/span&gt;
+&lt;span data-stage=&quot;벨,다이아린&quot;&gt;&lt;/span&gt;
 벨: 토끼와 로봇... 다이아린 씨, 당신의 알리바이를 증명할 사람은 아무도 없습니다! 당신을 체포하겠습니다.
 
 [[제목 없는 구절 313]]</tw-passagedata><tw-passagedata pid="273" name="제목 없는 구절 313" tags="ending" position="2400,1350" size="100,100">&lt;span data-ending=&quot;9&quot;&gt;&lt;/span&gt;
@@ -3854,10 +3889,12 @@ Other properties and any right, title, and interest thereof and therein (intelle
 [[제목 없는 구절 33]]</tw-passagedata><tw-passagedata pid="276" name="제목 없는 구절 33" tags="vn" position="1300,500" size="100,100">&lt;span data-bx=&quot;아리아:미소&quot;&gt;&lt;/span&gt;
 아리아: 프루누스 페르시카는 복숭아의 학명이라고 해요.
 
-[[제목 없는 구절 34]]</tw-passagedata><tw-passagedata pid="277" name="제목 없는 구절 34" tags="vn-choice" position="1400,500" size="100,100">벨: 그렇구나... 혼자서 케이크를 만들고 있었다라...
+[[제목 없는 구절 34]]</tw-passagedata><tw-passagedata pid="277" name="제목 없는 구절 34" tags="vn-choice" position="1400,500" size="100,100">&lt;span data-bx=&quot;벨:고뇌&quot;&gt;&lt;/span&gt;
+벨: 그렇구나... 혼자서 케이크를 만들고 있었다라...
 
 [[범인으로 몬다-&gt;제목 없는 구절 35]]
-[[추궁한다-&gt;제목 없는 구절 36]]</tw-passagedata><tw-passagedata pid="278" name="제목 없는 구절 35" tags="vn" position="1500,450" size="100,100">&lt;span data-stage=&quot;벨,레미엘&quot;&gt;&lt;/span&gt;
+[[추궁한다-&gt;제목 없는 구절 36]]</tw-passagedata><tw-passagedata pid="278" name="제목 없는 구절 35" tags="vn" position="1500,450" size="100,100">&lt;span data-bx=&quot;벨:지목&quot;&gt;&lt;/span&gt;
+&lt;span data-stage=&quot;벨,레미엘&quot;&gt;&lt;/span&gt;
 벨: 레미엘, 내 생각에는 네가 범인이야! 이미 데이트폭력 전과도 있고, 시간정지 능력도 있으니 가장 의심스러운 건 당연히 너잖아!
 
 [[제목 없는 구절 41]]</tw-passagedata><tw-passagedata pid="279" name="제목 없는 구절 36" tags="vn" position="1500,550" size="100,100">&lt;span data-bx=&quot;아리아:미소&quot;&gt;&lt;/span&gt;
@@ -3948,23 +3985,27 @@ Other properties and any right, title, and interest thereof and therein (intelle
 [[제목 없는 구절 64]]</tw-passagedata><tw-passagedata pid="310" name="제목 없는 구절 64" tags="vn-choice" position="1900,700" size="100,100">벨: 야나기가... 말대꾸?
 
 [[범인으로 몬다-&gt;제목 없는 구절 65]]
-[[추궁한다-&gt;제목 없는 구절 82]]</tw-passagedata><tw-passagedata pid="311" name="제목 없는 구절 65" tags="vn" position="2000,650" size="100,100">&lt;span data-stage=&quot;벨,아스트라&quot;&gt;&lt;/span&gt;
+[[추궁한다-&gt;제목 없는 구절 82]]</tw-passagedata><tw-passagedata pid="311" name="제목 없는 구절 65" tags="vn" position="2000,650" size="100,100">&lt;span data-bx=&quot;벨:지목&quot;&gt;&lt;/span&gt;
+&lt;span data-stage=&quot;벨,아스트라&quot;&gt;&lt;/span&gt;
 벨: 아스트라 씨, 당신이 범인이에요, 당신은 스타 가수... 스트레스도 상당하고 안티팬도 많을 거예요. 게다가 에테르 에너지를 조종하는, 사람만한 금속 마이크를 상시 들고 다니는 위험한 사람이죠. 당신이 귤복복을 죽인 거 아닙니까?!
 
 [[제목 없는 구절 66]]</tw-passagedata><tw-passagedata pid="312" name="제목 없는 구절 66" tags="vn" position="2100,650" size="100,100">아스트라: 이건... 이건 말도 안 돼... 사람의 생명은 소중해! 내가 어떻게 사람을 죽일 수 있겠어!?
 
-[[제목 없는 구절 67]]</tw-passagedata><tw-passagedata pid="313" name="제목 없는 구절 67" tags="vn" position="2200,650" size="100,100">벨: 아스트라 씨, 당신은 아주 큰 말실수를 했습니다...
+[[제목 없는 구절 67]]</tw-passagedata><tw-passagedata pid="313" name="제목 없는 구절 67" tags="vn" position="2200,650" size="100,100">&lt;span data-bx=&quot;벨:지목&quot;&gt;&lt;/span&gt;
+벨: 아스트라 씨, 당신은 아주 큰 말실수를 했습니다...
 
 [[제목 없는 구절 68]]</tw-passagedata><tw-passagedata pid="314" name="제목 없는 구절 68" tags="vn" position="2300,650" size="100,100">아스트라: ...?
 
-[[제목 없는 구절 69]]</tw-passagedata><tw-passagedata pid="315" name="제목 없는 구절 69" tags="vn" position="2400,650" size="100,100">벨: 사람의 생명은 소중하다고요...? 맞는 말이죠... 하지만 귤복복 씨는 사람이 아닌 호랑이! 그것도 귤과 혼혈입니다! 공동에서 생존한 전적이 있는 아스트라씨는 호랑이 고기라도 맛있게 드실 수 있겠죠.
+[[제목 없는 구절 69]]</tw-passagedata><tw-passagedata pid="315" name="제목 없는 구절 69" tags="vn" position="2400,650" size="100,100">&lt;span data-bx=&quot;벨:지목&quot;&gt;&lt;/span&gt;
+벨: 사람의 생명은 소중하다고요...? 맞는 말이죠... 하지만 귤복복 씨는 사람이 아닌 호랑이! 그것도 귤과 혼혈입니다! 공동에서 생존한 전적이 있는 아스트라씨는 호랑이 고기라도 맛있게 드실 수 있겠죠.
 
 [[제목 없는 구절 70]]</tw-passagedata><tw-passagedata pid="316" name="제목 없는 구절 7" tags="vn" position="600,200" size="100,100">&lt;span data-bx=&quot;야나기:진지&quot;&gt;&lt;/span&gt;
 야나기: 그러니 이 사건의 진범을 밝혀낼 수 있는 사람은 바로 벨 씨 당신 뿐이에요. 제가 용의자들을 추려놨으니, 한 명씩 대화를 나눠 정보를 모은 후, 진범을 밝혀내도록 하죠.
 
 [[제목 없는 구절 16]]</tw-passagedata><tw-passagedata pid="317" name="제목 없는 구절 70" tags="vn" position="2500,650" size="100,100">아스트라: ?!
 
-[[제목 없는 구절 71]]</tw-passagedata><tw-passagedata pid="318" name="제목 없는 구절 71" tags="vn" position="2600,650" size="100,100">벨: 인간의 생명을 소중히 여긴다는 것... 달리 말하면 인간을 위해 호랑이를 사냥해서 스테이크로 만드는 것도 두렵지 않다는 겁니다...! 아스트라 씨! 
+[[제목 없는 구절 71]]</tw-passagedata><tw-passagedata pid="318" name="제목 없는 구절 71" tags="vn" position="2600,650" size="100,100">&lt;span data-bx=&quot;벨:지목&quot;&gt;&lt;/span&gt;
+벨: 인간의 생명을 소중히 여긴다는 것... 달리 말하면 인간을 위해 호랑이를 사냥해서 스테이크로 만드는 것도 두렵지 않다는 겁니다...! 아스트라 씨! 
 
 [[제목 없는 구절 72]]</tw-passagedata><tw-passagedata pid="319" name="제목 없는 구절 72" tags="vn" position="2700,650" size="100,100">아스트라: 말도 안 되는 소리야! 벨...
 
