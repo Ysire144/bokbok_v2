@@ -312,7 +312,7 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 
 :: 제목 없는 구절 108 [vn] {"position":"900,900","size":"100,100"}
-육포...? 벨은 순간 에테리얼이 간식을 먹나? 라는 생각을 했다. 내가 간식인가? 그것도 아니면 진짜 포메라니안 희귀종인가?
+벨은 순간 에테리얼이 간식을 먹나? 라는 생각을 했다. 내가 간식인가? 그것도 아니면 진짜 포메라니안 희귀종인가?
 
 [[제목 없는 구절 109]]
 
@@ -510,7 +510,7 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 :: 제목 없는 구절 133 [vn] {"position":"1100,1050","size":"100,100"}
 <span data-stage="벨,시드"></span>
-벨: 그러면 시드 씨를 추궁해야겠어요. 시드 씨, 사람을 죽이는 것을 어떻게 생각하죠?
+벨: 시드 씨, 사람을 죽이는 것을 어떻게 생각하죠?
 
 [[시드 추가1]]
 
@@ -540,7 +540,6 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 
 :: 시드 추가5 [vn] {"position":"1400,1050","size":"100,100"}
-<span data-bx="시드:고민"></span>
 벨: 그냥 혹시나 해서 물어보는 건데요, 시드 씨는 트롤리 딜레마 아시나요? 레버를 놔두면 5명이 죽고, 레버를 당기면 1명이 죽는 그 문제요. 시드 씨라면 뭐라고 답할지 궁금해서.
 [[제목 없는 구절 130]]
 
@@ -1118,6 +1117,7 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 
 :: 제목 없는 구절 208 [vn] {"position":"400,2200","size":"100,100"}
+<span data-bx="벨:놀람"></span>
 클라렛: 내 주식 말이야! 그만 떨어지라고!! 사람이 죽는다고...!!!! 
 
 [[제목 없는 구절 209]]
@@ -1951,7 +1951,7 @@ Other properties and any right, title, and interest thereof and therein (intelle
 :: 제목 없는 구절 313 [ending] {"position":"2400,1350","size":"100,100"}
 <span data-ending="9"></span>
 `[END]`
-그렇게 다이아린은 체포되었다. 범행 시각 다이아린의 위치를 증명해줄 사람이 없었기 때문이었다.
+그렇게 다이아린은 체포되었다.
 
 [[타이틀 화면으로 돌아가기->타이틀 화면]](set: $seen to it + (ds: 9))<script>if (window.BB) { BB.save(Array.from($seen)); }</script>
 
