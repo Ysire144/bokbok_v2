@@ -1045,8 +1045,8 @@ body.tt-on tw-passage { display: none; }
     '레미엘': { imgs: ['진지'], base: '진지', ar: 0.558, h: 286.2, ex: 0.4873, ey: 0.1094, fx: 73.9, fy: -83.0 },
     '수나': { imgs: ['얼굴붉힘'], base: '얼굴붉힘', ar: 0.5583, h: 185.7, ex: 0.5348, ey: 0.1902, fx: 77.2, fy: -54.2 },
     '시드': { imgs: ['노말'], base: '노말', ar: 0.5583, h: 257.7, ex: 0.5042, ey: 0.1354, fx: 79.6, fy: -64.7 },
-    '아스트라': { imgs: ['노말'], base: '노말', ar: 0.5583, h: 245.0, ex: 0.508, ey: 0.1611, fx: 71.4, fy: -86.8 },
-    '야나기': { imgs: ['진지'], base: '진지', ar: 0.558, h: 272.2, ex: 0.506, ey: 0.1242, fx: 77.0, fy: -78.8 },
+    '아스트라': { imgs: ['진지', '노말'], base: '진지', ar: 0.5583, h: 245.0, ex: 0.508, ey: 0.1611, fx: 71.4, fy: -86.8 },
+    '야나기': { imgs: ['안경없음', '안경없음당황', '진지'], base: '안경없음', ar: 0.558, h: 272.2, ex: 0.506, ey: 0.1242, fx: 77.0, fy: -78.8, adj: { '안경없음': [0.9885, 0.0028, 0], '안경없음당황': [0.9883, 0.0028, 0] } },
     '빛나': { imgs: ['노말'], base: '노말', ar: 0.5583, h: 263.5, ex: 0.4983, ey: 0.1424, fx: 75.4, fy: -67.2 },
     '자오': { imgs: ['노말'], base: '노말', ar: 0.5585, h: 196.5, ex: 0.5007, ey: 0.2324, fx: 76.8, fy: -18.8 },
     '클라렛': { imgs: ['진지'], base: '진지', ar: 0.558, h: 280.5, ex: 0.5468, ey: 0.1479, fx: 80.6, fy: -62.5 },
@@ -1059,13 +1059,13 @@ body.tt-on tw-passage { display: none; }
     '이블린': { imgs: ['진지'], base: '진지', ar: 0.558, h: 280.0, ex: 0.5211, ey: 0.1327, fx: 77.5, fy: -77.8 },
     '미야비': { imgs: ['진지'], base: '진지', ar: 0.558, h: 268.9, ex: 0.5025, ey: 0.1742, fx: 78.0, fy: -71.8 },
     '남궁우': { imgs: ['노말'], base: '노말', ar: 0.5583, h: 238.7, ex: 0.6549, ey: 0.1919, fx: 77.2, fy: -60.3 },
-    '아리아': { imgs: ['진지'], base: '진지', ar: 0.558, h: 256.7, ex: 0.4771, ey: 0.1558, fx: 73.4, fy: -63.8 },
+    '아리아': { imgs: ['진지', '미소'], base: '진지', ar: 0.558, h: 256.7, ex: 0.4771, ey: 0.1558, fx: 73.4, fy: -63.8, adj: { '미소': [0.988, 0.0031, 0] } },
     '록시': { imgs: ['노말'], base: '노말', ar: 0.5583, h: 245.0, ex: 0.5087, ey: 0.1878, fx: 74.8, fy: -55.8 },
     '벨리나': { imgs: ['노말'], base: '노말', ar: 0.5583, h: 276.1, ex: 0.5157, ey: 0.1306, fx: 73.3, fy: -86.0, flip: true },
     '버니스': { imgs: ['진지'], base: '진지', ar: 0.5585, h: 246.0, ex: 0.5256, ey: 0.1638, fx: 73.7, fy: -74.2 },
     '니콜': { imgs: ['진지'], base: '진지', ar: 0.5585, h: 211.4, ex: 0.4968, ey: 0.1991, fx: 76.4, fy: -64.5 },
     '포포': { imgs: ['진지'], base: '진지', ar: 1.0, h: 179.1, ex: 0.5069, ey: 0.4764, fx: 82.1, fy: -25.3 },
-    '시시아': { imgs: ['노말'], base: '노말', ar: 0.5583, h: 242.5, ex: 0.5082, ey: 0.1385, fx: 74.9, fy: -67.4 },
+    '시시아': { imgs: ['울상', '노말'], base: '울상', ar: 0.5583, h: 242.5, ex: 0.5082, ey: 0.1385, fx: 74.9, fy: -67.4 },
     '11호': { imgs: ['진지'], base: '진지', ar: 0.5585, h: 250.0, ex: 0.492, ey: 0.1739, fx: 73.8, fy: -68.8 },
     '유즈하': { imgs: ['진지'], base: '진지', ar: 0.5585, h: 205.0, ex: 0.5201, ey: 0.2043, fx: 78.5, fy: -64.4 },
     '의현': { imgs: ['무표정'], base: '무표정', ar: 0.5585, h: 269.5, ex: 0.5017, ey: 0.1546, fx: 72.1, fy: -83.3 },
@@ -3205,10 +3205,12 @@ Other properties and any right, title, and interest thereof and therein (intelle
 수나: 엣...?! 뭐라고요?
 
 [[시작7]]</tw-passagedata><tw-passagedata pid="35" name="제목 없는 구절 1" tags="vn" position="900,100" size="100,100">&lt;span data-stage=&quot;벨,야나기&quot;&gt;&lt;/span&gt;
+&lt;span data-bx=&quot;야나기:진지&quot;&gt;&lt;/span&gt;
 야나기: 잠시만요, 이런 상황일수록 침착해야 합니다. 우선 벨 씨, 벨 씨가 이 사건의 수사를 맡아주시는 게 좋겠어요. 
 
 [[제목 없는 구절 2]]</tw-passagedata><tw-passagedata pid="36" name="제목 없는 구절 10" tags="confirm vn" position="1200,200" size="100,100">&lt;span data-stage=&quot;벨,야나기&quot;&gt;&lt;/span&gt;
 &lt;span data-bx=&quot;벨:노말&quot;&gt;&lt;/span&gt;
+&lt;span data-bx=&quot;야나기:진지&quot;&gt;&lt;/span&gt;
 벨: 저어... 근데 신경쓰이는 게 있어서 그런데...
 
 [[제목 없는 구절 11]]</tw-passagedata><tw-passagedata pid="37" name="제목 없는 구절 100" tags="vn" position="25,850" size="100,100">&lt;span data-stage=&quot;벨,루시아&quot;&gt;&lt;/span&gt;
@@ -3236,6 +3238,7 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 [[범인으로 몬다-&gt;제목 없는 구절 112]]
 [[추궁한다-&gt;제목 없는 구절 117]]</tw-passagedata><tw-passagedata pid="47" name="제목 없는 구절 11" tags="confirm vn" position="1300,200" size="100,100">&lt;span data-bx=&quot;벨:노말&quot;&gt;&lt;/span&gt;
+&lt;span data-bx=&quot;야나기:진지&quot;&gt;&lt;/span&gt;
 야나기: 무슨 일이죠?
 
 [[제목 없는 구절 12]]</tw-passagedata><tw-passagedata pid="48" name="제목 없는 구절 110" tags="vn" position="1400,850" size="100,100">벨: 아니 저는 장사할 생각이 없는...
@@ -3269,6 +3272,7 @@ Other properties and any right, title, and interest thereof and therein (intelle
 그래도 어쩌면, 목숨을 바쳐가면서까지 복복이의 억울함을 풀어주고자 한 벨의 의지는 모두에게 닿았을지 모른다.
 
 [[타이틀 화면으로 돌아가기-&gt;타이틀 화면]](set: $seen to it + (ds: 6))&lt;script&gt;if (window.BB) { BB.save(Array.from($seen)); }&lt;/script&gt;</tw-passagedata><tw-passagedata pid="58" name="제목 없는 구절 12" tags="confirm vn" position="1400,200" size="100,100">&lt;span data-bx=&quot;벨:노말&quot;&gt;&lt;/span&gt;
+&lt;span data-bx=&quot;야나기:진지&quot;&gt;&lt;/span&gt;
 벨: 야나기 씨는 안경을 좀 벗어 주시면 안 될까요? 마음에 안 들어서요...
 
 [[제목 없는 구절 13]]</tw-passagedata><tw-passagedata pid="59" name="제목 없는 구절 120" tags="vn" position="100,1100" size="100,100">&lt;span data-stage=&quot;벨,시드&quot;&gt;&lt;/span&gt;
@@ -3333,7 +3337,8 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 [[제목 없는 구절 139]]</tw-passagedata><tw-passagedata pid="79" name="제목 없는 구절 139" tags="vn" position="500,1400" size="100,100">자오: 벨, 나는 토끼 시렌이야. 엄연히 세금 내고 산다고.
 
-[[제목 없는 구절 140]]</tw-passagedata><tw-passagedata pid="80" name="제목 없는 구절 14" tags="vn" position="800,200" size="100,100">야나기: 그렇습니다만...?
+[[제목 없는 구절 140]]</tw-passagedata><tw-passagedata pid="80" name="제목 없는 구절 14" tags="vn" position="800,200" size="100,100">&lt;span data-bx=&quot;야나기:진지&quot;&gt;&lt;/span&gt;
+야나기: 그렇습니다만...?
 
 [[제목 없는 구절 17]]</tw-passagedata><tw-passagedata pid="81" name="제목 없는 구절 140" tags="vn" position="600,1400" size="100,100">&lt;span data-stage=&quot;벨,다이아린&quot;&gt;&lt;/span&gt;
 벨: 다이아린 씨, 자오 씨랑 다이아린 씨는 귤복복 씨가 살해당하던 오전 10시에 뭘 하고 있었나요?
@@ -3398,7 +3403,8 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 [[제목 없는 구절 159]]</tw-passagedata><tw-passagedata pid="101" name="제목 없는 구절 159" tags="vn" position="900,1600" size="100,100">고아로 길러져, 운규산에 발을 들이고. 마당에 있던 떡을 처음 만지고 계화떡의 떡주로 선택된 날.
 
-[[제목 없는 구절 160]]</tw-passagedata><tw-passagedata pid="102" name="제목 없는 구절 16" tags="vn" position="700,200" size="100,100">아스트라: 잠시만, 지금 심각하고 위험한 상황인 거 맞지...?
+[[제목 없는 구절 160]]</tw-passagedata><tw-passagedata pid="102" name="제목 없는 구절 16" tags="vn" position="700,200" size="100,100">&lt;span data-bx=&quot;야나기:진지&quot;&gt;&lt;/span&gt;
+아스트라: 잠시만, 지금 심각하고 위험한 상황인 거 맞지...?
 
 [[제목 없는 구절 14]]</tw-passagedata><tw-passagedata pid="103" name="제목 없는 구절 160" tags="vn" position="1000,1600" size="100,100">떡주의 운명에서 벗어나게 하기 위해 오빠 엽석연이 칭송회에 들어갔던 일.
 
@@ -3421,6 +3427,7 @@ Other properties and any right, title, and interest thereof and therein (intelle
 [[제목 없는 구절 169]]</tw-passagedata><tw-passagedata pid="112" name="제목 없는 구절 169" tags="vn" position="1900,1600" size="100,100">빛나: 계화떡...이 없어도 살아갈 수 있는 거야?
 
 [[제목 없는 구절 170]]</tw-passagedata><tw-passagedata pid="113" name="제목 없는 구절 17" tags="vn" position="900,200" size="100,100">&lt;span data-bx=&quot;아스트라:노말&quot;&gt;&lt;/span&gt;
+&lt;span data-bx=&quot;야나기:진지&quot;&gt;&lt;/span&gt;
 아스트라: 그럼 내가 노래를 부를게, 내 노래에는 에테르 물질을 공명시키는 힘이 있거든
 
 [[제목 없는 구절 18]]</tw-passagedata><tw-passagedata pid="114" name="제목 없는 구절 170" tags="vn" position="2000,1600" size="100,100">네코미야: 미야비 씨가 미각사냥꾼이었던가...?
@@ -3827,6 +3834,7 @@ Other properties and any right, title, and interest thereof and therein (intelle
 [[제목 없는 구절 309]]</tw-passagedata><tw-passagedata pid="268" name="제목 없는 구절 309" tags="vn" position="2000,1350" size="100,100">반악: ?!
 
 [[제목 없는 구절 310]]</tw-passagedata><tw-passagedata pid="269" name="제목 없는 구절 31" tags="vn" position="1100,500" size="100,100">&lt;span data-stage=&quot;벨,아리아&quot;&gt;&lt;/span&gt;
+&lt;span data-bx=&quot;아리아:미소&quot;&gt;&lt;/span&gt;
 아리아: 벨 씨, 제 전자 두뇌가 분석한 결과 10시경에는 혼자 복숭아 케이크를 만들고 있었다고 하네요.
 
 [[제목 없는 구절 32]]</tw-passagedata><tw-passagedata pid="270" name="제목 없는 구절 310" tags="vn" position="2100,1350" size="100,100">다이아린: ?!
@@ -3840,9 +3848,11 @@ Other properties and any right, title, and interest thereof and therein (intelle
 `[END]`
 그렇게 다이아린은 체포되었다. 범행 시각 다이아린의 위치를 증명해줄 사람이 없었기 때문이었다.
 
-[[타이틀 화면으로 돌아가기-&gt;타이틀 화면]](set: $seen to it + (ds: 9))&lt;script&gt;if (window.BB) { BB.save(Array.from($seen)); }&lt;/script&gt;</tw-passagedata><tw-passagedata pid="274" name="제목 없는 구절 314" tags="" position="775,2675" size="100,100"></tw-passagedata><tw-passagedata pid="275" name="제목 없는 구절 32" tags="vn" position="1200,500" size="100,100">벨: 아리아?
+[[타이틀 화면으로 돌아가기-&gt;타이틀 화면]](set: $seen to it + (ds: 9))&lt;script&gt;if (window.BB) { BB.save(Array.from($seen)); }&lt;/script&gt;</tw-passagedata><tw-passagedata pid="274" name="제목 없는 구절 314" tags="" position="775,2675" size="100,100"></tw-passagedata><tw-passagedata pid="275" name="제목 없는 구절 32" tags="vn" position="1200,500" size="100,100">&lt;span data-bx=&quot;아리아:미소&quot;&gt;&lt;/span&gt;
+벨: 아리아?
 
-[[제목 없는 구절 33]]</tw-passagedata><tw-passagedata pid="276" name="제목 없는 구절 33" tags="vn" position="1300,500" size="100,100">아리아: 프루누스 페르시카는 복숭아의 학명이라고 해요.
+[[제목 없는 구절 33]]</tw-passagedata><tw-passagedata pid="276" name="제목 없는 구절 33" tags="vn" position="1300,500" size="100,100">&lt;span data-bx=&quot;아리아:미소&quot;&gt;&lt;/span&gt;
+아리아: 프루누스 페르시카는 복숭아의 학명이라고 해요.
 
 [[제목 없는 구절 34]]</tw-passagedata><tw-passagedata pid="277" name="제목 없는 구절 34" tags="vn-choice" position="1400,500" size="100,100">벨: 그렇구나... 혼자서 케이크를 만들고 있었다라...
 
@@ -3850,7 +3860,8 @@ Other properties and any right, title, and interest thereof and therein (intelle
 [[추궁한다-&gt;제목 없는 구절 36]]</tw-passagedata><tw-passagedata pid="278" name="제목 없는 구절 35" tags="vn" position="1500,450" size="100,100">&lt;span data-stage=&quot;벨,레미엘&quot;&gt;&lt;/span&gt;
 벨: 레미엘, 내 생각에는 네가 범인이야! 이미 데이트폭력 전과도 있고, 시간정지 능력도 있으니 가장 의심스러운 건 당연히 너잖아!
 
-[[제목 없는 구절 41]]</tw-passagedata><tw-passagedata pid="279" name="제목 없는 구절 36" tags="vn" position="1500,550" size="100,100">벨: 왜 복숭아 케이크였던 거야? 
+[[제목 없는 구절 41]]</tw-passagedata><tw-passagedata pid="279" name="제목 없는 구절 36" tags="vn" position="1500,550" size="100,100">&lt;span data-bx=&quot;아리아:미소&quot;&gt;&lt;/span&gt;
+벨: 왜 복숭아 케이크였던 거야? 
 
 [[제목 없는 구절 37]]</tw-passagedata><tw-passagedata pid="280" name="제목 없는 구절 37" tags="vn" position="1600,550" size="100,100">레미엘: 벨 씨... 혹시 곰 세 마리와 늑대 이야기를 들어보신 적 있나요?
 
@@ -3906,26 +3917,33 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 [[제목 없는 구절 54]]</tw-passagedata><tw-passagedata pid="299" name="제목 없는 구절 54" tags="vn" position="900,700" size="100,100">벨: 야나기 씨, 안경 벗어주시겠어요?
 
-[[제목 없는 구절 55]]</tw-passagedata><tw-passagedata pid="300" name="제목 없는 구절 55" tags="vn" position="1000,700" size="100,100">야나기: 네...? 그치만 이미 벗었는데... 
+[[제목 없는 구절 55]]</tw-passagedata><tw-passagedata pid="300" name="제목 없는 구절 55" tags="vn" position="1000,700" size="100,100">&lt;span data-bx=&quot;야나기:안경없음당황&quot;&gt;&lt;/span&gt;
+야나기: 네...? 그치만 이미 벗었는데... 
 
-[[제목 없는 구절 56]]</tw-passagedata><tw-passagedata pid="301" name="제목 없는 구절 56" tags="vn" position="1100,700" size="100,100">벨: 알겠으니까 빨리 안경 벗으세요.
+[[제목 없는 구절 56]]</tw-passagedata><tw-passagedata pid="301" name="제목 없는 구절 56" tags="vn" position="1100,700" size="100,100">&lt;span data-bx=&quot;야나기:안경없음당황&quot;&gt;&lt;/span&gt;
+벨: 알겠으니까 빨리 안경 벗으세요.
 
-[[제목 없는 구절 57]]</tw-passagedata><tw-passagedata pid="302" name="제목 없는 구절 57" tags="vn" position="1200,700" size="100,100">야나기: 알겠습니다...
+[[제목 없는 구절 57]]</tw-passagedata><tw-passagedata pid="302" name="제목 없는 구절 57" tags="vn" position="1200,700" size="100,100">&lt;span data-bx=&quot;야나기:안경없음당황&quot;&gt;&lt;/span&gt;
+야나기: 알겠습니다...
 
 [[제목 없는 구절 58]]</tw-passagedata><tw-passagedata pid="303" name="제목 없는 구절 58" tags="vn" position="1300,700" size="100,100">야나기: 그래서 아스트라 씨, 뭔가 목격한 것이나 들은 건 없나요? 
 
 [[제목 없는 구절 59]]</tw-passagedata><tw-passagedata pid="304" name="제목 없는 구절 59" tags="vn" position="1400,700" size="100,100">아스트라: 으음... 없는 것 같은데...
 
 [[제목 없는 구절 60]]</tw-passagedata><tw-passagedata pid="305" name="제목 없는 구절 6" tags="vn" position="500,200" size="100,100">&lt;span data-stage=&quot;벨,야나기&quot;&gt;&lt;/span&gt;
+&lt;span data-bx=&quot;야나기:진지&quot;&gt;&lt;/span&gt;
 야나기: 하아... 아무튼 벨 씨, 벨 씨는 모두와 안면식이 있고, 모든 사람들의 특성을 알고 있는 유일한 사람이에요. 지금 이곳에는 오늘 처음 본 사람도 있으니까요.
 
 [[제목 없는 구절 7]]</tw-passagedata><tw-passagedata pid="306" name="제목 없는 구절 60" tags="vn" position="1500,700" size="100,100">이블린: 저는 있습니다. 너무나도 눈부셔서 태양이 두개 뜬 줄 알고 깜짝 놀랐던... 아스트라 씨의 미모... 말이죠.
 
-[[제목 없는 구절 61]]</tw-passagedata><tw-passagedata pid="307" name="제목 없는 구절 61" tags="vn" position="1600,700" size="100,100">야나기: ...
+[[제목 없는 구절 61]]</tw-passagedata><tw-passagedata pid="307" name="제목 없는 구절 61" tags="vn" position="1600,700" size="100,100">&lt;span data-bx=&quot;야나기:안경없음당황&quot;&gt;&lt;/span&gt;
+야나기: ...
 
-[[제목 없는 구절 62]]</tw-passagedata><tw-passagedata pid="308" name="제목 없는 구절 62" tags="vn" position="1700,700" size="100,100">벨: 야나기 씨, 안경 벗으라고 했잖아요.
+[[제목 없는 구절 62]]</tw-passagedata><tw-passagedata pid="308" name="제목 없는 구절 62" tags="vn" position="1700,700" size="100,100">&lt;span data-bx=&quot;야나기:안경없음당황&quot;&gt;&lt;/span&gt;
+벨: 야나기 씨, 안경 벗으라고 했잖아요.
 
-[[제목 없는 구절 63]]</tw-passagedata><tw-passagedata pid="309" name="제목 없는 구절 63" tags="vn" position="1800,700" size="100,100">야나기: 이미 안경을 벗었는데... 어떻게 더...
+[[제목 없는 구절 63]]</tw-passagedata><tw-passagedata pid="309" name="제목 없는 구절 63" tags="vn" position="1800,700" size="100,100">&lt;span data-bx=&quot;야나기:안경없음당황&quot;&gt;&lt;/span&gt;
+야나기: 이미 안경을 벗었는데... 어떻게 더...
 
 [[제목 없는 구절 64]]</tw-passagedata><tw-passagedata pid="310" name="제목 없는 구절 64" tags="vn-choice" position="1900,700" size="100,100">벨: 야나기가... 말대꾸?
 
@@ -3941,7 +3959,8 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 [[제목 없는 구절 69]]</tw-passagedata><tw-passagedata pid="315" name="제목 없는 구절 69" tags="vn" position="2400,650" size="100,100">벨: 사람의 생명은 소중하다고요...? 맞는 말이죠... 하지만 귤복복 씨는 사람이 아닌 호랑이! 그것도 귤과 혼혈입니다! 공동에서 생존한 전적이 있는 아스트라씨는 호랑이 고기라도 맛있게 드실 수 있겠죠.
 
-[[제목 없는 구절 70]]</tw-passagedata><tw-passagedata pid="316" name="제목 없는 구절 7" tags="vn" position="600,200" size="100,100">야나기: 그러니 이 사건의 진범을 밝혀낼 수 있는 사람은 바로 벨 씨 당신 뿐이에요. 제가 용의자들을 추려놨으니, 한 명씩 대화를 나눠 정보를 모은 후, 진범을 밝혀내도록 하죠.
+[[제목 없는 구절 70]]</tw-passagedata><tw-passagedata pid="316" name="제목 없는 구절 7" tags="vn" position="600,200" size="100,100">&lt;span data-bx=&quot;야나기:진지&quot;&gt;&lt;/span&gt;
+야나기: 그러니 이 사건의 진범을 밝혀낼 수 있는 사람은 바로 벨 씨 당신 뿐이에요. 제가 용의자들을 추려놨으니, 한 명씩 대화를 나눠 정보를 모은 후, 진범을 밝혀내도록 하죠.
 
 [[제목 없는 구절 16]]</tw-passagedata><tw-passagedata pid="317" name="제목 없는 구절 70" tags="vn" position="2500,650" size="100,100">아스트라: ?!
 
@@ -3993,9 +4012,11 @@ Other properties and any right, title, and interest thereof and therein (intelle
 수나: 에...?
 
 [[제목 없는 구절 87]]</tw-passagedata><tw-passagedata pid="335" name="제목 없는 구절 87" tags="vn" position="2500,750" size="100,100">&lt;span data-bx=&quot;수나:얼굴붉힘&quot;&gt;&lt;/span&gt;
+&lt;span data-bx=&quot;아리아:미소&quot;&gt;&lt;/span&gt;
 아리아: 맞아요. 분명 아스트라 씨가 저희한테 전화해서 긴장 푸는 법을 알려주셨어요.
 
 [[제목 없는 구절 88]]</tw-passagedata><tw-passagedata pid="336" name="제목 없는 구절 88" tags="vn" position="2600,750" size="100,100">&lt;span data-bx=&quot;남궁우:노말&quot;&gt;&lt;/span&gt;
+&lt;span data-bx=&quot;아리아:미소&quot;&gt;&lt;/span&gt;
 남궁우: 맞아, 비록 이마가 너무 넓은 초록머리 소녀가 팀에 있어도 물로 입을 헹구고 귀여운 동물 영상을 보는게 때론 도움이 된다고 했지.
 
 [[제목 없는 구절 89]]</tw-passagedata><tw-passagedata pid="337" name="제목 없는 구절 89" tags="vn" position="2700,750" size="100,100">&lt;span data-bx=&quot;남궁우:노말&quot;&gt;&lt;/span&gt;
@@ -4004,9 +4025,11 @@ Other properties and any right, title, and interest thereof and therein (intelle
 [[제목 없는 구절 90]]</tw-passagedata><tw-passagedata pid="338" name="제목 없는 구절 9" tags="vn" position="400,200" size="100,100">&lt;span data-bx=&quot;빛나:노말&quot;&gt;&lt;/span&gt;
 미야비: 먹을래
 
-[[제목 없는 구절 6]]</tw-passagedata><tw-passagedata pid="339" name="제목 없는 구절 90" tags="vn" position="2800,750" size="100,100">아리아: 조용히 하세요 수나 씨, 
+[[제목 없는 구절 6]]</tw-passagedata><tw-passagedata pid="339" name="제목 없는 구절 90" tags="vn" position="2800,750" size="100,100">&lt;span data-bx=&quot;아리아:미소&quot;&gt;&lt;/span&gt;
+아리아: 조용히 하세요 수나 씨, 
 
-[[제목 없는 구절 91]]</tw-passagedata><tw-passagedata pid="340" name="제목 없는 구절 91" tags="vn" position="2900,750" size="100,100">수나: 네...?
+[[제목 없는 구절 91]]</tw-passagedata><tw-passagedata pid="340" name="제목 없는 구절 91" tags="vn" position="2900,750" size="100,100">&lt;span data-bx=&quot;아리아:미소&quot;&gt;&lt;/span&gt;
+수나: 네...?
 
 [[제목 없는 구절 92]]</tw-passagedata><tw-passagedata pid="341" name="제목 없는 구절 92" tags="vn" position="3000,750" size="100,100">그 순간, 수나의 분위기가 급변했다. 한순간에 귀엽던 목소리는 마치 미녀 이중첩자처럼 내리깔았고, 주머니에서 검은 무언가를 꺼냈다.
 
