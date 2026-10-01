@@ -161,6 +161,37 @@ body.vn-on tw-passage { display: none; }
   font-weight: 400;
 }
 
+/* ===== 소품 팝업 (수나가 꺼낸 권총 등): 화면 가운데 위쪽에 둥근 네모 판이 오른쪽에서 슥 나타나고, 다음 장면에서 슥 사라짐 ===== */
+.vn-prop {
+  position: absolute;
+  z-index: 5;                             /* 인물 그림(1~2)과 연출(4) 위, 선택지(6)와 대사창(10) 아래 */
+  left: 50%;
+  top: calc((100% - var(--box-h)) / 2);   /* 대사창 위쪽 빈 화면의 세로 가운데 */
+  width: calc(var(--u) * 78);
+  box-sizing: border-box;
+  padding: calc(var(--u) * 5);
+  border-radius: calc(var(--u) * 8);
+  border: calc(var(--u) * 0.7) solid rgba(255, 255, 255, 0.75);
+  background: rgba(12, 24, 48, 0.9);
+  box-shadow: 0 calc(var(--u) * 1.6) calc(var(--u) * 5) rgba(0, 0, 0, 0.55), inset 0 0 calc(var(--u) * 6) rgba(255, 255, 255, 0.06);
+  pointer-events: none;
+  visibility: hidden;
+  opacity: 0;
+  transform: translate(calc(-50% + var(--u) * 70), -50%) rotate(7deg);   /* 사라질 때 / 나타나기 전 자리: 오른쪽 바깥 */
+  transition: transform 0.22s cubic-bezier(0.5, 0, 0.9, 0.6), opacity 0.2s ease-in, visibility 0s linear 0.22s;
+}
+.vn-prop.pr-on {
+  visibility: visible;
+  opacity: 1;
+  transform: translate(-50%, -50%);
+  transition: transform 0.32s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.15s ease-out, visibility 0s;
+}
+.vn-prop img { display: block; width: 100%; height: auto; }
+@media (prefers-reduced-motion: reduce) {
+  .vn-prop { transform: translate(-50%, -50%); transition: opacity 0.15s ease-in, visibility 0s linear 0.15s; }
+  .vn-prop.pr-on { transition: opacity 0.15s ease-out, visibility 0s; }
+}
+
 /* 대사창 */
 .vn-box {
   position: absolute;
@@ -1718,6 +1749,70 @@ body.tt-on tw-passage { display: none; }
     if (root) root.hidden = true;
   }
 
+  /* ================= 소품 팝업 (예: 수나가 꺼낸 권총) =================
+     장면 글 맨 위에 <span data-prop="권총"></span> 를 넣으면, 그 장면에서 화면 가운데 위쪽에 둥근 네모 판이 슥 나타나고 그 안에 소품 그림이 보여.
+     표시가 없는 다음 장면으로 넘어가면 슥 하고 사라져. (이전 대사 버튼으로 돌아가도 그 장면의 표시대로 다시 나타나거나 사라져)
+     - 소품 그림은 아래 PROPS 표에 적어. 파일은 images/props/ 폴더 (배경이 투명한 webp).
+     - 그림을 못 받으면 판을 띄우지 않고 대사만 그대로 진행돼. */
+  var PROP_LOCAL_BASE = 'file:///C:/Users/pumha/Desktop/귤복복 살인사건제작/완성본/실제 제작/소품 이미지/';
+  var PROP_WEB_BASE = 'images/props/';
+  var PROP_BASE = (location.protocol === 'file:') ? PROP_LOCAL_BASE : PROP_WEB_BASE;
+  var PROPS = { '권총': '권총.webp' };    // 소품 이름 -> 그림 파일 이름
+  var pr = { box: null, img: null, shown: null, loads: {}, warmed: false, seq: 0 };
+
+  function propUrl(name) { return encodeURI(PROP_BASE + PROPS[name]); }
+
+  /* 소품 그림 하나를 받아둠 (이미 받았거나 받는 중이면 그 결과를 기다렸다가 cb(성공 여부)를 부름) */
+  function propLoad(name, cb) {
+    var e = pr.loads[name];
+    if (e && e.state !== 'loading') { cb(e.state === 'ok'); return; }
+    if (e) { e.cbs.push(cb); return; }
+    e = pr.loads[name] = { state: 'loading', cbs: [cb], img: new Image() };
+    function fin(s) {
+      e.state = s;
+      var list = e.cbs;
+      e.cbs = [];
+      for (var i = 0; i < list.length; i++) list[i](s === 'ok');
+    }
+    e.img.onload = function () { fin('ok'); };
+    e.img.onerror = function () { fin('missing'); };
+    e.img.src = propUrl(name);
+  }
+
+  function propBuild() {
+    if (pr.box) return;
+    pr.box = el('div', 'vn-prop');
+    pr.img = el('img');
+    pr.img.alt = '';
+    pr.box.appendChild(pr.img);
+    root.appendChild(pr.box);
+  }
+
+  function propHide() {
+    pr.seq++;                             // 그림을 기다리던 중이었다면 취소
+    if (pr.box) pr.box.classList.remove('pr-on');
+  }
+
+  /* 장면이 바뀔 때마다 부름: 이 장면에 소품 표시가 있으면 띄우고, 없으면 치움 */
+  function propSync(p) {
+    if (!pr.warmed) {                     // 게임 시작 직후 로딩과 겹치지 않게 조금 뒤에 소품 그림을 미리 받아둠
+      pr.warmed = true;
+      setTimeout(function () { Object.keys(PROPS).forEach(function (n) { propLoad(n, function () {}); }); }, 4000);
+    }
+    var tags = (p.getAttribute('tags') || '').split(/\s+/);
+    var mark = tags.indexOf('vn') >= 0 ? p.querySelector('[data-prop]') : null;
+    var name = mark ? String(mark.getAttribute('data-prop')).trim() : '';
+    if (!name || !PROPS[name]) { propHide(); return; }
+    propBuild();
+    var my = ++pr.seq;
+    propLoad(name, function (ok) {
+      if (my !== pr.seq || !ok) return;   // 그 사이 다른 장면으로 넘어갔거나 그림이 없으면 안 띄움
+      if (pr.shown !== name) { pr.img.src = propUrl(name); pr.shown = name; }
+      void pr.box.offsetWidth;            // 처음 만들자마자 띄울 때도 '슥' 움직임이 나오도록 위치를 한 번 확정
+      pr.box.classList.add('pr-on');
+    });
+  }
+
   /* ================= 엔딩 갤러리 =================
      'gallery' 태그가 붙은 패시지에서 동작해. (지금은 '엔딩 갤러리' 패시지 하나)
      - 한 페이지에 엔딩 6개, 총 3페이지 (1~6 / 7~12 / 13~16 + 진엔딩)
@@ -2420,6 +2515,7 @@ body.tt-on tw-passage { display: none; }
     build();
     var seq = ++sceneSeq;
     fxCancel();                           // 앞 장면의 연출이 남아 있으면 정리
+    propSync(p);                          // 소품 팝업: 이 장면에 표시가 있으면 띄우고 없으면 치움
     textEl.classList.remove('vn-loading');
     var tags = (p.getAttribute('tags') || '').split(/\s+/);
     updateHome(tags);
@@ -3425,7 +3521,8 @@ Other properties and any right, title, and interest thereof and therein (intelle
 
 [[제목 없는 구절 92]]</tw-passagedata><tw-passagedata pid="341" name="제목 없는 구절 92" tags="vn" position="3000,750" size="100,100">그 순간, 수나의 분위기가 급변했다. 한순간에 귀엽던 목소리는 마치 미녀 이중첩자처럼 내리깔았고, 주머니에서 검은 무언가를 꺼냈다.
 
-[[제목 없는 구절 93]]</tw-passagedata><tw-passagedata pid="342" name="제목 없는 구절 93" tags="vn" position="3100,750" size="100,100">그것은 바로 권총이라고도 불리는 권총! 단 한발만으로도 사람을 죽일 수 있는 막강한 무기! 
+[[제목 없는 구절 93]]</tw-passagedata><tw-passagedata pid="342" name="제목 없는 구절 93" tags="vn" position="3100,750" size="100,100">&lt;span data-prop=&quot;권총&quot;&gt;&lt;/span&gt;
+그것은 바로 권총이라고도 불리는 권총! 단 한발만으로도 사람을 죽일 수 있는 막강한 무기! 
 
 [[제목 없는 구절 94]]</tw-passagedata><tw-passagedata pid="343" name="제목 없는 구절 94" tags="vn" position="3200,750" size="100,100">수나: 보자 보자 하니까... 하꼬 아이돌 좀 벗어났다고 눈에 뵈는 게 없나 봐?
 
