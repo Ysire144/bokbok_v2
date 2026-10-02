@@ -2849,7 +2849,7 @@ body.tt-on tw-passage { display: none; }
     { label: '게임 방법',   target: '게임 방법',         text: '게임 방법',       cls: 'tt-s', icon: 'help' },
     { label: '엔딩 갤러리', target: '엔딩 갤러리',       text: '엔딩 갤러리',     cls: 'tt-s', icon: 'image' },
     { label: '용의자 선택', target: '제목 없는 구절 15', text: '용의자 선택으로', cls: 'tt-s', icon: 'search', needsRecord: true },
-    { label: '크레딧',     target: '크레딧',            text: '크레딧 다시 보기', cls: 'tt-s', icon: 'credit', needsRecord: true, lockTip: '진엔딩을 보면 열려요' }   // 작은 버튼 (게임 방법 위)
+    { label: '크레딧',     target: '크레딧',            text: '크레딧',          cls: 'tt-s', icon: 'credit' }   // 작은 버튼 (게임 방법 위)
   ];
   var TT_LEGAL = { label: '약관', target: '약관', text: '약관' };   // 타이틀 왼쪽 위 작은 칩 (팬 게임 안내 / 저작권 문구 화면으로 감)
   var TT_TESTS = [
@@ -4509,7 +4509,7 @@ Thanks for playing</tw-passagedata><tw-passagedata pid="350" name="타이틀 화
 [[엔딩 갤러리]]
 [[약관]]
 (if: $seen&#39;s length &gt; 0)[ [[용의자 선택으로-&gt;제목 없는 구절 15]] ]
-(if: $seen contains 17)[ [[크레딧 다시 보기-&gt;크레딧]] ]
+[[크레딧]]
 [[테스트용 기록 초기화-&gt;기록 초기화]]
 [[테스트용 모든 엔딩 열기-&gt;모든 엔딩 열기]]</tw-passagedata><tw-passagedata pid="351" name="트루 엔딩" tags="" position="1500,2700" size="100,100">트루 엔딩 (이미지 자리)
 (click: ?page)[(go-to: &quot;엔딩 갤러리 3페이지&quot;)]
