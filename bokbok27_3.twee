@@ -2666,7 +2666,7 @@ Thanks for playing
 [[엔딩 갤러리]]
 [[약관]]
 (if: $seen's length > 0)[ [[용의자 선택으로->제목 없는 구절 15]] ]
-(if: $seen contains 17)[ [[크레딧 다시 보기->크레딧]] ]
+[[크레딧]]
 [[테스트용 기록 초기화->기록 초기화]]
 [[테스트용 모든 엔딩 열기->모든 엔딩 열기]]
 
@@ -4446,7 +4446,7 @@ window.BB = {
     { label: '게임 방법',   target: '게임 방법',         text: '게임 방법',       cls: 'tt-s', icon: 'help' },
     { label: '엔딩 갤러리', target: '엔딩 갤러리',       text: '엔딩 갤러리',     cls: 'tt-s', icon: 'image' },
     { label: '용의자 선택', target: '제목 없는 구절 15', text: '용의자 선택으로', cls: 'tt-s', icon: 'search', needsRecord: true },
-    { label: '크레딧',     target: '크레딧',            text: '크레딧 다시 보기', cls: 'tt-s', icon: 'credit', needsRecord: true, lockTip: '진엔딩을 보면 열려요' }   // 작은 버튼 (게임 방법 위)
+    { label: '크레딧',     target: '크레딧',            text: '크레딧',          cls: 'tt-s', icon: 'credit' }   // 작은 버튼 (게임 방법 위)
   ];
   var TT_LEGAL = { label: '약관', target: '약관', text: '약관' };   // 타이틀 왼쪽 위 작은 칩 (팬 게임 안내 / 저작권 문구 화면으로 감)
   var TT_TESTS = [
